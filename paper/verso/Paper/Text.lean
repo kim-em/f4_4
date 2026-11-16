@@ -1086,7 +1086,7 @@ label := "sec:convchange"
 The fusion maps of Section {ref "sec:conventions"}[] are the dual bases of the splitting maps,
 $`\phi^{XY\to Z}_i\circ\psi^{XY}_{Z,j}=\delta_{ij}\id_Z`. Then
 $$`
-F[X,Y,W,T]=\bigl(G[X,Y,W,T]^{-1}\bigr)^{\mathsf T},\qquad R[X,Y,Z]=R^{\mathrm s}[X,Y,Z]^{\mathsf T}
+F[X,Y,W,T]=\bigl(G[X,Y,W,T]^{-1}\bigr)^{\mathsf T},\qquad R[X,Y,Z]=R^{\mathrm s}[X,Y,Z]^{\mathsf T}.
 `
 The normal form and all data files and statements in this paper refer to the fusion-map
 convention.
@@ -1227,7 +1227,7 @@ $`c=\max_j\sum_{k=0}^{46}(\min(k,46-k)+1)\,|r_{kj}|`; a direct computation gives
 $`\norm{\rho\sigma}\le c\norm\rho\norm\sigma`: the product of the representatives has degree at most
 $`46`, its coefficient of $`x^k` is a sum of at most $`\min(k,46-k)+1` products, and reducing $`x^k` to
 $`\sum_jr_{kj}x^j` gives the bound. An element
-$`a_0+\sum_{k=1}^{11}a_kc_k` with integer $`a_k` has $`\norm\cdot\le2\max|a_k|` in the power basis.
+$`a_0+\sum_{k=1}^{11}a_kc_k` with $`c_k=\zeta^k+\zeta^{-k}` and integer $`a_k` has $`\norm\cdot\le2\max|a_k|` in the power basis.
 
 :::lemma "lem:height"
 Let $`\rho\in\Z[\zeta]` and let $`\mathcal P` be a set of primes $`p\equiv1\pmod{52}` such that the
@@ -1462,7 +1462,7 @@ exceptional auto-equivalence of $`\mathcal C(\mathfrak f_4,4)` remains completel
 (“exist” refers to the fusion ring automorphism), and observes in {cite "EdieMichell"}[Section 7] that
 $`\CF` is the only other quantum group modular tensor category that could have a reverse braided
 autoequivalence. Morrison, Snyder and Thurston {cite "MorrisonSnyderThurston"}[Section 6] list
-$`(E8,F_4,\zeta_{52}^9)\cong(F4,F_4,\zeta_{52}^7)` among their conjectural isomorphisms of quantum group
+$`(E_8,F_4,\zeta_{52}^9)\cong(F_4,F_4,\zeta_{52}^7)` among their conjectural isomorphisms of quantum group
 categories and remark that it is “a categorical version of the automorphism of the fusion ring of
 $`F_4` level $`4`” of Gannon, and that composing it with its Galois conjugate gives a braided equivalence
 $`((F_4)_4,\zeta_{52})\cong((F_4)_4,\zeta_{52}^{25})\cong((F_4)_4,\zeta_{52}^{-1})` “and hence a braided
