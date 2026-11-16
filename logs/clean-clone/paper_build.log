@@ -1,0 +1,11 @@
+## make -C paper   (latexmk 4.87, TeX Live from the system, outside the nix shell)
+Output written on build/f4-fsymbols.pdf (32 pages, 672352 bytes).
+Latexmk: Log file says output to 'build/f4-fsymbols.pdf'
+Output written on build/f4-fsymbols.pdf (33 pages, 752223 bytes).
+Latexmk: Log file says output to 'build/f4-fsymbols.pdf'
+Output written on build/f4-fsymbols.pdf (33 pages, 754841 bytes).
+Latexmk: Log file says output to 'build/f4-fsymbols.pdf'
+Latexmk: All targets (build/f4-fsymbols.pdf) are up-to-date
+Output written on build/f4-fsymbols.pdf (33 pages, 754841 bytes).
+errors: 0; undefined references: 0; overfull or underfull boxes: 0; warnings: 5 (all: hyperref 'Token not allowed in a PDF string', from math in section titles)
+real	0m2.868s

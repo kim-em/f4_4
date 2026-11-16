@@ -1,0 +1,155 @@
+## code/unitary/run_forms.sh work/unitary 2
+[forms] p=1073739577 w=1: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.4 s, forms 0.9 s
+[forms] p=1073740201 w=1: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.4 s, forms 0.9 s
+[forms] p=1073739577 w=3: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.7 s, forms 0.9 s
+[forms] p=1073740201 w=3: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.8 s, forms 0.9 s
+[forms] p=1073739577 w=5: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073740201 w=5: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073739577 w=7: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073740201 w=7: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073739577 w=9: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073740201 w=9: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073739577 w=11: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.3 s, forms 0.9 s
+[forms] p=1073740201 w=11: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073739577 w=25: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073740201 w=25: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073739577 w=23: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073740201 w=23: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073739473 w=1: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.4 s, forms 0.9 s
+[forms] p=1073739421 w=1: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.4 s, forms 0.9 s
+[forms] p=1073739473 w=3: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.7 s, forms 0.9 s
+[forms] p=1073739421 w=3: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.8 s, forms 0.9 s
+[forms] p=1073739473 w=5: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073739421 w=5: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073739473 w=7: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073739421 w=7: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073739473 w=9: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073739421 w=9: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073739473 w=11: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073739421 w=11: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073739473 w=25: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073739421 w=25: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073739473 w=23: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073739421 w=23: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737549 w=1: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.4 s, forms 0.9 s
+[forms] p=1073737393 w=1: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.4 s, forms 0.9 s
+[forms] p=1073737549 w=3: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.7 s, forms 0.9 s
+[forms] p=1073737393 w=3: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.7 s, forms 0.9 s
+[forms] p=1073737549 w=5: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737393 w=5: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737549 w=7: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737393 w=7: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737549 w=9: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737393 w=9: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737549 w=11: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737393 w=11: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737549 w=25: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737393 w=25: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737549 w=23: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737393 w=23: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737081 w=1: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.4 s, forms 0.9 s
+[forms] p=1073735573 w=1: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.4 s, forms 0.9 s
+[forms] p=1073737081 w=3: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.7 s, forms 0.9 s
+[forms] p=1073735573 w=3: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.7 s, forms 0.9 s
+[forms] p=1073737081 w=5: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073735573 w=5: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737081 w=7: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073735573 w=7: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737081 w=9: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073735573 w=9: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737081 w=11: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073735573 w=11: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737081 w=25: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073735573 w=25: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073737081 w=23: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073735573 w=23: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073735417 w=1: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.4 s, forms 0.9 s
+[forms] p=1073733233 w=1: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.4 s, forms 0.9 s
+[forms] p=1073735417 w=3: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.7 s, forms 0.9 s
+[forms] p=1073733233 w=3: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.6 s, forms 0.9 s
+[forms] p=1073735417 w=5: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073733233 w=5: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073735417 w=7: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073733233 w=7: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073735417 w=9: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073733233 w=9: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073735417 w=11: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073733233 w=11: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073735417 w=25: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073733233 w=25: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073735417 w=23: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073733233 w=23: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073733077 w=1: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.4 s, forms 0.9 s
+[forms] p=1073732609 w=1: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.4 s, forms 0.9 s
+[forms] p=1073733077 w=3: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.7 s, forms 0.9 s
+[forms] p=1073732609 w=3: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.7 s, forms 0.9 s
+[forms] p=1073733077 w=5: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073732609 w=5: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073733077 w=7: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073732609 w=7: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073733077 w=9: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073732609 w=9: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073733077 w=11: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073732609 w=11: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073733077 w=25: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073732609 w=25: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073733077 w=23: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073732609 w=23: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073732557 w=1: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.4 s, forms 0.9 s
+[forms] p=1073731829 w=1: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.4 s, forms 0.9 s
+[forms] p=1073732557 w=3: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.7 s, forms 0.9 s
+[forms] p=1073731829 w=3: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.7 s, forms 0.9 s
+[forms] p=1073732557 w=5: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073731829 w=5: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073732557 w=7: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073731829 w=7: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073732557 w=9: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073731829 w=9: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073732557 w=11: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073731829 w=11: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073732557 w=25: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073731829 w=25: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073732557 w=23: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073731829 w=23: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073731777 w=1: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.4 s, forms 0.9 s
+[forms] p=1073731777 w=3: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.8 s, forms 0.9 s
+[forms] p=1073731777 w=5: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.3 s, forms 0.9 s
+[forms] p=1073731777 w=7: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073731777 w=9: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073731777 w=11: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073731777 w=25: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+[forms] p=1073731777 w=23: g1 = 1: True; NF(F^-T) = NF(F): True; G symmetric: True; 2302 spaces; load 0.2 s, forms 0.9 s
+tau invariance (G at w equals G at 25w): 30/30 checks pass
+G: 8116 entries x 6 eta coefficients; modulus 390 bits (13 primes); failures 0; largest num/den 47 bits; mismatches at 2 held-out primes: 0 (1 s)
+wrote work/unitary/G_exact.pkl
+2302 spaces (2271 without unit leg); dims [1, 2, 3, 4, 5, 6, 7, 10]
+w= 1: unit-leg spaces identity: True; definite 2271 (positive 2271), indefinite 0; smallest |eigenvalue| ratio 6.89e-10; torus sign pattern solvable: True -> UNITARY (positive after a torus sign change) (1 s)
+      signs s_X = -1 on []
+w= 3: unit-leg spaces identity: True; definite 1751 (positive 981), indefinite 520; smallest |eigenvalue| ratio 6.54e-10; torus sign pattern solvable: False -> not unitary (1 s)
+w= 5: unit-leg spaces identity: True; definite 2271 (positive 2271), indefinite 0; smallest |eigenvalue| ratio 1.52e-9; torus sign pattern solvable: True -> UNITARY (positive after a torus sign change) (1 s)
+      signs s_X = -1 on []
+w= 7: unit-leg spaces identity: True; definite 1722 (positive 806), indefinite 549; smallest |eigenvalue| ratio 4.65e-10; torus sign pattern solvable: False -> not unitary (1 s)
+w= 9: unit-leg spaces identity: True; definite 1722 (positive 971), indefinite 549; smallest |eigenvalue| ratio 1.67e-11; torus sign pattern solvable: False -> not unitary (1 s)
+w=11: unit-leg spaces identity: True; definite 1751 (positive 943), indefinite 520; smallest |eigenvalue| ratio 3.92e-19; torus sign pattern solvable: False -> not unitary (1 s)
+square classes: 240 degree-one primes of k (40 rational primes x 6), 11 s
+  (e) torus-invariant determinant classes (odd-dimensional spaces covariantly, even ones invariantly): 5
+  candidates -1, 2, 3, 13, [n] (n odd), [2][n] (n even), n < 26: span rank 7; (a) inside their span: True; (e) inside their span: True
+  candidates whose class lies in (a): ['2', '[3]', '[2][4]', '[5]', '[11]', '[2][12]', '[13]', '[2][14]', '[15]', '[21]', '[2][22]', '[23]']
+F_2 ranks (characters at 240 primes; a rank close to 240 would mean too few primes):
+  (a) torus-invariant classes from the one-dimensional spaces (1363 spaces): 5
+  (b) torus-invariant classes from the first LDL diagonal of all 2271 spaces: 240
+  (c) (b) plus all ratios D_i/D_1 within spaces (upper bound for LDL+sqrt gauges, best torus): 240
+      ratios D_i/D_1 alone: 240
+  (d) (a) plus det classes of even-dimensional spaces (lower bound for the field of an orthogonal gauge): 5
+  all LDL diagonals, no torus optimisation: 240
+H family: 20277 nonzero entries with four one-dimensional spaces
+300 degree-one primes of k (p = +-1 mod 13), 9 s
+(1) entry invariants I_ab: F_2 rank 6 (torus-invariant classes of all one-dimensional norms: 6)
+(2) torus-invariant determinant classes: rank 6; together with (1): 6
+(3) LDL^T diagonals with the best torus: rank 300 of at most 300 detectable (2322 diagonal entries in the 908 spaces of dimension > 1)
+(1): basis among -1, 2, 3, 13, [n], [2][n]: ['2', '[3]', '[5]', '[11]', '[13]', '[2][4]']; spans: True
+(2): basis among -1, 2, 3, 13, [n], [2][n]: ['2', '[3]', '[5]', '[11]', '[13]', '[2][4]']; spans: True
+p=1073741189 w=1: 58740 blocks checked, F Gram_R F^T = Gram_L fails in 0  (63 s, 2 workers)
+p=1073726317 w=7: 58740 blocks checked, F Gram_R F^T = Gram_L fails in 0  (66 s, 2 workers)
+243.86 s, 491676 kB (peak RSS)
+exit status 0

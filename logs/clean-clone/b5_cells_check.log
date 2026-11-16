@@ -1,0 +1,43 @@
+## cd code/f4 && python3 cells.py F4 4 1073740201 3 ../../work/c.pkl 0,0,0,1 && python3 check_cells.py ../../work/c.pkl
+[cells] p=1073740201 q=461281197: built 25 modules (9 outside the open alcove) in 3.8s
+[cells] V(x)V: {'(0, 0, 1, 0)': (-1, 0), '(0, 0, 0, 1)': (1, -12), '(0, 0, 0, 2)': (1, 2), '(0, 0, 0, 0)': (1, -24), '(1, 0, 0, 0)': (-1, -6)}  zigzags (scalars): 31567491 31567491
+[cells] Yang-Baxter on V^3: True
+[cells] edges done 4.3s
+[cells] base (0, 0, 0, 0) done 4.3s
+[cells] base (0, 0, 0, 1) done 4.3s
+[cells] base (0, 0, 0, 2) done 4.4s
+[cells] base (0, 0, 1, 0) done 4.4s
+[cells] base (1, 0, 0, 0) done 4.5s
+[cells] base (0, 0, 0, 3) done 4.5s
+[cells] base (0, 0, 1, 1) done 4.6s
+[cells] base (0, 1, 0, 0) done 4.7s
+[cells] base (1, 0, 0, 1) done 4.7s
+[cells] base (0, 0, 0, 4) done 4.9s
+[cells] base (0, 0, 1, 2) done 5.2s
+[cells] base (0, 0, 2, 0) done 5.3s
+[cells] base (0, 1, 0, 1) done 5.4s
+[cells] base (1, 0, 0, 2) done 5.6s
+[cells] base (1, 0, 1, 0) done 5.7s
+[cells] base (2, 0, 0, 0) done 5.7s
+[cells] wrote ../../work/c.pkl
+(0, 0, 0, 0) paths(3) = 22 {'braid': True, 'minpoly': True, 'z1': 31567491, 'z2': 31567491, 'loop': 1, 'curl': 460801947, 'curl2': 460801947, 'nat_m': True, 'nat_c': True, 'theta': 1} OK
+(0, 0, 0, 1) paths(3) = 140 {'braid': True, 'minpoly': True, 'z1': 31567491, 'z2': 31567491, 'loop': 1, 'curl': 460801947, 'curl2': 460801947, 'nat_m': True, 'nat_c': True, 'theta': 1} OK
+(0, 0, 0, 2) paths(3) = 307 {'braid': True, 'minpoly': True, 'z1': 31567491, 'z2': 31567491, 'loop': 1, 'curl': 460801947, 'curl2': 460801947, 'nat_m': True, 'nat_c': True, 'theta': 1} OK
+(0, 0, 1, 0) paths(3) = 329 {'braid': True, 'minpoly': True, 'z1': 31567491, 'z2': 31567491, 'loop': 1, 'curl': 460801947, 'curl2': 460801947, 'nat_m': True, 'nat_c': True, 'theta': 1} OK
+(1, 0, 0, 0) paths(3) = 128 {'braid': True, 'minpoly': True, 'z1': 31567491, 'z2': 31567491, 'loop': 1, 'curl': 460801947, 'curl2': 460801947, 'nat_m': True, 'nat_c': True, 'theta': 1} OK
+(0, 0, 0, 3) paths(3) = 309 {'braid': True, 'minpoly': True, 'z1': 31567491, 'z2': 31567491, 'loop': 1, 'curl': 460801947, 'curl2': 460801947, 'nat_m': True, 'nat_c': True, 'theta': 1} OK
+(0, 0, 1, 1) paths(3) = 680 {'braid': True, 'minpoly': True, 'z1': 31567491, 'z2': 31567491, 'loop': 1, 'curl': 460801947, 'curl2': 460801947, 'nat_m': True, 'nat_c': True, 'theta': 1} OK
+(0, 1, 0, 0) paths(3) = 305 {'braid': True, 'minpoly': True, 'z1': 31567491, 'z2': 31567491, 'loop': 1, 'curl': 460801947, 'curl2': 460801947, 'nat_m': True, 'nat_c': True, 'theta': 1} OK
+(1, 0, 0, 1) paths(3) = 436 {'braid': True, 'minpoly': True, 'z1': 31567491, 'z2': 31567491, 'loop': 1, 'curl': 460801947, 'curl2': 460801947, 'nat_m': True, 'nat_c': True, 'theta': 1} OK
+(0, 0, 0, 4) paths(3) = 115 {'braid': True, 'minpoly': True, 'z1': 31567491, 'z2': 31567491, 'loop': 1, 'curl': 460801947, 'curl2': 460801947, 'nat_m': True, 'nat_c': True, 'theta': 1} OK
+(0, 0, 1, 2) paths(3) = 412 {'braid': True, 'minpoly': True, 'z1': 31567491, 'z2': 31567491, 'loop': 1, 'curl': 460801947, 'curl2': 460801947, 'nat_m': True, 'nat_c': True, 'theta': 1} OK
+(0, 0, 2, 0) paths(3) = 295 {'braid': True, 'minpoly': True, 'z1': 31567491, 'z2': 31567491, 'loop': 1, 'curl': 460801947, 'curl2': 460801947, 'nat_m': True, 'nat_c': True, 'theta': 1} OK
+(0, 1, 0, 1) paths(3) = 395 {'braid': True, 'minpoly': True, 'z1': 31567491, 'z2': 31567491, 'loop': 1, 'curl': 460801947, 'curl2': 460801947, 'nat_m': True, 'nat_c': True, 'theta': 1} OK
+(1, 0, 0, 2) paths(3) = 413 {'braid': True, 'minpoly': True, 'z1': 31567491, 'z2': 31567491, 'loop': 1, 'curl': 460801947, 'curl2': 460801947, 'nat_m': True, 'nat_c': True, 'theta': 1} OK
+(1, 0, 1, 0) paths(3) = 415 {'braid': True, 'minpoly': True, 'z1': 31567491, 'z2': 31567491, 'loop': 1, 'curl': 460801947, 'curl2': 460801947, 'nat_m': True, 'nat_c': True, 'theta': 1} OK
+(2, 0, 0, 0) paths(3) = 114 {'braid': True, 'minpoly': True, 'z1': 31567491, 'z2': 31567491, 'loop': 1, 'curl': 460801947, 'curl2': 460801947, 'nat_m': True, 'nat_c': True, 'theta': 1} OK
+trivalent vertex V (x) V -> V present: True
+scalars independent of the base: {'z1': True, 'z2': True, 'loop': True, 'curl': True, 'curl2': True, 'theta': True}
+failures: 0
+6.37 s, 220448 kB (peak RSS)
+exit status 0

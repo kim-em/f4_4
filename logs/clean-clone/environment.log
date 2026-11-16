@@ -1,0 +1,7 @@
+nix-shell --pure -p "python314.withPackages (ps: with ps; [numpy scipy sympy mpmath])" pari time
+F4_ARCHIVE=<directory with F4_4_F_part1.bin F4_4_F_part2.bin F4_4_R_normalform.txt>
+Python 3.14.8 numpy 2.5.3 scipy 1.18.1 sympy 1.14.0 mpmath 1.4.1
+third-party modules: ['isympy', 'mpmath', 'numpy', 'scipy', 'sitecustomize', 'sympy']
+PARI/GP 2.17.3 (print(version()) gives [2, 17, 3])
+PYTHONPATH=<unset>
+time, xz, cmp, gp from the nix store (GNU time for the measurements)

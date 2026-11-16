@@ -1,0 +1,4 @@
+## python3 code/fields/compare_direct.py work/direct 1073741189 1
+direct residues at (p=1073741189, w=1) vs the archived normal-form table reduced there: 54881076 entries, 0 differ
+23.66 s, 917780 kB (peak RSS)
+exit status 0

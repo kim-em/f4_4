@@ -1,0 +1,8 @@
+## python3 code/f4/verify_hex_bin.py $F4_ARCHIVE/F4_4_R_normalform.txt $F4_ARCHIVE/F4_4_F_part1.bin $F4_ARCHIVE/F4_4_F_part2.bin --jobs 4 --limit-primes 1
+read R data and 58740 F-blocks from 2 binary files (6s); largest R/Rinv block denominator 41 bits, largest F block denominator 301 bits, c = 46, conversion factor 2
+58740 four-tuples; 2 x bound up to 1293 bits; primes needed per four-tuple: max 42, histogram {1: 2130, 2: 5536, 3: 6371, 4: 6036, 5: 5169, 6: 4416, 7: 3749, 8: 3247, 9: 2975, 10: 2540, 11: 2411, 12: 2038, 13: 1828, 14: 1555, 15: 1469, 16: 1142, 17: 995, 18: 865, 19: 774, 20: 663, 21: 533, 22: 470, 23: 419, 24: 290, 25: 226, 26: 175, 27: 171, 28: 142, 29: 95, 30: 102, 31: 53, 32: 43, 33: 30, 34: 27, 35: 15, 36: 18, 37: 8, 38: 9, 39: 2, 40: 2, 42: 1}
+prime 1/1 p=2147483053: 58740 four-tuples at 24 roots, failures 0, R Rinv = 1 failures 0 (227s)
+total time 235s
+CONCLUSION: no failures, but not all primes were run (first 1 only)
+236.69 s, 4115020 kB (peak RSS)
+exit status 0

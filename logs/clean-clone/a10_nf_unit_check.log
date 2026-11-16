@@ -1,0 +1,4 @@
+## python3 code/fields/f4_nf_checks.py unit $F4_ARCHIVE/F4_4_F_part1.bin $F4_ARCHIVE/F4_4_F_part2.bin
+blocks with a unit among the first three legs: 6859; entries differing from the identity: 0
+1.75 s, 438032 kB (peak RSS)
+exit status 0

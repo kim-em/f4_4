@@ -1,0 +1,7 @@
+## python3 code/fields/direct_f4.py 1073741189 1 work/direct --nproc 4
+[plan] step 1: 89 one-dim V-edge variables, 467 entries, rank 74, unit pivots 74, deferred 0, residual torus dim 15
+[plan] loop 0011: candidate neighbours ['0002', '0003', '0010', '0012', '0020', '0100', '0101', '1001', '1002', '1010', 'in:0002', 'in:0003', 'in:0010', 'in:0012', 'in:0020', 'in:0100', 'in:0101', 'in:1001', 'in:1002', 'in:1010', 'BT:0002'], chosen ('0002', '0003')
+[plan] loop 0012: candidate neighbours ['0003', '0004', '0011', '0020', '0101', '1002', 'in:0003', 'in:0004', 'in:0011', 'in:0020', 'in:0101', 'in:1002', 'BT:0003'], chosen ('0003', '0004')
+[direct] p=1073741189 w=1: 58740 blocks, 54881076 entries; plan rule reproduced; cells 6s, H 19s, normal form 1s, g1 6s, recursion x 169s, export 38s, R 26s, R conj 32s
+297.44 s, 1098876 kB (peak RSS)
+exit status 0

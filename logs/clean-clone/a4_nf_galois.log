@@ -1,0 +1,28 @@
+## python3 code/checks/nf_galois.py deposit/F4_4_H_normalform.txt.xz
+391476 nonzero entries
+sigma_1: moves some entry: False
+sigma_3: moves some entry: True
+sigma_5: moves some entry: True
+sigma_7: moves some entry: True
+sigma_9: moves some entry: True
+sigma_11: moves some entry: True
+sigma_15: moves some entry: True
+sigma_17: moves some entry: True
+sigma_19: moves some entry: True
+sigma_21: moves some entry: True
+sigma_23: moves some entry: True
+sigma_25: moves some entry: False
+sigma_27: moves some entry: False
+sigma_29: moves some entry: True
+sigma_31: moves some entry: True
+sigma_33: moves some entry: True
+sigma_35: moves some entry: True
+sigma_37: moves some entry: True
+sigma_41: moves some entry: True
+sigma_43: moves some entry: True
+sigma_45: moves some entry: True
+sigma_47: moves some entry: True
+sigma_49: moves some entry: True
+sigma_51: moves some entry: False
+13.65 s, 300700 kB (peak RSS)
+exit status 0

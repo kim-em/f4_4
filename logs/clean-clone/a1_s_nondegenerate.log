@@ -1,0 +1,5 @@
+## python3 code/checks/s_nondegenerate.py deposit/F4_4_invariants.txt
+16 objects; S~ S~ = (sum_X d_X^2) Id exactly: True; sum_X d_X^2 nonzero: True
+CONCLUSION: the S-matrix computed from the R-symbols is invertible
+1.53 s, 30652 kB (peak RSS)
+exit status 0

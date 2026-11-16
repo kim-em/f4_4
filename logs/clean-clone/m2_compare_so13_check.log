@@ -1,0 +1,5 @@
+## cd code/metaplectic && python3 compare_so13.py --check data/gauge_so13_ours_to_AFT.txt
+gauge from data/gauge_so13_ours_to_AFT.txt applied to ours: 6454 F entries and 190 R-symbols compared exactly with AFT (1, -1, -1); mismatches 0
+CONCLUSION: agreement
+3.77 s, 43540 kB (peak RSS)
+exit status 0

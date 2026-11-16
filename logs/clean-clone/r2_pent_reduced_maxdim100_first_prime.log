@@ -1,0 +1,9 @@
+## python3 code/f4/pent_reduced.py $F4_ARCHIVE/F4_4_F_part1.bin $F4_ARCHIVE/F4_4_F_part2.bin --jobs 4 --maxdim 100 --limit-primes 1
+read 58740 F-blocks from 2 files (7s); c = 46, conversion factor 2
+five-tuples with fourth object 0001: 40632, largest dimension 100, sum of dim^3 7.064e+09; 2 x bound up to 597 bits; primes needed: max 20, mean 5.71, histogram {1: 2045, 2: 5889, 3: 4596, 4: 4671, 5: 4587, 6: 4109, 7: 3481, 8: 2896, 9: 2492, 10: 1913, 11: 1434, 12: 1013, 13: 663, 14: 367, 15: 232, 16: 159, 17: 62, 18: 19, 19: 2, 20: 2}
+all 58740 F-matrices invertible modulo 1073741189 (hence over K): True (48s)
+prime 1/1 p=2147483053: 40632 five-tuples at 12 real roots, failures 0 (141s)
+total time 202s
+CONCLUSION: no failures, but not all primes were run
+203.79 s, 1962816 kB (peak RSS)
+exit status 0

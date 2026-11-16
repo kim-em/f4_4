@@ -1,0 +1,6 @@
+## python3 code/f4/pent_exact_subset.py 0000,0001,1000,0004,2000 $F4_ARCHIVE/F4_4_F_part1.bin $F4_ARCHIVE/F4_4_F_part2.bin --jobs 2
+subset ['0000', '0001', '1000', '0004', '2000']: 1585 five-tuples, largest dimension 15, 2 x bound up to 154 bits, primes needed: max 5, mean 1.7 (1s)
+120 (prime, root) runs, 64488 five-tuple checks, failures 0; 93s
+CONCLUSION: the pentagon equation holds exactly in K for all 1585 five-tuples from ['0000', '0001', '1000', '0004', '2000']
+95.00 s, 855976 kB (peak RSS)
+exit status 0

@@ -1,0 +1,576 @@
+## cd code/f4-forms && gp -q kforms.gp
+  ***   Warning: new stack size = 2000000000 (1907.349 Mbytes).
+k = Q(v), v^6 + v^5 - 5*v^4 - 4*v^3 + 6*v^2 + 3*v - 1, disc 371293 = Mat([13, 5]); class number 1; certified: 1
+narrow class group of k: []
+  L with N(conductor) = 6317: number of X with (d,u_X)_k split: 3, pattern [1, 1, 1]
+all three split: N(conductor) = 6317 = Mat([6317, 1]), d = -4*v^5 - 4*v^4 + 28*v^3 + 16*v^2 - 52*v + 16, |disc L| = disc(k)^2 * 6317
+  L with N(conductor) = 6317: number of X with (d,u_X)_k split: 3, pattern [1, 1, 1]
+all three split: N(conductor) = 6317 = Mat([6317, 1]), d = 8*v^5 + 16*v^4 - 28*v^3 - 52*v^2 + 28*v + 48, |disc L| = disc(k)^2 * 6317
+  L with N(conductor) = 6317: number of X with (d,u_X)_k split: 3, pattern [1, 1, 1]
+all three split: N(conductor) = 6317 = Mat([6317, 1]), d = -4*v^5 + 4*v^4 + 24*v^3 - 4*v^2 - 32*v + 12, |disc L| = disc(k)^2 * 6317
+  L with N(conductor) = 6317: number of X with (d,u_X)_k split: 3, pattern [1, 1, 1]
+all three split: N(conductor) = 6317 = Mat([6317, 1]), d = 8*v^5 - 16*v^4 - 44*v^3 + 60*v^2 + 44*v, |disc L| = disc(k)^2 * 6317
+  L with N(conductor) = 6317: number of X with (d,u_X)_k split: 3, pattern [1, 1, 1]
+all three split: N(conductor) = 6317 = Mat([6317, 1]), d = -12*v^5 + 72*v^3 - 4*v^2 - 92*v + 36, |disc L| = disc(k)^2 * 6317
+  L with N(conductor) = 6317: number of X with (d,u_X)_k split: 3, pattern [1, 1, 1]
+all three split: N(conductor) = 6317 = Mat([6317, 1]), d = 4*v^5 - 4*v^4 - 20*v^3 + 20*v^2 + 32*v + 12, |disc L| = disc(k)^2 * 6317
+all three split: N(conductor) = 8761 = Mat([8761, 1]), d = 4*v^5 + 12*v^4 - 20*v^3 - 44*v^2 + 16*v + 44, |disc L| = disc(k)^2 * 8761
+all three split: N(conductor) = 8761 = Mat([8761, 1]), d = -8*v^4 + 8*v^3 + 28*v^2 - 28*v + 16, |disc L| = disc(k)^2 * 8761
+all three split: N(conductor) = 8761 = Mat([8761, 1]), d = 4*v^5 + 8*v^4 - 16*v^3 - 16*v^2 + 16*v + 16, |disc L| = disc(k)^2 * 8761
+all three split: N(conductor) = 8761 = Mat([8761, 1]), d = -12*v^5 + 8*v^4 + 44*v^3 - 20*v^2 - 32*v + 20, |disc L| = disc(k)^2 * 8761
+all three split: N(conductor) = 8761 = Mat([8761, 1]), d = -16*v^5 - 12*v^4 + 72*v^3 + 36*v^2 - 64*v + 16, |disc L| = disc(k)^2 * 8761
+all three split: N(conductor) = 8761 = Mat([8761, 1]), d = -28*v^5 - 8*v^4 + 144*v^3 + 8*v^2 - 172*v + 52, |disc L| = disc(k)^2 * 8761
+all three split: N(conductor) = 9477 = [3, 6; 13, 1], d = -12*v + 24, |disc L| = disc(k)^2 * 9477
+all three split: N(conductor) = 15625 = Mat([5, 6]), d = 20, |disc L| = disc(k)^2 * 15625
+all three split: N(conductor) = 25013 = Mat([25013, 1]), d = 4*v^5 + 12*v^4 - 28*v^3 - 44*v^2 + 44*v + 48, |disc L| = disc(k)^2 * 25013
+all three split: N(conductor) = 25013 = Mat([25013, 1]), d = 4*v^5 + 8*v^4 - 20*v^3 - 36*v^2 + 16*v + 52, |disc L| = disc(k)^2 * 25013
+all three split: N(conductor) = 25013 = Mat([25013, 1]), d = 8*v^5 - 4*v^4 - 36*v^3 + 12*v^2 + 28*v + 28, |disc L| = disc(k)^2 * 25013
+all three split: N(conductor) = 25013 = Mat([25013, 1]), d = -12*v^5 - 8*v^4 + 48*v^3 + 24*v^2 - 28*v + 20, |disc L| = disc(k)^2 * 25013
+all three split: N(conductor) = 25013 = Mat([25013, 1]), d = 4*v^5 + 4*v^4 - 20*v^3 - 8*v^2 + 32*v + 24, |disc L| = disc(k)^2 * 25013
+all three split: N(conductor) = 25013 = Mat([25013, 1]), d = -12*v^5 - 12*v^4 + 52*v^3 + 28*v^2 - 44*v + 36, |disc L| = disc(k)^2 * 25013
+all three split: N(conductor) = 26833 = Mat([26833, 1]), d = -24*v^5 - 4*v^4 + 108*v^3 + 8*v^2 - 108*v + 32, |disc L| = disc(k)^2 * 26833
+all three split: N(conductor) = 26833 = Mat([26833, 1]), d = 4*v^5 + 8*v^4 - 32*v^3 - 32*v^2 + 48*v + 48, |disc L| = disc(k)^2 * 26833
+all three split: N(conductor) = 26833 = Mat([26833, 1]), d = -32*v^5 - 12*v^4 + 160*v^3 + 16*v^2 - 176*v + 64, |disc L| = disc(k)^2 * 26833
+all three split: N(conductor) = 26833 = Mat([26833, 1]), d = -20*v^5 + 4*v^4 + 96*v^3 - 24*v^2 - 108*v + 52, |disc L| = disc(k)^2 * 26833
+all three split: N(conductor) = 26833 = Mat([26833, 1]), d = -16*v^5 - 8*v^4 + 72*v^3 + 12*v^2 - 60*v + 48, |disc L| = disc(k)^2 * 26833
+all three split: N(conductor) = 26833 = Mat([26833, 1]), d = 8*v^5 + 4*v^4 - 52*v^3 - 28*v^2 + 88*v + 68, |disc L| = disc(k)^2 * 26833
+all three split: N(conductor) = 28717 = [13, 1; 47, 2], d = -16*v^5 - 8*v^4 + 92*v^3 + 16*v^2 - 128*v + 44, |disc L| = disc(k)^2 * 28717
+all three split: N(conductor) = 28717 = [13, 1; 47, 2], d = 36*v^5 - 12*v^4 - 156*v^3 + 60*v^2 + 100*v + 4, |disc L| = disc(k)^2 * 28717
+all three split: N(conductor) = 28717 = [13, 1; 47, 2], d = 24*v^5 - 4*v^4 - 108*v^3 + 20*v^2 + 80*v + 24, |disc L| = disc(k)^2 * 28717
+all three split: N(conductor) = 32525 = [5, 2; 1301, 1], d = 4*v^5 - 8*v^4 - 36*v^3 + 16*v^2 + 68*v + 44, |disc L| = disc(k)^2 * 32525
+all three split: N(conductor) = 32525 = [5, 2; 1301, 1], d = -20*v^5 - 4*v^4 + 88*v^3 + 12*v^2 - 84*v + 24, |disc L| = disc(k)^2 * 32525
+all three split: N(conductor) = 32525 = [5, 2; 1301, 1], d = 28*v^5 + 36*v^4 - 128*v^3 - 136*v^2 + 132*v + 116, |disc L| = disc(k)^2 * 32525
+all three split: N(conductor) = 32525 = [5, 2; 1301, 1], d = -8*v^5 - 36*v^4 + 12*v^3 + 120*v^2 + 36*v, |disc L| = disc(k)^2 * 32525
+all three split: N(conductor) = 32525 = [5, 2; 1301, 1], d = 8*v^5 + 8*v^4 - 48*v^3 - 40*v^2 + 76*v + 68, |disc L| = disc(k)^2 * 32525
+all three split: N(conductor) = 32525 = [5, 2; 1301, 1], d = -16*v^5 + 4*v^4 + 80*v^3 - 24*v^2 - 96*v + 52, |disc L| = disc(k)^2 * 32525
+all three split: N(conductor) = 33461 = Mat([33461, 1]), d = 4*v^2 + 16, |disc L| = disc(k)^2 * 33461
+all three split: N(conductor) = 33461 = Mat([33461, 1]), d = 4*v^3 - 12*v + 24, |disc L| = disc(k)^2 * 33461
+all three split: N(conductor) = 33461 = Mat([33461, 1]), d = -4*v^5 - 4*v^4 + 16*v^3 + 12*v^2 - 12*v + 20, |disc L| = disc(k)^2 * 33461
+all three split: N(conductor) = 33461 = Mat([33461, 1]), d = 4*v + 24, |disc L| = disc(k)^2 * 33461
+all three split: N(conductor) = 33461 = Mat([33461, 1]), d = 4*v^4 - 16*v^2 + 32, |disc L| = disc(k)^2 * 33461
+all three split: N(conductor) = 33461 = Mat([33461, 1]), d = 4*v^5 - 20*v^3 + 20*v + 24, |disc L| = disc(k)^2 * 33461
+all three split: N(conductor) = 36893 = [79, 1; 467, 1], d = -4*v^5 - 12*v^4 + 28*v^3 + 40*v^2 - 52*v + 20, |disc L| = disc(k)^2 * 36893
+all three split: N(conductor) = 36893 = [79, 1; 467, 1], d = 8*v^5 + 16*v^4 - 40*v^3 - 60*v^2 + 36*v + 60, |disc L| = disc(k)^2 * 36893
+all three split: N(conductor) = 36893 = [79, 1; 467, 1], d = 4*v^5 + 12*v^4 - 16*v^3 - 28*v^2 + 16*v + 24, |disc L| = disc(k)^2 * 36893
+all three split: N(conductor) = 36893 = [79, 1; 467, 1], d = -24*v^5 - 8*v^4 + 124*v^3 + 12*v^2 - 152*v + 48, |disc L| = disc(k)^2 * 36893
+all three split: N(conductor) = 36893 = [79, 1; 467, 1], d = -12*v^5 + 8*v^4 + 48*v^3 - 20*v^2 - 40*v + 24, |disc L| = disc(k)^2 * 36893
+all three split: N(conductor) = 36893 = [79, 1; 467, 1], d = -20*v^5 - 16*v^4 + 88*v^3 + 48*v^2 - 72*v + 20, |disc L| = disc(k)^2 * 36893
+all three split: N(conductor) = 40573 = [13, 1; 3121, 1], d = 16*v^4 + 12*v^3 - 52*v^2 - 20*v + 52, |disc L| = disc(k)^2 * 40573
+all three split: N(conductor) = 40573 = [13, 1; 3121, 1], d = -16*v^4 - 4*v^3 + 60*v^2 - 4*v + 4, |disc L| = disc(k)^2 * 40573
+all three split: N(conductor) = 40573 = [13, 1; 3121, 1], d = -16*v^5 + 4*v^4 + 72*v^3 - 16*v^2 - 76*v + 36, |disc L| = disc(k)^2 * 40573
+all three split: N(conductor) = 40573 = [13, 1; 3121, 1], d = -8*v^4 - 20*v^3 + 16*v^2 + 64*v + 44, |disc L| = disc(k)^2 * 40573
+all three split: N(conductor) = 40573 = [13, 1; 3121, 1], d = -24*v^5 - 4*v^4 + 116*v^3 + 4*v^2 - 128*v + 40, |disc L| = disc(k)^2 * 40573
+all three split: N(conductor) = 40573 = [13, 1; 3121, 1], d = 12*v^5 + 8*v^4 - 68*v^3 - 44*v^2 + 92*v + 76, |disc L| = disc(k)^2 * 40573
+all three split: N(conductor) = 42509 = Mat([42509, 1]), d = -16*v^5 - 16*v^4 + 68*v^3 + 48*v^2 - 44*v + 24, |disc L| = disc(k)^2 * 42509
+all three split: N(conductor) = 42509 = Mat([42509, 1]), d = 16*v^5 + 16*v^4 - 80*v^3 - 60*v^2 + 80*v + 64, |disc L| = disc(k)^2 * 42509
+all three split: N(conductor) = 42509 = Mat([42509, 1]), d = -12*v^5 + 12*v^4 + 60*v^3 - 28*v^2 - 64*v + 28, |disc L| = disc(k)^2 * 42509
+all three split: N(conductor) = 42509 = Mat([42509, 1]), d = -16*v^5 - 12*v^4 + 88*v^3 + 36*v^2 - 128*v + 32, |disc L| = disc(k)^2 * 42509
+all three split: N(conductor) = 42509 = Mat([42509, 1]), d = 16*v^4 - 48*v^2 + 4*v + 40, |disc L| = disc(k)^2 * 42509
+all three split: N(conductor) = 42509 = Mat([42509, 1]), d = -12*v^5 - 16*v^4 + 60*v^3 + 48*v^2 - 76*v + 24, |disc L| = disc(k)^2 * 42509
+all three split: N(conductor) = 44017 = Mat([44017, 1]), d = -12*v^5 - 8*v^4 + 40*v^3 + 32*v^2 - 12*v + 8, |disc L| = disc(k)^2 * 44017
+all three split: N(conductor) = 44017 = Mat([44017, 1]), d = 12*v^5 - 56*v^3 + 12*v^2 + 40*v + 12, |disc L| = disc(k)^2 * 44017
+all three split: N(conductor) = 44017 = Mat([44017, 1]), d = -4*v^5 + 8*v^4 + 28*v^3 - 44*v^2 - 48*v + 72, |disc L| = disc(k)^2 * 44017
+all three split: N(conductor) = 44017 = Mat([44017, 1]), d = -20*v^4 - 12*v^3 + 68*v^2 + 28*v + 8, |disc L| = disc(k)^2 * 44017
+all three split: N(conductor) = 44017 = Mat([44017, 1]), d = -8*v^5 + 52*v^3 + 4*v^2 - 64*v + 28, |disc L| = disc(k)^2 * 44017
+all three split: N(conductor) = 44017 = Mat([44017, 1]), d = 12*v^5 + 20*v^4 - 52*v^3 - 72*v^2 + 56*v + 68, |disc L| = disc(k)^2 * 44017
+all three split: N(conductor) = 46969 = [13, 1; 3613, 1], d = 8*v^5 - 36*v^3 + 28*v + 28, |disc L| = disc(k)^2 * 46969
+all three split: N(conductor) = 46969 = [13, 1; 3613, 1], d = 4*v^4 - 8*v^2 + 20, |disc L| = disc(k)^2 * 46969
+all three split: N(conductor) = 46969 = [13, 1; 3613, 1], d = 4*v^5 + 8*v^4 - 20*v^3 - 32*v^2 + 20*v + 44, |disc L| = disc(k)^2 * 46969
+all three split: N(conductor) = 46969 = [13, 1; 3613, 1], d = -8*v^5 - 8*v^4 + 32*v^3 + 24*v^2 - 20*v + 20, |disc L| = disc(k)^2 * 46969
+all three split: N(conductor) = 46969 = [13, 1; 3613, 1], d = -4*v^5 - 4*v^4 + 24*v^3 + 12*v^2 - 36*v + 24, |disc L| = disc(k)^2 * 46969
+all three split: N(conductor) = 46969 = [13, 1; 3613, 1], d = 4*v^2 + 8*v + 20, |disc L| = disc(k)^2 * 46969
+all three split: N(conductor) = 47321 = [79, 1; 599, 1], d = -16*v^5 + 16*v^4 + 64*v^3 - 44*v^2 - 56*v + 36, |disc L| = disc(k)^2 * 47321
+all three split: N(conductor) = 47321 = [79, 1; 599, 1], d = -4*v^5 - 4*v^4 + 28*v^2 + 20*v + 4, |disc L| = disc(k)^2 * 47321
+all three split: N(conductor) = 47321 = [79, 1; 599, 1], d = -24*v^5 - 16*v^4 + 116*v^3 + 44*v^2 - 116*v + 32, |disc L| = disc(k)^2 * 47321
+all three split: N(conductor) = 47321 = [79, 1; 599, 1], d = -16*v^5 + 84*v^3 - 8*v^2 - 112*v + 48, |disc L| = disc(k)^2 * 47321
+all three split: N(conductor) = 47321 = [79, 1; 599, 1], d = 8*v^5 + 16*v^4 - 44*v^3 - 52*v^2 + 44*v + 48, |disc L| = disc(k)^2 * 47321
+all three split: N(conductor) = 47321 = [79, 1; 599, 1], d = 16*v^5 - 16*v^4 - 80*v^3 + 68*v^2 + 64*v, |disc L| = disc(k)^2 * 47321
+all three split: N(conductor) = 47657 = Mat([47657, 1]), d = 4*v^5 + 8*v^4 - 32*v^3 - 36*v^2 + 56*v + 56, |disc L| = disc(k)^2 * 47657
+all three split: N(conductor) = 47657 = Mat([47657, 1]), d = -8*v^5 - 8*v^4 + 28*v^3 + 12*v^2 - 8*v + 48, |disc L| = disc(k)^2 * 47657
+all three split: N(conductor) = 47657 = Mat([47657, 1]), d = -8*v^5 - 4*v^4 + 44*v^3 + 12*v^2 - 68*v + 28, |disc L| = disc(k)^2 * 47657
+all three split: N(conductor) = 47657 = Mat([47657, 1]), d = 16*v^5 + 16*v^4 - 76*v^3 - 64*v^2 + 68*v + 72, |disc L| = disc(k)^2 * 47657
+all three split: N(conductor) = 47657 = Mat([47657, 1]), d = -12*v^5 + 4*v^4 + 60*v^3 - 8*v^2 - 64*v + 24, |disc L| = disc(k)^2 * 47657
+all three split: N(conductor) = 47657 = Mat([47657, 1]), d = -16*v^5 - 16*v^4 + 64*v^3 + 52*v^2 - 32*v + 16, |disc L| = disc(k)^2 * 47657
+all three split: N(conductor) = 52181 = Mat([52181, 1]), d = -20*v^5 - 20*v^4 + 88*v^3 + 60*v^2 - 68*v + 24, |disc L| = disc(k)^2 * 52181
+all three split: N(conductor) = 52181 = Mat([52181, 1]), d = 16*v^5 + 20*v^4 - 80*v^3 - 72*v^2 + 80*v + 68, |disc L| = disc(k)^2 * 52181
+all three split: N(conductor) = 52181 = Mat([52181, 1]), d = 20*v^4 + 32*v^3 - 48*v^2 - 48*v + 48, |disc L| = disc(k)^2 * 52181
+all three split: N(conductor) = 52181 = Mat([52181, 1]), d = 28*v^5 - 20*v^4 - 128*v^3 + 92*v^2 + 84*v - 12, |disc L| = disc(k)^2 * 52181
+all three split: N(conductor) = 52181 = Mat([52181, 1]), d = -12*v^5 - 32*v^4 + 24*v^3 + 108*v^2 + 52*v + 4, |disc L| = disc(k)^2 * 52181
+all three split: N(conductor) = 52181 = Mat([52181, 1]), d = 36*v^5 + 32*v^4 - 168*v^3 - 132*v^2 + 164*v + 132, |disc L| = disc(k)^2 * 52181
+all three split: N(conductor) = 52313 = Mat([52313, 1]), d = 4*v^5 - 16*v^4 - 24*v^3 + 60*v^2 + 20*v + 4, |disc L| = disc(k)^2 * 52313
+all three split: N(conductor) = 52313 = Mat([52313, 1]), d = -8*v^5 - 16*v^4 + 20*v^3 + 60*v^2 + 12*v, |disc L| = disc(k)^2 * 52313
+all three split: N(conductor) = 52313 = Mat([52313, 1]), d = 4*v^5 + 16*v^4 - 8*v^3 - 52*v^2 + 4*v + 52, |disc L| = disc(k)^2 * 52313
+all three split: N(conductor) = 52313 = Mat([52313, 1]), d = 4*v^5 - 28*v^3 + 8*v^2 + 32*v + 16, |disc L| = disc(k)^2 * 52313
+all three split: N(conductor) = 52313 = Mat([52313, 1]), d = -12*v^5 + 68*v^3 - 8*v^2 - 80*v + 48, |disc L| = disc(k)^2 * 52313
+all three split: N(conductor) = 52313 = Mat([52313, 1]), d = 8*v^5 + 16*v^4 - 28*v^3 - 68*v^2 + 12*v + 80, |disc L| = disc(k)^2 * 52313
+all three split: N(conductor) = 53248 = [2, 12; 13, 1], d = -4*v + 8, |disc L| = disc(k)^2 * 53248
+all three split: N(conductor) = 53325 = [3, 3; 5, 2; 79, 1], d = -28*v^5 - 24*v^4 + 128*v^3 + 76*v^2 - 104*v + 24, |disc L| = disc(k)^2 * 53325
+all three split: N(conductor) = 53325 = [3, 3; 5, 2; 79, 1], d = 4*v^5 + 20*v^4 - 4*v^3 - 88*v^2 - 16*v + 104, |disc L| = disc(k)^2 * 53325
+all three split: N(conductor) = 53325 = [3, 3; 5, 2; 79, 1], d = -12*v^5 + 8*v^4 + 76*v^3 - 36*v^2 - 96*v + 68, |disc L| = disc(k)^2 * 53325
+all three split: N(conductor) = 53325 = [3, 3; 5, 2; 79, 1], d = -4*v^5 - 28*v^4 - 8*v^3 + 92*v^2 + 64*v + 12, |disc L| = disc(k)^2 * 53325
+all three split: N(conductor) = 53325 = [3, 3; 5, 2; 79, 1], d = -8*v^5 - 20*v^4 + 12*v^3 + 76*v^2 + 28*v - 4, |disc L| = disc(k)^2 * 53325
+all three split: N(conductor) = 53325 = [3, 3; 5, 2; 79, 1], d = 48*v^5 + 52*v^4 - 220*v^3 - 208*v^2 + 216*v + 184, |disc L| = disc(k)^2 * 53325
+all three split: N(conductor) = 54729 = [3, 3; 2027, 1], d = -8*v^5 + 4*v^4 + 24*v^3 - 4*v^2 - 4*v + 16, |disc L| = disc(k)^2 * 54729
+all three split: N(conductor) = 54729 = [3, 3; 2027, 1], d = -8*v^5 - 8*v^4 + 60*v^3 + 28*v^2 - 104*v + 32, |disc L| = disc(k)^2 * 54729
+all three split: N(conductor) = 54729 = [3, 3; 2027, 1], d = -4*v^5 + 4*v^4 + 32*v^3 - 32*v + 20, |disc L| = disc(k)^2 * 54729
+all three split: N(conductor) = 54729 = [3, 3; 2027, 1], d = 4*v^5 + 8*v^4 - 16*v^3 - 4*v^2 + 8*v + 8, |disc L| = disc(k)^2 * 54729
+all three split: N(conductor) = 54729 = [3, 3; 2027, 1], d = 20*v^5 - 4*v^4 - 88*v^3 + 24*v^2 + 56*v + 16, |disc L| = disc(k)^2 * 54729
+all three split: N(conductor) = 54729 = [3, 3; 2027, 1], d = -16*v^5 - 4*v^4 + 88*v^3 - 4*v^2 - 116*v + 60, |disc L| = disc(k)^2 * 54729
+all three split: N(conductor) = 57173 = Mat([57173, 1]), d = 4*v^5 - 16*v^3 + 4*v^2 - 4*v + 24, |disc L| = disc(k)^2 * 57173
+all three split: N(conductor) = 57173 = Mat([57173, 1]), d = -4*v^5 + 20*v^3 - 16*v^2 - 24*v + 60, |disc L| = disc(k)^2 * 57173
+all three split: N(conductor) = 57173 = Mat([57173, 1]), d = -8*v^5 + 4*v^4 + 40*v^3 - 20*v^2 - 36*v + 48, |disc L| = disc(k)^2 * 57173
+all three split: N(conductor) = 57173 = Mat([57173, 1]), d = -12*v^5 + 64*v^3 + 4*v^2 - 68*v + 24, |disc L| = disc(k)^2 * 57173
+all three split: N(conductor) = 57173 = Mat([57173, 1]), d = -4*v^4 - 8*v^3 + 12*v^2 + 12*v + 28, |disc L| = disc(k)^2 * 57173
+all three split: N(conductor) = 57173 = Mat([57173, 1]), d = -4*v^5 + 4*v^3 + 24*v + 28, |disc L| = disc(k)^2 * 57173
+all three split: N(conductor) = 63649 = Mat([63649, 1]), d = -16*v^5 + 4*v^4 + 88*v^3 - 28*v^2 - 112*v + 64, |disc L| = disc(k)^2 * 63649
+all three split: N(conductor) = 63649 = Mat([63649, 1]), d = 16*v^5 - 16*v^4 - 76*v^3 + 64*v^2 + 68*v + 8, |disc L| = disc(k)^2 * 63649
+all three split: N(conductor) = 63649 = Mat([63649, 1]), d = 16*v^5 - 8*v^4 - 72*v^3 + 44*v^2 + 52*v, |disc L| = disc(k)^2 * 63649
+all three split: N(conductor) = 63649 = Mat([63649, 1]), d = 16*v^5 + 16*v^4 - 64*v^3 - 44*v^2 + 64*v + 48, |disc L| = disc(k)^2 * 63649
+all three split: N(conductor) = 63649 = Mat([63649, 1]), d = -12*v^5 - 4*v^4 + 44*v^3 + 20*v^2 - 32*v + 12, |disc L| = disc(k)^2 * 63649
+all three split: N(conductor) = 63649 = Mat([63649, 1]), d = 4*v^5 + 8*v^4 - 16*v^2 - 16*v + 32, |disc L| = disc(k)^2 * 63649
+all three split: N(conductor) = 63869 = [13, 1; 17, 3], d = -12*v^4 - 8*v^3 + 32*v^2 + 20*v + 36, |disc L| = disc(k)^2 * 63869
+all three split: N(conductor) = 63869 = [13, 1; 17, 3], d = -4*v^5 + 4*v^4 + 24*v^3 - 24*v^2 - 44*v + 56, |disc L| = disc(k)^2 * 63869
+all three split: N(conductor) = 66533 = Mat([66533, 1]), d = -4*v^5 - 4*v^4 + 28*v^3 + 20*v^2 - 48*v + 16, |disc L| = disc(k)^2 * 66533
+all three split: N(conductor) = 66533 = Mat([66533, 1]), d = 4*v^4 + 8*v^3 - 4*v^2 - 24*v + 20, |disc L| = disc(k)^2 * 66533
+all three split: N(conductor) = 66533 = Mat([66533, 1]), d = 8*v^5 - 40*v^3 + 4*v^2 + 52*v + 28, |disc L| = disc(k)^2 * 66533
+all three split: N(conductor) = 66533 = Mat([66533, 1]), d = -4*v^5 + 4*v^4 + 12*v^3 - 24*v^2 - 4*v + 52, |disc L| = disc(k)^2 * 66533
+all three split: N(conductor) = 66533 = Mat([66533, 1]), d = 12*v^5 - 56*v^3 + 56*v + 36, |disc L| = disc(k)^2 * 66533
+all three split: N(conductor) = 66533 = Mat([66533, 1]), d = -12*v^5 - 4*v^4 + 48*v^3 + 4*v^2 - 32*v + 40, |disc L| = disc(k)^2 * 66533
+all three split: N(conductor) = 71525 = [5, 2; 2861, 1], d = 4*v^5 + 8*v^4 - 16*v^3 - 32*v^2 + 16*v + 48, |disc L| = disc(k)^2 * 71525
+all three split: N(conductor) = 71525 = [5, 2; 2861, 1], d = 4*v^4 + 8*v^3 - 12*v^2 - 16*v + 32, |disc L| = disc(k)^2 * 71525
+all three split: N(conductor) = 71525 = [5, 2; 2861, 1], d = -4*v^5 + 4*v^4 + 24*v^3 - 20*v^2 - 32*v + 44, |disc L| = disc(k)^2 * 71525
+all three split: N(conductor) = 71525 = [5, 2; 2861, 1], d = -8*v^4 - 8*v^3 + 28*v^2 + 20*v + 16, |disc L| = disc(k)^2 * 71525
+all three split: N(conductor) = 71525 = [5, 2; 2861, 1], d = -4*v^5 - 4*v^4 + 12*v^3 + 16*v^2 - 4*v + 16, |disc L| = disc(k)^2 * 71525
+all three split: N(conductor) = 71525 = [5, 2; 2861, 1], d = 4*v^5 - 4*v^4 - 20*v^3 + 20*v^2 + 16*v + 12, |disc L| = disc(k)^2 * 71525
+all three split: N(conductor) = 75869 = Mat([75869, 1]), d = -28*v^5 - 8*v^4 + 140*v^3 - 156*v + 76, |disc L| = disc(k)^2 * 75869
+all three split: N(conductor) = 75869 = Mat([75869, 1]), d = 32*v^5 + 32*v^4 - 144*v^3 - 124*v^2 + 136*v + 116, |disc L| = disc(k)^2 * 75869
+all three split: N(conductor) = 75869 = Mat([75869, 1]), d = -8*v^5 + 8*v^4 + 16*v^3 - 24*v^2 + 12*v + 36, |disc L| = disc(k)^2 * 75869
+all three split: N(conductor) = 75869 = Mat([75869, 1]), d = 16*v^5 - 12*v^4 - 64*v^3 + 56*v^2 + 16*v + 4, |disc L| = disc(k)^2 * 75869
+all three split: N(conductor) = 75869 = Mat([75869, 1]), d = -8*v^5 - 32*v^4 + 12*v^3 + 112*v^2 + 44*v - 4, |disc L| = disc(k)^2 * 75869
+all three split: N(conductor) = 75869 = Mat([75869, 1]), d = -4*v^5 + 12*v^4 + 40*v^3 - 20*v^2 - 52*v + 24, |disc L| = disc(k)^2 * 75869
+all three split: N(conductor) = 81133 = [13, 1; 79, 2], d = -4*v^5 - 4*v^4 + 28*v^3 + 4*v^2 - 48*v + 48, |disc L| = disc(k)^2 * 81133
+all three split: N(conductor) = 81133 = [13, 1; 79, 2], d = -8*v^5 + 36*v^3 - 28*v^2 - 32*v + 92, |disc L| = disc(k)^2 * 81133
+all three split: N(conductor) = 81133 = [13, 1; 79, 2], d = 12*v^5 - 56*v^3 + 40*v + 36, |disc L| = disc(k)^2 * 81133
+all three split: N(conductor) = 84421 = Mat([84421, 1]), d = 12*v^5 + 12*v^4 - 52*v^3 - 28*v^2 + 48*v + 32, |disc L| = disc(k)^2 * 84421
+all three split: N(conductor) = 84421 = Mat([84421, 1]), d = 16*v^5 + 12*v^4 - 84*v^3 - 48*v^2 + 88*v + 68, |disc L| = disc(k)^2 * 84421
+all three split: N(conductor) = 84421 = Mat([84421, 1]), d = -24*v^5 + 8*v^4 + 92*v^3 - 20*v^2 - 72*v + 32, |disc L| = disc(k)^2 * 84421
+all three split: N(conductor) = 84421 = Mat([84421, 1]), d = -24*v^5 - 4*v^4 + 120*v^3 - 16*v^2 - 132*v + 88, |disc L| = disc(k)^2 * 84421
+all three split: N(conductor) = 84421 = Mat([84421, 1]), d = -8*v^5 + 4*v^4 + 12*v^3 - 12*v^2 + 24*v + 36, |disc L| = disc(k)^2 * 84421
+all three split: N(conductor) = 84421 = Mat([84421, 1]), d = 12*v^5 - 12*v^4 - 48*v^3 + 56*v^2 + 4*v + 4, |disc L| = disc(k)^2 * 84421
+all three split: N(conductor) = 86425 = [5, 2; 3457, 1], d = -12*v^5 + 16*v^4 + 52*v^3 - 40*v^2 - 48*v + 32, |disc L| = disc(k)^2 * 86425
+all three split: N(conductor) = 86425 = [5, 2; 3457, 1], d = -28*v^5 - 16*v^4 + 148*v^3 + 40*v^2 - 192*v + 48, |disc L| = disc(k)^2 * 86425
+all three split: N(conductor) = 86425 = [5, 2; 3457, 1], d = 12*v^5 + 20*v^4 - 64*v^3 - 72*v^2 + 68*v + 68, |disc L| = disc(k)^2 * 86425
+all three split: N(conductor) = 86425 = [5, 2; 3457, 1], d = 36*v^5 + 24*v^4 - 164*v^3 - 96*v^2 + 148*v + 108, |disc L| = disc(k)^2 * 86425
+all three split: N(conductor) = 86425 = [5, 2; 3457, 1], d = -8*v^5 - 24*v^4 + 16*v^3 + 88*v^2 + 44*v + 4, |disc L| = disc(k)^2 * 86425
+all three split: N(conductor) = 86425 = [5, 2; 3457, 1], d = -24*v^5 - 20*v^4 + 108*v^3 + 56*v^2 - 92*v + 32, |disc L| = disc(k)^2 * 86425
+all three split: N(conductor) = 86501 = Mat([86501, 1]), d = -16*v^5 - 8*v^4 + 60*v^3 + 32*v^2 - 32*v + 12, |disc L| = disc(k)^2 * 86501
+all three split: N(conductor) = 86501 = Mat([86501, 1]), d = -8*v^5 - 4*v^4 + 52*v^3 + 20*v^2 - 64*v + 24, |disc L| = disc(k)^2 * 86501
+all three split: N(conductor) = 86501 = Mat([86501, 1]), d = -4*v^5 + 8*v^4 + 28*v^3 - 44*v^2 - 52*v + 76, |disc L| = disc(k)^2 * 86501
+all three split: N(conductor) = 86501 = Mat([86501, 1]), d = 12*v^5 + 20*v^4 - 56*v^3 - 72*v^2 + 68*v + 72, |disc L| = disc(k)^2 * 86501
+all three split: N(conductor) = 86501 = Mat([86501, 1]), d = 16*v^5 + 4*v^4 - 72*v^3 + 52*v + 20, |disc L| = disc(k)^2 * 86501
+all three split: N(conductor) = 86501 = Mat([86501, 1]), d = -20*v^4 - 12*v^3 + 64*v^2 + 28*v + 20, |disc L| = disc(k)^2 * 86501
+all three split: N(conductor) = 87853 = Mat([87853, 1]), d = 4*v^4 - 12*v^3 - 16*v^2 + 24*v + 40, |disc L| = disc(k)^2 * 87853
+all three split: N(conductor) = 87853 = Mat([87853, 1]), d = 16*v^5 + 12*v^4 - 68*v^3 - 48*v^2 + 56*v + 68, |disc L| = disc(k)^2 * 87853
+all three split: N(conductor) = 87853 = Mat([87853, 1]), d = 16*v^4 - 20*v^3 - 52*v^2 + 44*v + 52, |disc L| = disc(k)^2 * 87853
+all three split: N(conductor) = 87853 = Mat([87853, 1]), d = -32*v^5 - 16*v^4 + 156*v^3 + 28*v^2 - 164*v + 68, |disc L| = disc(k)^2 * 87853
+all three split: N(conductor) = 87853 = Mat([87853, 1]), d = -16*v^5 - 4*v^4 + 76*v^3 - 72*v + 52, |disc L| = disc(k)^2 * 87853
+all three split: N(conductor) = 87853 = Mat([87853, 1]), d = -12*v^4 - 12*v^3 + 48*v^2 + 40*v + 8, |disc L| = disc(k)^2 * 87853
+all three split: N(conductor) = 89153 = Mat([89153, 1]), d = 16*v^5 + 12*v^4 - 76*v^3 - 44*v^2 + 76*v + 56, |disc L| = disc(k)^2 * 89153
+all three split: N(conductor) = 89153 = Mat([89153, 1]), d = -4*v^5 - 12*v^4 + 12*v^3 + 40*v^2 + 8*v + 20, |disc L| = disc(k)^2 * 89153
+all three split: N(conductor) = 89153 = Mat([89153, 1]), d = -12*v^5 - 8*v^4 + 56*v^3 + 16*v^2 - 60*v + 40, |disc L| = disc(k)^2 * 89153
+all three split: N(conductor) = 89153 = Mat([89153, 1]), d = -4*v^5 + 8*v^4 + 12*v^3 - 28*v^2 + 40, |disc L| = disc(k)^2 * 89153
+all three split: N(conductor) = 89153 = Mat([89153, 1]), d = 8*v^5 - 28*v^3 + 4*v^2 + 28, |disc L| = disc(k)^2 * 89153
+all three split: N(conductor) = 89153 = Mat([89153, 1]), d = -4*v^5 + 24*v^3 + 12*v^2 - 24*v + 12, |disc L| = disc(k)^2 * 89153
+all three split: N(conductor) = 92509 = [79, 1; 1171, 1], d = 16*v^5 + 20*v^4 - 64*v^3 - 56*v^2 + 64*v + 52, |disc L| = disc(k)^2 * 92509
+all three split: N(conductor) = 92509 = [79, 1; 1171, 1], d = -12*v^5 - 32*v^4 + 16*v^3 + 100*v^2 + 76*v + 24, |disc L| = disc(k)^2 * 92509
+all three split: N(conductor) = 92509 = [79, 1; 1171, 1], d = 36*v^5 + 32*v^4 - 176*v^3 - 140*v^2 + 188*v + 152, |disc L| = disc(k)^2 * 92509
+all three split: N(conductor) = 92509 = [79, 1; 1171, 1], d = -12*v^5 + 8*v^4 + 72*v^3 - 32*v^2 - 92*v + 56, |disc L| = disc(k)^2 * 92509
+all three split: N(conductor) = 92509 = [79, 1; 1171, 1], d = 12*v^5 - 20*v^4 - 56*v^3 + 76*v^2 + 44*v + 8, |disc L| = disc(k)^2 * 92509
+all three split: N(conductor) = 92509 = [79, 1; 1171, 1], d = -4*v^5 - 8*v^4 + 12*v^3 + 36*v^2 - 16*v + 8, |disc L| = disc(k)^2 * 92509
+all three split: N(conductor) = 99241 = Mat([99241, 1]), d = -4*v^5 + 8*v^4 + 28*v^3 - 28*v^2 - 36*v + 44, |disc L| = disc(k)^2 * 99241
+all three split: N(conductor) = 99241 = Mat([99241, 1]), d = -8*v^4 - 4*v^3 + 32*v^2 + 12, |disc L| = disc(k)^2 * 99241
+all three split: N(conductor) = 99241 = Mat([99241, 1]), d = 8*v^5 + 12*v^4 - 28*v^3 - 44*v^2 + 16*v + 56, |disc L| = disc(k)^2 * 99241
+all three split: N(conductor) = 99241 = Mat([99241, 1]), d = -4*v^5 + 4*v^4 + 24*v^3 - 24*v^2 - 28*v + 56, |disc L| = disc(k)^2 * 99241
+all three split: N(conductor) = 99241 = Mat([99241, 1]), d = -4*v^4 - 12*v^3 + 16*v^2 + 28*v + 20, |disc L| = disc(k)^2 * 99241
+all three split: N(conductor) = 99241 = Mat([99241, 1]), d = -12*v^4 - 8*v^3 + 48*v^2 + 20*v + 4, |disc L| = disc(k)^2 * 99241
+all three split: N(conductor) = 100361 = Mat([100361, 1]), d = 8*v^5 + 4*v^4 - 40*v^3 - 20*v^2 + 44*v + 48, |disc L| = disc(k)^2 * 100361
+all three split: N(conductor) = 100361 = Mat([100361, 1]), d = 4*v^5 + 4*v^4 - 12*v^3 - 4*v^2 + 4*v + 20, |disc L| = disc(k)^2 * 100361
+all three split: N(conductor) = 100361 = Mat([100361, 1]), d = -12*v^5 - 4*v^4 + 56*v^3 + 8*v^2 - 56*v + 32, |disc L| = disc(k)^2 * 100361
+all three split: N(conductor) = 100361 = Mat([100361, 1]), d = -4*v^4 - 8*v^3 + 12*v^2 + 28*v + 28, |disc L| = disc(k)^2 * 100361
+all three split: N(conductor) = 100361 = Mat([100361, 1]), d = -4*v^5 + 4*v^4 + 16*v^3 - 16*v^2 - 16*v + 36, |disc L| = disc(k)^2 * 100361
+all three split: N(conductor) = 100361 = Mat([100361, 1]), d = 4*v^5 - 4*v^4 - 12*v^3 + 20*v^2 - 4*v + 16, |disc L| = disc(k)^2 * 100361
+all three split: N(conductor) = 100489 = Mat([317, 2]), d = -28*v^5 + 128*v^3 - 12*v^2 - 132*v + 56, |disc L| = disc(k)^2 * 100489
+all three split: N(conductor) = 100489 = Mat([317, 2]), d = 8*v^5 - 60*v^3 - 20*v^2 + 108*v + 80, |disc L| = disc(k)^2 * 100489
+all three split: N(conductor) = 100489 = Mat([317, 2]), d = -28*v^5 + 132*v^3 - 8*v^2 - 144*v + 48, |disc L| = disc(k)^2 * 100489
+all three split: N(conductor) = 102400 = [2, 12; 5, 2], d = 4*v^5 - 16*v^3 + 4*v^2 + 12*v + 4, |disc L| = disc(k)^2 * 102400
+all three split: N(conductor) = 102400 = [2, 12; 5, 2], d = -4*v^5 + 20*v^3 - 24*v + 8, |disc L| = disc(k)^2 * 102400
+all three split: N(conductor) = 102400 = [2, 12; 5, 2], d = -4*v^3 - 4*v^2 + 12*v + 16, |disc L| = disc(k)^2 * 102400
+all three split: N(conductor) = 108081 = [3, 3; 4003, 1], d = 4*v^5 - 8*v^4 - 16*v^3 + 28*v^2 + 8*v + 24, |disc L| = disc(k)^2 * 108081
+all three split: N(conductor) = 108081 = [3, 3; 4003, 1], d = -12*v^5 - 8*v^4 + 60*v^3 + 28*v^2 - 64*v + 20, |disc L| = disc(k)^2 * 108081
+all three split: N(conductor) = 108081 = [3, 3; 4003, 1], d = -8*v^5 - 4*v^4 + 28*v^3 + 12*v^2 - 4*v + 28, |disc L| = disc(k)^2 * 108081
+all three split: N(conductor) = 108081 = [3, 3; 4003, 1], d = 4*v^5 + 8*v^4 - 16*v^3 - 24*v^2 + 4*v + 36, |disc L| = disc(k)^2 * 108081
+all three split: N(conductor) = 108081 = [3, 3; 4003, 1], d = 4*v^5 + 4*v^4 - 20*v^3 - 24*v^2 + 16*v + 56, |disc L| = disc(k)^2 * 108081
+all three split: N(conductor) = 108081 = [3, 3; 4003, 1], d = 8*v^5 + 8*v^4 - 36*v^3 - 20*v^2 + 40*v + 32, |disc L| = disc(k)^2 * 108081
+all three split: N(conductor) = 110592 = [2, 12; 3, 3], d = 4*v^4 + 4*v^3 - 16*v^2 - 8*v + 20, |disc L| = disc(k)^2 * 110592
+all three split: N(conductor) = 110592 = [2, 12; 3, 3], d = -4*v^4 - 4*v^3 + 16*v^2 + 8*v, |disc L| = disc(k)^2 * 110592
+all three split: N(conductor) = 111229 = Mat([111229, 1]), d = 16*v^5 + 20*v^4 - 76*v^3 - 80*v^2 + 88*v + 88, |disc L| = disc(k)^2 * 111229
+all three split: N(conductor) = 111229 = Mat([111229, 1]), d = 16*v^5 - 4*v^4 - 68*v^3 + 32*v^2 + 40*v + 4, |disc L| = disc(k)^2 * 111229
+all three split: N(conductor) = 111229 = Mat([111229, 1]), d = 4*v^4 + 20*v^3 - 40*v + 24, |disc L| = disc(k)^2 * 111229
+all three split: N(conductor) = 111229 = Mat([111229, 1]), d = -20*v^4 - 20*v^3 + 64*v^2 + 56*v + 20, |disc L| = disc(k)^2 * 111229
+all three split: N(conductor) = 111229 = Mat([111229, 1]), d = -16*v^5 + 4*v^4 + 84*v^3 - 32*v^2 - 104*v + 72, |disc L| = disc(k)^2 * 111229
+all three split: N(conductor) = 111229 = Mat([111229, 1]), d = -16*v^5 - 4*v^4 + 60*v^3 + 16*v^2 - 40*v + 20, |disc L| = disc(k)^2 * 111229
+all three split: N(conductor) = 112293 = [3, 3; 4159, 1], d = 4*v^5 + 12*v^4 - 16*v^3 - 60*v^2 + 16*v + 88, |disc L| = disc(k)^2 * 112293
+all three split: N(conductor) = 112293 = [3, 3; 4159, 1], d = 24*v^5 + 20*v^4 - 116*v^3 - 92*v^2 + 120*v + 116, |disc L| = disc(k)^2 * 112293
+all three split: N(conductor) = 112293 = [3, 3; 4159, 1], d = -4*v^5 - 12*v^4 - 4*v^3 + 40*v^2 + 44*v + 20, |disc L| = disc(k)^2 * 112293
+all three split: N(conductor) = 112293 = [3, 3; 4159, 1], d = -8*v^5 - 20*v^4 + 8*v^3 + 64*v^2 + 60*v + 24, |disc L| = disc(k)^2 * 112293
+all three split: N(conductor) = 112293 = [3, 3; 4159, 1], d = -16*v^5 + 4*v^4 + 88*v^3 - 20*v^2 - 104*v + 52, |disc L| = disc(k)^2 * 112293
+all three split: N(conductor) = 112293 = [3, 3; 4159, 1], d = -4*v^5 - 4*v^4 + 12*v^3 + 20*v^2 - 16*v + 16, |disc L| = disc(k)^2 * 112293
+all three split: N(conductor) = 113725 = [5, 2; 4549, 1], d = 8*v^5 + 16*v^4 - 28*v^3 - 44*v^2 + 32*v + 44, |disc L| = disc(k)^2 * 113725
+all three split: N(conductor) = 113725 = [5, 2; 4549, 1], d = 4*v^5 + 8*v^4 - 24*v^3 - 16*v^2 + 20*v + 24, |disc L| = disc(k)^2 * 113725
+all three split: N(conductor) = 113725 = [5, 2; 4549, 1], d = -12*v^5 + 76*v^3 - 108*v + 40, |disc L| = disc(k)^2 * 113725
+all three split: N(conductor) = 113725 = [5, 2; 4549, 1], d = 12*v^5 - 16*v^4 - 56*v^3 + 60*v^2 + 40*v + 12, |disc L| = disc(k)^2 * 113725
+all three split: N(conductor) = 113725 = [5, 2; 4549, 1], d = -20*v^5 - 8*v^4 + 108*v^3 + 20*v^2 - 128*v + 40, |disc L| = disc(k)^2 * 113725
+all three split: N(conductor) = 113725 = [5, 2; 4549, 1], d = 16*v^2 - 12*v + 8, |disc L| = disc(k)^2 * 113725
+all three split: N(conductor) = 116141 = Mat([116141, 1]), d = 4*v^5 + 12*v^4 - 24*v^3 - 40*v^2 + 40*v + 48, |disc L| = disc(k)^2 * 116141
+all three split: N(conductor) = 116141 = Mat([116141, 1]), d = -4*v^5 - 12*v^4 + 16*v^3 + 32*v^2 - 16*v + 36, |disc L| = disc(k)^2 * 116141
+all three split: N(conductor) = 116141 = Mat([116141, 1]), d = 16*v^5 + 12*v^4 - 72*v^3 - 36*v^2 + 60*v + 44, |disc L| = disc(k)^2 * 116141
+all three split: N(conductor) = 116141 = Mat([116141, 1]), d = 4*v^5 + 4*v^4 - 12*v^3 - 20*v^2 - 12*v + 52, |disc L| = disc(k)^2 * 116141
+all three split: N(conductor) = 116141 = Mat([116141, 1]), d = -8*v^5 - 12*v^4 + 40*v^3 + 44*v^2 - 36*v + 16, |disc L| = disc(k)^2 * 116141
+all three split: N(conductor) = 116141 = Mat([116141, 1]), d = -12*v^5 - 4*v^4 + 52*v^3 + 20*v^2 - 36*v + 16, |disc L| = disc(k)^2 * 116141
+all three split: N(conductor) = 116741 = Mat([116741, 1]), d = 4*v^5 - 8*v^4 - 32*v^3 + 32*v^2 + 48*v + 16, |disc L| = disc(k)^2 * 116741
+all three split: N(conductor) = 116741 = Mat([116741, 1]), d = 8*v^4 + 8*v^3 - 36*v^2 - 12*v + 64, |disc L| = disc(k)^2 * 116741
+all three split: N(conductor) = 116741 = Mat([116741, 1]), d = -4*v^5 - 12*v^4 + 8*v^3 + 44*v^2 + 12, |disc L| = disc(k)^2 * 116741
+all three split: N(conductor) = 116741 = Mat([116741, 1]), d = 16*v^5 + 16*v^4 - 80*v^3 - 76*v^2 + 88*v + 100, |disc L| = disc(k)^2 * 116741
+all three split: N(conductor) = 116741 = Mat([116741, 1]), d = -8*v^5 - 16*v^4 + 12*v^3 + 48*v^2 + 44*v + 28, |disc L| = disc(k)^2 * 116741
+all three split: N(conductor) = 116741 = Mat([116741, 1]), d = -4*v^5 + 12*v^4 + 28*v^3 - 48*v^2 - 36*v + 64, |disc L| = disc(k)^2 * 116741
+all three split: N(conductor) = 117937 = Mat([117937, 1]), d = -4*v^5 - 12*v^4 + 40*v^3 + 44*v^2 - 96*v + 28, |disc L| = disc(k)^2 * 117937
+all three split: N(conductor) = 117937 = Mat([117937, 1]), d = -16*v^5 + 96*v^3 - 12*v^2 - 128*v + 64, |disc L| = disc(k)^2 * 117937
+all three split: N(conductor) = 117937 = Mat([117937, 1]), d = 4*v^5 + 16*v^4 - 4*v^3 - 48*v^2 + 4*v + 56, |disc L| = disc(k)^2 * 117937
+all three split: N(conductor) = 117937 = Mat([117937, 1]), d = 16*v^5 - 16*v^4 - 80*v^3 + 64*v^2 + 68*v + 8, |disc L| = disc(k)^2 * 117937
+all three split: N(conductor) = 117937 = Mat([117937, 1]), d = -4*v^5 + 12*v^4 + 28*v^3 - 16*v^2 - 36*v + 16, |disc L| = disc(k)^2 * 117937
+all three split: N(conductor) = 117937 = Mat([117937, 1]), d = -12*v^3 + 16*v^2 + 20*v + 8, |disc L| = disc(k)^2 * 117937
+all three split: N(conductor) = 124281 = [3, 3; 4603, 1], d = -16*v^5 - 12*v^4 + 88*v^3 + 36*v^2 - 112*v + 32, |disc L| = disc(k)^2 * 124281
+all three split: N(conductor) = 124281 = [3, 3; 4603, 1], d = -4*v^4 + 8*v^3 + 28*v^2 - 4*v + 12, |disc L| = disc(k)^2 * 124281
+all three split: N(conductor) = 124281 = [3, 3; 4603, 1], d = 24*v^5 + 4*v^4 - 104*v^3 - 4*v^2 + 76*v + 32, |disc L| = disc(k)^2 * 124281
+all three split: N(conductor) = 124281 = [3, 3; 4603, 1], d = -12*v^5 + 4*v^4 + 52*v^3 - 4*v^2 - 44*v + 20, |disc L| = disc(k)^2 * 124281
+all three split: N(conductor) = 124281 = [3, 3; 4603, 1], d = 4*v^5 + 12*v^4 - 20*v^3 - 28*v^2 + 16*v + 28, |disc L| = disc(k)^2 * 124281
+all three split: N(conductor) = 124281 = [3, 3; 4603, 1], d = -12*v^5 - 4*v^4 + 68*v^3 + 4*v^2 - 100*v + 48, |disc L| = disc(k)^2 * 124281
+all three split: N(conductor) = 126425 = [5, 2; 13, 1; 389, 1], d = 12*v^4 + 24*v^3 - 20*v^2 - 36*v + 28, |disc L| = disc(k)^2 * 126425
+all three split: N(conductor) = 126425 = [5, 2; 13, 1; 389, 1], d = -28*v^5 - 4*v^4 + 148*v^3 - 12*v^2 - 180*v + 80, |disc L| = disc(k)^2 * 126425
+all three split: N(conductor) = 126425 = [5, 2; 13, 1; 389, 1], d = -12*v^5 + 4*v^4 + 36*v^3 - 4*v^2 - 12*v + 20, |disc L| = disc(k)^2 * 126425
+all three split: N(conductor) = 126425 = [5, 2; 13, 1; 389, 1], d = -16*v^5 - 12*v^4 + 104*v^3 + 36*v^2 - 160*v + 48, |disc L| = disc(k)^2 * 126425
+all three split: N(conductor) = 126425 = [5, 2; 13, 1; 389, 1], d = 4*v^5 + 12*v^4 - 20*v^3 - 12*v^2 + 16*v + 12, |disc L| = disc(k)^2 * 126425
+all three split: N(conductor) = 126425 = [5, 2; 13, 1; 389, 1], d = 24*v^5 - 12*v^4 - 104*v^3 + 60*v^2 + 60*v, |disc L| = disc(k)^2 * 126425
+all three split: N(conductor) = 128257 = Mat([128257, 1]), d = 12*v^5 + 20*v^4 - 52*v^3 - 88*v^2 + 44*v + 100, |disc L| = disc(k)^2 * 128257
+all three split: N(conductor) = 128257 = Mat([128257, 1]), d = 8*v^5 + 16*v^4 - 24*v^3 - 44*v^2 + 20*v + 44, |disc L| = disc(k)^2 * 128257
+all three split: N(conductor) = 128257 = Mat([128257, 1]), d = 12*v^5 - 16*v^4 - 56*v^3 + 64*v^2 + 40*v + 4, |disc L| = disc(k)^2 * 128257
+all three split: N(conductor) = 128257 = Mat([128257, 1]), d = 4*v^4 - 8*v^3 - 4*v^2 + 8*v + 20, |disc L| = disc(k)^2 * 128257
+all three split: N(conductor) = 128257 = Mat([128257, 1]), d = -20*v^5 - 4*v^4 + 108*v^3 + 4*v^2 - 128*v + 48, |disc L| = disc(k)^2 * 128257
+all three split: N(conductor) = 128257 = Mat([128257, 1]), d = -12*v^5 - 20*v^4 + 32*v^3 + 68*v^2 + 16*v + 8, |disc L| = disc(k)^2 * 128257
+all three split: N(conductor) = 133225 = [5, 2; 73, 2], d = -4*v^5 + 20*v^3 - 24*v + 28, |disc L| = disc(k)^2 * 133225
+all three split: N(conductor) = 133225 = [5, 2; 73, 2], d = 4*v^5 - 16*v^3 + 4*v^2 + 12*v + 24, |disc L| = disc(k)^2 * 133225
+all three split: N(conductor) = 133225 = [5, 2; 73, 2], d = -4*v^3 - 4*v^2 + 12*v + 36, |disc L| = disc(k)^2 * 133225
+all three split: N(conductor) = 140269 = Mat([140269, 1]), d = -12*v^5 - 8*v^4 + 32*v^3 + 40*v^2 + 4*v + 4, |disc L| = disc(k)^2 * 140269
+all three split: N(conductor) = 140269 = Mat([140269, 1]), d = 12*v^5 + 4*v^4 - 40*v^3 + 12*v^2 + 32*v + 12, |disc L| = disc(k)^2 * 140269
+all three split: N(conductor) = 140269 = Mat([140269, 1]), d = -12*v^5 + 8*v^4 + 76*v^3 - 52*v^2 - 112*v + 100, |disc L| = disc(k)^2 * 140269
+all three split: N(conductor) = 140269 = Mat([140269, 1]), d = -16*v^5 + 8*v^4 + 72*v^3 - 20*v^2 - 76*v + 32, |disc L| = disc(k)^2 * 140269
+all three split: N(conductor) = 140269 = Mat([140269, 1]), d = 20*v^5 - 8*v^4 - 96*v^3 + 44*v^2 + 72*v + 8, |disc L| = disc(k)^2 * 140269
+all three split: N(conductor) = 140269 = Mat([140269, 1]), d = 28*v^5 - 4*v^4 - 116*v^3 + 32*v^2 + 76*v + 16, |disc L| = disc(k)^2 * 140269
+all three split: N(conductor) = 140453 = Mat([140453, 1]), d = -8*v^5 + 40*v^3 + 4*v^2 - 60*v + 28, |disc L| = disc(k)^2 * 140453
+all three split: N(conductor) = 140453 = Mat([140453, 1]), d = 4*v^5 + 16*v^4 - 12*v^3 - 56*v^2 + 16*v + 64, |disc L| = disc(k)^2 * 140453
+all three split: N(conductor) = 140453 = Mat([140453, 1]), d = 8*v^5 - 44*v^3 + 12*v^2 + 44*v + 16, |disc L| = disc(k)^2 * 140453
+all three split: N(conductor) = 140453 = Mat([140453, 1]), d = -4*v^5 - 4*v^4 - 4*v^3 + 4*v^2 + 48*v + 48, |disc L| = disc(k)^2 * 140453
+all three split: N(conductor) = 140453 = Mat([140453, 1]), d = 4*v^4 - 8*v^3 - 36*v^2 + 24*v + 84, |disc L| = disc(k)^2 * 140453
+all three split: N(conductor) = 140453 = Mat([140453, 1]), d = 4*v^5 - 16*v^4 - 28*v^3 + 56*v^2 + 32*v + 16, |disc L| = disc(k)^2 * 140453
+all three split: N(conductor) = 140477 = Mat([140477, 1]), d = 16*v^4 + 4*v^3 - 64*v^2 - 12*v + 72, |disc L| = disc(k)^2 * 140477
+all three split: N(conductor) = 140477 = Mat([140477, 1]), d = 4*v^4 - 16*v^2 + 16*v + 48, |disc L| = disc(k)^2 * 140477
+all three split: N(conductor) = 140477 = Mat([140477, 1]), d = 16*v^3 - 44*v + 40, |disc L| = disc(k)^2 * 140477
+all three split: N(conductor) = 140477 = Mat([140477, 1]), d = 8*v^5 + 20*v^4 - 4*v^3 - 28*v^2 - 8*v + 20, |disc L| = disc(k)^2 * 140477
+all three split: N(conductor) = 140477 = Mat([140477, 1]), d = 4*v^5 - 20*v^3 + 16*v^2 + 20*v + 8, |disc L| = disc(k)^2 * 140477
+all three split: N(conductor) = 140477 = Mat([140477, 1]), d = 12*v^5 - 4*v^4 - 64*v^3 + 12*v^2 + 68*v + 36, |disc L| = disc(k)^2 * 140477
+all three split: N(conductor) = 140557 = Mat([140557, 1]), d = 16*v^5 - 4*v^4 - 72*v^3 + 28*v^2 + 60*v + 12, |disc L| = disc(k)^2 * 140557
+all three split: N(conductor) = 140557 = Mat([140557, 1]), d = 8*v^5 - 24*v^4 - 48*v^3 + 88*v^2 + 60*v + 4, |disc L| = disc(k)^2 * 140557
+all three split: N(conductor) = 140557 = Mat([140557, 1]), d = -12*v^5 + 4*v^4 + 68*v^3 - 20*v^2 - 92*v + 52, |disc L| = disc(k)^2 * 140557
+all three split: N(conductor) = 140557 = Mat([140557, 1]), d = 20*v^5 + 24*v^4 - 84*v^3 - 80*v^2 + 84*v + 76, |disc L| = disc(k)^2 * 140557
+all three split: N(conductor) = 140557 = Mat([140557, 1]), d = -12*v^5 - 4*v^4 + 52*v^3 + 20*v^2 - 52*v + 16, |disc L| = disc(k)^2 * 140557
+all three split: N(conductor) = 140557 = Mat([140557, 1]), d = 8*v^5 + 4*v^4 - 24*v^3 - 4*v^2 + 12*v + 32, |disc L| = disc(k)^2 * 140557
+all three split: N(conductor) = 145913 = [79, 1; 1847, 1], d = 20*v^5 + 12*v^4 - 92*v^3 - 44*v^2 + 92*v + 64, |disc L| = disc(k)^2 * 145913
+all three split: N(conductor) = 145913 = [79, 1; 1847, 1], d = 4*v^5 - 12*v^4 - 28*v^3 + 44*v^2 + 52*v + 20, |disc L| = disc(k)^2 * 145913
+all three split: N(conductor) = 145913 = [79, 1; 1847, 1], d = -16*v^5 - 4*v^4 + 72*v^3 - 4*v^2 - 68*v + 60, |disc L| = disc(k)^2 * 145913
+all three split: N(conductor) = 145913 = [79, 1; 1847, 1], d = -8*v^5 + 4*v^4 + 24*v^3 - 20*v^2 - 4*v + 48, |disc L| = disc(k)^2 * 145913
+all three split: N(conductor) = 145913 = [79, 1; 1847, 1], d = -4*v^5 + 4*v^4 + 32*v^3 - 48*v + 20, |disc L| = disc(k)^2 * 145913
+all three split: N(conductor) = 145913 = [79, 1; 1847, 1], d = 4*v^5 - 4*v^4 - 8*v^3 + 24*v^2 - 24*v + 16, |disc L| = disc(k)^2 * 145913
+all three split: N(conductor) = 147289 = Mat([147289, 1]), d = -12*v^5 - 32*v^4 + 20*v^3 + 104*v^2 + 64*v + 16, |disc L| = disc(k)^2 * 147289
+all three split: N(conductor) = 147289 = Mat([147289, 1]), d = -12*v^4 - 24*v^3 + 36*v^2 + 64*v + 32, |disc L| = disc(k)^2 * 147289
+all three split: N(conductor) = 147289 = Mat([147289, 1]), d = 4*v^5 + 12*v^4 - 20*v^3 - 60*v^2 + 32*v + 92, |disc L| = disc(k)^2 * 147289
+all three split: N(conductor) = 147289 = Mat([147289, 1]), d = 36*v^5 + 32*v^4 - 172*v^3 - 136*v^2 + 176*v + 144, |disc L| = disc(k)^2 * 147289
+all three split: N(conductor) = 147289 = Mat([147289, 1]), d = -12*v^5 - 8*v^4 + 48*v^3 + 32*v^2 - 48*v + 16, |disc L| = disc(k)^2 * 147289
+all three split: N(conductor) = 147289 = Mat([147289, 1]), d = -16*v^5 + 8*v^4 + 88*v^3 - 36*v^2 - 108*v + 64, |disc L| = disc(k)^2 * 147289
+all three split: N(conductor) = 150957 = [3, 3; 5591, 1], d = 12*v^5 + 8*v^4 - 36*v^3 + 4*v^2 + 28*v + 12, |disc L| = disc(k)^2 * 150957
+all three split: N(conductor) = 150957 = [3, 3; 5591, 1], d = -12*v^5 + 8*v^4 + 76*v^3 - 48*v^2 - 108*v + 92, |disc L| = disc(k)^2 * 150957
+all three split: N(conductor) = 150957 = [3, 3; 5591, 1], d = -4*v^5 + 12*v^4 + 40*v^3 - 36*v^2 - 52*v + 56, |disc L| = disc(k)^2 * 150957
+all three split: N(conductor) = 150957 = [3, 3; 5591, 1], d = 32*v^5 - 8*v^4 - 132*v^3 + 48*v^2 + 80*v + 12, |disc L| = disc(k)^2 * 150957
+all three split: N(conductor) = 150957 = [3, 3; 5591, 1], d = -8*v^5 - 8*v^4 + 16*v^3 + 40*v^2 + 12*v + 4, |disc L| = disc(k)^2 * 150957
+all three split: N(conductor) = 150957 = [3, 3; 5591, 1], d = 16*v^5 - 12*v^4 - 80*v^3 + 56*v^2 + 64*v + 4, |disc L| = disc(k)^2 * 150957
+all three split: N(conductor) = 151321 = Mat([389, 2]), d = 8*v^5 - 28*v^3 + 12*v^2 + 12*v + 16, |disc L| = disc(k)^2 * 151321
+all three split: N(conductor) = 151321 = Mat([389, 2]), d = -12*v^5 + 56*v^3 - 4*v^2 - 60*v + 36, |disc L| = disc(k)^2 * 151321
+all three split: N(conductor) = 151321 = Mat([389, 2]), d = 4*v^5 - 28*v^3 - 8*v^2 + 48*v + 48, |disc L| = disc(k)^2 * 151321
+all three split: N(conductor) = 153557 = Mat([153557, 1]), d = 20*v^5 - 4*v^4 - 84*v^3 + 20*v^2 + 48*v + 28, |disc L| = disc(k)^2 * 153557
+all three split: N(conductor) = 153557 = Mat([153557, 1]), d = -20*v^5 - 12*v^4 + 104*v^3 + 28*v^2 - 128*v + 44, |disc L| = disc(k)^2 * 153557
+all three split: N(conductor) = 153557 = Mat([153557, 1]), d = -16*v^5 - 24*v^4 + 56*v^3 + 76*v^2 - 12*v + 16, |disc L| = disc(k)^2 * 153557
+all three split: N(conductor) = 153557 = Mat([153557, 1]), d = -4*v^5 + 12*v^4 + 12*v^3 - 32*v^2 - 4*v + 32, |disc L| = disc(k)^2 * 153557
+all three split: N(conductor) = 153557 = Mat([153557, 1]), d = 4*v^4 + 8*v^3 + 4*v^2 + 16, |disc L| = disc(k)^2 * 153557
+all three split: N(conductor) = 153557 = Mat([153557, 1]), d = 20*v^5 + 24*v^4 - 96*v^3 - 96*v^2 + 96*v + 96, |disc L| = disc(k)^2 * 153557
+all three split: N(conductor) = 153841 = Mat([153841, 1]), d = 12*v^5 + 28*v^4 - 68*v^3 - 96*v^2 + 76*v + 80, |disc L| = disc(k)^2 * 153841
+all three split: N(conductor) = 153841 = Mat([153841, 1]), d = -36*v^5 - 28*v^4 + 168*v^3 + 76*v^2 - 160*v + 44, |disc L| = disc(k)^2 * 153841
+all three split: N(conductor) = 153841 = Mat([153841, 1]), d = 8*v^5 + 28*v^4 - 8*v^3 - 80*v^2 - 4*v + 72, |disc L| = disc(k)^2 * 153841
+all three split: N(conductor) = 153841 = Mat([153841, 1]), d = 32*v^5 + 24*v^4 - 148*v^3 - 96*v^2 + 144*v + 108, |disc L| = disc(k)^2 * 153841
+all three split: N(conductor) = 153841 = Mat([153841, 1]), d = 24*v^5 - 28*v^4 - 116*v^3 + 116*v^2 + 88*v - 12, |disc L| = disc(k)^2 * 153841
+all three split: N(conductor) = 153841 = Mat([153841, 1]), d = -4*v^5 - 24*v^4 - 4*v^3 + 84*v^2 + 60*v + 12, |disc L| = disc(k)^2 * 153841
+all three split: N(conductor) = 154621 = Mat([154621, 1]), d = 24*v^5 + 16*v^4 - 120*v^3 - 76*v^2 + 132*v + 108, |disc L| = disc(k)^2 * 154621
+all three split: N(conductor) = 154621 = Mat([154621, 1]), d = -12*v^5 - 24*v^4 + 44*v^3 + 76*v^2 - 16*v + 20, |disc L| = disc(k)^2 * 154621
+all three split: N(conductor) = 154621 = Mat([154621, 1]), d = 20*v^5 + 24*v^4 - 96*v^3 - 88*v^2 + 100*v + 84, |disc L| = disc(k)^2 * 154621
+all three split: N(conductor) = 154621 = Mat([154621, 1]), d = -4*v^5 - 12*v^4 - 8*v^3 + 40*v^2 + 52*v + 24, |disc L| = disc(k)^2 * 154621
+all three split: N(conductor) = 154621 = Mat([154621, 1]), d = -4*v^5 - 16*v^4 - 8*v^3 + 48*v^2 + 72*v + 36, |disc L| = disc(k)^2 * 154621
+all three split: N(conductor) = 154621 = Mat([154621, 1]), d = -12*v^5 + 12*v^4 + 48*v^3 - 44*v^2 - 48*v + 56, |disc L| = disc(k)^2 * 154621
+all three split: N(conductor) = 156025 = [5, 2; 79, 2], d = -36*v^5 - 12*v^4 + 172*v^3 + 24*v^2 - 184*v + 52, |disc L| = disc(k)^2 * 156025
+all three split: N(conductor) = 156025 = [5, 2; 79, 2], d = -40*v^5 - 8*v^4 + 208*v^3 - 8*v^2 - 244*v + 100, |disc L| = disc(k)^2 * 156025
+all three split: N(conductor) = 156025 = [5, 2; 79, 2], d = -4*v^5 - 16*v^4 + 8*v^3 + 64*v^2 - 8*v + 4, |disc L| = disc(k)^2 * 156025
+all three split: N(conductor) = 156025 = [5, 2; 79, 2], d = -8*v^5 + 16*v^4 + 56*v^3 - 60*v^2 - 76*v + 76, |disc L| = disc(k)^2 * 156025
+all three split: N(conductor) = 156025 = [5, 2; 79, 2], d = -4*v^5 - 16*v^4 - 8*v^3 + 44*v^2 + 72*v + 44, |disc L| = disc(k)^2 * 156025
+all three split: N(conductor) = 156025 = [5, 2; 79, 2], d = -16*v^5 + 12*v^4 + 68*v^3 - 44*v^2 - 68*v + 56, |disc L| = disc(k)^2 * 156025
+all three split: N(conductor) = 158573 = Mat([158573, 1]), d = 16*v^5 + 4*v^4 - 80*v^3 - 16*v^2 + 80*v + 48, |disc L| = disc(k)^2 * 158573
+all three split: N(conductor) = 158573 = Mat([158573, 1]), d = 16*v^4 - 60*v^2 + 64, |disc L| = disc(k)^2 * 158573
+all three split: N(conductor) = 158573 = Mat([158573, 1]), d = 4*v^5 - 4*v^3 - 28*v + 40, |disc L| = disc(k)^2 * 158573
+all three split: N(conductor) = 158573 = Mat([158573, 1]), d = 16*v^2 + 4*v + 8, |disc L| = disc(k)^2 * 158573
+all three split: N(conductor) = 158573 = Mat([158573, 1]), d = -4*v^5 - 4*v^4 + 16*v^3 + 12*v^2 + 4*v + 36, |disc L| = disc(k)^2 * 158573
+all three split: N(conductor) = 158573 = Mat([158573, 1]), d = -16*v^5 - 16*v^4 + 68*v^3 + 48*v^2 - 60*v + 24, |disc L| = disc(k)^2 * 158573
+all three split: N(conductor) = 159769 = Mat([159769, 1]), d = -28*v^5 - 20*v^4 + 140*v^3 + 52*v^2 - 160*v + 44, |disc L| = disc(k)^2 * 159769
+all three split: N(conductor) = 159769 = Mat([159769, 1]), d = -16*v^5 + 8*v^4 + 76*v^3 - 16*v^2 - 80*v + 28, |disc L| = disc(k)^2 * 159769
+all three split: N(conductor) = 159769 = Mat([159769, 1]), d = 28*v^5 + 28*v^4 - 132*v^3 - 112*v^2 + 124*v + 112, |disc L| = disc(k)^2 * 159769
+all three split: N(conductor) = 159769 = Mat([159769, 1]), d = 20*v^4 - 8*v^3 - 60*v^2 + 16*v + 48, |disc L| = disc(k)^2 * 159769
+all three split: N(conductor) = 159769 = Mat([159769, 1]), d = -20*v^5 - 8*v^4 + 108*v^3 + 20*v^2 - 148*v + 44, |disc L| = disc(k)^2 * 159769
+all three split: N(conductor) = 159769 = Mat([159769, 1]), d = -20*v^5 - 28*v^4 + 72*v^3 + 92*v^2 - 16*v + 12, |disc L| = disc(k)^2 * 159769
+all three split: N(conductor) = 160861 = Mat([160861, 1]), d = -12*v^5 + 12*v^4 + 40*v^3 - 40*v^2 - 24*v + 48, |disc L| = disc(k)^2 * 160861
+all three split: N(conductor) = 160861 = Mat([160861, 1]), d = -20*v^5 - 12*v^4 + 88*v^3 + 40*v^2 - 92*v + 24, |disc L| = disc(k)^2 * 160861
+all three split: N(conductor) = 160861 = Mat([160861, 1]), d = 24*v^5 + 36*v^4 - 120*v^3 - 132*v^2 + 124*v + 112, |disc L| = disc(k)^2 * 160861
+all three split: N(conductor) = 160861 = Mat([160861, 1]), d = -8*v^5 - 28*v^4 + 8*v^3 + 92*v^2 + 60*v + 16, |disc L| = disc(k)^2 * 160861
+all three split: N(conductor) = 160861 = Mat([160861, 1]), d = -36*v^5 - 12*v^4 + 176*v^3 + 16*v^2 - 192*v + 68, |disc L| = disc(k)^2 * 160861
+all three split: N(conductor) = 160861 = Mat([160861, 1]), d = 32*v^5 + 28*v^4 - 152*v^3 - 116*v^2 + 156*v + 124, |disc L| = disc(k)^2 * 160861
+all three split: N(conductor) = 164893 = Mat([164893, 1]), d = -4*v^5 - 12*v^4 + 8*v^3 + 44*v^2 + 16*v + 12, |disc L| = disc(k)^2 * 164893
+all three split: N(conductor) = 164893 = Mat([164893, 1]), d = 12*v^5 + 12*v^4 - 52*v^3 - 48*v^2 + 44*v + 64, |disc L| = disc(k)^2 * 164893
+all three split: N(conductor) = 164893 = Mat([164893, 1]), d = -12*v^5 - 4*v^4 + 60*v^3 + 4*v^2 - 64*v + 44, |disc L| = disc(k)^2 * 164893
+all three split: N(conductor) = 164893 = Mat([164893, 1]), d = 4*v^5 - 8*v^4 - 16*v^3 + 32*v^2 + 16, |disc L| = disc(k)^2 * 164893
+all three split: N(conductor) = 164893 = Mat([164893, 1]), d = 8*v^4 + 8*v^3 - 20*v^2 - 12*v + 32, |disc L| = disc(k)^2 * 164893
+all three split: N(conductor) = 164893 = Mat([164893, 1]), d = 4*v^4 - 8*v^3 - 12*v^2 + 16*v + 32, |disc L| = disc(k)^2 * 164893
+all three split: N(conductor) = 169025 = [5, 2; 6761, 1], d = -8*v^5 - 20*v^4 + 12*v^3 + 60*v^2 + 44*v + 28, |disc L| = disc(k)^2 * 169025
+all three split: N(conductor) = 169025 = [5, 2; 6761, 1], d = -28*v^5 - 8*v^4 + 140*v^3 + 12*v^2 - 160*v + 52, |disc L| = disc(k)^2 * 169025
+all three split: N(conductor) = 169025 = [5, 2; 6761, 1], d = 8*v^5 + 8*v^4 - 20*v^3 - 4*v^2 + 8*v + 16, |disc L| = disc(k)^2 * 169025
+all three split: N(conductor) = 169025 = [5, 2; 6761, 1], d = 20*v^5 - 8*v^4 - 80*v^3 + 44*v^2 + 40*v + 8, |disc L| = disc(k)^2 * 169025
+all three split: N(conductor) = 169025 = [5, 2; 6761, 1], d = -12*v^5 + 8*v^4 + 48*v^3 - 24*v^2 - 44*v + 36, |disc L| = disc(k)^2 * 169025
+all three split: N(conductor) = 169025 = [5, 2; 6761, 1], d = 20*v^5 + 20*v^4 - 100*v^3 - 88*v^2 + 112*v + 104, |disc L| = disc(k)^2 * 169025
+all three split: N(conductor) = 172925 = [5, 2; 6917, 1], d = -16*v^5 - 4*v^4 + 72*v^3 + 12*v^2 - 68*v + 28, |disc L| = disc(k)^2 * 172925
+all three split: N(conductor) = 172925 = [5, 2; 6917, 1], d = 4*v^5 - 4*v^4 - 8*v^3 + 24*v^2 - 8*v + 16, |disc L| = disc(k)^2 * 172925
+all three split: N(conductor) = 172925 = [5, 2; 6917, 1], d = 4*v^5 + 4*v^4 - 28*v^3 - 20*v^2 + 52*v + 52, |disc L| = disc(k)^2 * 172925
+all three split: N(conductor) = 172925 = [5, 2; 6917, 1], d = 4*v^5 - 4*v^4 - 28*v^3 + 4*v^2 + 44*v + 48, |disc L| = disc(k)^2 * 172925
+all three split: N(conductor) = 172925 = [5, 2; 6917, 1], d = 12*v^5 + 4*v^4 - 48*v^3 + 32*v + 20, |disc L| = disc(k)^2 * 172925
+all three split: N(conductor) = 172925 = [5, 2; 6917, 1], d = -8*v^5 + 4*v^4 + 40*v^3 - 20*v^2 - 52*v + 48, |disc L| = disc(k)^2 * 172925
+all three split: N(conductor) = 178933 = Mat([178933, 1]), d = -8*v^5 + 12*v^4 + 56*v^3 - 64*v^2 - 84*v + 104, |disc L| = disc(k)^2 * 178933
+all three split: N(conductor) = 178933 = Mat([178933, 1]), d = -28*v^5 - 28*v^4 + 124*v^3 + 88*v^2 - 96*v + 24, |disc L| = disc(k)^2 * 178933
+all three split: N(conductor) = 178933 = Mat([178933, 1]), d = -8*v^5 - 12*v^4 + 12*v^3 + 52*v^2 + 24*v + 4, |disc L| = disc(k)^2 * 178933
+all three split: N(conductor) = 178933 = Mat([178933, 1]), d = -8*v^5 + 12*v^4 + 60*v^3 - 40*v^2 - 76*v + 64, |disc L| = disc(k)^2 * 178933
+all three split: N(conductor) = 178933 = Mat([178933, 1]), d = 12*v^5 - 12*v^4 - 64*v^3 + 56*v^2 + 52*v + 4, |disc L| = disc(k)^2 * 178933
+all three split: N(conductor) = 178933 = Mat([178933, 1]), d = 24*v^5 + 28*v^4 - 116*v^3 - 100*v^2 + 108*v + 92, |disc L| = disc(k)^2 * 178933
+all three split: N(conductor) = 179153 = [13, 1; 13781, 1], d = 48*v^5 - 16*v^4 - 208*v^3 + 84*v^2 + 128*v, |disc L| = disc(k)^2 * 179153
+all three split: N(conductor) = 179153 = [13, 1; 13781, 1], d = 16*v^4 + 36*v^3 - 16*v^2 - 44*v + 24, |disc L| = disc(k)^2 * 179153
+all three split: N(conductor) = 179153 = [13, 1; 13781, 1], d = 4*v^5 + 4*v^4 - 20*v^3 + 8*v^2 + 16*v + 8, |disc L| = disc(k)^2 * 179153
+all three split: N(conductor) = 179153 = [13, 1; 13781, 1], d = -12*v^5 + 16*v^4 + 36*v^3 - 40*v^2 - 16*v + 32, |disc L| = disc(k)^2 * 179153
+all three split: N(conductor) = 179153 = [13, 1; 13781, 1], d = -8*v^5 - 4*v^4 + 60*v^3 + 12*v^2 - 100*v + 44, |disc L| = disc(k)^2 * 179153
+all three split: N(conductor) = 179153 = [13, 1; 13781, 1], d = -44*v^5 - 16*v^4 + 228*v^3 + 24*v^2 - 272*v + 80, |disc L| = disc(k)^2 * 179153
+all three split: N(conductor) = 189853 = Mat([189853, 1]), d = 40*v^5 - 16*v^4 - 172*v^3 + 84*v^2 + 96*v - 4, |disc L| = disc(k)^2 * 189853
+all three split: N(conductor) = 189853 = Mat([189853, 1]), d = -12*v^5 + 16*v^4 + 32*v^3 - 44*v^2 - 4*v + 40, |disc L| = disc(k)^2 * 189853
+all three split: N(conductor) = 189853 = Mat([189853, 1]), d = -44*v^5 - 16*v^4 + 224*v^3 + 20*v^2 - 260*v + 88, |disc L| = disc(k)^2 * 189853
+all three split: N(conductor) = 189853 = Mat([189853, 1]), d = 44*v^5 + 48*v^4 - 204*v^3 - 192*v^2 + 200*v + 172, |disc L| = disc(k)^2 * 189853
+all three split: N(conductor) = 189853 = Mat([189853, 1]), d = -4*v^5 + 16*v^4 + 56*v^3 - 20*v^2 - 72*v + 28, |disc L| = disc(k)^2 * 189853
+all three split: N(conductor) = 189853 = Mat([189853, 1]), d = -20*v^5 - 48*v^4 + 52*v^3 + 160*v^2 + 40*v - 4, |disc L| = disc(k)^2 * 189853
+all three split: N(conductor) = 192037 = Mat([192037, 1]), d = 16*v^5 - 12*v^4 - 80*v^3 + 40*v^2 + 80*v + 36, |disc L| = disc(k)^2 * 192037
+all three split: N(conductor) = 192037 = Mat([192037, 1]), d = -12*v^5 - 16*v^4 + 56*v^3 + 44*v^2 - 60*v + 36, |disc L| = disc(k)^2 * 192037
+all three split: N(conductor) = 192037 = Mat([192037, 1]), d = 20*v^5 + 16*v^4 - 92*v^3 - 56*v^2 + 80*v + 64, |disc L| = disc(k)^2 * 192037
+all three split: N(conductor) = 192037 = Mat([192037, 1]), d = -12*v^5 - 16*v^4 + 52*v^3 + 56*v^2 - 32*v + 16, |disc L| = disc(k)^2 * 192037
+all three split: N(conductor) = 192037 = Mat([192037, 1]), d = 4*v^5 + 16*v^4 - 24*v^3 - 52*v^2 + 36*v + 52, |disc L| = disc(k)^2 * 192037
+all three split: N(conductor) = 192037 = Mat([192037, 1]), d = 12*v^5 + 12*v^4 - 56*v^3 - 36*v^2 + 76*v + 56, |disc L| = disc(k)^2 * 192037
+all three split: N(conductor) = 195157 = Mat([195157, 1]), d = -8*v^5 - 4*v^4 + 40*v^3 + 16*v^2 - 36*v + 24, |disc L| = disc(k)^2 * 195157
+all three split: N(conductor) = 195157 = Mat([195157, 1]), d = -4*v^5 + 12*v^3 + 4*v^2 + 4*v + 24, |disc L| = disc(k)^2 * 195157
+all three split: N(conductor) = 195157 = Mat([195157, 1]), d = 8*v^5 + 12*v^4 - 36*v^3 - 40*v^2 + 36*v + 48, |disc L| = disc(k)^2 * 195157
+all three split: N(conductor) = 195157 = Mat([195157, 1]), d = -4*v^5 - 12*v^4 + 16*v^3 + 40*v^2 - 12*v + 20, |disc L| = disc(k)^2 * 195157
+all three split: N(conductor) = 195157 = Mat([195157, 1]), d = 4*v^3 - 8*v^2 - 16*v + 48, |disc L| = disc(k)^2 * 195157
+all three split: N(conductor) = 195157 = Mat([195157, 1]), d = 8*v^5 + 4*v^4 - 36*v^3 - 12*v^2 + 24*v + 36, |disc L| = disc(k)^2 * 195157
+all three split: N(conductor) = 201449 = Mat([201449, 1]), d = 24*v^5 + 16*v^4 - 104*v^3 - 60*v^2 + 84*v + 76, |disc L| = disc(k)^2 * 201449
+all three split: N(conductor) = 201449 = Mat([201449, 1]), d = -4*v^5 - 16*v^4 + 8*v^3 + 64*v^2 + 24*v + 4, |disc L| = disc(k)^2 * 201449
+all three split: N(conductor) = 201449 = Mat([201449, 1]), d = 4*v^5 + 12*v^4 - 32*v^3 - 44*v^2 + 48*v + 56, |disc L| = disc(k)^2 * 201449
+all three split: N(conductor) = 201449 = Mat([201449, 1]), d = -12*v^4 + 8*v^3 + 44*v^2 - 40*v + 20, |disc L| = disc(k)^2 * 201449
+all three split: N(conductor) = 201449 = Mat([201449, 1]), d = -4*v^5 + 12*v^4 + 28*v^3 - 28*v^2 - 32*v + 32, |disc L| = disc(k)^2 * 201449
+all three split: N(conductor) = 201449 = Mat([201449, 1]), d = -20*v^5 - 12*v^4 + 92*v^3 + 24*v^2 - 84*v + 52, |disc L| = disc(k)^2 * 201449
+all three split: N(conductor) = 201473 = Mat([201473, 1]), d = -12*v^5 - 12*v^4 + 60*v^3 + 40*v^2 - 80*v + 24, |disc L| = disc(k)^2 * 201473
+all three split: N(conductor) = 201473 = Mat([201473, 1]), d = 20*v^5 + 8*v^4 - 80*v^3 - 24*v^2 + 52*v + 52, |disc L| = disc(k)^2 * 201473
+all three split: N(conductor) = 201473 = Mat([201473, 1]), d = 8*v^5 + 8*v^4 - 52*v^3 - 36*v^2 + 72*v + 64, |disc L| = disc(k)^2 * 201473
+all three split: N(conductor) = 201473 = Mat([201473, 1]), d = -8*v^5 + 12*v^4 + 44*v^3 - 36*v^2 - 52*v + 44, |disc L| = disc(k)^2 * 201473
+all three split: N(conductor) = 201473 = Mat([201473, 1]), d = -12*v^5 - 8*v^4 + 48*v^3 + 12*v^2 - 24*v + 56, |disc L| = disc(k)^2 * 201473
+all three split: N(conductor) = 201473 = Mat([201473, 1]), d = 4*v^5 - 8*v^4 - 20*v^3 + 44*v^2 + 32*v + 4, |disc L| = disc(k)^2 * 201473
+all three split: N(conductor) = 204101 = Mat([204101, 1]), d = -4*v^5 - 4*v^4 + 16*v^3 + 12*v^2 - 28*v + 36, |disc L| = disc(k)^2 * 204101
+all three split: N(conductor) = 204101 = Mat([204101, 1]), d = -16*v^5 + 80*v^3 - 80*v + 36, |disc L| = disc(k)^2 * 204101
+all three split: N(conductor) = 204101 = Mat([204101, 1]), d = -16*v + 36, |disc L| = disc(k)^2 * 204101
+all three split: N(conductor) = 204101 = Mat([204101, 1]), d = -16*v^2 + 68, |disc L| = disc(k)^2 * 204101
+all three split: N(conductor) = 204101 = Mat([204101, 1]), d = -16*v^5 + 4*v^4 + 80*v^3 - 16*v^2 - 80*v + 48, |disc L| = disc(k)^2 * 204101
+all three split: N(conductor) = 204101 = Mat([204101, 1]), d = -16*v^3 + 48*v + 36, |disc L| = disc(k)^2 * 204101
+all three split: N(conductor) = 207013 = Mat([207013, 1]), d = -4*v^5 + 4*v^4 + 8*v^3 + 8*v^2 + 4*v + 8, |disc L| = disc(k)^2 * 207013
+all three split: N(conductor) = 207013 = Mat([207013, 1]), d = -16*v^5 - 4*v^4 + 100*v^3 - 148*v + 68, |disc L| = disc(k)^2 * 207013
+all three split: N(conductor) = 207013 = Mat([207013, 1]), d = -12*v^5 + 12*v^4 + 44*v^3 - 28*v^2 - 32*v + 28, |disc L| = disc(k)^2 * 207013
+all three split: N(conductor) = 207013 = Mat([207013, 1]), d = 4*v^5 + 8*v^4 + 16, |disc L| = disc(k)^2 * 207013
+all three split: N(conductor) = 207013 = Mat([207013, 1]), d = -32*v^5 - 12*v^4 + 168*v^3 + 20*v^2 - 208*v + 64, |disc L| = disc(k)^2 * 207013
+all three split: N(conductor) = 207013 = Mat([207013, 1]), d = 32*v^5 - 8*v^4 - 136*v^3 + 44*v^2 + 84*v + 16, |disc L| = disc(k)^2 * 207013
+all three split: N(conductor) = 207037 = Mat([207037, 1]), d = 12*v^4 + 4*v^3 - 44*v^2 - 4*v + 56, |disc L| = disc(k)^2 * 207037
+all three split: N(conductor) = 207037 = Mat([207037, 1]), d = 4*v^5 + 8*v^4 - 8*v^3 - 32*v^2 - 12*v + 56, |disc L| = disc(k)^2 * 207037
+all three split: N(conductor) = 207037 = Mat([207037, 1]), d = -4*v^5 + 24*v^3 - 4*v^2 - 24*v + 44, |disc L| = disc(k)^2 * 207037
+all three split: N(conductor) = 207037 = Mat([207037, 1]), d = -4*v^5 - 12*v^4 + 12*v^3 + 40*v^2 - 8*v + 20, |disc L| = disc(k)^2 * 207037
+all three split: N(conductor) = 207037 = Mat([207037, 1]), d = -4*v^5 - 8*v^4 + 12*v^3 + 36*v^2 + 8, |disc L| = disc(k)^2 * 207037
+all three split: N(conductor) = 207037 = Mat([207037, 1]), d = 8*v^5 - 44*v^3 + 4*v^2 + 48*v + 28, |disc L| = disc(k)^2 * 207037
+all three split: N(conductor) = 212081 = Mat([212081, 1]), d = -12*v^5 + 68*v^3 + 8*v^2 - 64*v + 32, |disc L| = disc(k)^2 * 212081
+all three split: N(conductor) = 212081 = Mat([212081, 1]), d = -8*v^5 + 8*v^4 + 28*v^3 - 36*v^2 - 24*v + 64, |disc L| = disc(k)^2 * 212081
+all three split: N(conductor) = 212081 = Mat([212081, 1]), d = 12*v^4 - 12*v^3 - 32*v^2 + 28*v + 36, |disc L| = disc(k)^2 * 212081
+all three split: N(conductor) = 212081 = Mat([212081, 1]), d = -28*v^5 - 8*v^4 + 128*v^3 + 12*v^2 - 120*v + 56, |disc L| = disc(k)^2 * 212081
+all three split: N(conductor) = 212081 = Mat([212081, 1]), d = 20*v^5 - 92*v^3 + 8*v^2 + 64*v + 32, |disc L| = disc(k)^2 * 212081
+all three split: N(conductor) = 212081 = Mat([212081, 1]), d = -20*v^5 - 12*v^4 + 104*v^3 + 24*v^2 - 124*v + 56, |disc L| = disc(k)^2 * 212081
+all three split: N(conductor) = 225289 = Mat([225289, 1]), d = -12*v^5 + 64*v^3 - 12*v^2 - 84*v + 56, |disc L| = disc(k)^2 * 225289
+all three split: N(conductor) = 225289 = Mat([225289, 1]), d = 12*v^3 + 12*v^2 - 20*v + 20, |disc L| = disc(k)^2 * 225289
+all three split: N(conductor) = 225289 = Mat([225289, 1]), d = 12*v^5 + 16*v^4 - 60*v^3 - 64*v^2 + 72*v + 76, |disc L| = disc(k)^2 * 225289
+all three split: N(conductor) = 225289 = Mat([225289, 1]), d = -4*v^5 - 16*v^4 + 4*v^3 + 48*v^2 + 24*v + 28, |disc L| = disc(k)^2 * 225289
+all three split: N(conductor) = 225289 = Mat([225289, 1]), d = -12*v^5 + 48*v^3 + 4*v^2 - 36*v + 24, |disc L| = disc(k)^2 * 225289
+all three split: N(conductor) = 225289 = Mat([225289, 1]), d = 16*v^5 - 68*v^3 + 12*v^2 + 44*v + 20, |disc L| = disc(k)^2 * 225289
+all three split: N(conductor) = 226981 = Mat([61, 3]), d = -12*v^4 - 12*v^3 + 48*v^2 + 24*v + 8, |disc L| = disc(k)^2 * 226981
+all three split: N(conductor) = 226981 = Mat([61, 3]), d = 12*v^4 + 12*v^3 - 48*v^2 - 24*v + 68, |disc L| = disc(k)^2 * 226981
+all three split: N(conductor) = 240421 = Mat([240421, 1]), d = -4*v^5 - 12*v^4 + 24*v^3 + 40*v^2 - 44*v + 24, |disc L| = disc(k)^2 * 240421
+all three split: N(conductor) = 240421 = Mat([240421, 1]), d = 8*v^5 + 12*v^4 - 44*v^3 - 44*v^2 + 48*v + 56, |disc L| = disc(k)^2 * 240421
+all three split: N(conductor) = 240421 = Mat([240421, 1]), d = -16*v^5 - 12*v^4 + 72*v^3 + 32*v^2 - 60*v + 36, |disc L| = disc(k)^2 * 240421
+all three split: N(conductor) = 240421 = Mat([240421, 1]), d = -4*v^5 - 8*v^4 + 12*v^3 + 36*v^2 + 12*v + 12, |disc L| = disc(k)^2 * 240421
+all three split: N(conductor) = 240421 = Mat([240421, 1]), d = 12*v^4 + 4*v^3 - 32*v^2 - 4*v + 36, |disc L| = disc(k)^2 * 240421
+all three split: N(conductor) = 240421 = Mat([240421, 1]), d = 16*v^5 + 8*v^4 - 68*v^3 - 32*v^2 + 48*v + 60, |disc L| = disc(k)^2 * 240421
+all three split: N(conductor) = 240473 = Mat([240473, 1]), d = 8*v^5 + 12*v^4 - 40*v^3 - 32*v^2 + 28*v + 40, |disc L| = disc(k)^2 * 240473
+all three split: N(conductor) = 240473 = Mat([240473, 1]), d = 8*v^5 - 20*v^4 - 36*v^3 + 72*v^2 + 20*v + 16, |disc L| = disc(k)^2 * 240473
+all three split: N(conductor) = 240473 = Mat([240473, 1]), d = -12*v^5 + 8*v^4 + 72*v^3 - 32*v^2 - 76*v + 72, |disc L| = disc(k)^2 * 240473
+all three split: N(conductor) = 240473 = Mat([240473, 1]), d = -24*v^5 - 12*v^4 + 124*v^3 + 36*v^2 - 136*v + 36, |disc L| = disc(k)^2 * 240473
+all three split: N(conductor) = 240473 = Mat([240473, 1]), d = 12*v^5 + 20*v^4 - 48*v^3 - 56*v^2 + 52*v + 52, |disc L| = disc(k)^2 * 240473
+all three split: N(conductor) = 240473 = Mat([240473, 1]), d = 4*v^5 - 24*v^4 - 52*v^3 + 64*v^2 + 116*v + 60, |disc L| = disc(k)^2 * 240473
+all three split: N(conductor) = 241877 = Mat([241877, 1]), d = -20*v^5 + 4*v^4 + 80*v^3 - 64*v + 20, |disc L| = disc(k)^2 * 241877
+all three split: N(conductor) = 241877 = Mat([241877, 1]), d = -12*v^5 + 80*v^3 + 4*v^2 - 116*v + 40, |disc L| = disc(k)^2 * 241877
+all three split: N(conductor) = 241877 = Mat([241877, 1]), d = -28*v^5 - 4*v^4 + 152*v^3 - 8*v^2 - 200*v + 80, |disc L| = disc(k)^2 * 241877
+all three split: N(conductor) = 241877 = Mat([241877, 1]), d = -28*v^5 - 12*v^4 + 148*v^3 + 28*v^2 - 172*v + 52, |disc L| = disc(k)^2 * 241877
+all three split: N(conductor) = 241877 = Mat([241877, 1]), d = 4*v^5 + 12*v^4 - 28*v^3 - 28*v^2 + 28*v + 32, |disc L| = disc(k)^2 * 241877
+all three split: N(conductor) = 241877 = Mat([241877, 1]), d = 4*v^5 - 16*v^3 + 20*v^2 - 4*v + 8, |disc L| = disc(k)^2 * 241877
+all three split: N(conductor) = 242425 = [5, 2; 9697, 1], d = -20*v^5 - 12*v^4 + 96*v^3 + 32*v^2 - 96*v + 36, |disc L| = disc(k)^2 * 242425
+all three split: N(conductor) = 242425 = [5, 2; 9697, 1], d = 4*v^5 - 12*v^4 - 12*v^3 + 44*v^2 - 12*v + 20, |disc L| = disc(k)^2 * 242425
+all three split: N(conductor) = 242425 = [5, 2; 9697, 1], d = 4*v^5 + 12*v^4 - 12*v^3 - 28*v^2 + 12*v + 32, |disc L| = disc(k)^2 * 242425
+all three split: N(conductor) = 242425 = [5, 2; 9697, 1], d = 4*v^5 + 12*v^4 - 24*v^3 - 40*v^2 + 24*v + 48, |disc L| = disc(k)^2 * 242425
+all three split: N(conductor) = 242425 = [5, 2; 9697, 1], d = -8*v^5 - 12*v^4 + 24*v^3 + 44*v^2 + 12*v + 16, |disc L| = disc(k)^2 * 242425
+all three split: N(conductor) = 242425 = [5, 2; 9697, 1], d = 16*v^5 + 12*v^4 - 72*v^3 - 52*v^2 + 60*v + 76, |disc L| = disc(k)^2 * 242425
+all three split: N(conductor) = 245129 = Mat([245129, 1]), d = 8*v^5 - 4*v^4 - 36*v^3 + 24*v^2 + 36*v + 16, |disc L| = disc(k)^2 * 245129
+all three split: N(conductor) = 245129 = Mat([245129, 1]), d = 12*v^5 + 4*v^4 - 48*v^3 - 8*v^2 + 36*v + 36, |disc L| = disc(k)^2 * 245129
+all three split: N(conductor) = 245129 = Mat([245129, 1]), d = -12*v^3 - 8*v^2 + 32*v + 48, |disc L| = disc(k)^2 * 245129
+all three split: N(conductor) = 245129 = Mat([245129, 1]), d = -8*v^5 - 4*v^4 + 40*v^3 + 16*v^2 - 52*v + 24, |disc L| = disc(k)^2 * 245129
+all three split: N(conductor) = 245129 = Mat([245129, 1]), d = -8*v^5 + 4*v^4 + 44*v^3 - 12*v^2 - 56*v + 36, |disc L| = disc(k)^2 * 245129
+all three split: N(conductor) = 245129 = Mat([245129, 1]), d = -4*v^5 + 12*v^3 - 12*v^2 + 4*v + 56, |disc L| = disc(k)^2 * 245129
+all three split: N(conductor) = 250301 = Mat([250301, 1]), d = -16*v^5 + 68*v^3 - 8*v^2 - 64*v + 48, |disc L| = disc(k)^2 * 250301
+all three split: N(conductor) = 250301 = Mat([250301, 1]), d = 20*v^5 + 28*v^4 - 84*v^3 - 124*v^2 + 64*v + 140, |disc L| = disc(k)^2 * 250301
+all three split: N(conductor) = 250301 = Mat([250301, 1]), d = 12*v^5 + 4*v^4 - 64*v^3 - 24*v^2 + 84*v + 68, |disc L| = disc(k)^2 * 250301
+all three split: N(conductor) = 250301 = Mat([250301, 1]), d = -16*v^5 - 28*v^4 + 40*v^3 + 100*v^2 + 32*v, |disc L| = disc(k)^2 * 250301
+all three split: N(conductor) = 250301 = Mat([250301, 1]), d = -20*v^5 + 92*v^3 - 12*v^2 - 92*v + 56, |disc L| = disc(k)^2 * 250301
+all three split: N(conductor) = 250301 = Mat([250301, 1]), d = 8*v^5 - 4*v^4 - 52*v^3 + 8*v^2 + 84*v + 48, |disc L| = disc(k)^2 * 250301
+all three split: N(conductor) = 253525 = [5, 2; 10141, 1], d = -16*v^5 - 28*v^4 + 52*v^3 + 96*v^2 + 8*v + 8, |disc L| = disc(k)^2 * 253525
+all three split: N(conductor) = 253525 = [5, 2; 10141, 1], d = 20*v^4 - 12*v^3 - 64*v^2 + 24*v + 56, |disc L| = disc(k)^2 * 253525
+all three split: N(conductor) = 253525 = [5, 2; 10141, 1], d = 8*v^5 - 36*v^3 + 16*v^2 + 60*v + 28, |disc L| = disc(k)^2 * 253525
+all three split: N(conductor) = 253525 = [5, 2; 10141, 1], d = -32*v^5 - 20*v^4 + 156*v^3 + 48*v^2 - 168*v + 52, |disc L| = disc(k)^2 * 253525
+all three split: N(conductor) = 253525 = [5, 2; 10141, 1], d = 32*v^5 + 28*v^4 - 148*v^3 - 112*v^2 + 136*v + 116, |disc L| = disc(k)^2 * 253525
+all three split: N(conductor) = 253525 = [5, 2; 10141, 1], d = 32*v^5 - 144*v^3 + 4*v^2 + 120*v + 52, |disc L| = disc(k)^2 * 253525
+all three split: N(conductor) = 254853 = [3, 3; 9439, 1], d = 16*v^4 - 4*v^3 - 52*v^2 + 12*v + 52, |disc L| = disc(k)^2 * 254853
+all three split: N(conductor) = 254853 = [3, 3; 9439, 1], d = 12*v^5 - 44*v^3 + 8*v + 44, |disc L| = disc(k)^2 * 254853
+all three split: N(conductor) = 254853 = [3, 3; 9439, 1], d = -16*v^5 - 16*v^4 + 76*v^3 + 44*v^2 - 84*v + 36, |disc L| = disc(k)^2 * 254853
+all three split: N(conductor) = 254853 = [3, 3; 9439, 1], d = -4*v^5 + 20*v^3 + 16*v^2 - 8*v + 12, |disc L| = disc(k)^2 * 254853
+all three split: N(conductor) = 254853 = [3, 3; 9439, 1], d = -12*v^5 - 16*v^4 + 48*v^3 + 52*v^2 - 20*v + 24, |disc L| = disc(k)^2 * 254853
+all three split: N(conductor) = 254853 = [3, 3; 9439, 1], d = 20*v^5 + 16*v^4 - 96*v^3 - 60*v^2 + 92*v + 72, |disc L| = disc(k)^2 * 254853
+all three split: N(conductor) = 260273 = [13, 1; 20021, 1], d = 4*v^4 + 8*v^3 - 20*v^2 - 24*v + 52, |disc L| = disc(k)^2 * 260273
+all three split: N(conductor) = 260273 = [13, 1; 20021, 1], d = -4*v^5 + 24*v^3 - 24*v + 36, |disc L| = disc(k)^2 * 260273
+all three split: N(conductor) = 260273 = [13, 1; 20021, 1], d = 8*v^5 - 40*v^3 + 4*v^2 + 36*v + 28, |disc L| = disc(k)^2 * 260273
+all three split: N(conductor) = 260273 = [13, 1; 20021, 1], d = -4*v^5 - 12*v^4 + 12*v^3 + 40*v^2 - 4*v + 20, |disc L| = disc(k)^2 * 260273
+all three split: N(conductor) = 260273 = [13, 1; 20021, 1], d = -4*v^5 - 4*v^4 + 12*v^3 + 20*v^2 + 16, |disc L| = disc(k)^2 * 260273
+all three split: N(conductor) = 260273 = [13, 1; 20021, 1], d = 4*v^5 + 12*v^4 - 16*v^3 - 44*v^2 + 16*v + 56, |disc L| = disc(k)^2 * 260273
+all three split: N(conductor) = 261325 = [5, 2; 10453, 1], d = -8*v^5 + 36*v^3 + 4*v^2 - 48*v + 28, |disc L| = disc(k)^2 * 261325
+all three split: N(conductor) = 261325 = [5, 2; 10453, 1], d = 4*v^5 + 8*v^4 - 24*v^3 - 48*v^2 + 36*v + 88, |disc L| = disc(k)^2 * 261325
+all three split: N(conductor) = 261325 = [5, 2; 10453, 1], d = 16*v^4 + 4*v^3 - 56*v^2 + 64, |disc L| = disc(k)^2 * 261325
+all three split: N(conductor) = 261325 = [5, 2; 10453, 1], d = -4*v^5 - 16*v^4 + 12*v^3 + 52*v^2 - 12*v + 24, |disc L| = disc(k)^2 * 261325
+all three split: N(conductor) = 261325 = [5, 2; 10453, 1], d = -4*v^5 - 8*v^4 - 4*v^3 + 20*v^2 + 48*v + 40, |disc L| = disc(k)^2 * 261325
+all three split: N(conductor) = 261325 = [5, 2; 10453, 1], d = -20*v^5 + 104*v^3 - 4*v^2 - 120*v + 44, |disc L| = disc(k)^2 * 261325
+all three split: N(conductor) = 262144 = Mat([2, 18]), d = 8, |disc L| = disc(k)^2 * 262144
+all three split: N(conductor) = 279733 = [467, 1; 599, 1], d = 36*v^5 + 36*v^4 - 172*v^3 - 148*v^2 + 180*v + 148, |disc L| = disc(k)^2 * 279733
+all three split: N(conductor) = 279733 = [467, 1; 599, 1], d = 28*v^5 - 12*v^4 - 112*v^3 + 64*v^2 + 48*v + 4, |disc L| = disc(k)^2 * 279733
+all three split: N(conductor) = 279733 = [467, 1; 599, 1], d = -40*v^5 - 12*v^4 + 200*v^3 + 12*v^2 - 228*v + 80, |disc L| = disc(k)^2 * 279733
+all three split: N(conductor) = 279733 = [467, 1; 599, 1], d = 4*v^5 + 12*v^4 + 8*v^3 - 8*v^2 - 24*v + 16, |disc L| = disc(k)^2 * 279733
+all three split: N(conductor) = 279733 = [467, 1; 599, 1], d = -16*v^5 + 12*v^4 + 56*v^3 - 36*v^2 - 36*v + 44, |disc L| = disc(k)^2 * 279733
+all three split: N(conductor) = 279733 = [467, 1; 599, 1], d = -12*v^5 - 36*v^4 + 20*v^3 + 116*v^2 + 60*v + 16, |disc L| = disc(k)^2 * 279733
+all three split: N(conductor) = 281893 = Mat([281893, 1]), d = 4*v^4 - 16*v^3 - 16*v^2 + 32*v + 48, |disc L| = disc(k)^2 * 281893
+all three split: N(conductor) = 281893 = Mat([281893, 1]), d = 20*v^5 + 16*v^4 - 84*v^3 - 64*v^2 + 68*v + 88, |disc L| = disc(k)^2 * 281893
+all three split: N(conductor) = 281893 = Mat([281893, 1]), d = -20*v^5 - 4*v^4 + 96*v^3 - 4*v^2 - 92*v + 68, |disc L| = disc(k)^2 * 281893
+all three split: N(conductor) = 281893 = Mat([281893, 1]), d = -40*v^5 - 16*v^4 + 200*v^3 + 20*v^2 - 220*v + 92, |disc L| = disc(k)^2 * 281893
+all three split: N(conductor) = 281893 = Mat([281893, 1]), d = -20*v^5 - 4*v^4 + 108*v^3 + 20*v^2 - 112*v + 32, |disc L| = disc(k)^2 * 281893
+all three split: N(conductor) = 281893 = Mat([281893, 1]), d = -4*v^5 + 16*v^4 - 8*v^3 - 48*v^2 + 40*v + 52, |disc L| = disc(k)^2 * 281893
+all three split: N(conductor) = 284857 = Mat([284857, 1]), d = 16*v^5 + 20*v^4 - 72*v^3 - 76*v^2 + 64*v + 80, |disc L| = disc(k)^2 * 284857
+all three split: N(conductor) = 284857 = Mat([284857, 1]), d = -12*v^5 - 20*v^4 + 44*v^3 + 68*v^2 - 16*v + 12, |disc L| = disc(k)^2 * 284857
+all three split: N(conductor) = 284857 = Mat([284857, 1]), d = -12*v^5 - 8*v^4 + 64*v^3 + 16*v^2 - 80*v + 48, |disc L| = disc(k)^2 * 284857
+all three split: N(conductor) = 284857 = Mat([284857, 1]), d = 8*v^4 - 8*v^3 - 20*v^2 + 20*v + 32, |disc L| = disc(k)^2 * 284857
+all three split: N(conductor) = 284857 = Mat([284857, 1]), d = -4*v^5 + 4*v^4 + 24*v^3 - 4*v^2 - 16*v + 28, |disc L| = disc(k)^2 * 284857
+all three split: N(conductor) = 284857 = Mat([284857, 1]), d = 12*v^5 - 4*v^4 - 52*v^3 + 16*v^2 + 28*v + 32, |disc L| = disc(k)^2 * 284857
+all three split: N(conductor) = 285377 = Mat([285377, 1]), d = -4*v^5 - 4*v^4 + 8*v^3 + 28*v^2 + 12*v + 8, |disc L| = disc(k)^2 * 285377
+all three split: N(conductor) = 285377 = Mat([285377, 1]), d = 16*v^5 - 80*v^3 + 4*v^2 + 72*v + 36, |disc L| = disc(k)^2 * 285377
+all three split: N(conductor) = 285377 = Mat([285377, 1]), d = 4*v^4 + 16*v^3 - 24*v^2 - 48*v + 68, |disc L| = disc(k)^2 * 285377
+all three split: N(conductor) = 285377 = Mat([285377, 1]), d = -8*v^5 + 44*v^3 - 36*v + 44, |disc L| = disc(k)^2 * 285377
+all three split: N(conductor) = 285377 = Mat([285377, 1]), d = 12*v^5 + 16*v^4 - 24*v^3 - 16*v^2 + 8*v + 20, |disc L| = disc(k)^2 * 285377
+all three split: N(conductor) = 285377 = Mat([285377, 1]), d = 8*v^5 + 24*v^4 - 32*v^3 - 88*v^2 + 28*v + 84, |disc L| = disc(k)^2 * 285377
+all three split: N(conductor) = 288977 = [13, 1; 22229, 1], d = 12*v^5 - 28*v^4 - 72*v^3 + 108*v^2 + 80*v - 4, |disc L| = disc(k)^2 * 288977
+all three split: N(conductor) = 288977 = [13, 1; 22229, 1], d = -8*v^5 + 20*v^4 + 28*v^3 - 60*v^2 - 24*v + 52, |disc L| = disc(k)^2 * 288977
+all three split: N(conductor) = 288977 = [13, 1; 22229, 1], d = -16*v^5 + 8*v^4 + 104*v^3 - 36*v^2 - 140*v + 80, |disc L| = disc(k)^2 * 288977
+all three split: N(conductor) = 288977 = [13, 1; 22229, 1], d = 8*v^5 - 12*v^4 - 20*v^3 + 52*v^2 - 40*v + 20, |disc L| = disc(k)^2 * 288977
+all three split: N(conductor) = 288977 = [13, 1; 22229, 1], d = 4*v^5 - 8*v^4 - 32*v^3 + 48*v^2 + 32*v, |disc L| = disc(k)^2 * 288977
+all three split: N(conductor) = 288977 = [13, 1; 22229, 1], d = -8*v^5 + 12*v^4 + 56*v^3 - 16*v^2 - 68*v + 24, |disc L| = disc(k)^2 * 288977
+all three split: N(conductor) = 290525 = [5, 2; 11621, 1], d = -4*v^5 - 4*v^4 + 8*v^3 + 28*v^2 - 4*v + 8, |disc L| = disc(k)^2 * 290525
+all three split: N(conductor) = 290525 = [5, 2; 11621, 1], d = 16*v^5 - 16*v^4 - 80*v^3 + 68*v^2 + 72*v + 4, |disc L| = disc(k)^2 * 290525
+all three split: N(conductor) = 290525 = [5, 2; 11621, 1], d = -16*v^5 + 4*v^4 + 96*v^3 - 24*v^2 - 128*v + 68, |disc L| = disc(k)^2 * 290525
+all three split: N(conductor) = 290525 = [5, 2; 11621, 1], d = 12*v^5 + 16*v^4 - 40*v^3 - 32*v^2 + 40*v + 36, |disc L| = disc(k)^2 * 290525
+all three split: N(conductor) = 290525 = [5, 2; 11621, 1], d = 24*v^5 - 16*v^4 - 104*v^3 + 68*v^2 + 68*v + 12, |disc L| = disc(k)^2 * 290525
+all three split: N(conductor) = 290525 = [5, 2; 11621, 1], d = 8*v^5 + 16*v^4 - 20*v^3 - 48*v^2 + 12*v + 60, |disc L| = disc(k)^2 * 290525
+all three split: N(conductor) = 292681 = Mat([541, 2]), d = 16*v^5 - 64*v^3 + 16*v^2 + 48*v + 20, |disc L| = disc(k)^2 * 292681
+all three split: N(conductor) = 292681 = Mat([541, 2]), d = -16*v^3 - 16*v^2 + 48*v + 68, |disc L| = disc(k)^2 * 292681
+all three split: N(conductor) = 292681 = Mat([541, 2]), d = -16*v^5 + 80*v^3 - 96*v + 36, |disc L| = disc(k)^2 * 292681
+all three split: N(conductor) = 293177 = Mat([293177, 1]), d = 8*v^5 - 8*v^4 - 16*v^3 + 40*v^2 - 36*v + 20, |disc L| = disc(k)^2 * 293177
+all three split: N(conductor) = 293177 = Mat([293177, 1]), d = -4*v^5 + 4*v^4 + 16*v + 20, |disc L| = disc(k)^2 * 293177
+all three split: N(conductor) = 293177 = Mat([293177, 1]), d = -28*v^5 - 4*v^4 + 152*v^3 - 8*v^2 - 184*v + 80, |disc L| = disc(k)^2 * 293177
+all three split: N(conductor) = 293177 = Mat([293177, 1]), d = 20*v^5 - 20*v^4 - 92*v^3 + 84*v^2 + 60*v, |disc L| = disc(k)^2 * 293177
+all three split: N(conductor) = 293177 = Mat([293177, 1]), d = 4*v^5 + 20*v^4 + 4*v^3 - 52*v^2 - 12*v + 52, |disc L| = disc(k)^2 * 293177
+all three split: N(conductor) = 293177 = Mat([293177, 1]), d = 4*v^5 + 8*v^4 - 4*v^3 - 12*v + 12, |disc L| = disc(k)^2 * 293177
+all three split: N(conductor) = 297025 = [5, 2; 109, 2], d = -12*v^5 + 48*v^3 - 12*v^2 - 36*v + 56, |disc L| = disc(k)^2 * 297025
+all three split: N(conductor) = 297025 = [5, 2; 109, 2], d = 12*v^3 + 12*v^2 - 36*v + 20, |disc L| = disc(k)^2 * 297025
+all three split: N(conductor) = 297025 = [5, 2; 109, 2], d = 12*v^5 - 60*v^3 + 72*v + 44, |disc L| = disc(k)^2 * 297025
+all three split: N(conductor) = 297725 = [5, 2; 11909, 1], d = -4*v^5 + 8*v^4 + 12*v^3 - 28*v^2 - 4*v + 44, |disc L| = disc(k)^2 * 297725
+all three split: N(conductor) = 297725 = [5, 2; 11909, 1], d = -16*v^5 - 8*v^4 + 76*v^3 + 16*v^2 - 80*v + 44, |disc L| = disc(k)^2 * 297725
+all three split: N(conductor) = 297725 = [5, 2; 11909, 1], d = 16*v^5 + 12*v^4 - 76*v^3 - 48*v^2 + 76*v + 68, |disc L| = disc(k)^2 * 297725
+all three split: N(conductor) = 297725 = [5, 2; 11909, 1], d = -4*v^5 - 12*v^4 + 8*v^3 + 40*v^2 + 20*v + 24, |disc L| = disc(k)^2 * 297725
+all three split: N(conductor) = 297725 = [5, 2; 11909, 1], d = 8*v^5 - 4*v^4 - 28*v^3 + 20*v^2 + 24, |disc L| = disc(k)^2 * 297725
+all three split: N(conductor) = 297725 = [5, 2; 11909, 1], d = 4*v^4 + 8*v^3 - 12*v + 20, |disc L| = disc(k)^2 * 297725
+all three split: N(conductor) = 298325 = [5, 2; 11933, 1], d = 8*v^5 + 8*v^4 - 32*v^3 - 8*v^2 + 28*v + 20, |disc L| = disc(k)^2 * 298325
+all three split: N(conductor) = 298325 = [5, 2; 11933, 1], d = -4*v^5 - 4*v^4 + 8*v^3 + 12*v^2 + 28*v + 40, |disc L| = disc(k)^2 * 298325
+all three split: N(conductor) = 298325 = [5, 2; 11933, 1], d = -24*v^5 - 16*v^4 + 108*v^3 + 48*v^2 - 100*v + 28, |disc L| = disc(k)^2 * 298325
+all three split: N(conductor) = 298325 = [5, 2; 11933, 1], d = 16*v^4 - 60*v^2 - 8*v + 68, |disc L| = disc(k)^2 * 298325
+all three split: N(conductor) = 298325 = [5, 2; 11933, 1], d = 16*v^5 + 4*v^4 - 80*v^3 - 24*v^2 + 80*v + 68, |disc L| = disc(k)^2 * 298325
+all three split: N(conductor) = 298325 = [5, 2; 11933, 1], d = 4*v^5 - 8*v^4 - 4*v^3 + 32*v^2 - 28*v + 28, |disc L| = disc(k)^2 * 298325
+totally real quadratic L/k with N(conductor) <= 300000: 813; number with 0, 1, 2, 3 of the (d,u_X)_k split: [2, 249, 0, 562]
+d = 2: [1, 1, 1], conductor norm 262144
+21.16 s, 1055340 kB (peak RSS)
+exit status 0

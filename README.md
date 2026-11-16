@@ -62,9 +62,12 @@ With the archive (a few minutes, except the last two):
     python3 code/f4/verify_hex_bin.py $R $B --jobs 2                        # 2.4 h: both hexagons
     python3 code/f4/pent_reduced.py $B --jobs 2                             # 11 h: the pentagon
 
-The verifiers end with a line starting `CONCLUSION:`. Partial runs of the last two:
-`verify_hex_bin.py ... --limit-primes 1` (all four-tuples, first prime only) and
-`pent_reduced.py ... --maxdim 100 --limit-primes 1`.
+The verifiers end with a line starting `CONCLUSION:`. Partial runs of the last two, about 4 minutes
+each with `--jobs 4`: `verify_hex_bin.py $R $B --jobs 4 --limit-primes 1` (all four-tuples, first
+prime only) and `pent_reduced.py $B --jobs 4 --maxdim 100 --limit-primes 1` (invertibility of all
+F-matrices; the five-tuples of dimension at most 100, first prime only). Both write a scratch file
+of 2.6 GB to `work/`. `logs/clean-clone/README.md` lists every command rerun from a fresh clone,
+with its result, time and memory.
 
 ## Rerunning one prime
 

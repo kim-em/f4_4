@@ -1,0 +1,16 @@
+## python3 code/checks/autoeq_checks.py deposit/F4_4_R_normalform.txt.xz
+1. fusion ring automorphisms: 4, orders [1, 2, 4, 4]
+    id
+    (0001 1000 2000 0004) (0010 0100 0020 0003) (1001 1002 1010 0012)
+    (0001 0004 2000 1000) (0010 0003 0020 0100) (1001 0012 1010 1002)
+    (0001 2000) (0010 0020) (1000 0004) (0003 0100) (1001 1010) (0012 1002)
+2. pairs of non-unit simples with simple tensor product: []
+   one-dimensional R[X,X,Z]: 100, all of the form zeta^e
+3. objects X != 1 with all monodromy scalars theta_Z/(theta_X theta_Y) = 1 (transparent): []
+4. pi, and the a in (Z/52)^* with R[pi X,pi X,pi Z] = sigma_a(R[X,X,Z]) (braided) or its inverse (reversed):
+   id: braided for a in [1, 27]; reversed for a in [25, 51]
+   (0001 1000 2000 0004) (0010 0100 0020 0003) (1001 1002 1010 0012): braided for a in [21, 47]; reversed for a in [5, 31]
+   (0001 0004 2000 1000) (0010 0003 0020 0100) (1001 0012 1010 1002): braided for a in [5, 31]; reversed for a in [21, 47]
+   (0001 2000) (0010 0020) (1000 0004) (0003 0100) (1001 1010) (0012 1002): braided for a in [25, 51]; reversed for a in [1, 27]
+0.80 s, 61300 kB (peak RSS)
+exit status 0

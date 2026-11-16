@@ -1,0 +1,5 @@
+## python3 code/checks/pseudo_unitary.py $F4_ARCHIVE/F4_4_R_normalform.txt $F4_ARCHIVE/F4_4_F_part1.bin $F4_ARCHIVE/F4_4_F_part2.bin
+1. sum_Z N_XY^Z d_Z = d_X d_Y exactly for all 256 pairs: True; d_X > 0 at zeta = e^(2 pi i/52): True; sum d_X^2 = 7402.7940133507
+2. (F^-1)[(1,0,0),(1,0,0)] = F[(1,0,0),(1,0,0)] for F = F[X,X,X,X], all 16 X, modulo [1073741189, 1073740201] at all 12 real roots: True
+23.12 s, 677916 kB (peak RSS)
+exit status 0

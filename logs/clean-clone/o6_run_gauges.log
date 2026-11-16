@@ -1,0 +1,4 @@
+## code/f4-forms/run_gauges.sh work/f4forms logs/clean-clone/run_gauges && cmp work/f4forms/h_pi1_a5.pkl code/f4-forms/data/h_pi1_a5.pkl && cmp work/f4forms/h_pi3_a5.pkl code/f4-forms/data/h_pi3_a5.pkl && echo 'gauges identical to code/f4-forms/data'
+gauges identical to code/f4-forms/data
+494.35 s, 624064 kB (peak RSS)
+exit status 0

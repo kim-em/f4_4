@@ -1,0 +1,6 @@
+## python3 code/checks/r_invariants.py deposit/F4_4_R_normalform.txt.xz
+R entries (nonzero) with an odd power of zeta in the exported gauge: 0 of 7374
+one-dimensional R[(X,X,Z)]: 100; with odd powers of zeta: 0 []
+R[(X,X,Z)] of size >= 2: 88; characteristic polynomial in Q(zeta^2) = Q(zeta_13): 88 of 88
+11.84 s, 60448 kB (peak RSS)
+exit status 0
