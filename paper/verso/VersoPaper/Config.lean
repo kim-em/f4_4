@@ -35,9 +35,17 @@ structure Config where
   statements : Array StatementKind
   /-- The text-mode notation roles the paper declares, by TeX macro name. -/
   notations : Array String := #[]
+  /-- TeX switches (`\newif\ifname`) used by `when` and `unless`, by name. The preamble declares
+  each one and sets it with `\nametrue` or `\namefalse`; the renderer reads the setting from there,
+  so that only the content TeX will typeset is numbered. -/
+  switches : Array String := #[]
   /-- The preamble template: everything before the document body. Placeholders:
   `%STATEMENTS%`, `%TITLE%`, `%SHORTTITLE%`, `%AUTHORS%`, `%DATE%`. -/
-  preamble : String
+  preamble : String := ""
+  /-- A file to read the preamble template from when the program runs, relative to the working
+  directory. Lake does not rebuild a module when a file it reads with `include_str` changes, so
+  reading the file at run time makes every edit of it take effect. -/
+  preambleFile : Option System.FilePath := none
   /-- Base name of the generated TeX, PDF and BibTeX files. -/
   jobName : String
   /-- Path of the document source, for the header of the generated TeX. -/

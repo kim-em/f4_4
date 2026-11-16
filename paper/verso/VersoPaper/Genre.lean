@@ -47,6 +47,8 @@ inductive Column where
   | left | center | right
   /-- A paragraph column whose width is the given fraction of the line width. -/
   | para (width : String)
+  /-- A ragged-right paragraph column whose width is the given fraction of the line width. -/
+  | ragged (width : String)
   deriving Repr, Inhabited, BEq
 
 structure TableSpec where
@@ -58,6 +60,10 @@ structure TableSpec where
   size : Option String := none
   /-- Row spacing factor, if not 1. -/
   rowSpacing : Option String := none
+  /-- A floating `table` with a caption; otherwise a centred tabular in the running text. -/
+  float : Bool := true
+  /-- Rules above, below and after the header rows. -/
+  rules : Bool := true
   deriving Repr, Inhabited
 
 inductive BlockKind where
@@ -74,6 +80,15 @@ inductive BlockKind where
   | caption
   /-- A table cell spanning `span` columns, with its own column format. -/
   | cell (span : Nat) (column : Option Column)
+  /-- A table row that is a rule separating groups of rows. -/
+  | rule
+  /-- The title of a statement, with markup such as citations; the first block of the statement. -/
+  | title
+  /-- A code block set in the given font size (`small`, `footnotesize`, ...), if not normal. -/
+  | listing (size : Option String)
+  /-- Content shown when the TeX switch `switch` (declared by the paper) is true, or when it is
+  false if `positive` is false. -/
+  | conditional (switch : String) (positive : Bool)
   /-- The bibliography, generated from the paper's references. -/
   | bibliography
   deriving Repr, Inhabited
@@ -90,6 +105,8 @@ inductive InlineKind where
   /-- A text-mode notation declared by the paper, rendered by the TeX macro of that name with the
   content as its argument: literal text for code content, otherwise rendered markup. -/
   | notation (name : String)
+  /-- Text shown when the TeX switch `switch` is true, or when it is false if `positive` is false. -/
+  | conditional (switch : String) (positive : Bool)
   deriving Repr, Inhabited
 
 def Paper : Genre where
@@ -110,6 +127,7 @@ instance : Lean.Quote Column where
     | .center => Lean.Syntax.mkCApp ``Column.center #[]
     | .right => Lean.Syntax.mkCApp ``Column.right #[]
     | .para w => Lean.Syntax.mkCApp ``Column.para #[quote w]
+    | .ragged w => Lean.Syntax.mkCApp ``Column.ragged #[quote w]
 
 instance : Lean.Quote DisplayForm where
   quote
@@ -118,16 +136,19 @@ instance : Lean.Quote DisplayForm where
     | .align => Lean.Syntax.mkCApp ``DisplayForm.align #[]
     | .gather => Lean.Syntax.mkCApp ``DisplayForm.gather #[]
 
-/-- Parses a column: `l`, `c`, `r`, or `p0.4` for a paragraph column of 0.4 line widths. -/
+/-- Parses a column: `l`, `c`, `r`, `p0.4` for a paragraph column of 0.4 line widths, or `P0.4`
+for a ragged-right one. -/
 def Column.parse (s : String) : Except String Column :=
   match s with
   | "l" => pure .left
   | "c" => pure .center
   | "r" => pure .right
   | _ =>
-    if s.startsWith "p" && (s.drop 1).toString.all (fun c => c.isDigit || c == '.') && s.length > 1 then
-      pure (.para (s.drop 1).toString)
-    else throw s!"Unknown column '{s}': expected l, c, r or p<fraction>"
+    let width := (s.drop 1).toString
+    let isWidth := s.length > 1 && width.all (fun c => c.isDigit || c == '.')
+    if s.startsWith "p" && isWidth then pure (.para width)
+    else if s.startsWith "P" && isWidth then pure (.ragged width)
+    else throw s!"Unknown column '{s}': expected l, c, r, p<fraction> or P<fraction>"
 
 def parseColumns (s : String) : Except String (Array Column) :=
   (s.splitOn " " |>.filter (· ≠ "") |>.toArray).mapM Column.parse
@@ -160,10 +181,25 @@ structure TableArgs where
   header : Nat
   size : Option String
   rowSpacing : Option String
+  float : Bool
+  rules : Bool
 
 instance : FromArgs TableArgs DocElabM where
   fromArgs := TableArgs.mk <$> optional (.positional `label .string) <*> .named `columns .string false <*>
-    .namedD `header .nat 0 <*> .named `size .string true <*> .named `rowSpacing .string true
+    .namedD `header .nat 0 <*> .named `size .string true <*> .named `rowSpacing .string true <*>
+    .flag `float true <*> .flag `rules true
+
+structure SizeArg where
+  size : Option String
+
+instance : FromArgs SizeArg DocElabM where
+  fromArgs := SizeArg.mk <$> .named `size .string true
+
+structure SwitchArg where
+  switch : String
+
+instance : FromArgs SwitchArg DocElabM where
+  fromArgs := SwitchArg.mk <$> .positional `switch .string
 
 structure CellArgs where
   span : Nat
@@ -243,7 +279,8 @@ meta def table : DirectiveExpanderOf TableArgs := fun args content => do
     | .error e => throwError e
   let content ← content.mapM elabBlock
   ``(Block.other (genre := Paper)
-      (BlockKind.table (TableSpec.mk $(quote args.label) $(quote columns) $(quote args.header) $(quote args.size) $(quote args.rowSpacing)))
+      (BlockKind.table (TableSpec.mk $(quote args.label) $(quote columns) $(quote args.header) $(quote args.size)
+        $(quote args.rowSpacing) $(quote args.float) $(quote args.rules)))
       #[$content,*])
 
 @[directive]
@@ -259,6 +296,31 @@ meta def cell : DirectiveExpanderOf CellArgs := fun args content => do
     | some (.error e) => throwError e
   let content ← content.mapM elabBlock
   ``(Block.other (genre := Paper) (BlockKind.cell $(quote args.span) $(quote column)) #[$content,*])
+
+@[directive]
+meta def rule : DirectiveExpanderOf Unit := fun () content => do
+  unless content.isEmpty do throwError "A rule row has no content"
+  ``(Block.other (genre := Paper) BlockKind.rule #[])
+
+@[directive]
+meta def title : DirectiveExpanderOf Unit := fun () content => do
+  let content ← content.mapM elabBlock
+  ``(Block.other (genre := Paper) BlockKind.title #[$content,*])
+
+@[directive]
+meta def listing : DirectiveExpanderOf SizeArg := fun arg content => do
+  let content ← content.mapM elabBlock
+  ``(Block.other (genre := Paper) (BlockKind.listing $(quote arg.size)) #[$content,*])
+
+/-- Blocks shown when the paper's TeX switch is true (`when`) or false (`unless`). -/
+meta def conditionalBlockExpander (positive : Bool) : DirectiveExpanderOf SwitchArg := fun arg content => do
+  let content ← content.mapM elabBlock
+  ``(Block.other (genre := Paper) (BlockKind.conditional $(quote arg.switch) $(quote positive)) #[$content,*])
+
+@[directive]
+meta def «when» := conditionalBlockExpander true
+@[directive]
+meta def «unless» := conditionalBlockExpander false
 
 @[directive]
 meta def bibliography : DirectiveExpanderOf Unit := fun () content => do
@@ -301,5 +363,16 @@ meta def file : RoleExpanderOf Unit := fun () content => do
 meta def notationExpander (name : String) : RoleExpanderOf Unit := fun () content => do
   let content ← content.mapM elabInline
   ``(Inline.other (genre := Paper) (InlineKind.notation $(quote name)) #[$content,*])
+
+/-- Text shown when the paper's TeX switch is true (`when`) or false (`unless`). -/
+meta def conditionalInlineExpander (positive : Bool) : RoleExpanderOf SwitchArg := fun arg content => do
+  let content ← content.mapM elabInline
+  ``(Inline.other (genre := Paper) (InlineKind.conditional $(quote arg.switch) $(quote positive)) #[$content,*])
+
+-- The roles share the names of the directives, as in Verso's blog genre.
+@[role «when»]
+meta def whenRole := conditionalInlineExpander true
+@[role «unless»]
+meta def unlessRole := conditionalInlineExpander false
 
 end VersoPaper

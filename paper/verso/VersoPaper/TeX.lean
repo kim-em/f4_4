@@ -32,6 +32,21 @@ structure NumState where
   tables : Nat := 0
   labels : Std.HashMap String LabelInfo := {}
   order : Array String := #[]
+  /-- Labels in content that TeX does not typeset under the current switch settings. -/
+  inactive : Std.HashMap String LabelInfo := {}
+
+/-- The setting of a TeX switch, read from the preamble: the last `\nametrue` or `\namefalse`
+outside comments. -/
+def switchValue (cfg : Config) (name : String) : Except String Bool := do
+  unless cfg.switches.contains name do throw s!"Undeclared switch: {name}"
+  let mut value := none
+  for line in cfg.preamble.splitOn "\n" do
+    let code := (line.splitOn "%")[0]!
+    for (word, v) in [("\\" ++ name ++ "true", true), ("\\" ++ name ++ "false", false)] do
+      if (code.splitOn word).length > 1 then value := some v
+  match value with
+  | some v => pure v
+  | none => throw s!"The preamble does not set the switch {name}"
 
 abbrev NumM := ReaderT Config (StateT NumState (Except String))
 
@@ -61,6 +76,21 @@ def levelOf (within : String) : Except String Nat :=
   | some i => pure (i + 1)
   | none => throw s!"Unknown sectioning level: {within}"
 
+/-- Runs `act` on content that TeX does not typeset: its labels are recorded as inactive, and the
+counters are left unchanged. -/
+def inactiveScope (act : NumM Unit) : NumM Unit := do
+  let saved ← get
+  set { saved with labels := {}, order := #[] }
+  act
+  let after ← get
+  set { saved with inactive := after.labels.fold (init := after.inactive) fun m k v => m.insert k v }
+
+/-- Numbers content shown under a switch setting, if TeX typesets it. -/
+def conditionalScope (switch : String) (positive : Bool) (act : NumM Unit) : NumM Unit := do
+  match switchValue (← read) switch with
+  | .error e => throw e
+  | .ok v => if v == positive then act else inactiveScope act
+
 partial def numberInline : Inline Paper → NumM Unit
   | .other (.display _ (some label)) _ => do
     modify fun s => { s with equations := s.equations + 1 }
@@ -69,12 +99,19 @@ partial def numberInline : Inline Paper → NumM Unit
       | none => pure ""
       | some w => do pure ((← currentSectionNumber (← liftExcept (levelOf w))) ++ ".")
     addLabel label { kind := .equation, number := pre ++ toString n }
+  | .other (.conditional sw pos) xs => conditionalScope sw pos (xs.forM numberInline)
   | .other _ xs | .emph xs | .bold xs | .link xs _ | .concat xs | .footnote _ xs => xs.forM numberInline
   | _ => pure ()
 where
   liftExcept {α} (e : Except String α) : NumM α := match e with
     | .ok a => pure a
     | .error err => throw err
+
+/-- Expands `concat` blocks, which Verso uses to group consecutive blocks. -/
+partial def flatten (bs : Array (Block Paper)) : Array (Block Paper) :=
+  bs.flatMap fun
+    | .concat xs => flatten xs
+    | b => #[b]
 
 partial def numberBlock : Block Paper → NumM Unit
   | .para xs => xs.forM numberInline
@@ -95,9 +132,14 @@ partial def numberBlock : Block Paper → NumM Unit
     else if label.isSome then throw s!"Unnumbered {kind} cannot have a label"
     xs.forM numberBlock
   | .other (.table spec) xs => do
-    modify fun s => { s with tables := s.tables + 1 }
-    if let some l := spec.label then addLabel l { kind := .table, number := toString (← get).tables }
+    -- As in LaTeX, the caption steps the table counter.
+    let captioned := (flatten xs).any fun | .other .caption _ => true | _ => false
+    if captioned then
+      modify fun s => { s with tables := s.tables + 1 }
+      if let some l := spec.label then addLabel l { kind := .table, number := toString (← get).tables }
+    else if spec.label.isSome then throw s!"Table {spec.label} has a label but no caption"
     xs.forM numberBlock
+  | .other (.conditional sw pos) xs => conditionalScope sw pos (xs.forM numberBlock)
   | .other _ xs => xs.forM numberBlock
   | .code _ => pure ()
 where
@@ -137,6 +179,10 @@ def computeNumbers (cfg : Config) (doc : Part Paper) : Except String NumState :=
 structure Context where
   config : Config
   labels : Std.HashMap String LabelInfo
+  /-- Labels of content that TeX does not typeset. -/
+  inactiveLabels : Std.HashMap String LabelInfo := {}
+  /-- Whether the content being rendered is not typeset under the current switch settings. -/
+  inactive : Bool := false
   /-- Content of the `.bbl` file, when the bibliography is to be included in the TeX source. -/
   bbl : Option String := none
 
@@ -153,6 +199,9 @@ def charTeX : Char → Except String String
   | '–' => pure "--" | '—' => pure "---"
   | '“' => pure "``" | '”' => pure "''" | '‘' => pure "`" | '’' => pure "'"
   | '…' => pure "\\dots{}"
+  | '\u2003' => pure "\\quad{}"   -- em space
+  | '\u2008' => pure "\\ "        -- punctuation space: an interword space after a period that
+                                  -- does not end a sentence
   | 'ä' => pure "\\\"a" | 'ö' => pure "\\\"o" | 'ü' => pure "\\\"u"
   | 'Ä' => pure "\\\"A" | 'Ö' => pure "\\\"O" | 'Ü' => pure "\\\"U"
   | 'é' => pure "\\'e" | 'è' => pure "\\`e" | 'á' => pure "\\'a" | 'í' => pure "\\'i"
@@ -181,6 +230,13 @@ def escape (s : String) : RenderM String := do
   if afterEllipsis then out := out ++ "{}"
   return out
 
+/-- Typewriter text: as `escape`, with `--` kept as two hyphens. -/
+def escapeCode (s : String) : RenderM String := do
+  let mut t ← escape s
+  while (t.splitOn "--").length > 1 do
+    t := t.replace "--" "-{}-"
+  return t
+
 def command (name text : String) := "\\" ++ name ++ "{" ++ text ++ "}"
 def join (xs : Array String) := String.join xs.toList
 
@@ -197,9 +253,22 @@ def hrefURL (url : String) : String :=
   url.replace "\\" "\\\\" |>.replace "#" "\\#" |>.replace "%" "\\%"
 
 def labelInfo (label : String) : RenderM LabelInfo := do
-  match (← read).labels[label]? with
-  | some i => pure i
-  | none => throw s!"Undefined label: {label}"
+  let ctx ← read
+  match ctx.labels[label]?, ctx.inactiveLabels[label]? with
+  | some i, _ => pure i
+  | none, some i =>
+    if ctx.inactive then pure i
+    else throw s!"Label {label} is defined only in content that TeX does not typeset"
+  | none, none => throw s!"Undefined label: {label}"
+
+def switchSetting (switch : String) : RenderM Bool := do
+  match switchValue (← read).config switch with
+  | .ok v => pure v
+  | .error e => throw e
+
+/-- Renders content that TeX does not typeset when `skipped` holds. -/
+def withSkipped {α} (skipped : Bool) (act : RenderM α) : RenderM α :=
+  withReader (fun c => { c with inactive := c.inactive || skipped }) act
 
 partial def plainText : Inline Paper → Option String
   | .text s => some s
@@ -221,7 +290,7 @@ partial def inlineTeX : Inline Paper → RenderM String
   | .text s => escape s
   | .emph xs => do pure (command "emph" (join (← xs.mapM inlineTeX)))
   | .bold xs => do pure (command "textbf" (join (← xs.mapM inlineTeX)))
-  | .code s => do pure (command "texttt" (← escape s))
+  | .code s => do pure (command "texttt" (← escapeCode s))
   | .math .inline s => pure ("$" ++ s ++ "$")
   | .math .display s => pure ("\\[" ++ s ++ "\\]")
   | .linebreak _ => pure "\n"
@@ -268,6 +337,9 @@ partial def inlineTeX : Inline Paper → RenderM String
     match xs with
     | #[.code s] => pure (command name (← escape s))
     | _ => do pure (command name (join (← xs.mapM inlineTeX)))
+  | .other (.conditional sw pos) xs => do
+    let body ← withSkipped ((← switchSetting sw) != pos) (join <$> xs.mapM inlineTeX)
+    pure ("\\if" ++ sw ++ (if pos then " " else "\\else ") ++ body ++ "\\fi")
 
 /-- The `enumitem` label for a pattern such as `(i)`, `(a)`, `(1)` or `Step 1.`. -/
 def listLabel (pattern : String) : RenderM String := do
@@ -292,20 +364,16 @@ def listLabel (pattern : String) : RenderM String := do
 def columnTeX : Column → String
   | .left => "l" | .center => "c" | .right => "r"
   | .para w => "p{" ++ w ++ "\\linewidth}"
+  | .ragged w => ">{\\raggedright\\arraybackslash}p{" ++ w ++ "\\linewidth}"
 
 def isListLike : Block Paper → Bool
-  | .ul .. | .ol .. | .code .. | .other (.list ..) _ => true
+  | .ul .. | .ol .. | .code .. | .other (.list ..) _ | .other (.listing ..) _ => true
+  | .other (.table spec) _ => !spec.float
   | _ => false
 
 def isPara : Block Paper → Bool
   | .para .. => true
   | _ => false
-
-/-- Expands `concat` blocks, which Verso uses to group consecutive blocks. -/
-partial def flatten (bs : Array (Block Paper)) : Array (Block Paper) :=
-  bs.flatMap fun
-    | .concat xs => flatten xs
-    | b => #[b]
 
 def trimEnd (s : String) : String := s.trimAsciiEnd.toString
 
@@ -316,17 +384,57 @@ break is made before it, after a paragraph, or after it, before a paragraph. -/
 partial def blocksTeX (bs : Array (Block Paper)) : RenderM String := do
   let bs := flatten bs
   let mut out := ""
-  for h : i in [0:bs.size] do
+  let mut i := 0
+  while h : i < bs.size do
     let b := bs[i]
+    -- A `when` block followed by the `unless` block of the same switch, or conversely, becomes one
+    -- `\if...\else...\fi`.
+    if let .other (.conditional sw pos) xs := b then
+      if let some (.other (.conditional sw' pos') ys) := (bs[i+1]? : Option (Block Paper)) then
+        if sw == sw' && pos != pos' then
+          let (yes, no) := if pos then (xs, ys) else (ys, xs)
+          out := out ++ (← conditionalTeX sw (some yes) (some no))
+          i := i + 2
+          continue
     let next := bs[i+1]?
     let s ← blockTeX b
-    if isPara b && next.any isListLike then
+    -- A paragraph started by `paragraph` is followed by a list as any other paragraph.
+    let paraLike := isPara b || (match b with | .other .paragraph _ => true | _ => false)
+    if paraLike && next.any isListLike then
       out := out ++ trimEnd s ++ "\n"
     else if isListLike b && !(next.any isPara) then
       out := out ++ trimEnd s ++ "\n\n"
     else
       out := out ++ s
+    i := i + 1
   return out
+
+/-- `\ifswitch`, the blocks shown when it is true, `\else`, those shown when it is false, `\fi`. -/
+partial def conditionalTeX (sw : String) (yes no : Option (Array (Block Paper))) : RenderM String := do
+  let v ← switchSetting sw
+  let yesTeX ← match yes with
+    | some xs => do pure (trimEnd (← withSkipped (!v) (blocksTeX xs)) ++ "\n")
+    | none => pure ""
+  let noTeX ← match no with
+    | some xs => do pure ("\\else\n" ++ trimEnd (← withSkipped v (blocksTeX xs)) ++ "\n")
+    | none => pure ""
+  return "\\if" ++ sw ++ "\n" ++ yesTeX ++ noTeX ++ "\\fi\n\n"
+
+/-- The optional argument of a statement or proof: a `title` string (TeX math between `$` signs)
+or a `title` block as the first block of the content, which is removed from the content. -/
+partial def titleArg (title : Option String) (xs : Array (Block Paper)) :
+    RenderM (String × Array (Block Paper)) := do
+  let xs := flatten xs
+  match (xs[0]? : Option (Block Paper)) with
+  | some (.other .title ts) =>
+    if title.isSome then throw "A statement has both a title argument and a title block"
+    let #[.para is] := flatten ts | throw "A title block must contain one paragraph"
+    -- Braces protect brackets in the title, such as those of citations with locators.
+    return ("[{" ++ trimEnd (join (← is.mapM inlineTeX)) ++ "}]", xs.extract 1 xs.size)
+  | _ =>
+    match title with
+    | some t => return ("[" ++ (← textWithMath t) ++ "]", xs)
+    | none => return ("", xs)
 
 partial def itemsTeX (items : Array (ListItem (Block Paper))) : RenderM String := do
   let mut out := ""
@@ -364,6 +472,7 @@ partial def cellTeX (spec : TableSpec) (b : Block Paper) : RenderM (Nat × Strin
   | _ => throw s!"Unsupported table cell in table {spec.label}"
 
 partial def rowTeX (spec : TableSpec) (row : ListItem (Block Paper)) : RenderM String := do
+  if let #[.other .rule _] := flatten row.contents then return "\\midrule\n"
   let #[.ul cells] := flatten row.contents
     | throw s!"A table row must be a list of cells (table {spec.label})"
   let mut out := #[]
@@ -390,13 +499,19 @@ partial def tableTeX (spec : TableSpec) (content : Array (Block Paper)) : Render
     | _ => throw s!"A table contains a caption and a list of rows (table {spec.label})"
   let mut body := ""
   for h : i in [0:rows.size] do
-    if i == spec.header && spec.header > 0 then body := body ++ "\\midrule\n"
+    if i == spec.header && spec.header > 0 && spec.rules then body := body ++ "\\midrule\n"
     body := body ++ (← rowTeX spec rows[i])
-  let mut out := "\\begin{table}[" ++ cfg.tablePlacement ++ "]\n\\centering\n"
+  let mut out := if spec.float then "\\begin{table}[" ++ cfg.tablePlacement ++ "]\n\\centering\n"
+    else "\\begin{center}\n"
   if let some s := spec.size then out := out ++ "\\" ++ s ++ "\n"
   if let some r := spec.rowSpacing then out := out ++ "\\renewcommand{\\arraystretch}{" ++ r ++ "}\n"
-  out := out ++ "\\begin{tabular}{" ++ String.join (spec.columns.toList.map columnTeX) ++ "}\n\\toprule\n"
-  out := out ++ body ++ "\\bottomrule\n\\end{tabular}\n"
+  out := out ++ "\\begin{tabular}{" ++ String.join (spec.columns.toList.map columnTeX) ++ "}\n"
+  if spec.rules then out := out ++ "\\toprule\n"
+  out := out ++ body ++ (if spec.rules then "\\bottomrule\n" else "") ++ "\\end{tabular}\n"
+  -- A table that does not float is part of the running text: no caption, number or label.
+  if !spec.float then
+    if caption.isSome || spec.label.isSome then throw "A table that does not float has no caption or label"
+    return out ++ "\\end{center}\n"
   if let some c := caption then
     out := out ++ cfg.captionSkip ++ "\n" ++ command "caption" c ++ "\n"
   if let some l := spec.label then out := out ++ command "label" l ++ "\n"
@@ -414,16 +529,22 @@ partial def blockTeX : Block Paper → RenderM String
     let _ ← match statementKind (← read).config kind with
       | .ok k => pure k
       | .error e => throw e
-    let opt ← match title with
-      | some t => do pure ("[" ++ (← textWithMath t) ++ "]")
-      | none => pure ""
+    let (opt, xs) ← titleArg title xs
     let lbl := match label with | some l => command "label" l | none => ""
     pure ("\\begin{" ++ kind ++ "}" ++ opt ++ lbl ++ "\n" ++ trimEnd (← blocksTeX xs) ++ "\n\\end{" ++ kind ++ "}\n\n")
   | .other (.proof title) xs => do
-    let opt ← match title with
-      | some t => do pure ("[" ++ (← textWithMath t) ++ "]")
-      | none => pure ""
+    let (opt, xs) ← titleArg title xs
     pure ("\\begin{proof}" ++ opt ++ "\n" ++ trimEnd (← blocksTeX xs) ++ "\n\\end{proof}\n\n")
+  | .other .title _ => throw "A title block must be the first block of a statement or proof"
+  | .other .rule _ => throw "A rule must be a row of a table"
+  | .other (.listing size) xs => do
+    let #[.code s] := flatten xs | throw "A listing must contain one code block"
+    let v := "\\begin{verbatim}\n" ++ trimEnd s ++ "\n\\end{verbatim}\n"
+    pure (match size with
+      | some sz => "{\\" ++ sz ++ "\n" ++ v ++ "}\n"
+      | none => v)
+  | .other (.conditional sw pos) xs =>
+    if pos then conditionalTeX sw (some xs) none else conditionalTeX sw none (some xs)
   | .other (.list label indent) xs => do
     let #[b] := flatten xs | throw "A list directive must contain exactly one list"
     listTeX b label indent
@@ -441,10 +562,18 @@ partial def blockTeX : Block Paper → RenderM String
 
 end
 
+/-- An inline of a heading. Mathematics gets a plain alternative for PDF bookmarks: the TeX source
+without backslashes, braces, `_` and `^`. -/
+def headingInlineTeX : Inline Paper → RenderM String
+  | .math .inline s =>
+    let plain := String.ofList (s.toList.filter (fun c => !"\\{}_^".contains c))
+    pure ("\\texorpdfstring{$" ++ s ++ "$}{" ++ plain ++ "}")
+  | i => inlineTeX i
+
 partial def partTeX (p : Part Paper) (level : Nat) : RenderM String := do
   let md := p.metadata.getD {}
   let some name := sectionNames[level - 1]? | throw "Too many heading levels"
-  let heading := "\\" ++ name ++ (if md.number then "" else "*") ++ "{" ++ join (← p.title.mapM inlineTeX) ++ "}"
+  let heading := "\\" ++ name ++ (if md.number then "" else "*") ++ "{" ++ join (← p.title.mapM headingInlineTeX) ++ "}"
   let labels := String.join ((md.label.toList ++ md.aliases).map (command "label"))
   let body ← blocksTeX p.content
   let subs ← p.subParts.mapM (partTeX · (level + 1))
@@ -522,7 +651,7 @@ def labelsJson (st : NumState) : String :=
 /-- Checks that every reference resolves, and returns the numbering and the TeX. -/
 def render (cfg : Config) (doc : Part Paper) (bbl : Option String) : Except String (NumState × String) := do
   let st ← computeNumbers cfg doc
-  let tex ← (documentTeX doc).run { config := cfg, labels := st.labels, bbl }
+  let tex ← (documentTeX doc).run { config := cfg, labels := st.labels, inactiveLabels := st.inactive, bbl }
   return (st, tex)
 
 end VersoPaper

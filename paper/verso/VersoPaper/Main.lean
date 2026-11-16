@@ -21,6 +21,9 @@ def run (cfg : Config) (doc : Part Paper) (args : List String) : IO UInt32 := do
     | a :: _ => throw (IO.userError s!"Unknown argument: {a}")
   let (bblFile, out) ← parse none "_out" args
   let bbl ← bblFile.mapM IO.FS.readFile
+  let cfg ← match cfg.preambleFile with
+    | some f => do pure { cfg with preamble := ← IO.FS.readFile f }
+    | none => pure cfg
   match render cfg doc bbl with
   | .error e =>
     IO.eprintln s!"error: {e}"

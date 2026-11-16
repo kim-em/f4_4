@@ -21,7 +21,7 @@ def config : Config where
     { name := "remark", heading := "Remark", style := "definition", counter := some "theorem" },
     { name := "example", heading := "Example", style := "definition", counter := some "theorem" }]
   notations := #["ob"]
-  preamble := include_str "../paper-style.tex"
+  preambleFile := some "paper-style.tex"
   jobName := "f4-fsymbols"
   source := "verso/Paper/Text.lean"
   buildCommand := "make -C paper"

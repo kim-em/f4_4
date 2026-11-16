@@ -25,10 +25,17 @@ for label, info in expected.items():
     if actual.get(label) != info['number']:
         failures.append(f'label {label}: renderer {info["number"]}, TeX {actual.get(label)}')
 
-# The PDF ends with the Verso credit.
+# The text ends with the Verso credit: it ends its page, and any later pages hold only tables that
+# TeX deferred to the end (a float page has a table caption and no other text flow).
+CREDIT = 'Document prepared in Verso.'
 text = subprocess.check_output(['pdftotext', str(OUT / f'{JOB}.pdf'), '-'], text=True)
-if not re.sub(r'\s+', ' ', text).strip().endswith('Document prepared in Verso.'):
-    failures.append('the PDF does not end with the Verso credit')
+pages = [re.sub(r'\s+', ' ', p).strip() for p in text.split('\f')]
+pages = [p for p in pages if p]
+ends = [k for k, p in enumerate(pages) if p.endswith(CREDIT)]
+if not ends or sum(p.count(CREDIT) for p in pages) != 1:
+    failures.append('the text does not end with the Verso credit')
+elif not all(re.search(r'Table \d+\. ', p) for p in pages[ends[0] + 1:]):
+    failures.append('text other than deferred tables follows the Verso credit')
 
 # The source contains no raw TeX blocks and no layout commands outside mathematics.
 source = (ROOT / 'Paper' / 'Text.lean').read_text()
