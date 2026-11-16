@@ -252,7 +252,10 @@ partial def inlineTeX : Inline Paper → RenderM String
     pure (command "texttt" out)
   | .other (.notation name) xs => do
     unless (← read).config.notations.contains name do throw s!"Undeclared notation: {name}"
-    pure (command name (← escape (← literal xs s!"The notation {name}")))
+    -- Code content is literal text (`{ob}`0011``); other content is rendered as inline markup.
+    match xs with
+    | #[.code s] => pure (command name (← escape s))
+    | _ => do pure (command name (join (← xs.mapM inlineTeX)))
 
 /-- The `enumitem` label for a pattern such as `(i)`, `(a)`, `(1)` or `Step 1.`. -/
 def listLabel (pattern : String) : RenderM String := do

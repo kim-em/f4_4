@@ -87,7 +87,8 @@ inductive InlineKind where
   | display (form : DisplayForm) (label : Option String)
   /-- A file or directory name. -/
   | file
-  /-- A text-mode notation declared by the paper, rendered by the TeX macro of that name. -/
+  /-- A text-mode notation declared by the paper, rendered by the TeX macro of that name with the
+  content as its argument: literal text for code content, otherwise rendered markup. -/
   | notation (name : String)
   deriving Repr, Inhabited
 
