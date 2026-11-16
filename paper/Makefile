@@ -1,9 +1,12 @@
-all: build/f4-fsymbols.pdf
+# The paper is generated from the Verso source in verso/; see verso/README.md.
+.PHONY: all submission clean
 
-build/f4-fsymbols.pdf: f4-fsymbols.tex f4-fsymbols.bib
-	latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build f4-fsymbols.tex
+all:
+	./verso/build.sh
+
+# A self-contained TeX upload (no BibTeX run needed), in verso/_out/submission/.
+submission: all
+	python3 package.py
 
 clean:
-	latexmk -C -outdir=build f4-fsymbols.tex
-
-.PHONY: all clean
+	rm -rf verso/_out build

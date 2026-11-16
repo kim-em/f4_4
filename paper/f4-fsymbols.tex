@@ -1,3 +1,4 @@
+% Generated from verso/Paper/Text.lean by make -C paper. Do not edit.
 \documentclass[11pt]{amsart}
 
 \usepackage[T1]{fontenc}
@@ -14,6 +15,7 @@
 \setlength{\skip\footins}{8pt plus 4pt minus 2pt}
 \usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
+\setlist[itemize]{leftmargin=2em}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
@@ -36,7 +38,6 @@
 \newcommand{\Tr}{\operatorname{Tr}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\one}{\mathbf 1}
-\newcommand{\file}[1]{\texttt{#1}}
 \newcommand{\norm}[1]{\lVert #1\rVert}
 \newcommand{\ob}[1]{\texttt{#1}}
 \newcommand{\Uq}{U_q(\mathfrak f_4)}
@@ -47,11 +48,6 @@
 \newcommand{\Kt}{\Q(\zeta_{13})}
 \newcommand{\Fn}{F^{\natural}}
 \newcommand{\Rn}{R^{\natural}}
-
-% =========================================================================
-% Open items render visibly via \pending{...}; search for \pending.
-\newcommand{\pending}[1]{{\color{red!70!black}\textbf{[Pending:} #1\textbf{]}}}
-% =========================================================================
 
 \title[An explicit presentation of $\cC(F_4,4)$]{An explicit presentation of the modular tensor category $\cC(F_4,4)$}
 \author{Kim Morrison}
@@ -80,7 +76,6 @@ programs are available with the paper.
 \maketitle
 
 \section{Introduction}
-
 A fusion category is described, up to equivalence, by its fusion rules together with its
 F-symbols: the matrix coefficients of the associativity constraint in chosen bases of the spaces
 $\Hom(X\otimes Y,Z)$ of simple objects. For a braided category one adds R-symbols, the matrix
@@ -129,7 +124,7 @@ The category $\CF$ has $16$ simple objects, all self-dual, and its fusion multip
 $10$ (in $X\otimes X$ for the $4096$-dimensional object $X$ of highest weight $(0,0,1,1)$). Its
 F-symbols with all multiplicity indices number about $5.5\times10^7$. We compute them from the
 quantum group, as follows.
-\begin{itemize}[leftmargin=2em]
+\begin{itemize}
 \item Everything is computed over finite fields $\F_p$ with $p\equiv1\pmod{52}$, which contain
 the root of unity. Simple modules of $\Uq$ are built weight space by weight space, and only the
 tensor powers $V^{\otimes n}$, $n\le4$, of the $26$-dimensional module $V$ are used, through a
@@ -174,9 +169,9 @@ object $X$ is self-dual with $F[X,X,X,X]_{(\one,0,0),(\one,0,0)}=1/d_X$, $d_X$ t
 dimension~\eqref{eq:qdim}.
 \item The numbers
 \[
-\tilde\theta_X=d_X^{-1}\sum_Zd_Z\Tr R[X,X,Z],\qquad
-\tilde S_{XY}=\sum_Zd_Z\Tr\bigl(R[Y,X,Z]\,R[X,Y,Z]\bigr)
-\]
+   \tilde\theta_X=d_X^{-1}\sum_Zd_Z\Tr R[X,X,Z],\qquad
+   \tilde S_{XY}=\sum_Zd_Z\Tr\bigl(R[Y,X,Z]\,R[X,Y,Z]\bigr)
+   \]
 are exactly the twists $q^{(X,X+2\rho)}$ and the ratios $S_{XY}/S_{\one\one}$ of the Kac--Peterson
 $S$-matrix, and $R[Y,X,Z]\,R[X,Y,Z]=\tilde\theta_Z\tilde\theta_X^{-1}\tilde\theta_Y^{-1}\cdot\id$ for
 all $X,Y,Z$. The matrix $\tilde S$ is invertible: $\tilde S^2=\mathcal D^2\cdot\id$ with
@@ -184,6 +179,7 @@ $\mathcal D^2=\sum_Xd_X^2$.
 \item With the labels of the simple objects fixed, no gauge has all F-symbols in a proper subfield
 of $\kk$, and no gauge has all F- and R-symbols in a proper subfield of $\Kt$.
 \end{enumerate}
+
 
 Consequently the data define a braided fusion category over $\Kt$, with F-symbols over $\kk$ and
 the fusion rules of $\CF$ (rigid by (iii) and Proposition~\ref{prop:rigid}), and with its spherical
@@ -238,7 +234,6 @@ and how to reproduce the computation, and Section~\ref{sec:limits} discusses lim
 question.
 
 \section{The category}\label{sec:category}
-
 \subsection{Root data}
 We use Bourbaki's numbering of the simple roots of $F_4$~\cite{Bourbaki}: $\alpha_1,\alpha_2$
 long and $\alpha_3,\alpha_4$ short, with Cartan matrix
@@ -287,14 +282,14 @@ with conformal weights $h_\lambda=(\lambda,\lambda+2\rho)/52$. All $(\lambda,\la
 so the twists lie in $\mu_{26}$. The central charge is
 $c=k\dim\mathfrak f_4/(k+h^\vee)=4\cdot52/13=16$, and the global dimension is
 $\mathcal D^2=\sum_\lambda d_\lambda^2\approx7402.7940133506$, $\mathcal D\approx86.0394910105$.
-Table~\ref{tab:objects} lists the simple objects (\file{exact\_checks.py}).
+Table~\ref{tab:objects} lists the simple objects (\texttt{exact\_checks.py}).
 
 \begin{table}[ht]
 \centering
 \renewcommand{\arraystretch}{1.05}
 \begin{tabular}{rlrrlrl}
 \toprule
-& $\lambda$ & $\dim L(\lambda)$ & $d_\lambda$ & $h_\lambda$ & depth & $v_{13}(d_\lambda)$ \\
+ & $\lambda$ & $\dim L(\lambda)$ & $d_\lambda$ & $h_\lambda$ & depth & $v_{13}(d_\lambda)$ \\
 \midrule
 0 & \ob{0000} & 1 & 1 & 0 & 0 & 0 \\
 1 & \ob{0001} & 26 & 7.3021868179 & 6/13 & 1 & 0 \\
@@ -373,7 +368,6 @@ $X$ & $X\otimes V$ \\
 \end{table}
 
 \section{Conventions for F- and R-symbols}\label{sec:conventions}
-
 We fix conventions for F-symbols with multiplicities; see~\cite{EGNO,BakalovKirillov} for
 generalities on fusion and braided categories. Let $\cC$ be a semisimple $k$-linear monoidal
 category over a field $k$ of characteristic zero, with simple unit $\one$, finitely many simple
@@ -416,7 +410,6 @@ $\phi^{CD\to R}_k$, and apply~\eqref{eq:F} with $(A,B,R,E)$. For the right hand 
 with $(A,B,C,Q)$, then with $(A,T,D,E)$, and finally, inside the second tensor factor, with
 $(B,C,D,S)$.
 \end{proof}
-
 
 In matrix form, for fixed $A,B,C,D,E$ consider the five label sets
 \begin{align*}
@@ -585,7 +578,7 @@ diagram for $\alpha$ with these four objects commutes.
 diagram, $\alpha_{a\otimes b,c,d}$, $\alpha_{a,b,c\otimes d}$, $\alpha_{a,b,c}\otimes\id_d$,
 $\alpha_{a,b\otimes c,d}$ and $\id_a\otimes\alpha_{b,c,d}$, have the matrices $M_1$, $M_2$, $N_1$,
 $N_2$, $N_3$ of~\eqref{eq:pentagon-matrix}: the direct sums over $P,R,Q,T,S$ there are exactly the
-decompositions of $a\otimes b$, $c\otimes d$, $b\otimes c$, \dots\ into labels, with the identity
+decompositions of $a\otimes b$, $c\otimes d$, $b\otimes c$, \dots{} into labels, with the identity
 on the multiplicity spaces. So $\mathrm P(a,b,c,d)$ holds if and only if~\eqref{eq:pentagon-matrix}
 holds for $(a,b,c,d,e)$ for every $e$.
 
@@ -626,7 +619,6 @@ object is a summand of $V^{\otimes n}$, $n\le4$, so $I_V$ is everything, and the
 for all $1{,}030{,}051$ five-tuples reduces to the $63{,}841$ five-tuples $(A,B,C,V,E)$.
 
 \section{The construction}\label{sec:construction}
-
 The construction is a computation over a finite field $\F_p$ with $p\equiv1\pmod{52}$ and a chosen
 primitive $52$nd root of unity $q\in\F_p$, repeated for several primes and roots and followed by
 exact reconstruction (Section~\ref{sec:reconstruction}). Modulo each prime and root:
@@ -701,12 +693,12 @@ empty path at $Z_i$, the split replaces one step by a combination of two-step pa
 end points, and the merge does the opposite. So all generators act by sparse matrices determined
 by the following finite data, which we call the \emph{cells}: for all simple $A,C$, with
 $P(A\to C,2)$ the span of the two-step paths $A\to B\to C$,
-\begin{itemize}[leftmargin=2em]
+\begin{itemize}
 \item the matrix $\sigma^{(A,C)}$ of $\id_A\otimes c_{V,V}$ on $P(A\to C,2)$;
 \item the vector $\mathrm{cup}^{(A)}\in P(A\to A,2)$ and the functional $\mathrm{cap}^{(A)}$ on
 $P(A\to A,2)$;
 \item the matrices of $\id_A\otimes t$ from edges $A\to C$ to $P(A\to C,2)$, and of $\id_A\otimes
-m$ in the other direction.
+  m$ in the other direction.
 \end{itemize}
 For $\CF$ these are $4{,}472$ numbers.
 
@@ -876,7 +868,6 @@ The choices therefore satisfy the nondegeneracy conditions over the field, and t
 fixed choices is a function of the gauge class; this is all that is used below. At every prime tested they are also the
 greedy choices.
 
-
 \subsection{The pentagon recursion}\label{sec:recursion}
 All other F-symbols follow from those with third leg $V$ by the pentagon
 equation~\eqref{eq:pentagon-matrix}. The recursion is applied once, to the normal form of the
@@ -923,7 +914,6 @@ third leg $W'$ or $V$. So $M_2=M_1^{-1}N_1N_2N_3$ is determined, and its blocks 
 $F[X,Y,R,E]$ for all $R$ in $W'\otimes V$.
 \end{proof}
 
-
 \subsection{R-symbols}\label{sec:Rsym}
 In the splitting convention, $c_{X,Y}\circ\psi^{XY}_{Z,i}=\sum_jR^{\mathrm s}[X,Y,Z]_{i,j}\,
 \psi^{YX}_{Z,j}$. At the base $\one$, the vector $(\iota_X\otimes\iota_Y)\circ\psi^{XY}_{Z,i}$ is
@@ -951,7 +941,6 @@ $q^{(X,X+2\rho)}$, both modulo primes. So the pivotal structure realised by the 
 of $V$ is the spherical structure with positive dimensions at the unitary root.
 
 \section{Fields}\label{sec:fields}\label{sec:normalform}
-
 \subsection{Galois action}
 Every step of Section~\ref{sec:construction} is a field operation on quantities defined over
 $\Q(q)=\K$, with choices fixed by the conventions (reduced echelon forms, fixed orders, the stored
@@ -974,7 +963,6 @@ the \emph{field of moduli}, and conversely $\mathrm{NF}(F)$ is a complete invari
 class. A normal form therefore gives the field of moduli and a gauge realising it at the same time;
 in particular no cohomological obstruction to descent arises.
 
-
 \subsection{The fields of the normal form of $\CF$}
 At every prime used, the residues of the normal form at the roots $z^w$ and $z^{25w}$ agree, for
 every entry of the table (the residues of the F-symbols in the auxiliary bases differ at these roots,
@@ -988,17 +976,17 @@ and lie in $\Kt=\Q(\zeta^4)$, of degree $12$. The minimal polynomial of $\eta_1=
 is $x^6+x^5-5x^4-4x^3+6x^2+3x-1$.
 
 \emph{Minimality, F.} On the reconstructed F-symbols with third leg $V$, the automorphisms $\sigma_a$
-that fix every entry are exactly $a\in\{1,25,27,51\}$ (\file{nf\_galois.py}). Since $\mathrm{NF}$ is a
+that fix every entry are exactly $a\in\{1,25,27,51\}$ (\texttt{nf\_galois.py}). Since $\mathrm{NF}$ is a
 complete invariant of the gauge class, if some gauge $h\cdot F$ had all entries in a subfield
 $E\subseteq\kk$, every $\sigma$ fixing $E$ would satisfy $\sigma\cdot F\sim F$, hence would fix
 $\mathrm{NF}(F)$; so $E=\kk$. With the labels of the objects fixed, $\kk$ is the field of moduli and
 the field of definition of the fusion category.
 
 \emph{Minimality, F and R.} The one-dimensional $R[X,X,Z]$ are gauge invariant, and the only
-$a\in(\Z/52)^\times$ with $\sigma_a$ fixing all $100$ of them are $a=1,27$ (\file{autoeq\_checks.py});
+$a\in(\Z/52)^\times$ with $\sigma_a$ fixing all $100$ of them are $a=1,27$ (\texttt{autoeq\_checks.py});
 so no gauge has the braided data in a proper subfield of $\Q(\zeta)^{\langle\sigma_{27}\rangle}=\Kt$.
 Every one-dimensional $R[X,X,Z]$ is $q^e$ with $e$ even, and the characteristic polynomials of all
-$88$ matrices $R[X,X,Z]$ of size at least $2$ have coefficients in $\Kt$ (\file{r\_invariants.py}).
+$88$ matrices $R[X,X,Z]$ of size at least $2$ have coefficients in $\Kt$ (\texttt{r\_invariants.py}).
 
 \emph{Comparison.} Galindo~\cite[Theorem~3.7]{Galindo} proves that the fusion
 category underlying $\cC(\mathfrak g,k)$ has a split form over $\Q(\zeta+\zeta^{-1})$ with
@@ -1014,7 +1002,6 @@ $q$ and at $-q$ are identical: the braided categories at $q$ and $-q$ are equiva
 the objects fixed.
 
 \section{Exact reconstruction}\label{sec:reconstruction}
-
 \subsection{Primes and roots}
 We use primes $p\equiv1\pmod{52}$ just below $2^{30}$. For each prime, $z=g^{(p-1)/52}$ with $g$ the
 least primitive root modulo $p$, and the run at $(p,w)$ uses $q=z^w$. An element of $\kk$ is
@@ -1029,7 +1016,7 @@ For each coefficient, the residues at several primes are combined by the Chinese
 and a rational number $a/b$ with $|a|,b\le\sqrt{M/2}$ is recovered by rational
 reconstruction~\cite{WangGuyDavenport,MCA}, $M$ the product of the primes. Further primes are held out
 and the reconstructed values are compared with the residues computed there.
-\begin{itemize}[leftmargin=2em]
+\begin{itemize}
 \item \emph{F-symbols}: $9$ primes at the $6$ roots, and $2$ held-out primes at all $12$ real roots
 ($78$ runs). Every coefficient reconstructs; every value agrees with the held-out primes, whose
 residues at $z^w$ and $z^{25w}$ also agree in every entry. The table has $328{,}727{,}941$ nonzero
@@ -1042,15 +1029,13 @@ The exact tables in the archive were reconstructed in this way from residues of 
 computed modulo each prime.
 
 The residues from the pipeline of Section~\ref{sec:construction}, run at all $78$ (prime, root) pairs,
-reconstruct to files identical byte for byte to the archived ones (\file{deposit/logs/finish\_all.log}).
-
+reconstruct to files identical byte for byte to the archived ones (\texttt{deposit/logs/finish\_all.log}).
 
 Rational reconstruction from finitely many primes is a heuristic step: it cannot by itself certify
 that the fractions found are the values defined by the construction. Theorem~\ref{thm:main} is about
 the reconstructed data, and its proof in Section~\ref{sec:verification} uses only the data files.
 
 \section{Verification}\label{sec:verification}
-
 All checks in this section are run on the data files themselves: the F-table over $\kk$ (stored in
 the real basis of $\Lf$, so that the same verifiers read it) and the R-symbols over $\Kt$. The
 verifying programs share no code with the programs that produced the data, apart from the reader of
@@ -1110,17 +1095,17 @@ The verifying programs read only the exported data files and share no code with 
 that produced the data, apart from the reader of the binary format.
 
 \subsection{Hexagons}
-\file{verify\_hex\_bin.py} checks both identities~\eqref{eq:hex-matrix} for all $58{,}740$
+\texttt{verify\_hex\_bin.py} checks both identities~\eqref{eq:hex-matrix} for all $58{,}740$
 four-tuples at all $24$ roots, and $RR^{-1}=1$ for all R-blocks. The bounds (twice the bound of
 Lemma~\ref{lem:matrix-bound}) reach $1293$ bits, and the number of primes needed per four-tuple
 ranges from $1$ to $42$. There were no failures. Since every F-matrix is invertible (below), this
 proves Theorem~\ref{thm:main}(i). The computation took $8593$ seconds with $2$ workers. We also
-checked $RR^{-1}=1$ directly in exact rational arithmetic (\file{exact\_checks.py}).
+checked $RR^{-1}=1$ directly in exact rational arithmetic (\texttt{exact\_checks.py}).
 
 \subsection{Invertibility, units and the dimensions}\label{sec:invert}
 All $58{,}740$ F-matrices are invertible modulo $p=1073741189$, hence over $\K$ (the determinant of
 the scaled matrix is an element of $\Z[\zeta]$ with nonzero image). The R-matrices are invertible
-since $RR^{-1}=1$. The following are checked exactly on the data (\file{exact\_checks.py}): the
+since $RR^{-1}=1$. The following are checked exactly on the data (\texttt{exact\_checks.py}): the
 $6{,}859$ F-matrices with a unit among their first three legs are identities in the sense of
 Section~\ref{sec:conventions}; $N_{XX}^\one=1$ for all $X$; and
 $F[X,X,X,X]_{(\one,0,0),(\one,0,0)}\cdot d_X=1$ in $\K$ for all $16$ objects, with $d_X$ given
@@ -1131,7 +1116,7 @@ The pentagon equation~\eqref{eq:pentagon-matrix} for all five-tuples amounts to 
 $4\times10^{11}$ scalar equations, with matrices up to $19{,}900\times19{,}900$. It follows from the
 pentagons with fourth object $V$ and Lemma~\ref{lem:reduction}.
 
-\emph{Fourth object $V$} (\file{pent\_reduced.py}). For all $63{,}841$ five-tuples $(A,B,C,V,E)$ (the
+\emph{Fourth object $V$} (\texttt{pent\_reduced.py}). For all $63{,}841$ five-tuples $(A,B,C,V,E)$ (the
 largest of dimension $n_{ABCVE}=3380$; $\sum n^3\approx1.8\times10^{12}$), the
 identity~\eqref{eq:pentagon-matrix} is checked as full matrices at the $12$ real roots
 (Lemma~\ref{lem:height}; the F-symbols are real) of the first $k$ primes $p\equiv1\pmod{52}$ below
@@ -1139,14 +1124,13 @@ $2^{31}$, with $k$ the least number for which the product exceeds twice the boun
 Lemma~\ref{lem:matrix-bound} for that five-tuple. The bounds reach $1176$ bits; between $1$ and $38$
 primes are needed (mean $9.1$). There were no failures, so the pentagon equation holds exactly for all five-tuples with fourth object
 $V$. The run took $39{,}892$ seconds with $2$ workers
-(\file{deposit/\allowbreak logs/\allowbreak pent\_reduced\_descended.log}).
-
+(\texttt{deposit/\allowbreak logs/\allowbreak pent\_reduced\_descended.log}).
 
 \emph{By Lemma~\ref{lem:reduction}.} Since every simple object of $\CF$ is a summand of a positive
 tensor power of $V$, and the F-matrices are invertible, the pentagon equation for the five-tuples with
 fourth object $V$ implies it for all $1{,}030{,}051$ five-tuples. This proves Theorem~\ref{thm:main}(ii).
 
-\emph{Larger exact subsets} (\file{pent\_exact\_subset.py}). Independently of the reduction, the
+\emph{Larger exact subsets} (\texttt{pent\_exact\_subset.py}). Independently of the reduction, the
 pentagon equation is proved, by the same method and at all $24$ roots, for all $339{,}330$
 five-tuples (from all $16$ objects) with $n_{ABCDE}\le50$ (bounds up to $810$ bits, up to $27$ primes,
 $38{,}984{,}496$ five-tuple checks, $21{,}721$ seconds with $2$ workers), for all $13{,}137$ five-tuples
@@ -1158,7 +1142,7 @@ include many pentagons not used to produce the data.
 
 \subsection{Modular data}\label{sec:modular}
 From the exact R-symbols and the quantum dimensions~\eqref{eq:qdim}, we computed in $\K$, with
-rational arithmetic (\file{exact\_checks.py}),
+rational arithmetic (\texttt{exact\_checks.py}),
 \[
 \tilde\theta_X=\frac1{d_X}\sum_Zd_Z\Tr R[X,X,Z],\qquad
 \tilde S_{XY}=\sum_Zd_Z\Tr\bigl(R[Y,X,Z]R[X,Y,Z]\bigr),
@@ -1175,7 +1159,7 @@ We also found $R[Y,X,Z]R[X,Y,Z]=\theta_Z\theta_X^{-1}\theta_Y^{-1}\cdot\id$ for 
 triples (the balancing identity). This proves Theorem~\ref{thm:main}(iv). During the construction
 the trace of each idempotent $p_X$ was also compared with $d_X$, modulo $p$.
 Finally, $\tilde S\tilde S=\mathcal D^2\cdot\id$ holds exactly, with $\mathcal D^2=\sum_Xd_X^2\ne0$
-(\file{s\_nondegenerate.py}; all objects are self-dual, so the charge conjugation matrix is the
+(\texttt{s\_nondegenerate.py}; all objects are self-dual, so the charge conjugation matrix is the
 identity); in particular $\tilde S$ is invertible.
 
 \subsection{Modularity}\label{sec:modularity}
@@ -1211,7 +1195,7 @@ of Kac and Peterson.
 \begin{proof}
 By Theorem~\ref{thm:main}(iii) and Lemma~\ref{lem:norm}, $|X|^2=d_X^2$ for every simple $X$, so
 $\dim\cC=\sum_Xd_X^2$. The numbers $d_X$ are positive at our embedding, and
-$\sum_ZN_{XY}^Zd_Z=d_Xd_Y$ exactly (\file{pseudo\_unitary.py}). So $(d_Z)$ is a positive eigenvector of
+$\sum_ZN_{XY}^Zd_Z=d_Xd_Y$ exactly (\texttt{pseudo\_unitary.py}). So $(d_Z)$ is a positive eigenvector of
 the fusion matrix of $V$, which is irreducible because every simple object is a summand of a power of
 $V$; by the Perron--Frobenius theorem $d_X$ is the Frobenius--Perron dimension of $X$ for every $X$, and
 $\cC$ is pseudo-unitary. By~\cite[Proposition~8.23]{ENO} it has a unique spherical structure with positive
@@ -1228,8 +1212,8 @@ $\tilde S$ is invertible and the category is modular.
 
 As a check of Lemma~\ref{lem:norm} on the data, the identity
 \[(F[X,X,X,X]^{-1})_{(\one,0,0),(\one,0,0)}=F[X,X,X,X]_{(\one,0,0),(\one,0,0)}\]
-holds for all $16$ objects modulo two primes at all $12$ real roots (\file{pseudo\_unitary.py},
-\file{deposit/logs/pseudo\_unitary.log}).
+holds for all $16$ objects modulo two primes at all $12$ real roots (\texttt{pseudo\_unitary.py},
+\texttt{deposit/logs/pseudo\_unitary.log}).
 
 \subsection{Unitarity}\label{sec:unitarity}
 In the conventions of Rowell's survey, where the form is normalised by short roots of length $2$,
@@ -1248,16 +1232,15 @@ isometry identity was checked on all $58{,}740$ blocks modulo two (prime, root) 
 are positive definite on all $2{,}271$ multiplicity spaces without a unit leg exactly at the
 embeddings $q=\zeta^{\pm1}$ and $q=\zeta^{\pm5}$ of $\kk$, and indefinite on $520$ to $549$ of them at
 the other four, with eigenvalues computed numerically at $256$-bit precision
-(\file{unitary/f4\_forms\_analyse.py}). In a gauge in which all F-matrices
+(\texttt{unitary/f4\_forms\_analyse.py}). In a gauge in which all F-matrices
 are real orthogonal, every entry whose four multiplicity spaces are one dimensional squares to a gauge
 invariant; the square classes of these invariants span a subgroup of $\kk^\times/(\kk^\times)^2$ of rank
 $6$, generated by $2,[3],[5],[11],[13],[2][4]$ (detected by quadratic characters at $300$ primes, which
-proves their independence; \file{unitary/f4\_classes.py}). So any such gauge needs a field of degree at
+proves their independence; \texttt{unitary/f4\_classes.py}). So any such gauge needs a field of degree at
 least $2^6\cdot6=384$ over $\Q$, which is why the data are given in the normal form.
 \end{remark}
 
 \section{Autoequivalences and braidings}\label{sec:autoeq}
-
 \subsection{What was known}
 Gannon determined the automorphisms of the fusion rings of all affine Lie algebras~\cite{Gannon}.
 For $F_4$ at level $4$ he found an automorphism of order $4$, which he calls $\pi_4$, and showed that
@@ -1271,7 +1254,7 @@ fixing $\ob{0000},\ob{0002},\ob{0011},\ob{0101}$. Edie-Michell computed the mono
 autoequivalence groups of $\cC(\mathfrak g,k)$ for $\mathfrak g$ of types $A$, $B$, $C$ and
 $G$~\cite{EdieMichell}. For $F_4$ he writes (\cite[Section~1]{EdieMichell}, arXiv v2): ``For the
 categories $\mathcal C(\mathfrak{so}_{2r},2)$ and $\mathcal C(\mathfrak f_4,4)$ there exist exceptional
-auto-equivalences. The author was unable to find ad-hoc methods for constructing these. [\dots] The
+auto-equivalences. The author was unable to find ad-hoc methods for constructing these. [\dots{}] The
 exceptional auto-equivalence of $\mathcal C(\mathfrak f_4,4)$ remains completely mysterious''
 (``exist'' refers to the fusion ring automorphism), and observes in~\cite[Section~7]{EdieMichell} that
 $\CF$ is the only other quantum group modular tensor category that could have a reverse braided
@@ -1321,7 +1304,7 @@ centre.
 For $\CF$ and all its Galois conjugates both hypotheses hold, exactly from the data: no tensor product
 of two non-unit simple objects is simple, and for every simple $X\ne\one$ some monodromy
 $R[Y,X,Z]R[X,Y,Z]$ is a scalar different from $1$ (Section~\ref{sec:modular};
-\file{autoeq\_checks.py}). Consequently, if $\Phi$ is a monoidal equivalence from $\CF$ to a Galois
+\texttt{autoeq\_checks.py}). Consequently, if $\Phi$ is a monoidal equivalence from $\CF$ to a Galois
 conjugate $\sigma_a\cdot\CF$, acting on objects by $\pi$, then $\Phi$ transports $\sigma_a(c)$ to $c$ or
 to $c^{\mathrm{rev}}$. The two cases are distinguished by the gauge invariant numbers $R[X,X,Z]$ on the
 $100$ one-dimensional spaces, which a braided equivalence preserves.
@@ -1351,13 +1334,13 @@ Section~\ref{sec:forms}).
 
 \begin{proof}
 (i) Recomputed from the fusion rules by a search over permutations preserving the multiplicities
-(\file{autoeq\_checks.py}, \file{fusion\_auts.py}); it agrees with~\cite[Theorem~3.F4]{Gannon}.
+(\texttt{autoeq\_checks.py}, \texttt{fusion\_auts.py}); it agrees with~\cite[Theorem~3.F4]{Gannon}.
 
 \emph{Monoidal obstructions.} In the blocks $F[V,V,V,V]$ and $F[V,V,V,\ob{0002}]$ all multiplicity spaces
 are one dimensional, so every gauge acts on them by $F\mapsto D_1FD_2$ with diagonal $D_i$, and the
 numbers $I_{ab}=F_{ab}(F^{-1})_{ba}$ are invariants of the gauge class. Exactly in $\K$, the relation
 $I(\pi^j\cdot F)=\sigma_a(I(F))$ holds for $a\in\{1,25,27,51\}$ when $j=0,2$, and only for
-$a\in\{5,21,31,47\}$ when $j=1,3$ (\file{nf\_witness.py}). So $\pi\cdot F$ and $\pi^3\cdot F$ are not gauge
+$a\in\{5,21,31,47\}$ when $j=1,3$ (\texttt{nf\_witness.py}). So $\pi\cdot F$ and $\pi^3\cdot F$ are not gauge
 equivalent to $F$, which is the second half of (ii), and $\sigma_a\cdot F$ is not gauge equivalent to
 $\pi^j\cdot F$ for any $j$ when $a\notin H$.
 
@@ -1366,7 +1349,7 @@ Gauges $h$ with $h\cdot(\pi^2\cdot F)=F$ and $h\cdot(\pi^3\cdot F)=\sigma_5\cdot
 third leg $V$ are computed modulo primes from the normal form (with $g$ the normal-form gauge of
 $\pi^j\cdot F$, $h=g^{-1}$, suitably conjugated), reconstructed over $\Lf$, and the identities proved
 exactly on all $3{,}451$ such blocks with a height bound, with every $h^{XY}_Z$ invertible
-(\file{f4\_relabel\_exact.py} on this table, $537$ and $530$ s; \file{deposit/logs/nf\_relabel\_exact.log}).
+(\texttt{f4\_relabel\_exact.py} on this table, $537$ and $530$ s; \texttt{deposit/logs/nf\_relabel\_exact.log}).
 Both sides satisfy the pentagon equation, so by Lemma~\ref{lem:Hdetermines} the identities hold on the whole
 table: $\pi^2\cdot F\sim F$ and $\pi^3\cdot F\sim\sigma_5\cdot F$. Applying $\pi$ and then
 $\sigma_{21}=\sigma_5^{-1}$ to the second gives
@@ -1376,7 +1359,7 @@ $a\in H$.
 
 \emph{Braidings.} For each such equivalence, Proposition~\ref{prop:twobraidings} leaves two possibilities
 for the transported braiding, and the numbers $R[X,X,Z]$ on one-dimensional spaces decide between
-them, exactly (\file{autoeq\_checks.py}): $R[\pi^jX,\pi^jX,\pi^jZ]=\sigma_a(R[X,X,Z])$ for all such
+them, exactly (\texttt{autoeq\_checks.py}): $R[\pi^jX,\pi^jX,\pi^jZ]=\sigma_a(R[X,X,Z])$ for all such
 $X,Z$ holds for $(j,a)$ with $j=0$, $a\in\{1,27\}$; $j=2$, $a\in\{25,51\}$; $j=1$, $a\in\{21,47\}$;
 $j=3$, $a\in\{5,31\}$; and $R[\pi^jX,\pi^jX,\pi^jZ]=\sigma_a(R[X,X,Z])^{-1}$ holds for the complementary
 pairs ($j=0$, $a\in\{25,51\}$; $j=2$, $a\in\{1,27\}$; and so on), and for no other pairs. With $j=2$, $a=1$
@@ -1392,7 +1375,7 @@ torus $T=\{g^{XY}_Z=u_Xu_Y/u_Z\}$: in step (2) the integer system has $89$ varia
 unit pivots, so its solutions form a coset of a connected torus of dimension $15$, which is the
 restriction of $T$ ($T$ has dimension $15$ and fixes all F-symbols); steps (3) and (4) determine the gauge
 on every one of the remaining $2{,}182$ multiplicity spaces without a unit leg uniquely from the earlier
-ones (\file{stab\_check.py}). If $h\cdot F=F$ then $g_Fh$ satisfies the conditions, so $g_Fh\in Tg_F$, and
+ones (\texttt{stab\_check.py}). If $h\cdot F=F$ then $g_Fh$ satisfies the conditions, so $g_Fh\in Tg_F$, and
 since $T$ consists of scalars on each multiplicity space it is central in the gauge group, so $h\in T$.
 A gauge in $T$ is the monoidal structure of the identity functor transported by the natural isomorphism
 $(u_X)$, hence monoidally isomorphic to the identity.
@@ -1411,7 +1394,7 @@ of $\Q(\zeta_{13})$.
 As an independent confirmation of the braided statements, the canonical R-symbols
 $g^{YX}_Z\,R[X,Y,Z]\,(g^{XY}_Z)^{-1}$ of $(\pi^j\cdot F,\pi^j\cdot R)$ and of $(F,R)$ or $(F,R^{\mathrm{rev}})$
 at the conjugate roots were compared directly, modulo three primes at all $24$ roots, with the results
-above (\file{braid\_transport\_f4.py}).
+above (\texttt{braid\_transport\_f4.py}).
 
 In particular, the equivalences predicted in~\cite[Section~6]{MorrisonSnyderThurston}, assuming the
 quantum sufficiency conjecture, exist for $\CF$: the braided equivalence
@@ -1463,8 +1446,8 @@ summand of a tensor power of $V$, $u=1$. So the isomorphism is unique.
 (a) If $\gamma|_\kk=\id$ then $\gamma\cdot F=F$, and the statement is Theorem~\ref{thm:autoeq}(ii). If
 $\gamma|_\kk=s|_\kk$, then $\gamma\cdot F=\sigma_5\cdot F$, and $\sigma_5\cdot F$ is gauge equivalent to
 $\pi\cdot F$ and to $\pi^3\cdot F$ (Theorem~\ref{thm:autoeq}; both gauges are also computed and proved
-exactly on all blocks with third leg $V$ by \file{relabel\_exact\_nf.py}, \file{deposit/logs/forms\_relabel\_pi1.log}
-and \file{deposit/logs/forms\_relabel\_pi3.log}, hence on the whole table by Lemma~\ref{lem:Hdetermines}); so
+exactly on all blocks with third leg $V$ by \texttt{relabel\_exact\_nf.py}, \texttt{deposit/logs/forms\_relabel\_pi1.log}
+and \texttt{deposit/logs/forms\_relabel\_pi3.log}, hence on the whole table by Lemma~\ref{lem:Hdetermines}); so
 $p=\pi^3$ and $p=\pi$ occur. If $p\in\{1,\pi^2\}$ occurred, then $\gamma\cdot F\sim\pi^{-j}\cdot F\sim F$,
 so $\gamma$ would fix $\mathrm{NF}(F)=F$, whose entries generate $\kk$. Every other $\gamma|_\kk$ is the
 restriction of some $\sigma_a$ with $a\notin H$, and $\sigma_a\cdot F$ is not gauge equivalent to any
@@ -1478,7 +1461,7 @@ monoidal automorphisms of the identity functor are trivial. Let $\Psi_j$ ($j=1,3
 monoidal autoequivalence of $\mathcal A_{\Kt}$ acting by $\pi^j$, with gauge entries in $\kk$. Then
 $\Psi_j^4$ is $\Kt$-linear and fixes the simple objects, so by Lemma~\ref{lem:twisted}(b) there is a unique
 monoidal isomorphism $\Psi_j^4\Rightarrow\id$, given by scalars $u_X=u^{(j)}_X$ with $u_\one=1$. The program
-\file{descent\_u.py} computes the gauges of $\Psi_j$ and $\Psi_j^4$ exactly, checks that the gauge of
+\texttt{descent\_u.py} computes the gauges of $\Psi_j$ and $\Psi_j^4$ exactly, checks that the gauge of
 $\Psi_j^4$ is $u_Xu_Y/u_Z$ on all $1{,}394$ one-dimensional multiplicity spaces (and, modulo a prime, on all
 $2{,}302$), and finds $u_{\pi^jX}=s(u_X)$ and $u_X\in E$ for the four $\pi$-fixed $X$. For $j=3$,
 \begin{gather*}
@@ -1552,8 +1535,8 @@ $\mathrm{Gal}(M/M_0)\to\mathrm{Gal}(\Kt/E)$, for $M\supseteq M_0\Kt$ finite Galo
 fixed, so $\chi=0$ and $\varepsilon=0$ on $\mathrm{Gal}(M/M_0)$, that is $M_0\supseteq\kk$.
 \end{proof}
 
-The signs, Hasse invariants and indices are computed in PARI/GP by \file{brauer.gp} (written by
-\file{brauer.py}); its \texttt{alghassei}, \texttt{alghassef} and \texttt{algindex} agree with the argument
+The signs, Hasse invariants and indices are computed in PARI/GP by \texttt{brauer.gp} (written by
+\texttt{brauer.py}); its \texttt{alghassei}, \texttt{alghassef} and \texttt{algindex} agree with the argument
 above, and the signs, norms and the valuations at $2$ were also recomputed independently from the values of
 $u_X$.
 
@@ -1576,7 +1559,7 @@ form exists over $M_0$ if and only if $M_0\supseteq\Kt$.
 $c^{\mathrm{rev}}$ (Proposition~\ref{prop:twobraidings}), and it is braided if and only if
 $R[\pi^jX,\pi^jX,\pi^jZ]=\gamma(R[X,X,Z])$ on the $100$ one-dimensional spaces. With $\gamma|_{\Kt}=\sigma_a|_{\Kt}$
 this is the table in the proof of Theorem~\ref{thm:autoeq}: $(j,a)$ with $a\equiv1,5,12,8\pmod{13}$
-gives $j=0,3,2,1$ (also checked at all $24$ roots modulo a prime by \file{descent\_u.py}). Uniqueness
+gives $j=0,3,2,1$ (also checked at all $24$ roots modulo a prime by \texttt{descent\_u.py}). Uniqueness
 follows from Lemma~\ref{lem:twisted}(b). (b) By~\cite[Section~3.9]{EtingofGelakiDescent} braided forms are
 classified in the same way with braided autoequivalences, whose classes over $E$ map isomorphically onto
 the Galois group by (a); so there is exactly one splitting, $\chi(s)=3$. A braiding on a form is a
@@ -1594,7 +1577,7 @@ All forms of the fusion category over $E$ are described as follows. For $e\in E^
 the quadratic character of $E(\sqrt e)$, $\chi_e=\chi_1+2\psi_e$, $\mathcal D_e$ the form of
 $\mathcal A_{\overline\Q}$ over $E$ with character $\chi_e$ (Proposition~\ref{prop:forms}(a)), and $M_e$ the
 fixed field of $\ker\chi_e$. Here $u_X=u^{(1)}_X$; the ratios $u^{(1)}_X/u^{(3)}_X$ are squares in $E$
-(\file{endo.gp}), so $u^{(3)}_X$ gives the same quaternion algebras.
+(\texttt{endo.gp}), so $u^{(3)}_X$ gives the same quaternion algebras.
 
 \begin{proposition}\label{prop:endo}
 \begin{enumerate}[label=(\alph*),leftmargin=2em]
@@ -1627,7 +1610,7 @@ need $M_e\subseteq F$. At a prime $\mathfrak q\nmid13$, $\chi_1$ is unramified, 
 when $\psi_e$ is. As $E$ has class number one, $\psi_e$ is unramified outside $\{2,13,\infty\}$ exactly for
 $e$ in the group generated by $-1$, the fundamental units, $2$ and a generator of the prime above $13$, and
 among these only $1$ and $13$ give $\psi_e$ unramified at $2$ ($2$ is inert in $E$, so an odd power of $2$
-ramifies; for the others, \file{endo.gp}). At a real place
+ramifies; for the others, \texttt{endo.gp}). At a real place
 $\chi_e(c_v)=2+2\psi_e(c_v)$, which vanishes for $e=-1$, so $M_{-1}$ is the real cyclic quartic extension of $E$
 in $\Kt(i)=\Q(\zeta_{52})$.
 
@@ -1638,13 +1621,13 @@ $\kk$) has commuting generators, and both $\Psi_1^4$ and the square of the secon
 $u_X$. So the algebra of the proof of Proposition~\ref{prop:forms}(b) becomes
 $(\Kt/E,s,u_X)\otimes_E(e,u_X)_E$, of class $[(-1,u_X)_E]+[(e,u_X)_E]=[(-e,u_X)_E]$, because $B_X$ and
 $(-1,u_X)_E$ have the same local invariants. The local rule is that of the Hilbert symbol: $u_X$ is a unit
-away from $2$ and $13$, and a square in the completion at the prime above $13$ (\file{endo.gp}).
+away from $2$ and $13$, and a square in the completion at the prime above $13$ (\texttt{endo.gp}).
 
 (c) $N_{\ob{0002}\,\ob{0011}}^{\ob{0101}}=3$. The $\kk$-linear autoequivalence acting by $\pi^2$ with the gauge
 of $\Psi_1^2$ acts on this space by a matrix $g$ with $g^2=(u_{\ob{0002}}u_{\ob{0011}}/u_{\ob{0101}})\,I_3$, so
-this ratio is a square in $\kk$ (its cube is $\det(g)^2$); it is a square in $E$ (\file{endo.gp}), which gives
+this ratio is a square in $\kk$ (its cube is $\det(g)^2$); it is a square in $E$ (\texttt{endo.gp}), which gives
 the relation. Every real place has some $u_X<0$, which gives the criterion; the three cases occur for
-$e=1$, $e=-\vartheta^2-\vartheta+3$ (a fundamental unit) and $e=-1$ (\file{endo.gp}).
+$e=1$, $e=-\vartheta^2-\vartheta+3$ (a fundamental unit) and $e=-1$ (\texttt{endo.gp}).
 
 (d) A braiding on $\mathcal D_e$ is $c$ or $c^{\mathrm{rev}}$ invariant under the descent datum, that is every
 $\gamma$ acts by the braided lift, $\chi_e=\chi_3$ (Proposition~\ref{prop:braidedforms}(a)).
@@ -1655,7 +1638,7 @@ $M_e$ unramified outside $13$ and $\infty$, and $\mathcal D_3$ is the only form 
 quaternion endomorphism algebras are forced for the braided form, but not for the fusion category. The
 twisted forms over $\kk$ behave in the same way, with $(d,u_X)_\kk$ in place of $(-e,u_X)_E$; an enumeration
 of the totally real quadratic extensions of $\kk$ of small conductor, and the split patterns for all
-$\{2,13,\infty\}$-units $e$, are in \file{f4-forms/} (\file{kforms.gp}, \file{endo.gp}).
+$\{2,13,\infty\}$-units $e$, are in \texttt{f4-forms/} (\texttt{kforms.gp}, \texttt{endo.gp}).
 
 \emph{Real forms.} Let $\iota_b$, $1\le b\le6$, be the real place of $\kk$ with
 $\zeta_{13}+\zeta_{13}^{-1}\mapsto2\cos(2\pi b/13)$; it gives the data at $q=\zeta^w$ for $w\equiv\pm b\pmod{13}$.
@@ -1678,7 +1661,6 @@ autoequivalence (complex conjugation)$\circ\Phi$ squares to a negative multiple 
 $\ob{0002}$ and $\ob{0101}$ and to a positive one on $\ob{0011}$.
 
 \section{Non-integrality at 13}\label{sec:integrality}
-
 In $\K=\Q(i,\zeta_{13})$ the prime $13$ factors as $13=\mathfrak P_1^{12}\mathfrak P_2^{12}$
 ($13$ splits in $\Q(i)$ and is totally ramified in $\Q(\zeta_{13})$). Let $v$ denote either of the
 two valuations, normalised by $v(13)=1$, extended to any finite extension of $\K$.
@@ -1702,7 +1684,7 @@ $(\lambda+\rho,\alpha)$ for $\lambda$ in the alcove lie in $(0,26)$.
 For $\lambda=\ob{0011}$ all $24$ pairings $(\lambda+\rho,\alpha)$ are even, while $16$ of the
 $(\rho,\alpha)$ are, so $v(d_{\ob{0011}})=8/12=2/3$; for the other $15$ simple objects $v(d_\lambda)=0$
 (Table~\ref{tab:objects}). Independently, the $13$-adic valuation of $N_{\K/\Q}(d_{\ob{0011}})$ is
-$16=12\cdot(2/3+2/3)$, and that of the other norms is $0$ (\file{exact\_checks.py}). Explicitly,
+$16=12\cdot(2/3+2/3)$, and that of the other norms is $0$ (\texttt{exact\_checks.py}). Explicitly,
 in the basis $1,c_1,\dots,c_{11}$ of $\Lf$, $c_k=\zeta^k+\zeta^{-k}$,
 \[
 d_{\ob{0011}}=7+14c_2-4c_4+4c_6+14c_{10},\qquad
@@ -1730,7 +1712,6 @@ of the two entries is $1/d_X$, of valuation $-2/3$, so they cannot both be integ
 The object \ob{0011} is the only one whose dimension is divisible by the primes above $13$.
 
 \section{The data files}\label{sec:data}
-
 \subsection{Text format}
 All text files are line oriented, with header lines starting with \texttt{\#} that state the field,
 the basis and the conventions, list the objects (in the order of Table~\ref{tab:objects}), and give
@@ -1749,14 +1730,14 @@ are determined by the fusion rules. The $\eta_j$ form an integral basis of $\kk$
 $1=-(\eta_1+\dots+\eta_6)$, the element $1$ is written \texttt{-1 -1 -1 -1 -1 -1}.
 
 \subsection{Binary format}
-The complete F-table is stored in a binary format (\file{fsym\_bin.py}), in two files of $6.50$ and
+The complete F-table is stored in a binary format (\texttt{fsym\_bin.py}), in two files of $6.50$ and
 $6.45$ GB: a magic string, the length of a JSON header, the header (objects, conventions, and for each
 block its key, row and column labels, byte offset and limb counts), and for each block the common
 denominator $D$ of its coefficients, the signs, and the magnitudes $|a_kD|$ as little endian $32$-bit
 limbs, row major. The coefficients are those of the basis $1,c_1,\dots,c_{11}$ of $\Lf$,
 $c_k=\zeta^k+\zeta^{-k}$ (every entry lies in $\kk$), so that the verifiers read the table directly. A
 reader returns any block either as exact fractions or reduced modulo a prime at a chosen root, without
-reading the rest of the file, and \file{fsym\_k.py} prints chosen blocks, or the whole table, in the text
+reading the rest of the file, and \texttt{fsym\_k.py} prints chosen blocks, or the whole table, in the text
 format above:
 \begin{verbatim}
 python3 code/fields/fsym_k.py archive/F4_4_F_part1.bin \
@@ -1764,7 +1745,6 @@ python3 code/fields/fsym_k.py archive/F4_4_F_part1.bin \
 \end{verbatim}
 
 \subsection{Worked examples}
-
 \begin{example}\label{ex:VVVV}
 Take $X=Y=W=T=V=\ob{0001}$. Since $V\otimes V=\one\oplus V\oplus\ob{0002}\oplus\ob{0010}\oplus
 \ob{1000}$ and each of these has $V$ in its tensor product with $V$ exactly once, the rows and
@@ -1792,7 +1772,6 @@ $\zeta_{13}=e^{2\pi i/13}$ the matrix is approximately
 \end{pmatrix},
 \]
 with $1/0.136945\approx7.302187=d_V$; the entries outside the first row have integer coefficients.
-
 \end{example}
 
 \begin{example}\label{ex:R}
@@ -1813,22 +1792,21 @@ $q^{-24}$ times the identity, as the balancing identity requires.
 \end{example}
 
 \section{Availability and reproduction}\label{sec:availability}
-
 \subsection{Where things are}
-\begin{itemize}[leftmargin=2em]
+\begin{itemize}
 \item \emph{Programs}: the repository \texttt{kim-em/f4\_4}, \url{https://github.com/kim-em/f4_4}.
-Its directory \file{code/} has seven subdirectories: \file{f4/} (the construction modulo $p$ and the
-verifiers), \file{fields/} (the normal form, the driver of the pipeline and the reconstruction),
-\file{checks/} (the exact checks of this paper), \file{autoeq/} (Section~\ref{sec:autoeq}),
-\file{f4-forms/} (Section~\ref{sec:forms}), \file{unitary/} (Section~\ref{sec:unitarity}) and
-\file{metaplectic/} (the comparison for $\cC(\mathfrak{so}(13),2)$ of Section~\ref{sec:limits}). The
-repository also contains the logs of all runs (\file{logs/}), the deposit (\file{deposit/}), a
-description of the archive with checksums (\file{archive/README.md}) and the source of this paper.
+Its directory \texttt{code/} has seven subdirectories: \texttt{f4/} (the construction modulo $p$ and the
+verifiers), \texttt{fields/} (the normal form, the driver of the pipeline and the reconstruction),
+\texttt{checks/} (the exact checks of this paper), \texttt{autoeq/} (Section~\ref{sec:autoeq}),
+\texttt{f4-forms/} (Section~\ref{sec:forms}), \texttt{unitary/} (Section~\ref{sec:unitarity}) and
+\texttt{metaplectic/} (the comparison for $\cC(\mathfrak{so}(13),2)$ of Section~\ref{sec:limits}). The
+repository also contains the logs of all runs (\texttt{logs/}), the deposit (\texttt{deposit/}), a
+description of the archive with checksums (\texttt{archive/README.md}) and the source of this paper.
 \item \emph{Deposit} (with this paper, about $10$ MB): the files of Table~\ref{tab:deposit}, the logs of
-the runs reported here, and a \file{README} with SHA-256 checksums.
+the runs reported here, and a \texttt{README} with SHA-256 checksums.
 \item \emph{Archive}: Zenodo, \url{https://doi.org/10.5281/zenodo.24269179}. The complete F-table in the binary
-format of Section~\ref{sec:data} (two files \file{F4\_4\_F\_part1.bin} and \file{F4\_4\_F\_part2.bin},
-$6.50$ and $6.45$ GB) and the R-file \file{F4\_4\_R\_normalform.txt} (the uncompressed file of the
+format of Section~\ref{sec:data} (two files \texttt{F4\_4\_F\_part1.bin} and \texttt{F4\_4\_F\_part2.bin},
+$6.50$ and $6.45$ GB) and the R-file \texttt{F4\_4\_R\_normalform.txt} (the uncompressed file of the
 deposit).
 \end{itemize}
 
@@ -1839,9 +1817,9 @@ deposit).
 \toprule
 file & content & size \\
 \midrule
-\file{F4\_4\_H\_normalform.txt.xz} & F with third leg $V$, over $\kk$; determines the table & 9.0 MB \\
-\file{F4\_4\_R\_normalform.txt.xz} & R and $R^{-1}$, over $\Kt$ & 0.4 MB \\
-\file{F4\_4\_invariants.txt} & $d_X$, $\theta_X$, $\tilde S$ exactly (Section~\ref{sec:modular}) & 0.02 MB \\
+\texttt{F4\_4\_H\_normalform.txt.xz} & F with third leg $V$, over $\kk$; determines the table & 9.0 MB \\
+\texttt{F4\_4\_R\_normalform.txt.xz} & R and $R^{-1}$, over $\Kt$ & 0.4 MB \\
+\texttt{F4\_4\_invariants.txt} & $d_X$, $\theta_X$, $\tilde S$ exactly (Section~\ref{sec:modular}) & 0.02 MB \\
 \bottomrule
 \end{tabular}
 \medskip
@@ -1853,12 +1831,12 @@ pentagon recursion.}
 
 \subsection{Programs}
 Table~\ref{tab:scripts} lists the programs. They require Python~3 with numpy; the construction also
-uses scipy (sparse matrices), and \file{exact\_checks.py} uses mpmath. The versions used were
+uses scipy (sparse matrices), and \texttt{exact\_checks.py} uses mpmath. The versions used were
 Python~3.14.8, numpy~2.5.3, scipy~1.18.1, sympy~1.14.0 and mpmath~1.4.1, and PARI/GP~2.17.3 for the
-\file{.gp} scripts. The verifiers
-\file{verify\_hex\_bin.py}, \file{pent\_reduced.py} and \file{pent\_exact\_subset.py} use only numpy and
+\texttt{.gp} scripts. The verifiers
+\texttt{verify\_hex\_bin.py}, \texttt{pent\_reduced.py} and \texttt{pent\_exact\_subset.py} use only numpy and
 the standard library, and share no code with the programs that produced the data apart from the
-reader \file{fsym\_bin.py}.
+reader \texttt{fsym\_bin.py}.
 
 \begin{table}[ht]
 \centering
@@ -1868,54 +1846,54 @@ reader \file{fsym\_bin.py}.
 \toprule
 program & role & section \\
 \midrule
-\multicolumn{3}{p{0.9\linewidth}}{\emph{Construction modulo one prime and one root} (\file{code/f4/}, called by \file{code/fields/direct\_f4.py})}\\
-\file{rootsys.py}, \file{basic.py} & root data, Weyl and quantum dimensions, Kac--Walton fusion & \ref{sec:category} \\
-\file{lin.py}, \file{qg.py} & linear algebra mod $p$; $\Uq$-modules, highest weight vectors & \ref{sec:modules} \\
-\file{cells.py}, \file{check\_cells.py} & the cells; their relations at every base & \ref{sec:cells} \\
-\file{pathmodel.py}, \file{objects.py} & path spaces and generators; idempotents $p_S$, auxiliary bases & \ref{sec:paths}--\ref{sec:gaugefix} \\
-\file{hfamily.py}, \file{run\_h.py} & F-symbols with third leg $V$ & \ref{sec:H} \\
-\file{recursion.py}, \file{run\_split.py} & the pentagon recursion & \ref{sec:recursion} \\
-\file{rmatrix.py}, \file{run\_r.py} & R-symbols & \ref{sec:Rsym} \\
-\multicolumn{3}{p{0.9\linewidth}}{\emph{Normal form, pipeline and reconstruction} (\file{code/fields/})}\\
-\file{f4\_canon.py}, \file{torus.py} & the normal form (Section~\ref{sec:nfrule}) modulo $p$ & \ref{sec:nfrule} \\
-\file{direct\_f4.py}, \file{direct\_f4\_all.sh} & the pipeline at one (prime, root); at all of them & \ref{sec:construction} \\
-\file{compare\_direct.py} & one run of the pipeline against the archived table & \ref{sec:construction} \\
-\file{f4\_full\_recon.py}, \file{direct\_R\_recon.py} & reconstruction of F over $\kk$ and of R over $\Kt$ & \ref{sec:reconstruction} \\
-\file{finish\_all.sh} & the long verifications; comparison with the archive & \ref{sec:verification} \\
-\file{fsym\_k.py}, \file{fsym\_bin.py} & readers and text output & \ref{sec:data} \\
-\file{f4\_relabel\_exact.py} & exact relabellings & \ref{sec:autoeq} \\
-\multicolumn{3}{p{0.9\linewidth}}{\emph{Verifiers} (\file{code/f4/})}\\
-\file{verify\_hex\_bin.py} & both hexagons and $RR^{-1}=1$, exactly & \ref{sec:verification} \\
-\file{pent\_reduced.py} & pentagons with fourth object $V$, exactly; invertibility & \ref{sec:pentagon} \\
-\file{pent\_exact\_subset.py} & pentagon on subsets, exactly & \ref{sec:pentagon} \\
-\multicolumn{3}{p{0.9\linewidth}}{\emph{Checks of this paper} (\file{code/checks/})}\\
-\file{exact\_checks.py} & objects, fusion graph, modular data, unit legs, $1/d_X$, exactly & \ref{sec:modular} \\
-\file{s\_nondegenerate.py} & $\tilde S^2=\mathcal D^2\cdot\id$, exactly & \ref{sec:modular} \\
-\file{nf\_galois.py}, \file{r\_invariants.py} & Galois action on F; invariants of R & \ref{sec:fields} \\
-\file{pseudo\_unitary.py} & character of $d_X$; $(F^{-1})_{11}=F_{11}$ modulo $p$ & \ref{sec:modularity} \\
-\file{autoeq\_checks.py}, \file{nf\_witness.py} & automorphisms, M\"uger centre, transport of $R[X,X,Z]$; invariants $F_{ab}(F^{-1})_{ba}$ & \ref{sec:autoeq} \\
-\multicolumn{3}{p{0.9\linewidth}}{\emph{Other} (\file{code/autoeq/}, \file{code/unitary/})}\\
-\file{fusion\_auts.py}, \file{stab\_check.py} & fusion ring automorphisms; stabiliser of the normal form & \ref{sec:autoeq} \\
-\file{braid\_transport\_f4.py} & transported R modulo $p$ & \ref{sec:autoeq} \\
-\file{f4\_forms.py}, \file{f4\_forms\_recon.py} & invariant Hermitian forms modulo $p$; over $\kk$ & \ref{sec:unitarity} \\
-\file{f4\_forms\_analyse.py}, \file{f4\_classes.py} & positivity of the forms; square classes & \ref{sec:unitarity} \\
-\multicolumn{3}{p{0.9\linewidth}}{\emph{Forms over the cubic field} (\file{code/f4-forms/})}\\
-\file{relabel\_exact\_nf.py}, \file{run\_gauges.sh} & exact gauges for $\sigma_5$ with $\pi$, $\pi^3$, saved & \ref{sec:forms} \\
-\file{descent\_u.py} & descent data, scalars $u_X$, braiding test & \ref{sec:forms} \\
-\file{brauer.py}, \file{brauer.gp} & $u_X$ in $E$; signs, Hasse invariants, index (PARI/GP) & \ref{sec:forms} \\
-\file{uvals\_gp.py}, \file{endo.gp}, \file{kforms.gp} & forms $\mathcal D_e$; twisted forms over $\kk$ (PARI/GP) & \ref{sec:forms} \\
+\multicolumn{3}{p{0.9\linewidth}}{\emph{Construction modulo one prime and one root} (\texttt{code/f4/}, called by \texttt{code/fields/direct\_f4.py})}\\
+\texttt{rootsys.py}, \texttt{basic.py} & root data, Weyl and quantum dimensions, Kac--Walton fusion & \ref{sec:category} \\
+\texttt{lin.py}, \texttt{qg.py} & linear algebra mod $p$; $\Uq$-modules, highest weight vectors & \ref{sec:modules} \\
+\texttt{cells.py}, \texttt{check\_cells.py} & the cells; their relations at every base & \ref{sec:cells} \\
+\texttt{pathmodel.py}, \texttt{objects.py} & path spaces and generators; idempotents $p_S$, auxiliary bases & \ref{sec:paths}--\ref{sec:gaugefix} \\
+\texttt{hfamily.py}, \texttt{run\_h.py} & F-symbols with third leg $V$ & \ref{sec:H} \\
+\texttt{recursion.py}, \texttt{run\_split.py} & the pentagon recursion & \ref{sec:recursion} \\
+\texttt{rmatrix.py}, \texttt{run\_r.py} & R-symbols & \ref{sec:Rsym} \\
+\multicolumn{3}{p{0.9\linewidth}}{\emph{Normal form, pipeline and reconstruction} (\texttt{code/fields/})}\\
+\texttt{f4\_canon.py}, \texttt{torus.py} & the normal form (Section~\ref{sec:nfrule}) modulo $p$ & \ref{sec:nfrule} \\
+\texttt{direct\_f4.py}, \texttt{direct\_f4\_all.sh} & the pipeline at one (prime, root); at all of them & \ref{sec:construction} \\
+\texttt{compare\_direct.py} & one run of the pipeline against the archived table & \ref{sec:construction} \\
+\texttt{f4\_full\_recon.py}, \texttt{direct\_R\_recon.py} & reconstruction of F over $\kk$ and of R over $\Kt$ & \ref{sec:reconstruction} \\
+\texttt{finish\_all.sh} & the long verifications; comparison with the archive & \ref{sec:verification} \\
+\texttt{fsym\_k.py}, \texttt{fsym\_bin.py} & readers and text output & \ref{sec:data} \\
+\texttt{f4\_relabel\_exact.py} & exact relabellings & \ref{sec:autoeq} \\
+\multicolumn{3}{p{0.9\linewidth}}{\emph{Verifiers} (\texttt{code/f4/})}\\
+\texttt{verify\_hex\_bin.py} & both hexagons and $RR^{-1}=1$, exactly & \ref{sec:verification} \\
+\texttt{pent\_reduced.py} & pentagons with fourth object $V$, exactly; invertibility & \ref{sec:pentagon} \\
+\texttt{pent\_exact\_subset.py} & pentagon on subsets, exactly & \ref{sec:pentagon} \\
+\multicolumn{3}{p{0.9\linewidth}}{\emph{Checks of this paper} (\texttt{code/checks/})}\\
+\texttt{exact\_checks.py} & objects, fusion graph, modular data, unit legs, $1/d_X$, exactly & \ref{sec:modular} \\
+\texttt{s\_nondegenerate.py} & $\tilde S^2=\mathcal D^2\cdot\id$, exactly & \ref{sec:modular} \\
+\texttt{nf\_galois.py}, \texttt{r\_invariants.py} & Galois action on F; invariants of R & \ref{sec:fields} \\
+\texttt{pseudo\_unitary.py} & character of $d_X$; $(F^{-1})_{11}=F_{11}$ modulo $p$ & \ref{sec:modularity} \\
+\texttt{autoeq\_checks.py}, \texttt{nf\_witness.py} & automorphisms, M\"uger centre, transport of $R[X,X,Z]$; invariants $F_{ab}(F^{-1})_{ba}$ & \ref{sec:autoeq} \\
+\multicolumn{3}{p{0.9\linewidth}}{\emph{Other} (\texttt{code/autoeq/}, \texttt{code/unitary/})}\\
+\texttt{fusion\_auts.py}, \texttt{stab\_check.py} & fusion ring automorphisms; stabiliser of the normal form & \ref{sec:autoeq} \\
+\texttt{braid\_transport\_f4.py} & transported R modulo $p$ & \ref{sec:autoeq} \\
+\texttt{f4\_forms.py}, \texttt{f4\_forms\_recon.py} & invariant Hermitian forms modulo $p$; over $\kk$ & \ref{sec:unitarity} \\
+\texttt{f4\_forms\_analyse.py}, \texttt{f4\_classes.py} & positivity of the forms; square classes & \ref{sec:unitarity} \\
+\multicolumn{3}{p{0.9\linewidth}}{\emph{Forms over the cubic field} (\texttt{code/f4-forms/})}\\
+\texttt{relabel\_exact\_nf.py}, \texttt{run\_gauges.sh} & exact gauges for $\sigma_5$ with $\pi$, $\pi^3$, saved & \ref{sec:forms} \\
+\texttt{descent\_u.py} & descent data, scalars $u_X$, braiding test & \ref{sec:forms} \\
+\texttt{brauer.py}, \texttt{brauer.gp} & $u_X$ in $E$; signs, Hasse invariants, index (PARI/GP) & \ref{sec:forms} \\
+\texttt{uvals\_gp.py}, \texttt{endo.gp}, \texttt{kforms.gp} & forms $\mathcal D_e$; twisted forms over $\kk$ (PARI/GP) & \ref{sec:forms} \\
 \bottomrule
 \end{tabular}
 \medskip
 \caption{Programs. The comparison for $\cC(\mathfrak{so}(13),2)$ mentioned in
-Section~\ref{sec:limits} is in the directory \file{code/metaplectic/} of the repository.}
+Section~\ref{sec:limits} is in the directory \texttt{code/metaplectic/} of the repository.}
 \label{tab:scripts}
 \end{table}
 
 \subsection{Commands}
-Paths are relative to the top directory of the repository, which contains \file{code/} and
-\file{deposit/}; the archive files are read from the directory named by the environment variable
-\texttt{F4\_ARCHIVE} (default \file{archive/}), and scratch files are written to \file{work/}. Times
+Paths are relative to the top directory of the repository, which contains \texttt{code/} and
+\texttt{deposit/}; the archive files are read from the directory named by the environment variable
+\texttt{F4\_ARCHIVE} (default \texttt{archive/}), and scratch files are written to \texttt{work/}. Times
 and peak memory were measured on a shared $96$-core machine; the times of the long runs are taken from
 their logs.
 
@@ -1940,17 +1918,15 @@ python3 code/f4/pent_exact_subset.py 0000,0001,1000,0004,2000 $B --jobs 2
 python3 code/f4/verify_hex_bin.py $R $B --jobs 2
 python3 code/f4/pent_reduced.py $B --jobs 2
 \end{verbatim}
-\file{exact\_checks.py} proves Theorem~\ref{thm:main}(iii)
+\texttt{exact\_checks.py} proves Theorem~\ref{thm:main}(iii)
 and the statements of Section~\ref{sec:modular}, and writes the invariants file, identical to the
-deposited one ($50$ s, $0.5$ GB); \file{nf\_witness.py} gives the monoidal obstructions of
-Theorem~\ref{thm:autoeq} ($3$ s, $0.4$ GB); \file{pseudo\_unitary.py} checks the character property of the $d_X$ and the
+deposited one ($50$ s, $0.5$ GB); \texttt{nf\_witness.py} gives the monoidal obstructions of
+Theorem~\ref{thm:autoeq} ($3$ s, $0.4$ GB); \texttt{pseudo\_unitary.py} checks the character property of the $d_X$ and the
 identity of Lemma~\ref{lem:norm} ($30$ s, $0.7$ GB); the fourth command proves the pentagon for the $1{,}585$
 five-tuples from the listed objects ($85$ s, $0.9$ GB; with \texttt{maxdim=50} it is the run of
-Section~\ref{sec:pentagon}, $21{,}721$ s with $2$ workers). \file{verify\_hex\_bin.py} proves both
-hexagons and $RR^{-1}=1$ ($8593$ s with $2$ workers) and ends with \texttt{CONCLUSION: both hexagon
-equations hold exactly in K for all 58740 four-tuples \dots}. \file{pent\_reduced.py} proves
-invertibility and the pentagons with fourth object $V$ and ends with \texttt{CONCLUSION: the pentagon
-equation holds exactly in K for all 63841 five-tuples with fourth object 0001}
+Section~\ref{sec:pentagon}, $21{,}721$ s with $2$ workers). \texttt{verify\_hex\_bin.py} proves both
+hexagons and $RR^{-1}=1$ ($8593$ s with $2$ workers) and ends with \texttt{CONCLUSION: both hexagon equations hold exactly in K for all 58740 four-tuples \dots{}}. \texttt{pent\_reduced.py} proves
+invertibility and the pentagons with fourth object $V$ and ends with \texttt{CONCLUSION: the pentagon equation holds exactly in K for all 63841 five-tuples with fourth object 0001}
 ($39{,}892$ s with $2$ workers). The last two write a scratch file of $2.6$ GB per prime.
 
 \emph{(b) One run of the pipeline} at $p=1073741189$, $q=z$:
@@ -1965,16 +1941,16 @@ the normal-form rule reproduces the stored choices. Measured: $305$ s with $4$ p
 export $39$ s, R $58$ s). The second command reduces the archived table at the same root: the residues
 agree in all $54{,}881{,}076$ entries ($25$ s, $0.8$ GB).
 
-\emph{(c) Everything.} Both scripts are in \file{code/fields} and take a scratch directory as
-argument. \file{direct\_f4\_all.sh} runs (b) at the $78$ (prime, root) pairs of
+\emph{(c) Everything.} Both scripts are in \texttt{code/fields} and take a scratch directory as
+argument. \texttt{direct\_f4\_all.sh} runs (b) at the $78$ (prime, root) pairs of
 Section~\ref{sec:reconstruction} (about $9$ hours with $2$ runs at a time), and
-\file{f4\_full\_recon.py} and \file{direct\_R\_recon.py} reconstruct the F-table over $\kk$ ($279$ s
-with $16$ processes) and R over $\Kt$ (\file{f4\_full\_recon.py} reads only the block layout of the
-archived table). Then \file{finish\_all.sh} runs the long verifications of (a) and compares the
+\texttt{f4\_full\_recon.py} and \texttt{direct\_R\_recon.py} reconstruct the F-table over $\kk$ ($279$ s
+with $16$ processes) and R over $\Kt$ (\texttt{f4\_full\_recon.py} reads only the block layout of the
+archived table). Then \texttt{finish\_all.sh} runs the long verifications of (a) and compares the
 reconstructed files with the archived ones: they are identical byte for byte
-(\file{deposit/logs/finish\_all.log}).
+(\texttt{deposit/logs/finish\_all.log}).
 
-\emph{(d) Forms over the cubic field}, in \file{code/f4-forms}:
+\emph{(d) Forms over the cubic field}, in \texttt{code/f4-forms}:
 \begin{verbatim}
 ./run_gauges.sh
 python3 descent_u.py data/h_pi1_a5.pkl data/h_pi3_a5.pkl \
@@ -1986,10 +1962,9 @@ The first command computes and proves the two
 gauges of Lemma~\ref{lem:twisted} from the F-table ($8.5$ min and $0.65$ GB for each of its two
 processes), the second the scalars $u_X$ and the checks of Section~\ref{sec:forms} ($17$ s), the third
 the Hasse invariants and indices ($21$ s), the fourth the statements of Proposition~\ref{prop:endo} and the
-real forms ($1$ s; \file{kforms.gp} takes $23$ s). The logs are in \file{deposit/logs/forms\_*.log}.
+real forms ($1$ s; \texttt{kforms.gp} takes $23$ s). The logs are in \texttt{deposit/logs/forms\_*.log}.
 
 \section{Limitations and an open question}\label{sec:limits}
-
 \subsection{What the results establish}
 The data define a braided fusion category over $\Kt$, with F-symbols over $\kk$ and the fusion rules of
 $\CF$ (Theorem~\ref{thm:main}); with its spherical structure of positive dimensions it is a modular tensor
@@ -2020,6 +1995,196 @@ The computations, the verification programs and the text of this paper were prod
 (Claude, by Anthropic) directed by Kim Morrison.
 
 \bibliographystyle{amsplain}
-\bibliography{f4-fsymbols}
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{VerlindeDB}
+\emph{{VerlindeDB}: a list of low(ish) rank {V}erlinde categories},
+  \url{https://verlindedb.github.io/}, Site source at commit 5aed33f
+  (2026-02-11), accessed 2026-11-14; no authors are named on the site.
+
+\bibitem{SageFMatrix}
+Willie Aboumrad, \emph{Quantum computing with anyons: an {$F$}-matrix and braid
+  calculator}, 2022.
+
+\bibitem{Andersen92}
+Henning~Haahr Andersen, \emph{Tensor products of quantized tilting modules},
+  Comm. Math. Phys. \textbf{149} (1992), no.~1, 149--159.
+
+\bibitem{AndersenParadowski}
+Henning~Haahr Andersen and Jan Paradowski, \emph{Fusion categories arising from
+  semisimple {L}ie algebras}, Comm. Math. Phys. \textbf{169} (1995), no.~3,
+  563--588.
+
+\bibitem{Alatc}
+Eddy Ardonne, \emph{alatc: affine-lie-algebra-tensor-category, a {M}athematica
+  package},
+  \url{https://github.com/ardonne/affine-lie-algebra-tensor-category}, 2025,
+  Last update 2025-04-28 (commit c885a37), accessed 2026-11-14.
+
+\bibitem{ArdonneFinchTitsworth}
+Eddy Ardonne, Peter~E. Finch, and Matthew Titsworth, \emph{Classification of
+  metaplectic fusion categories}, Symmetry \textbf{13} (2021), no.~11, 2102.
+
+\bibitem{ArdonneSlingerland}
+Eddy Ardonne and Joost~K. Slingerland, \emph{Clebsch--{G}ordan and
+  6j-coefficients for rank 2 quantum groups}, J. Phys. A \textbf{43} (2010),
+  no.~39, 395205.
+
+\bibitem{BakalovKirillov}
+Bojko Bakalov and Alexander Kirillov, Jr., \emph{Lectures on tensor categories
+  and modular functors}, University Lecture Series, vol.~21, American
+  Mathematical Society, Providence, RI, 2001.
+
+\bibitem{Bourbaki}
+Nicolas Bourbaki, \emph{Lie groups and {L}ie algebras. {C}hapters 4--6},
+  Elements of Mathematics, Springer-Verlag, Berlin, 2002, Translated from the
+  French by Andrew Pressley.
+
+\bibitem{DGNO}
+Vladimir Drinfeld, Shlomo Gelaki, Dmitri Nikshych, and Victor Ostrik, \emph{On
+  braided fusion categories. {I}}, Selecta Math. (N.S.) \textbf{16} (2010),
+  no.~1, 1--119, arXiv:0906.0620.
+
+\bibitem{EdieMichell}
+Cain Edie-Michell, \emph{Auto-equivalences of the modular tensor categories of
+  type {$A$}, {$B$}, {$C$} and {$G$}}, Adv. Math. \textbf{402} (2022), Paper
+  No. 108364, With an appendix by T. Gannon; arXiv:2002.03220.
+
+\bibitem{EtingofGelakiDescent}
+Pavel Etingof and Shlomo Gelaki, \emph{Descent and forms of tensor categories},
+  Int. Math. Res. Not. IMRN (2012), no.~13, 3040--3063, Numbering of results as
+  in arXiv:1102.0657v2.
+
+\bibitem{EGNO}
+Pavel Etingof, Shlomo Gelaki, Dmitri Nikshych, and Victor Ostrik, \emph{Tensor
+  categories}, Mathematical Surveys and Monographs, vol. 205, American
+  Mathematical Society, Providence, RI, 2015.
+
+\bibitem{ENO}
+Pavel Etingof, Dmitri Nikshych, and Viktor Ostrik, \emph{On fusion categories},
+  Ann. of Math. (2) \textbf{162} (2005), no.~2, 581--642.
+
+\bibitem{Finkelberg}
+Michael Finkelberg, \emph{An equivalence of fusion categories}, Geom. Funct.
+  Anal. \textbf{6} (1996), no.~2, 249--267.
+
+\bibitem{Galindo}
+C{\'e}sar Galindo, \emph{On split forms of fusion categories}, 2026,
+  arXiv:2608.23743.
+
+\bibitem{Gannon}
+Terry Gannon, \emph{The automorphisms of affine fusion rings}, Adv. Math.
+  \textbf{165} (2002), no.~2, 165--193, arXiv:math/0002044.
+
+\bibitem{Humphreys}
+James~E. Humphreys, \emph{Introduction to {L}ie algebras and representation
+  theory}, Graduate Texts in Mathematics, vol.~9, Springer-Verlag, New York,
+  1972.
+
+\bibitem{Jantzen}
+Jens~Carsten Jantzen, \emph{Lectures on quantum groups}, Graduate Studies in
+  Mathematics, vol.~6, American Mathematical Society, Providence, RI, 1996.
+
+\bibitem{KacBook}
+Victor~G. Kac, \emph{Infinite-dimensional {L}ie algebras}, third ed., Cambridge
+  University Press, Cambridge, 1990.
+
+\bibitem{KacPeterson}
+Victor~G. Kac and Dale~H. Peterson, \emph{Infinite-dimensional {L}ie algebras,
+  theta functions and modular forms}, Adv. in Math. \textbf{53} (1984), no.~2,
+  125--264.
+
+\bibitem{KazhdanLusztigI}
+D.~Kazhdan and G.~Lusztig, \emph{Tensor structures arising from affine {L}ie
+  algebras. {I}}, J. Amer. Math. Soc. \textbf{6} (1993), no.~4, 905--947.
+
+\bibitem{KazhdanLusztigII}
+\bysame, \emph{Tensor structures arising from affine {L}ie algebras. {II}}, J.
+  Amer. Math. Soc. \textbf{6} (1993), no.~4, 949--1011.
+
+\bibitem{KazhdanLusztigIII}
+\bysame, \emph{Tensor structures arising from affine {L}ie algebras. {III}}, J.
+  Amer. Math. Soc. \textbf{7} (1994), no.~2, 335--381.
+
+\bibitem{KazhdanLusztigIV}
+\bysame, \emph{Tensor structures arising from affine {L}ie algebras. {IV}}, J.
+  Amer. Math. Soc. \textbf{7} (1994), no.~2, 383--453.
+
+\bibitem{MacLane}
+Saunders Mac~Lane, \emph{Categories for the working mathematician}, second ed.,
+  Graduate Texts in Mathematics, vol.~5, Springer-Verlag, New York, 1998.
+
+\bibitem{TensorCategoriesJl}
+Fabian M{\"a}urer, \emph{{TensorCategories.jl}},
+  \url{https://github.com/TensorCategories/TensorCategories.jl}, 2026, Version
+  0.8.0 (commit c820a48, 2026-11-09), Zenodo doi:10.5281/zenodo.24081897;
+  accessed 2026-11-14.
+
+\bibitem{MaurerThiel}
+Fabian M{\"a}urer and Ulrich Thiel, \emph{Computing the center of a fusion
+  category}, 2024.
+
+\bibitem{MaurerThielVercleyen}
+Fabian M{\"a}urer, Ulrich Thiel, and Gert Vercleyen, \emph{F-symbols and
+  {R}-symbols for the {D}rinfeld center of the {H}aagerup subfactor}, 2026.
+
+\bibitem{MorrisonSnyderThurston}
+Kim Morrison, Noah Snyder, and Dylan~P. Thurston, \emph{Towards the quantum
+  exceptional series}, 2024, arXiv:2402.03637.
+
+\bibitem{Rowell}
+Eric~C. Rowell, \emph{From quantum groups to unitary modular tensor
+  categories}, Representations of algebraic groups, quantum groups, and {L}ie
+  algebras, Contemp. Math., vol. 413, American Mathematical Society,
+  Providence, RI, 2006, pp.~215--230.
+
+\bibitem{Stasheff}
+James~Dillon Stasheff, \emph{Homotopy associativity of {$H$}-spaces. {I}},
+  Trans. Amer. Math. Soc. \textbf{108} (1963), no.~2, 275--292.
+
+\bibitem{VercleyenThesis}
+Gert Vercleyen, \emph{On low-rank multiplicity-free fusion categories}, Ph.D.
+  thesis, 2024.
+
+\bibitem{AnyonWiki}
+Gert Vercleyen and Joost Slingerland, \emph{{AnyonWiki}},
+  \url{https://anyonwiki.github.io/}, 2023, Version 1.0.2, Zenodo,
+  doi:10.5281/zenodo.15863113; site source at commit 25147de (2026-09-03),
+  accessed 2026-11-14.
+
+\bibitem{MCA}
+Joachim von~zur Gathen and J{\"u}rgen Gerhard, \emph{Modern computer algebra},
+  third ed., Cambridge University Press, Cambridge, 2013.
+
+\bibitem{Walton90a}
+Mark~A. Walton, \emph{Algorithm for {WZW} fusion rules: a proof}, Phys. Lett. B
+  \textbf{241} (1990), no.~3, 365--368.
+
+\bibitem{Walton90b}
+\bysame, \emph{Fusion rules in {W}ess--{Z}umino--{W}itten models}, Nuclear
+  Phys. B \textbf{340} (1990), no.~2-3, 777--790.
+
+\bibitem{WangGuyDavenport}
+Paul~S. Wang, M.~J.~T. Guy, and J.~H. Davenport, \emph{P-adic reconstruction of
+  rational numbers}, ACM SIGSAM Bull. \textbf{16} (1982), no.~2, 2--3.
+
+\bibitem{Wenzl}
+Hans Wenzl, \emph{{$C^*$} tensor categories from quantum groups}, J. Amer.
+  Math. Soc. \textbf{11} (1998), no.~2, 261--282.
+
+\bibitem{Xu}
+Feng Xu, \emph{Standard {$\lambda$}-lattices from quantum groups}, Invent.
+  Math. \textbf{134} (1998), no.~3, 455--487.
+
+\end{thebibliography}
+
+Document prepared in \href{https://verso.lean-lang.org/}{Verso}.
 
 \end{document}
