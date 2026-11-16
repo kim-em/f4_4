@@ -14,7 +14,7 @@ with `amsart`, `enumitem`, `booktabs`, `mathtools`, `microtype`, `lmodern`), Pyt
 
 `make -C paper submission` also writes `verso/_out/submission/source.zip`: the single TeX file,
 which compiles with plain pdflatex runs (no BibTeX), checked by compiling it in an empty
-directory. Nothing is submitted.
+directory. Nothing is submitted. The PDF is reproducible: the build fixes `SOURCE_DATE_EPOCH`.
 
 ## Files
 
@@ -82,6 +82,7 @@ The renderer makes these presentation decisions; everything else follows the mar
 - A list or code block belongs to the paragraph around it: no paragraph break is made before it
   after a paragraph, or after it before a paragraph. `:::paragraph` starts a new paragraph after a
   list or code block (used once, after the list of Theorem 1.1).
+- An ellipsis followed by a space is written `\dots\ `, keeping an ordinary interword space.
 - A link whose text is its URL is rendered with `\url`, others with `\href`.
 - `{ref}` renders `\eqref` for equation labels and `\ref` otherwise.
 - File names are typewriter text; paths of at least `breakFilePathsFrom` characters (36 here) may

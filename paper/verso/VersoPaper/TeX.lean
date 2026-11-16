@@ -163,10 +163,22 @@ def charTeX : Char → Except String String
 
 def escape (s : String) : RenderM String := do
   let mut out := ""
+  let mut afterEllipsis := false
   for c in s.toList do
+    -- An ellipsis followed by a space keeps an ordinary interword space, as `\dots\ ` does.
+    if afterEllipsis && c == ' ' then
+      out := out ++ "\\ "
+      afterEllipsis := false
+      continue
+    if afterEllipsis then out := out ++ "{}"
+    afterEllipsis := c == '…'
+    if afterEllipsis then
+      out := out ++ "\\dots"
+      continue
     match charTeX c with
     | .ok t => out := out ++ t
     | .error e => throw e
+  if afterEllipsis then out := out ++ "{}"
   return out
 
 def command (name text : String) := "\\" ++ name ++ "{" ++ text ++ "}"

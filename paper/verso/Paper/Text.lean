@@ -2296,10 +2296,10 @@ dimensions, the twists and the $`S`-matrix with those of $`\CF`; we know of no t
 braided fusion category from these invariants. The same programs, applied to
 $`\cC(\mathfrak{so}(13),2)` with the spinor as generator, produce F- and
 R-symbols that agree exactly, up to an explicit gauge transformation, with the closed formulas of
-Ardonne, Finch and Titsworth {cite "ArdonneFinchTitsworth"}[][^fn1] and with the solution of SageMath's
+Ardonne, Finch and Titsworth {cite "ArdonneFinchTitsworth"}[][^aft-errata] and with the solution of SageMath's
 F-matrix solver {cite "SageFMatrix"}[].
 
-[^fn1]: In arXiv:1608.03762v2 the tables of
+[^aft-errata]: In arXiv:1608.03762v2 the tables of
   F- and R-symbols are correct as printed. For the comparison the following equations are to be read
   differently: in the fusion rules of Section 4.1, $`\phi_i\otimes\psi_\pm=\psi_+\oplus\psi_-`; in (12) the
   summation index is $`g`; the gauge law (24) for R is $`R_{ab}^c\mapsto g_{ba}^cR_{ab}^c/g_{ab}^c`, and the

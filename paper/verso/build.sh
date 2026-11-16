@@ -3,8 +3,8 @@
 set -euo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")"
 job=f4-fsymbols
-# Reproducible PDF: dates and identifiers from the last commit of the source.
-export SOURCE_DATE_EPOCH=$(git log -1 --format=%ct -- . 2>/dev/null || echo 0)
+# Reproducible PDF: fixed dates and identifiers (1 November 2026, the month of the paper's date).
+export SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH:-1793491200}
 export FORCE_SOURCE_DATE=1
 lake build
 rm -rf _out && mkdir -p _out/bib _out/pdf

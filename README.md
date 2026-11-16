@@ -15,7 +15,7 @@ Code, data and paper source are released under the Apache License 2.0 (`LICENSE`
 
 ## Layout
 
-    paper/          the paper (f4-fsymbols.tex, f4-fsymbols.bib; `make -C paper` builds paper/build/f4-fsymbols.pdf)
+    paper/          the paper: f4-fsymbols.pdf and f4-fsymbols.tex, generated from the Verso source in paper/verso/
     deposit/        the files deposited with the paper: F with third leg V, R, invariants, logs, README with checksums
     archive/        README.md: the archive (two binary files of the F-table, the R-file), checksums; put the files here
     code/f4/        construction modulo p from the quantum group; the exact verifiers
@@ -89,4 +89,13 @@ forms over the cubic field, the so(13)_2 comparison) are listed in `code/README.
 
 ## Building the paper
 
-    make -C paper          # latexmk; needs a TeX distribution with amsart, booktabs, enumitem, hyperref
+    make -C paper              # regenerates paper/f4-fsymbols.tex and paper/f4-fsymbols.pdf
+    make -C paper submission   # also a self-contained TeX upload, paper/verso/_out/submission/source.zip
+
+The authoritative source of the paper is the Verso document `paper/verso/Paper/Text.lean`, with its
+references in `paper/verso/Paper/References.lean`; `paper/f4-fsymbols.tex` and
+`paper/f4-fsymbols.pdf` are generated and committed. Edit the Verso source, then run `make -C paper`.
+Requirements: elan (the Lean toolchain and Verso are pinned in `paper/verso/`; the first build
+fetches and compiles Verso), pdflatex with BibTeX and the amsart, booktabs, enumitem, mathtools and
+microtype packages, Python 3 and Poppler (`pdftotext`). The generated TeX includes its bibliography
+and compiles with pdflatex alone. See `paper/verso/README.md`.
