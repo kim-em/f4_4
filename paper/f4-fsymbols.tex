@@ -1,0 +1,2025 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{microtype}
+\raggedbottom
+\setlength{\emergencystretch}{2.5em}
+\setlength{\skip\footins}{8pt plus 4pt minus 2pt}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\K}{K}
+\newcommand{\Kp}{K^{+}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\file}[1]{\texttt{#1}}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\newcommand{\ob}[1]{\texttt{#1}}
+\newcommand{\Uq}{U_q(\mathfrak f_4)}
+\newcommand{\CF}{\cC(F_4,4)}
+
+\newcommand{\kk}{k}
+\newcommand{\Lf}{L}
+\newcommand{\Kt}{\Q(\zeta_{13})}
+\newcommand{\Fn}{F^{\natural}}
+\newcommand{\Rn}{R^{\natural}}
+
+% =========================================================================
+% Open items render visibly via \pending{...}; search for \pending.
+\newcommand{\pending}[1]{{\color{red!70!black}\textbf{[Pending:} #1\textbf{]}}}
+% =========================================================================
+
+\title[An explicit presentation of $\cC(F_4,4)$]{An explicit presentation of the modular tensor category $\cC(F_4,4)$}
+\author{Kim Morrison}
+\date{November 2026}
+
+\begin{document}
+\begin{abstract}
+This paper was written by AIs under loose supervision by Kim Morrison. It probably should only be
+read by other AIs. The take-away is that we give explicit F- and R-matrices for $\CF$, and prove that Gannon's
+exceptional automorphism of its fusion ring lifts to a braided equivalence between $\CF$ and its
+Galois conjugate at $q^5$, whose square is a braid-reversing autoequivalence of $\CF$, settling a
+prediction of Morrison--Snyder--Thurston.
+
+$\CF$, the category of the quantum group $\Uq$ at a root of unity of order $52$ (level $4$), has
+$16$ simple objects and fusion multiplicities up to $10$; there are $58{,}740$ F-matrices,
+with $54{,}881{,}076$ entries, and $2{,}302$ R-matrices. In a normal form that depends only on the
+gauge class, the F-symbols lie in $\Q(\zeta_{13})^+$ and the R-symbols in $\Q(\zeta_{13})$, the
+smallest fields with the labels of the objects fixed. Allowing the Galois group to permute the objects
+by Gannon's automorphism, the braided category has a unique form over the cubic subfield of
+$\Q(\zeta_{13})$; it is not split, and three of its simple objects have quaternion division algebras as
+endomorphism algebras. We prove exactly, by modular checks with
+height bounds, that the data satisfy the hexagon equations and the pentagon equation, and that the twists and the
+$S$-matrix computed from them are those of Kac and Peterson, with $S$ invertible. The data and the
+programs are available with the paper.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+
+A fusion category is described, up to equivalence, by its fusion rules together with its
+F-symbols: the matrix coefficients of the associativity constraint in chosen bases of the spaces
+$\Hom(X\otimes Y,Z)$ of simple objects. For a braided category one adds R-symbols, the matrix
+coefficients of the braiding.
+
+For the categories $\cC(\mathfrak g,k)$ coming from quantum groups at roots of unity (equivalently
+from level $k$ integrable representations of affine Lie algebras), explicit F-symbols are known in
+closed form only in special cases: for $\mathfrak{sl}_2$ through the $q$-Racah formula, and for
+the family $\mathfrak{so}(2p+1)_2$, for all $p$, by Ardonne, Finch and
+Titsworth~\cite{ArdonneFinchTitsworth}. Ardonne and Slingerland~\cite{ArdonneSlingerland}
+computed $q$-Clebsch--Gordan coefficients and $6j$-symbols for several rank $2$ examples,
+including the multiplicity $2$ case $\mathfrak{su}(3)_3/\Z_3$, and Ardonne's Mathematica package
+\texttt{alatc}~\cite{Alatc} computes F- and R-symbols from the quantum groups of all untwisted
+affine Lie algebras, numerically and in exact form, by this approach. Programs that solve the pentagon and hexagon equations from the fusion
+rules (SageMath~\cite{SageFMatrix}, Anyonica~\cite{VercleyenThesis}) are restricted to
+multiplicity free fusion rules, and the AnyonWiki~\cite{AnyonWiki} lists the multiplicity free
+fusion categories up to rank $7$. Exact F-symbols with multiplicities at a larger scale have been
+obtained for Drinfeld centres by M\"aurer and Thiel~\cite{MaurerThiel} and, for the centre of the
+Haagerup subfactor, by M\"aurer, Thiel and Vercleyen~\cite{MaurerThielVercleyen}, with
+TensorCategories.jl~\cite{TensorCategoriesJl}. VerlindeDB~\cite{VerlindeDB} lists fusion rules and
+modular data of many $\cC(\mathfrak g,k)$, including type $F_4$, but no F-symbols. We searched arXiv
+titles and abstracts, the forward citations of the papers above, and the databases above, for
+F-symbols of $\CF$ or of a category known to be equivalent to it, and found none; we are not aware of
+a previous computation of the F-symbols of $\CF$. Galindo~\cite{Galindo} proves that the fusion
+category underlying every $\cC(\mathfrak g,k)$ has a split form over the maximal real subfield of the
+cyclotomic field of the quantum parameter; we compare this with our fields in
+Section~\ref{sec:normalform}.
+
+Gannon found that the fusion ring of $\CF$ has an automorphism $\pi_4$ of order $4$~\cite{Gannon}.
+Edie-Michell, who determined the autoequivalence groups of $\cC(\mathfrak g,k)$ for types $A$, $B$, $C$
+and $G$, wrote that ``the exceptional auto-equivalence of $\mathcal C(\mathfrak f_4,4)$ remains
+completely mysterious''~\cite[Section~1]{EdieMichell}, and Morrison, Snyder and Thurston predicted,
+assuming their quantum sufficiency conjecture, a braided equivalence between $\CF$ and a Galois
+conjugate realising $\pi_4$, and a braid-reversing autoequivalence~\cite[Section~6]{MorrisonSnyderThurston}.
+From the data we prove (Theorem~\ref{thm:autoeq}): $\pi_4$ lifts to a braided equivalence from $\CF$ at
+$q$ to $\CF$ at $q^5$, and $\pi_4$ and $\pi_4^3$ do not lift to autoequivalences; $\pi_4^2$ lifts to a
+monoidal autoequivalence that reverses the braiding; the monoidal autoequivalence group is $\Z/2$ and
+the braided one is trivial; the underlying fusion category has exactly two braidings; and the $24$
+Galois conjugates of $\CF$ form three braided equivalence classes. These three classes are the base
+changes of one braided fusion category over the cubic subfield $E$ of $\Q(\zeta_{13})$, unique up to
+braided equivalence, in which the simple objects over $\ob{0002}$, $\ob{0011}$, $\ob{0101}$ have
+quaternion division algebras as endomorphism algebras; the fusion category over $\Q(\zeta_{13})^+$
+defined by our F-symbols has no form over $E$ (Section~\ref{sec:forms}).
+
+The category $\CF$ has $16$ simple objects, all self-dual, and its fusion multiplicities reach
+$10$ (in $X\otimes X$ for the $4096$-dimensional object $X$ of highest weight $(0,0,1,1)$). Its
+F-symbols with all multiplicity indices number about $5.5\times10^7$. We compute them from the
+quantum group, as follows.
+\begin{itemize}[leftmargin=2em]
+\item Everything is computed over finite fields $\F_p$ with $p\equiv1\pmod{52}$, which contain
+the root of unity. Simple modules of $\Uq$ are built weight space by weight space, and only the
+tensor powers $V^{\otimes n}$, $n\le4$, of the $26$-dimensional module $V$ are used, through a
+path model in which morphisms act by sparse matrices assembled from a small amount of local data
+(the \emph{cells}: $4{,}472$ numbers).
+\item Negligible morphisms are removed at the level of the cells, by an explicit description of
+the highest weight vectors in $L(A)\otimes V\otimes V$.
+\item Every simple object is cut out of a tensor power of $V$ by polynomials in ribbon twists,
+and every multiplicity space receives an auxiliary basis, in which the F-symbols with third leg $V$
+are computed from the path model.
+\item These are brought, modulo $p$, to a normal form defined by an explicit pivot rule, which depends
+only on the gauge class and commutes with the Galois action; so it is defined over the field of
+moduli, $\Q(\zeta_{13})^+$.
+\item All other F-symbols follow from those with third leg $V$ by an explicit pentagon recursion, run
+once in the normal-form gauge, which also checks itself; the R-symbols are computed in the same gauge,
+over $\Q(\zeta_{13})$.
+\item The normal-form data are reconstructed over these fields by Chinese remaindering and rational
+reconstruction.
+\end{itemize}
+The same programs reproduce the closed formulas of Ardonne, Finch and
+Titsworth~\cite{ArdonneFinchTitsworth} for $\cC(\mathfrak{so}(13),2)$ (Section~\ref{sec:limits}).
+
+\subsection*{Results}
+Let $\zeta=e^{2\pi i/52}$ and $q=\zeta$ (Section~\ref{sec:category}). We use the fields
+\[
+\K=\Q(\zeta)\supset\Lf=\K^+=\Q(\zeta+\zeta^{-1}),\qquad
+\Kt=\Q(\zeta^4)\supset\kk=\Kt^+,
+\]
+of degrees $24$, $12$, $12$ and $6$. The data consist of the F-symbols $F$ over $\kk$ and the
+R-symbols $R$ over $\Kt$ of $\CF$ in the normal-form gauge (Section~\ref{sec:nfrule}).
+
+\begin{theorem}\label{thm:main}
+For the fusion rules of $\CF$, the data $(F,R)$ have the following properties.
+\begin{enumerate}[label=(\roman*)]
+\item Both hexagon equations~\eqref{eq:H1},~\eqref{eq:H2} hold exactly, for all four-tuples of
+simple objects and all multiplicity indices.
+\item The pentagon equation~\eqref{eq:pentagon} holds exactly for all five-tuples of simple objects
+and all multiplicity indices.
+\item Every F-matrix and every R-matrix is invertible, every F-matrix with the unit object among
+its first three legs is the identity under the natural identification of its labels, and every
+object $X$ is self-dual with $F[X,X,X,X]_{(\one,0,0),(\one,0,0)}=1/d_X$, $d_X$ the quantum
+dimension~\eqref{eq:qdim}.
+\item The numbers
+\[
+\tilde\theta_X=d_X^{-1}\sum_Zd_Z\Tr R[X,X,Z],\qquad
+\tilde S_{XY}=\sum_Zd_Z\Tr\bigl(R[Y,X,Z]\,R[X,Y,Z]\bigr)
+\]
+are exactly the twists $q^{(X,X+2\rho)}$ and the ratios $S_{XY}/S_{\one\one}$ of the Kac--Peterson
+$S$-matrix, and $R[Y,X,Z]\,R[X,Y,Z]=\tilde\theta_Z\tilde\theta_X^{-1}\tilde\theta_Y^{-1}\cdot\id$ for
+all $X,Y,Z$. The matrix $\tilde S$ is invertible: $\tilde S^2=\mathcal D^2\cdot\id$ with
+$\mathcal D^2=\sum_Xd_X^2$.
+\item With the labels of the simple objects fixed, no gauge has all F-symbols in a proper subfield
+of $\kk$, and no gauge has all F- and R-symbols in a proper subfield of $\Kt$.
+\end{enumerate}
+
+Consequently the data define a braided fusion category over $\Kt$, with F-symbols over $\kk$ and
+the fusion rules of $\CF$ (rigid by (iii) and Proposition~\ref{prop:rigid}), and with its spherical
+structure of positive dimensions it is a modular tensor category with dimensions $d_X$, twists
+$q^{(X,X+2\rho)}$ and the Kac--Peterson $S$-matrix (Proposition~\ref{prop:modular}).
+\end{theorem}
+
+Theorem~\ref{thm:main} is a statement about the data files. That the category they define is $\CF$
+rests on the construction, as discussed in Section~\ref{sec:limits}.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lr}
+\toprule
+field of F; of R & $\kk$ (degree 6); $\Kt$ (degree 12) \\
+F-matrices; entries (including zeros) & $58{,}740$; $54{,}881{,}076$ \\
+largest F-matrix; largest multiplicity & $465\times465$; $10$ \\
+nonzero rational coefficients of F (basis $\eta_1,\dots,\eta_6$) & $328{,}727{,}941$ \\
+largest numerator or denominator, F & $99$ bits \\
+R-matrices; entries & $2{,}302$; $8{,}116$ \\
+largest numerator or denominator, R; $R^{-1}$ & $47$ bits; $41$ bits \\
+five-tuples with $\Hom(A\otimes B\otimes C\otimes D,E)\ne0$ & $1{,}030{,}051$ \\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{Sizes of the data.}
+\label{tab:sizes}
+\end{table}
+
+Statements (i), (ii) and (iv) are proved by checking the identities modulo primes
+$p\equiv1\pmod{52}$ at all embeddings into $\F_p$ and applying an explicit height bound
+(Lemma~\ref{lem:height}). For the pentagon we use Lemma~\ref{lem:reduction}, which reduces it to the
+$63{,}841$ five-tuples whose fourth object is the $26$-dimensional object $V$; larger exact subsets give
+additional checks (Section~\ref{sec:pentagon}). Statement (v) rests on the normal form (Section~\ref{sec:fields}).
+
+We also show (Proposition~\ref{prop:integrality}) that no gauge makes all F-symbols of $\CF$
+integral at the primes above $13$: the object $(0,0,1,1)$ has a quantum dimension of
+valuation $2/3$ there, and a gauge invariant combination of F-symbols equals its inverse.
+
+\subsection*{Outline}
+Section~\ref{sec:category} describes $\CF$: root data, the root of unity, the simple objects and the
+fusion graph of $V$. Section~\ref{sec:conventions} fixes conventions for F- and R-symbols with
+multiplicities, writes out the pentagon and hexagon equations, and proves the reduction of the
+pentagon equation to one generator. Section~\ref{sec:construction} describes the construction,
+including the normal form, in enough detail to reimplement it. Section~\ref{sec:fields} discusses the
+fields and proves Theorem~\ref{thm:main}(v), Section~\ref{sec:reconstruction} the exact reconstruction
+and Section~\ref{sec:verification} the verification and unitarity. Section~\ref{sec:autoeq}
+determines the autoequivalences and braidings and the forms over the cubic subfield, and Section~\ref{sec:integrality} proves the
+non-integrality at $13$. Sections~\ref{sec:data} and~\ref{sec:availability} describe the data files
+and how to reproduce the computation, and Section~\ref{sec:limits} discusses limitations and an open
+question.
+
+\section{The category}\label{sec:category}
+
+\subsection{Root data}
+We use Bourbaki's numbering of the simple roots of $F_4$~\cite{Bourbaki}: $\alpha_1,\alpha_2$
+long and $\alpha_3,\alpha_4$ short, with Cartan matrix
+\[
+\bigl(\langle\alpha_j,\alpha_i^\vee\rangle\bigr)_{i,j}=
+\begin{pmatrix}2&-1&0&0\\-1&2&-1&0\\0&-2&2&-1\\0&0&-1&2\end{pmatrix}.
+\]
+Weights are written by their Dynkin labels $\lambda=(\lambda_1,\lambda_2,\lambda_3,\lambda_4)$,
+$\lambda_i=\langle\lambda,\alpha_i^\vee\rangle$, and in the data files as strings such as
+\ob{0011}. The invariant form is normalised so that \emph{short} roots have length $2$; then long
+roots have length $4$, and $(\lambda,\mu)\in\Z$ for all integral weights in the cases we need. The
+Weyl vector is $\rho=(1,1,1,1)$, the highest root is $\theta=(1,0,0,0)$, the comarks are
+$(2,3,2,1)$, and the dual Coxeter number is $h^\vee=9$. There are $24$ positive roots.
+
+\subsection{The root of unity}
+Let $k=4$, so $k+h^\vee=13$, and let $q$ be a primitive root of unity of order
+$\ell=2\cdot2\cdot13=52$ (twice the lacing number times $k+h^\vee$). Over $\C$ we take
+$q=\zeta=e^{2\pi i/52}$; the other primitive $52$nd roots give the Galois conjugate categories
+(Section~\ref{sec:fields}). With our normalisation of the form, $K_i$ acts on a weight space of
+weight $\mu$ by $q^{(\alpha_i,\mu)}$, so $q_i=q^{(\alpha_i,\alpha_i)/2}$ is $q$ for short and
+$q^2$ for long simple roots. In the conventions of Rowell's survey~\cite{Rowell}, where the form is normalised in the same way and
+$q^2$ is a primitive $\ell'$-th root of unity, this is the uniform case $\ell'=26$, $m=2\mid\ell'$, at
+$q=e^{\pi i/26}$ (Section~\ref{sec:unitarity}).
+
+\subsection{The category}
+Let $\cC$ be the category of tilting modules of $\Uq$ at $q$ (with divided powers), modulo the
+tensor ideal generated by the indecomposable tilting modules of quantum dimension zero. By
+Andersen~\cite{Andersen92} and Andersen and Paradowski~\cite{AndersenParadowski} (see the account
+in~\cite[Section~3]{Rowell}, which we follow), $\cC$ is a semisimple ribbon category whose simple
+objects are labelled by the dominant weights $\lambda$ in the open fundamental alcove
+\[
+\{\lambda\ \text{dominant}:(\lambda+\rho,\theta)<26\}
+=\{\lambda:2\lambda_1+3\lambda_2+2\lambda_3+\lambda_4\le4\},
+\]
+that is, the integrable highest weights of level at most $4$; by Kazhdan and
+Lusztig~\cite{KazhdanLusztigI,KazhdanLusztigII,KazhdanLusztigIII,KazhdanLusztigIV} and
+Finkelberg~\cite{Finkelberg} it is equivalent to the category of level $4$ integrable modules of
+the affine Lie algebra of type $F_4^{(1)}$. We write $\CF$ for it. There are $16$ simple objects.
+Their quantum dimensions and twists are
+\begin{equation}\label{eq:qdim}
+d_\lambda=\prod_{\alpha>0}\frac{[(\lambda+\rho,\alpha)]}{[(\rho,\alpha)]},\qquad
+[n]=\frac{q^n-q^{-n}}{q-q^{-1}},\qquad
+\theta_\lambda=q^{(\lambda,\lambda+2\rho)}=e^{2\pi ih_\lambda},
+\end{equation}
+with conformal weights $h_\lambda=(\lambda,\lambda+2\rho)/52$. All $(\lambda,\lambda+2\rho)$ are even,
+so the twists lie in $\mu_{26}$. The central charge is
+$c=k\dim\mathfrak f_4/(k+h^\vee)=4\cdot52/13=16$, and the global dimension is
+$\mathcal D^2=\sum_\lambda d_\lambda^2\approx7402.7940133506$, $\mathcal D\approx86.0394910105$.
+Table~\ref{tab:objects} lists the simple objects (\file{exact\_checks.py}).
+
+\begin{table}[ht]
+\centering
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{rlrrlrl}
+\toprule
+& $\lambda$ & $\dim L(\lambda)$ & $d_\lambda$ & $h_\lambda$ & depth & $v_{13}(d_\lambda)$ \\
+\midrule
+0 & \ob{0000} & 1 & 1 & 0 & 0 & 0 \\
+1 & \ob{0001} & 26 & 7.3021868179 & 6/13 & 1 & 0 \\
+2 & \ob{0002} & 324 & 18.3587793437 & 1 & 2 & 0 \\
+3 & \ob{0010} & 273 & 19.3587793437 & 12/13 & 2 & 0 \\
+4 & \ob{1000} & 52 & 7.3021868179 & 9/13 & 2 & 0 \\
+5 & \ob{0003} & 2652 & 19.3587793437 & 21/13 & 3 & 0 \\
+6 & \ob{0011} & 4096 & 43.0197455053 & 3/2 & 3 & 2/3 \\
+7 & \ob{0100} & 1274 & 19.3587793437 & 18/13 & 3 & 0 \\
+8 & \ob{1001} & 1053 & 26.6609661616 & 16/13 & 3 & 0 \\
+9 & \ob{0004} & 16302 & 7.3021868179 & 30/13 & 4 & 0 \\
+10 & \ob{0012} & 34749 & 26.6609661616 & 28/13 & 4 & 0 \\
+11 & \ob{0020} & 19448 & 19.3587793437 & 27/13 & 4 & 0 \\
+12 & \ob{0101} & 19278 & 25.6609661616 & 2 & 4 & 0 \\
+13 & \ob{1002} & 10829 & 26.6609661616 & 24/13 & 4 & 0 \\
+14 & \ob{1010} & 8424 & 26.6609661616 & 23/13 & 4 & 0 \\
+15 & \ob{2000} & 1053 & 7.3021868179 & 20/13 & 4 & 0 \\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{The simple objects of $\CF$, in the order used in the data files. ``Depth'' is the least
+$n$ with $L(\lambda)$ a summand of $V^{\otimes n}$, $V=L(\ob{0001})$. The last column is the
+valuation of $d_\lambda$ at either prime of $\K$ above $13$, normalised by $v(13)=1$
+(Section~\ref{sec:integrality}).}
+\label{tab:objects}
+\end{table}
+
+\subsection{Fusion rules and the generator}
+The fusion multiplicities $N_{XY}^Z=\dim\Hom(X\otimes Y,Z)$ are given by the Kac--Walton
+formula~\cite{Walton90a,Walton90b} (see also~\cite{KacBook}): the classical tensor product
+multiplicities, folded by the affine Weyl group action at level $4$ (shifted by $\rho$). We
+computed them this way, and checked that they agree with the Verlinde formula applied to the
+Kac--Peterson $S$-matrix~\cite{KacPeterson} and that they form an associative commutative ring
+with the $d_\lambda$ as a character. Every simple object is self-dual. There are $2{,}302$ triples
+with $N_{XY}^Z\ne0$, and the largest multiplicity is
+$N_{\ob{0011},\ob{0011}}^{\ob{0011}}=10$.
+
+Let $V=L(\ob{0001})$ be the $26$-dimensional module. Table~\ref{tab:graph} gives $X\otimes V$ for
+every simple $X$, that is, the fusion graph of $V$. All multiplicities are $1$ except the two
+loops at \ob{0011} and \ob{0012}, of multiplicity $2$. Every simple object occurs in $V^{\otimes4}$
+(the depths are in Table~\ref{tab:objects}). In particular
+\[
+V\otimes V=\one\oplus V\oplus L(\ob{0002})\oplus L(\ob{0010})\oplus L(\ob{1000}),
+\]
+of dimensions $676=1+26+324+273+52$, where the first three summands lie in $S^2V$ and the last
+two in $\Lambda^2V$.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{ll}
+\toprule
+$X$ & $X\otimes V$ \\
+\midrule
+\ob{0000} & \ob{0001} \\
+\ob{0001} & \ob{0000} + \ob{0001} + \ob{0002} + \ob{0010} + \ob{1000} \\
+\ob{0002} & \ob{0001} + \ob{0002} + \ob{0010} + \ob{0003} + \ob{0011} + \ob{1001} \\
+\ob{0010} & \ob{0001} + \ob{0002} + \ob{0010} + \ob{1000} + \ob{0011} + \ob{0100} + \ob{1001} \\
+\ob{1000} & \ob{0001} + \ob{0010} + \ob{1001} \\
+\ob{0003} & \ob{0002} + \ob{0003} + \ob{0011} + \ob{0004} + \ob{0012} + \ob{1002} \\
+\ob{0011} & \ob{0002} + \ob{0010} + \ob{0003} + 2\,\ob{0011} + \ob{0100} + \ob{1001} + \ob{0012} + \ob{0020} + \ob{0101} + \ob{1002} + \ob{1010} \\
+\ob{0100} & \ob{0010} + \ob{0011} + \ob{1001} + \ob{0101} + \ob{1010} \\
+\ob{1001} & \ob{0002} + \ob{0010} + \ob{1000} + \ob{0011} + \ob{0100} + \ob{1001} + \ob{1002} + \ob{1010} + \ob{2000} \\
+\ob{0004} & \ob{0003} + \ob{0004} + \ob{0012} \\
+\ob{0012} & \ob{0003} + \ob{0011} + \ob{0004} + 2\,\ob{0012} + \ob{0020} + \ob{0101} + \ob{1002} \\
+\ob{0020} & \ob{0011} + \ob{0012} + \ob{0020} + \ob{0101} + \ob{1010} \\
+\ob{0101} & \ob{0011} + \ob{0100} + \ob{0012} + \ob{0020} + \ob{0101} + \ob{1002} + \ob{1010} \\
+\ob{1002} & \ob{0003} + \ob{0011} + \ob{1001} + \ob{0012} + \ob{0101} + \ob{1002} + \ob{1010} \\
+\ob{1010} & \ob{0011} + \ob{0100} + \ob{1001} + \ob{0020} + \ob{0101} + \ob{1002} + \ob{1010} + \ob{2000} \\
+\ob{2000} & \ob{1001} + \ob{1010} \\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{The fusion graph of $V=\ob{0001}$: the decomposition of $X\otimes V$ in $\CF$.}
+\label{tab:graph}
+\end{table}
+
+\section{Conventions for F- and R-symbols}\label{sec:conventions}
+
+We fix conventions for F-symbols with multiplicities; see~\cite{EGNO,BakalovKirillov} for
+generalities on fusion and braided categories. Let $\cC$ be a semisimple $k$-linear monoidal
+category over a field $k$ of characteristic zero, with simple unit $\one$, finitely many simple
+objects up to isomorphism and $\End(X)=k$ for simple $X$. Fix representatives
+$\mathrm{Irr}(\cC)$, and for simple $X,Y,Z$ a basis $\phi^{XY\to Z}_i$, $0\le i<N_{XY}^Z$, of
+$\Hom(X\otimes Y,Z)$ (the \emph{fusion maps}). We suppress the associator of the ambient category in the
+notation (in general one inserts $\alpha_{X,Y,W}$ on the right hand side of~\eqref{eq:F}); our
+computations take place in a category of matrices over path spaces in which composition and tensor
+product are strictly associative. The two families in~\eqref{eq:F} below are bases of
+$\Hom(X\otimes Y\otimes W,T)$, by semisimplicity.
+
+\begin{definition}\label{def:F}
+For simple $X,Y,W,T$, the \emph{F-matrix} $F[X,Y,W,T]$ is defined by
+\begin{equation}\label{eq:F}
+\phi^{ZW\to T}_j\circ(\phi^{XY\to Z}_i\otimes\id_W)
+=\sum_{Z',k,l} F[X,Y,W,T]_{(Z,i,j),(Z',k,l)}\;
+\phi^{XZ'\to T}_l\circ(\id_X\otimes\phi^{YW\to Z'}_k).
+\end{equation}
+Rows are labelled by triples $(Z,i,j)$ with $i<N_{XY}^Z$, $j<N_{ZW}^T$, and columns by triples
+$(Z',k,l)$ with $k<N_{YW}^{Z'}$, $l<N_{XZ'}^T$.
+\end{definition}
+
+\begin{proposition}\label{prop:pentagon}
+For all simple $A,B,C,D,E$, all $P,Q,R,S$ and all indices,
+\begin{multline}\label{eq:pentagon}
+\sum_{l} F[P,C,D,E]_{(Q,i_2,i_3),(R,k,l)}\,F[A,B,R,E]_{(P,i_1,l),(S,m,n)} \\
+=\sum_{T,a,b,c} F[A,B,C,Q]_{(P,i_1,i_2),(T,a,b)}\,F[A,T,D,E]_{(Q,b,i_3),(S,c,n)}\,
+F[B,C,D,S]_{(T,a,c),(R,k,m)}.
+\end{multline}
+\end{proposition}
+
+\begin{proof}
+Both sides are the coefficient of the basis vector
+$\phi^{AS\to E}_n\circ(\id_A\otimes\phi^{BR\to S}_m)\circ(\id_{A\otimes B}\otimes\phi^{CD\to R}_k)$
+of $\Hom(A\otimes B\otimes C\otimes D,E)$ in the expansion of
+$v=\phi^{QD\to E}_{i_3}\circ(\phi^{PC\to Q}_{i_2}\otimes\id_D)\circ(\phi^{AB\to P}_{i_1}\otimes\id_{C\otimes D})$.
+For the left hand side, apply~\eqref{eq:F} to the first two factors of $v$ (with
+$(X,Y,W,T)=(P,C,D,E)$), use the interchange law to move $\phi^{AB\to P}_{i_1}$ past
+$\phi^{CD\to R}_k$, and apply~\eqref{eq:F} with $(A,B,R,E)$. For the right hand side, apply~\eqref{eq:F}
+with $(A,B,C,Q)$, then with $(A,T,D,E)$, and finally, inside the second tensor factor, with
+$(B,C,D,S)$.
+\end{proof}
+
+
+In matrix form, for fixed $A,B,C,D,E$ consider the five label sets
+\begin{align*}
+I_0&=\{(P,i_1,Q,i_2,i_3)\},& I_1&=\{(P,i_1,R,k,l)\},& I_2&=\{(R,k,S,m,n)\},\\
+J_1&=\{(T,a,b,Q,i_3)\},& J_2&=\{(T,a,S,c,n)\},
+\end{align*}
+indexing the bases of $\Hom(A\otimes B\otimes C\otimes D,E)$ for the bracketings
+$((AB)C)D$, $(AB)(CD)$, $A(B(CD))$, $(A(BC))D$ and $A((BC)D)$, all of the same size
+$n_{ABCDE}=\dim\Hom(A\otimes B\otimes C\otimes D,E)$. Then~\eqref{eq:pentagon} says
+\begin{equation}\label{eq:pentagon-matrix}
+M_1M_2=N_1N_2N_3,
+\end{equation}
+where $M_1=\bigoplus_{P,i_1}F[P,C,D,E]$ ($I_0\to I_1$), $M_2=\bigoplus_{R,k}F[A,B,R,E]$
+($I_1\to I_2$), $N_1=\bigoplus_{Q,i_3}F[A,B,C,Q]$ ($I_0\to J_1$), $N_2=\bigoplus_{T,a}F[A,T,D,E]$
+($J_1\to J_2$) and $N_3=\bigoplus_{S,n}F[B,C,D,S]$ ($J_2\to I_2$), each a block diagonal matrix
+with the identity on the multiplicity indices that are not acted on. We call
+$(A,B,C,D,E)$ a \emph{five-tuple}; $D$ is its fourth object. There are $1{,}030{,}051$ five-tuples
+with $n_{ABCDE}\ne0$ for $\CF$, and $n_{ABCDE}$ reaches $19{,}900$.
+
+\subsection*{Gauge}
+A change of fusion maps $\tilde\phi^{XY\to Z}_i=\sum_ag^{XY}_Z[i,a]\phi^{XY\to Z}_a$, with
+$g^{XY}_Z$ invertible, changes $F[X,Y,W,T]$ to $G_LF[X,Y,W,T]G_R^{-1}$, with $G_L$ and $G_R$
+block diagonal matrices assembled from tensor products of the $g$'s on the two label sets, and
+preserves the pentagon equation. In particular, if all four multiplicity spaces involved are one
+dimensional,
+\begin{equation}\label{eq:gauge-scalar}
+\tilde F[X,Y,W,T]_{(Z,0,0),(Z',0,0)}=\frac{g^{XY}_Zg^{ZW}_T}{g^{YW}_{Z'}g^{XZ'}_T}\,
+F[X,Y,W,T]_{(Z,0,0),(Z',0,0)} .
+\end{equation}
+
+\subsection*{R-symbols and hexagons}
+If $\cC$ is braided with braiding $c_{X,Y}:X\otimes Y\to Y\otimes X$, the R-matrices are
+defined by
+\begin{equation}\label{eq:R}
+\phi^{YX\to Z}_j\circ c_{X,Y}=\sum_iR[X,Y,Z]_{j,i}\,\phi^{XY\to Z}_i ,
+\end{equation}
+square matrices of size $N_{XY}^Z=N_{YX}^Z$. Write $\bar F$ for the inverse of an F-matrix. The two
+hexagon axioms, for $c_{X,Y\otimes W}$ and for $c_{X\otimes Y,W}$, become the following
+identities, for all simple $X,Y,W,T$ and all indices (for the first, all $Z,k,l$ and
+$Z'',k'',l''$; for the second, all $Z,i,l$ and $V',s',t$):
+\begin{multline}\label{eq:H1}
+\sum_{\substack{U,m,m',n\\V',s,s',t}}F[Y,W,X,T]_{(Z,k,l),(U,m,n)}\,R[X,W,U]_{m,m'}\,
+\bar F[Y,X,W,T]_{(U,m',n),(V',s,t)}\\
+\cdot R[X,Y,V']_{s,s'}\,F[X,Y,W,T]_{(V',s',t),(Z'',k'',l'')}
+=\delta_{ZZ''}\delta_{kk''}\,R[X,Z,T]_{l,l''},
+\end{multline}
+\begin{multline}\label{eq:H2}
+\sum_jR[Z,W,T]_{l,j}\,F[X,Y,W,T]_{(Z,i,j),(V',s',t)}\\
+=\sum_{U,m,m',n,s}\bar F[W,X,Y,T]_{(Z,i,l),(U,m,n)}\,R[X,W,U]_{m,m'}\\
+\cdot F[X,W,Y,T]_{(U,m',n),(V',s,t)}\,R[Y,W,V']_{s,s'}.
+\end{multline}
+
+\begin{proof}[Derivation]
+For~\eqref{eq:H2}, apply both sides of $c_{X\otimes Y,W}=(c_{X,W}\otimes\id_Y)\circ(\id_X\otimes
+c_{Y,W})$ after the basis vector $\phi^{WZ\to T}_l\circ(\id_W\otimes\phi^{XY\to Z}_i)$ of
+$\Hom(W\otimes X\otimes Y,T)$. By naturality, the left side gives
+$\phi^{WZ\to T}_l\circ c_{Z,W}\circ(\phi^{XY\to Z}_i\otimes\id_W)
+=\sum_jR[Z,W,T]_{l,j}\,\phi^{ZW\to T}_j\circ(\phi^{XY\to Z}_i\otimes\id_W)$, which we expand
+by~\eqref{eq:F}. For the right side, rewrite the basis vector in the left-bracketed basis with
+$\bar F[W,X,Y,T]$, compose with $c_{X,W}\otimes\id_Y$ using~\eqref{eq:R}, expand with
+$F[X,W,Y,T]$, and compose with $\id_X\otimes c_{Y,W}$ using~\eqref{eq:R} again. Comparing
+coefficients of $\phi^{XV'\to T}_t\circ(\id_X\otimes\phi^{YW\to V'}_{s'})$ gives~\eqref{eq:H2}.
+For~\eqref{eq:H1}, apply $c_{X,Y\otimes W}=(\id_Y\otimes c_{X,W})\circ(c_{X,Y}\otimes\id_W)$
+after $\phi^{ZX\to T}_l\circ(\phi^{YW\to Z}_k\otimes\id_X)$; naturality gives
+$\sum_{l''}R[X,Z,T]_{l,l''}\,\phi^{XZ\to T}_{l''}\circ(\id_X\otimes\phi^{YW\to Z}_k)$ on one side,
+and the other side is expanded with $F[Y,W,X,T]$, $R[X,W,\cdot]$, $\bar F[Y,X,W,T]$,
+$R[X,Y,\cdot]$ and $F[X,Y,W,T]$ in turn.
+\end{proof}
+
+For the verification we use the equivalent forms without $\bar F$, in which the R-blocks on one
+side are replaced by their inverses: with $P_1,P_2,P_3$ the block matrices built from the blocks
+$R[X,Y,\cdot]^{-1}$, $R[X,W,\cdot]^{-1}$, $R[X,\cdot,T]^{-1}$ acting on the first, first and last
+multiplicity index respectively, and $Q_4,Q_5,Q_6$ those built from $R[Y,W,\cdot]$,
+$R[X,W,\cdot]$, $R[\cdot,W,T]$,
+\begin{equation}\label{eq:hex-matrix}
+\begin{gathered}
+P_1\,F[Y,X,W,T]\,P_2=F[X,Y,W,T]\,P_3\,F[Y,W,X,T],\\
+Q_5\,F[X,W,Y,T]\,Q_4=F[W,X,Y,T]\,Q_6\,F[X,Y,W,T].
+\end{gathered}
+\end{equation}
+The first is~\eqref{eq:H1} multiplied out and inverted, the second is~\eqref{eq:H2} multiplied on
+the left by $F[W,X,Y,T]$. They are equivalent to~\eqref{eq:H1},~\eqref{eq:H2} given that the
+F-matrices are invertible and that the inverse R-matrices are the inverses of the R-matrices,
+both of which we check.
+
+\subsection*{Units, duals and dimensions}
+In our data every F-matrix with the unit object among its first three legs is the identity under
+the natural identification of labels: for $F[X,\one,W,T]$ the row $(X,0,j)$ corresponds to the
+column $(W,0,j)$, for $F[X,Y,\one,T]$ the row $(T,i,0)$ to the column $(Y,0,i)$, and for
+$F[\one,Y,W,T]$ the row $(Y,0,j)$ to the column $(T,j,0)$. For a self-dual simple $X$ with
+$N_{XX}^\one=1$ the entry $F[X,X,X,X]_{(\one,0,0),(\one,0,0)}$ transforms
+by~\eqref{eq:gauge-scalar} with the factor $g^{\one X}_X/g^{X\one}_X$, so it is invariant under
+gauges that keep the unit normalisation; in a spherical category it equals $\nu_X/d_X$, with
+$\nu_X$ the Frobenius--Schur indicator. In our data it is exactly $1/d_X$ for all $16$ objects
+(Section~\ref{sec:verification}), so $\nu_X=1$ for all $X$, and by the following criterion the
+data are rigid.
+
+\begin{proposition}\label{prop:rigid}
+Let $\cC$ be as above, with the unit maps $\phi^{\one X\to X}_0$ and $\phi^{X\one\to X}_0$ the
+canonical isomorphisms. Suppose that for every simple $X$ there is a simple $X^*$ with
+$N_{XX^*}^{\one}=N_{X^*X}^{\one}=1$ and $F[X,X^*,X,X]_{(\one,0,0),(\one,0,0)}\ne0$. Then every
+simple object has a left and a right dual, so $\cC$ is rigid.
+\end{proposition}
+
+\begin{proof}
+Put $a=\phi^{XX^*\to\one}_0$, $b=\phi^{X^*X\to\one}_0$, and let $c$ span
+$\Hom(\one,X^*\otimes X)$, which is one dimensional by semisimplicity; then $b\circ c=\beta$ is a
+nonzero scalar. By~\eqref{eq:F} with $(X,Y,W,T)=(X,X^*,X,X)$,
+\[
+a\otimes\id_X=\sum_{Z',k,l}F[X,X^*,X,X]_{(\one,0,0),(Z',k,l)}\,
+\phi^{XZ'\to X}_l\circ(\id_X\otimes\phi^{X^*X\to Z'}_k).
+\]
+Precompose with $\id_X\otimes c$. Since $\phi^{X^*X\to Z'}_k\circ c\in\Hom(\one,Z')$ vanishes unless
+$Z'=\one$, the composite $(a\otimes\id_X)\circ(\id_X\otimes c)\in\End(X)$ equals
+$s=\beta\,F[X,X^*,X,X]_{(\one,0,0),(\one,0,0)}\ne0$. Replacing $c$ by $c/s$ we get
+$(a\otimes\id_X)\circ(\id_X\otimes c)=\id_X$. The other composite
+$u=(\id_{X^*}\otimes a)\circ(c\otimes\id_{X^*})\in\End(X^*)$ is a scalar $t$, and
+$t\,a=a\circ(\id_X\otimes u)=a\circ\bigl(((a\otimes\id_X)\circ(\id_X\otimes c))\otimes\id_{X^*}\bigr)=a$
+by the interchange law, so $t=1$. Thus $(X^*,a,c)$ exhibits $X^*$ as a right dual of $X$. The same
+argument for $X^*$, whose partner is $X$, exhibits $X^*$ as a left dual of $X$. Duals of direct sums
+are direct sums of duals.
+\end{proof}
+
+\subsection{Reducing the pentagon equation to one generator}\label{sec:reduction}
+The pentagon equations are highly redundant. The following reduction to the five-tuples whose
+fourth object is a fixed generator is well known in spirit: it is the standard argument with the
+associahedron from the proof of coherence~\cite{MacLane}. We include a short proof for
+completeness, since we could not locate a reference in exactly this form, with multiplicities and
+without a unit normalisation.
+
+\begin{lemma}\label{lem:reduction}
+Let $I$ be a finite set of labels with nonnegative integers $N_{ab}^c$ ($a,b,c\in I$) satisfying
+$\sum_zN_{ab}^zN_{zc}^t=\sum_zN_{bc}^zN_{az}^t$ for all $a,b,c,t$, and let $F[a,b,c,t]$ be
+invertible matrices over a field, with rows and columns indexed as in Definition~\ref{def:F}.
+Fix $v\in I$ and let $I_v\subseteq I$ be the set of labels $d$ for which there is a path
+$v=x_1\to x_2\to\dots\to x_n=d$, $n\ge1$, with $N_{x_jv}^{x_{j+1}}\ne0$ for all $j$ (in a fusion
+category: the simple summands of $v^{\otimes n}$, $n\ge1$). If the pentagon
+equation~\eqref{eq:pentagon-matrix} holds for all five-tuples $(a,b,c,v,e)$ with $a,b,c,e\in I$,
+then it holds for all five-tuples $(a,b,c,d,e)$ with $d\in I_v$. In particular, if $I_v=I$, it
+holds for all five-tuples.
+\end{lemma}
+
+No unit object, unit normalisation or triangle axiom is involved. If $I$ is the set of simple
+objects of a fusion category in which every simple object is a summand of some $v^{\otimes n}$ and
+$v$ is self-dual (so that $\one$ is a summand of $v\otimes v$), then $I_v=I$. If the unit is only a
+summand of $v^{\otimes0}$, the remaining case $d=\one$ holds as soon as the F-matrices with unit
+third leg are identities, since the pentagon for $(a,b,c,\one,e)$ then reads $F[a,b,c,e]=F[a,b,c,e]$.
+
+\begin{proof}
+\emph{A model category.} Let $\mathcal M$ be the category of $I$-graded finite-dimensional vector
+spaces $X=(X_a)_{a\in I}$, with graded linear maps as morphisms, and with the bifunctor
+$(X\otimes Y)_c=\bigoplus_{a,b}X_a\otimes Y_b\otimes H^{ab}_c$, where $H^{ab}_c$ has basis the
+multiplicity indices $0,\dots,N_{ab}^c-1$. A label $a$ is identified with the object that is the
+ground field in degree $a$ and zero elsewhere. For labels $a,b,c$ the $t$-components of
+$(a\otimes b)\otimes c$ and $a\otimes(b\otimes c)$ have bases indexed by the triples $(z,i,j)$ and
+$(z',k,l)$ of Definition~\ref{def:F}, and we let $\alpha_{a,b,c}$ act on the $t$-component by the
+matrix $F[a,b,c,t]$, on coefficient row vectors, so that composites correspond to matrix products in
+the order written. For arbitrary objects put
+$\alpha_{X,Y,W}=\sum_{a,b,c}\id_{X_a\otimes Y_b\otimes W_c}\otimes\alpha_{a,b,c}$. This is a
+natural isomorphism $(X\otimes Y)\otimes W\to X\otimes(Y\otimes W)$: natural because it acts as the
+identity on the spaces $X_a,Y_b,W_c$, and invertible because every $F[a,b,c,t]$ is; no pentagon is
+needed for this. For objects $X,Y,W,U$ let $\mathrm P(X,Y,W,U)$ be the statement that the pentagon
+diagram for $\alpha$ with these four objects commutes.
+
+\emph{(1) Dictionary.} For labels $a,b,c,d$, on the $e$-component the five maps of the pentagon
+diagram, $\alpha_{a\otimes b,c,d}$, $\alpha_{a,b,c\otimes d}$, $\alpha_{a,b,c}\otimes\id_d$,
+$\alpha_{a,b\otimes c,d}$ and $\id_a\otimes\alpha_{b,c,d}$, have the matrices $M_1$, $M_2$, $N_1$,
+$N_2$, $N_3$ of~\eqref{eq:pentagon-matrix}: the direct sums over $P,R,Q,T,S$ there are exactly the
+decompositions of $a\otimes b$, $c\otimes d$, $b\otimes c$, \dots\ into labels, with the identity
+on the multiplicity spaces. So $\mathrm P(a,b,c,d)$ holds if and only if~\eqref{eq:pentagon-matrix}
+holds for $(a,b,c,d,e)$ for every $e$.
+
+\emph{(2) Additivity.} For arbitrary objects, each of the five maps in $\mathrm P(X,Y,W,U)$ is,
+by definition, the sum over labels $a,b,c,d$ of the identity of $X_a\otimes Y_b\otimes W_c\otimes U_d$
+tensored with the corresponding map for $(a,b,c,d)$. So $\mathrm P(X,Y,W,U)$ holds if and only if
+$\mathrm P(a,b,c,d)$ holds for all labels with $X_a,Y_b,W_c,U_d\ne0$. Also, if $\mathrm P(a,b,c,d)$
+holds then so do its tensor products with an identity on the left or on the right, by
+functoriality of $\otimes$.
+
+\emph{(3) The associahedron.} For objects $X_1,\dots,X_5$ the bracketings of
+$X_1\otimes\dots\otimes X_5$ and the single applications of $\alpha$ to a subterm form the
+vertices ($14$) and edges ($21$) of the associahedron $K_5$~\cite{Stasheff,MacLane}. Its nine faces
+are six pentagons, $\mathrm P(X_1,X_2,X_3,X_4)\otimes\id_{X_5}$, $\id_{X_1}\otimes\mathrm P(X_2,X_3,X_4,X_5)$,
+$\mathrm P(X_1\otimes X_2,X_3,X_4,X_5)$, $\mathrm P(X_1,X_2\otimes X_3,X_4,X_5)$,
+$\mathrm P(X_1,X_2,X_3\otimes X_4,X_5)$ and $\mathrm P(X_1,X_2,X_3,X_4\otimes X_5)$, and three
+squares. Two squares commute by naturality of $\alpha$ with respect to the morphism $\alpha$ in one of
+its arguments, and the third, in which two associators act on disjoint parts of the bracketing,
+commutes by functoriality of $\otimes$. The boundary of $K_5$ is a $2$-sphere, so the complement of
+one open face is a disc subdivided by the other eight faces, whose boundary is the boundary of the
+missing face; so, since all edges are isomorphisms, the composite around the missing face is a
+product of conjugates (by composites along edge paths) of the composites around the other eight
+faces. Hence if eight of the nine faces commute, so does the ninth.
+
+\emph{(4) Induction.} For $d\in I_v$ let $n(d)$ be the least $n$ for which a path as in the
+statement exists. We prove $\mathrm P(a,b,c,d)$ for all labels $a,b,c$ by induction on $n(d)$. If
+$n(d)=1$ then $d=v$, and this is the hypothesis together with (1). If $n(d')=n+1$, then
+$N_{dv}^{d'}\ne0$ for some $d$ with $n(d)=n$, so $d'$ occurs in $d\otimes v$. Apply (3) to
+$(a,b,c,d,v)$. The face $\mathrm P(a,b,c,d)\otimes\id_v$ commutes by induction; the faces
+$\id_a\otimes\mathrm P(b,c,d,v)$, $\mathrm P(a\otimes b,c,d,v)$, $\mathrm P(a,b\otimes c,d,v)$ and
+$\mathrm P(a,b,c\otimes d,v)$ have fourth object $v$ and commute by the hypothesis and (2); the
+three squares commute. Hence $\mathrm P(a,b,c,d\otimes v)$ holds, and by (2) so does
+$\mathrm P(a,b,c,d')$. By (1) this is the claim.
+\end{proof}
+
+For $\CF$ we apply Lemma~\ref{lem:reduction} with $v=V$: $V$ is self-dual and every simple
+object is a summand of $V^{\otimes n}$, $n\le4$, so $I_V$ is everything, and the pentagon equation
+for all $1{,}030{,}051$ five-tuples reduces to the $63{,}841$ five-tuples $(A,B,C,V,E)$.
+
+\section{The construction}\label{sec:construction}
+
+The construction is a computation over a finite field $\F_p$ with $p\equiv1\pmod{52}$ and a chosen
+primitive $52$nd root of unity $q\in\F_p$, repeated for several primes and roots and followed by
+exact reconstruction (Section~\ref{sec:reconstruction}). Modulo each prime and root:
+\begin{enumerate}[label=(\arabic*)]
+\item the cells: the action of the braiding, cup, cap and trivalent vertex of $V$ on two-step
+paths, from explicit $\Uq$-modules (Sections~\ref{sec:modules}--\ref{sec:cells});
+\item the simple objects as idempotents in $\End(V^{\otimes n})$, and an auxiliary basis of every
+multiplicity space (Sections~\ref{sec:idempotents}, \ref{sec:gaugefix});
+\item the F-symbols with third leg $V$ in the auxiliary bases (Section~\ref{sec:H});
+\item the normal form of these F-symbols, defined by an explicit pivot rule
+(Section~\ref{sec:nfrule});
+\item all other F-symbols, by the pentagon recursion, run once in the normal-form gauge
+(Section~\ref{sec:recursion});
+\item the R-symbols, in the same gauge (Section~\ref{sec:Rsym}).
+\end{enumerate}
+Modulo each prime the computation passes through the auxiliary bases of step (2); they serve only to
+produce the F-symbols with third leg $V$ modulo $p$, and no exact data in these bases are
+reconstructed or used. The programs that implement each step are listed in Table~\ref{tab:scripts}.
+
+\subsection{Modules over finite fields}\label{sec:modules}
+We use the quantum group $\Uq$ with generators $E_i,F_i,K_i^{\pm1}$ in the conventions of
+Jantzen's book~\cite{Jantzen} (we state them explicitly): $K_iE_jK_i^{-1}=q^{(\alpha_i,\alpha_j)}E_j$,
+$[E_i,F_j]=\delta_{ij}(K_i-K_i^{-1})/(q_i-q_i^{-1})$ with $q_i=q^{(\alpha_i,\alpha_i)/2}$,
+\[
+\Delta(E_i)=E_i\otimes1+K_i\otimes E_i,\qquad \Delta(F_i)=F_i\otimes K_i^{-1}+1\otimes F_i,
+\]
+over $\F_p$, where $q$ is a primitive $52$nd root of unity in $\F_p$. Divided powers are not needed:
+in all modules we construct, every $\alpha_i$-string of weights has length less than the order of
+$q_i^2$ ($13$ for long and $26$ for short roots), so the quantum integers that occur are invertible.
+
+A module $L(\lambda)$ is built from the top, weight space by weight space. If bases
+of the weight spaces $L_{\nu+\alpha_j}$ are known, together with the matrices of all $E_i$ between
+them, the candidates for $L_\nu$ are the vectors $F_jb$ with $b$ a basis vector of
+$L_{\nu+\alpha_j}$. The matrix of each $E_i$ on a candidate $F_jb$ follows from the commutation
+relation, and a linear combination of candidates is zero in the simple module if and only if it
+is annihilated by every $E_i$. So $L_\nu$ is the quotient of the span of the candidates by the
+kernel of the stacked matrix of the $E_i$, and we take as basis the pivot candidates of its row
+echelon form. This constructs the simple quotient of the Verma module, truncated at a fixed depth
+below the top weight. The dimension of every weight space constructed is compared with
+Freudenthal's formula for the classical character (see~\cite{Humphreys}), so the modules
+are the Weyl modules, which are simple at this root for the weights we use (the closed alcove).
+Every basis vector is $F_j$ applied to a basis vector one level up, which defines, for any module
+$M$ and vector $m$ of weight $\lambda$ annihilated by the $E_i$, the $U^-$-module map
+$L(\lambda)\to M$ sending the top vector to $m$: it is computed by applying the same words in the
+$F_j$ to $m$.
+
+\subsection{The path model}\label{sec:paths}
+Let $\cC=\CF$ and $V=L(\ob{0001})$. For simple $A,B$ with $N_{AV}^B\ne0$ we call a basis vector
+$e\in\Hom(B,A\otimes V)$ an \emph{edge} $A\to B$; there are $N_{AV}^B\in\{1,2\}$ of them
+(Table~\ref{tab:graph}). For a simple object $X$ and $n\ge0$ let $P_X(n)$ be the vector space with
+basis the edge paths
+\[
+X=Z_0\xrightarrow{e_1}Z_1\xrightarrow{e_2}\cdots\xrightarrow{e_n}Z_n ,
+\]
+and $P_X(T,n)$ the span of the paths ending at $T$. The path corresponds to the morphism
+\[
+(e_1\otimes\id_{V^{\otimes(n-1)}})\circ(e_2\otimes\id_{V^{\otimes(n-2)}})\circ\cdots\circ e_n
+\in\Hom(T,X\otimes V^{\otimes n}),
+\]
+and by semisimplicity these morphisms form a basis of $\Hom(T,X\otimes V^{\otimes n})$. A
+morphism $f:V^{\otimes n}\to V^{\otimes m}$ therefore acts on path spaces by
+$\id_X\otimes f:P_X(T,n)\to P_X(T,m)$, for every base $X$ and end point $T$. The following
+generators suffice: the braiding $\sigma_i$ of the strands $i,i+1$, the cup and cap of $V$
+inserted or applied at position $i$, and the trivalent split $t:V\to V\otimes V$ and merge
+$m:V\otimes V\to V$. Each acts \emph{locally}: by the interchange law, applying
+$\id\otimes\sigma_i\otimes\id$ to a path changes only the two steps $Z_{i-1}\to Z_i\to Z_{i+1}$,
+replacing the two-step path $Z_{i-1}\to Z_i\to Z_{i+1}$ by its image in
+$\Hom(Z_{i+1},Z_{i-1}\otimes V\otimes V)$, which is a combination of two-step paths from
+$Z_{i-1}$ to $Z_{i+1}$. Similarly the cup at a vertex $Z_i$ inserts a combination of two-step
+paths $Z_i\to B\to Z_i$, the cap contracts a two-step path $Z_i\to B\to Z_i$ to a multiple of the
+empty path at $Z_i$, the split replaces one step by a combination of two-step paths with the same
+end points, and the merge does the opposite. So all generators act by sparse matrices determined
+by the following finite data, which we call the \emph{cells}: for all simple $A,C$, with
+$P(A\to C,2)$ the span of the two-step paths $A\to B\to C$,
+\begin{itemize}[leftmargin=2em]
+\item the matrix $\sigma^{(A,C)}$ of $\id_A\otimes c_{V,V}$ on $P(A\to C,2)$;
+\item the vector $\mathrm{cup}^{(A)}\in P(A\to A,2)$ and the functional $\mathrm{cap}^{(A)}$ on
+$P(A\to A,2)$;
+\item the matrices of $\id_A\otimes t$ from edges $A\to C$ to $P(A\to C,2)$, and of $\id_A\otimes
+m$ in the other direction.
+\end{itemize}
+For $\CF$ these are $4{,}472$ numbers.
+
+\subsection{Cells from the quantum group}\label{sec:cells}
+To compute the cells we realise edges as highest weight vectors. An edge $e:L(B)\to L(A)\otimes
+V$ is determined by the image of the top vector of $L(B)$, a vector of weight $B$ in
+$L(A)\otimes V$ annihilated by all $E_i$. Two-step paths $A\to B\to C$ are vectors of weight $C$
+in $L(A)\otimes V\otimes V$ annihilated by all $E_i$. Such vectors are computed from their
+components along the top vector $v_A$ of $L(A)$: if $y$ is a
+highest weight vector of weight $C$ in $L(A)\otimes W$, write $\tau(y)\in W_{C-A}$ for the
+coefficient of $v_A$. Then $\tau$ is injective on highest weight vectors (the lower components are
+forced by the equations $\Delta(E_i)y=0$, solved weight by weight downwards), and $\tau$ commutes
+with every operator acting on $W$ alone. For $W=V\otimes V$ this reduces all computations to the
+$676$-dimensional space $V\otimes V$, in fact to its weight space $(V\otimes V)_{C-A}$.
+
+The image $\tau\bigl((e_1\otimes\id_V)\circ e_2\bigr)$ of a two-step path is computed as follows.
+Since $\Delta(F_j)=F_j\otimes K_j^{-1}+1\otimes F_j$ and $F_j$ lowers weights in the first factor,
+$\tau(F_jx)=F_j\tau(x)$ for $x\in L(A)\otimes V$; hence $\tau\circ e_1:L(B)\to V$ is the
+$U^-$-module map sending the top vector of $L(B)$ to $\tau(e_1)$, computed by the words in the
+$F_j$ that define the basis of $L(B)$ (Section~\ref{sec:modules}). Then
+$\tau((e_1\otimes\id)e_2)=((\tau\circ e_1)\otimes\id_V)(e_2)$, with $e_2$ the highest weight
+vector of weight $C$ in $L(B)\otimes V$.
+
+\emph{Negligible morphisms.} The constituents of $L(A)\otimes V$ lie in the closed alcove, since
+every weight of $V$ has level at most $1$; those of level $5$ lie on the wall $(\lambda+\rho,\theta)=26$
+and have quantum dimension zero. By the linkage principle $L(A)\otimes V$ is the direct sum of its
+constituents. Hence the space of highest weight vectors of weight $C$ in $L(A)\otimes V\otimes V$
+is spanned by the two-step paths through $B$ in the open alcove together with the vectors
+$(e\otimes\id_V)\circ f$, where $e:L(B)\to L(A)\otimes V$ with $B$ on the wall and $f$ runs over
+the highest weight vectors of weight $C$ in $L(B)\otimes V$. The second kind of vector is a
+morphism $L(C)\to L(A)\otimes V\otimes V$ that factors through the negligible object $L(B)$, so it
+is negligible. We compute both kinds of vectors through $\tau$ and check that together they have
+rank equal to the classical multiplicity of $L(C)$ in $L(A)\otimes V\otimes V$, for every pair
+$(A,C)$. To apply an operator $\id_A\otimes f$ ($f$ an endomorphism of $V\otimes V$, or a map from
+$V$ or to $V$) to a path, we apply $f$ to its $\tau$-image in $V\otimes V$, expand the result in
+this basis, and discard the coefficients of the negligible vectors. This is the action of $f$ in
+the semisimple quotient, in the path basis.
+
+\emph{The generators on $V\otimes V$.} The module $V\otimes V$ is semisimple at $q$ (its five
+constituents lie in the open alcove), and we compute its decomposition explicitly. The braiding
+is
+\[
+c_{V,V}=\sum_W\epsilon_W\,q^{((W,W+2\rho)-2(V,V+2\rho))/2}\,\pi_W
+\]
+with $\pi_W$ the projection on the summand $W$ and $\epsilon_W=+1$ on the summands of $S^2V$
+($\one$, $V$, $L(\ob{0002})$) and $-1$ on those of $\Lambda^2V$ ($L(\ob{0010})$, $L(\ob{1000})$);
+the eigenvalues are $q^{-24},q^{-12},q^2,-1,-q^{-6}$ respectively. This is the spectral form of
+the braiding of $\Uq$ on $V\otimes V$ (its square on the summand $W$ is $\theta_W/\theta_V^2$);
+we check the Yang--Baxter equation on $V^{\otimes3}$. The cup is the invariant vector of
+$V\otimes V$ and the cap the invariant functional with $\mathrm{cap}(\mathrm{cup})=1$; the
+zigzag composite is then a scalar $z$, and we rescale the cap by $z^{-1}$, so that the zigzag is
+the identity and the loop is $z^{-1}$. The split $t$ is the inclusion of the summand $V$ of
+$V\otimes V$ (determined by its highest weight vector) and the merge $m$ is the projection with
+$mt=\id_V$.
+
+\emph{Gauge of the edges.} The basis of $\Hom(B,A\otimes V)$ is chosen so that the
+$\tau$-images, which lie in $V_{B-A}$ (of dimension at most $2$), form a reduced echelon basis.
+
+\emph{Checks.} At every base $A$ we verify the braid relation on
+$P_A(3)$, the minimal polynomial of $\sigma$, both zigzag identities, naturality of the merge
+and of the cup with respect to the braiding, and the theta graph. The curl is $q^{24}=\theta_V$
+and the loop is the quantum dimension $d_V$. The whole step takes about $10$ seconds.
+
+\subsection{Simple objects as idempotents}\label{sec:idempotents}
+For each simple $S$ of depth $s$ we choose a \emph{spectral path} $\gamma_S=(\one=Z_0,V=Z_1,
+Z_2,\dots,Z_s=S)$ in the fusion graph of $V$ such that every step $Z_{k-1}\to Z_k$ has
+multiplicity one and $\theta_{Z_k}$ differs from the twists of all other constituents of
+$Z_{k-1}\otimes V$. Let
+$\Theta_k=\theta_V^k(\sigma_1\sigma_2\cdots\sigma_{k-1})^k$ be the ribbon twist of $V^{\otimes k}$
+(the full twist braid times $\theta_V^{\otimes k}$), acting on the first $k$ strands; it acts on a
+summand $Z$ of $V^{\otimes k}$ by $\theta_Z$. Define
+\[
+p_S=\prod_{k=2}^{s}\ \prod_{t}\frac{\Theta_k-t}{\theta_{Z_k}-t},
+\]
+the inner product over the distinct twists $t\ne\theta_{Z_k}$ of the other constituents of
+$Z_{k-1}\otimes V$, the factors for smaller $k$ applied first. This is an idempotent in
+$\End(V^{\otimes s})$ with image a copy of $S$: on the image of $p_{Z_{k-1}}\otimes\id_V$, the
+operator $\Theta_k$ acts on the summand $B$ of $Z_{k-1}\otimes V$ by $\theta_B$, and the Lagrange
+factor keeps the summand $Z_k$. At the base $\one$, $p_S$ is the projection on the single path
+$\gamma_S$. One exception is needed: $\theta_{\ob{0002}}=\theta_\one=1$, so at the second step
+we first remove the unit summand of $V\otimes V$ with $1-\mathrm{cup}\circ\mathrm{cap}$ (with the
+raw cap, $\mathrm{cap}(\mathrm{cup})=1$). With this, every spectral path has length equal to the
+depth. We write $\iota_S:S\to V^{\otimes s}$ and $\pi_S:V^{\otimes s}\to S$ for the inclusion and
+projection with $\iota_S\pi_S=p_S$.
+
+\subsection{Auxiliary bases of the multiplicity spaces}\label{sec:gaugefix}
+For simple $X,S,T$, the space $\Hom(T,X\otimes S)$ is identified with the image of
+$\id_X\otimes p_S$ on $P_X(T,s)$, a subspace of dimension $N_{XS}^T$ of the space spanned by the
+paths of length $s$ from $X$ to $T$. As auxiliary basis we take its reduced echelon basis with respect
+to the following order of paths: by end point (in the order of Table~\ref{tab:objects}), then
+lexicographically by the sequence of vertices (as Dynkin label tuples) and then of edge indices.
+These are the splitting maps $\psi^{XS}_{T,l}$, $0\le l<N_{XS}^T$, used in steps (3) and (6). The
+basis depends only on the subspace and the order; to find it we apply $\id_X\otimes p_S$ to
+$N_{XS}^T+3$ random vectors and check that the rank is $N_{XS}^T$. All $2{,}302$ images have the
+fusion dimension, so the construction reproduces the fusion rules.
+
+\subsection{F-symbols with third leg $V$}\label{sec:H}
+In the \emph{splitting convention} the associator is described by matrices $G$ with
+\[
+(\psi^{XY}_{R,i}\otimes\id_W)\circ\psi^{RW}_{T,j}=\sum_{S,k,l}G[X,Y,W,T]_{(R,i,j),(S,k,l)}\,
+(\id_X\otimes\psi^{YW}_{S,k})\circ\psi^{XS}_{T,l}
+\]
+(both sides in $\Hom(T,X\otimes Y\otimes W)$). For $W=V$ both bases can be written in the path
+model at base $X$. The left basis vectors are concatenations: the path
+$\psi^{XY}_{R,i}\in P_X(R,y)$ followed by the edge $R\to T$ given by $\psi^{RV}_{T,j}$. For the
+right basis we need the morphism $\id_X\otimes\psi^{YV}_{S,k}$, realised on tensor powers of $V$
+as
+\[
+\Phi_k=(\iota_Y\otimes\id_V)\circ\psi^{YV}_{S,k}\circ\pi_S:V^{\otimes s}\to V^{\otimes(y+1)} .
+\]
+It is characterised by its value at the base $\one$, where $\pi_S$ maps the path $\gamma_S$ to
+the generator of $S$ and $\Phi_k\gamma_S$ is the path $\gamma_Y$ followed by the $k$-th edge
+$Y\to S$. To realise $\Phi_k$ at an arbitrary base we take random words $w$ in the generators
+(braidings, splits, cups and merges) from $V^{\otimes s}$ to $V^{\otimes(y+1)}$, compress them to
+$(p_Y\otimes\id_V)\circ w\circ p_S$, which lie in the $N_{YV}^S$-dimensional space
+$\Hom(S,Y\otimes V)$, evaluate them at the base $\one$ until $N_{YV}^S$ independent ones are
+found, and take the linear combination that maps $\gamma_S$ to $\gamma_Y$ followed by the $k$-th
+edge. Applying this combination at the base $X$ to the basis $\psi^{XS}_{T,l}$ gives the right
+basis vectors, and $G[X,Y,V,T]$ is obtained by solving a linear system. The words only serve to
+span $\Hom(S,Y\otimes V)$, and the result does not depend on them (two different random seeds give
+identical results). There are $3{,}451$ such matrices, with $399{,}516$ entries, the largest of size $78$. We write
+$F[X,Y,V,T]=(G[X,Y,V,T]^{-1})^{\mathsf T}$ for the same matrices in the fusion-map convention of
+Section~\ref{sec:conventions} (see Section~\ref{sec:convchange}).
+
+\subsection{The normal form}\label{sec:nfrule}
+A gauge transformation (Section~\ref{sec:conventions}) is a family of invertible matrices
+$g^{XY}_Z$; we only use unit-preserving ones, $g^{XY}_Z=1$ when $X$ or $Y$ is the unit. The
+\emph{normal form} is the gauge transformation $g$ determined from the F-symbols with third leg $V$ by
+the following rule, and $\mathrm{NF}(F)=g\cdot F$. All label sets are ordered by (position of the
+object in Table~\ref{tab:objects}, then the multiplicity indices).
+\begin{enumerate}[label=(\arabic*),leftmargin=2em]
+\item \emph{Depth and parents.} The depth of $S$ is its distance from $\one$ in the fusion graph of
+$-\otimes V$. For depth at least $2$, the parent $P(S)$ is the first object $P$ of depth one less with
+$N_{PV}^S=1$.
+\item \emph{One-dimensional edges.} The unknowns are the scalars $x_t=g^{AV}_C$ for the spaces
+$t=(A,V,C)$ with $A\ne\one$ and $N_{AV}^C=1$. Run over the blocks $F[A,V,V,C]$, $A\ne\one$, in order
+of $(A,C)$, over the columns $(Z',0,0)$ with $Z'\in\{\one,V\}$ (and $N_{AV}^C=1$ if $Z'=V$), and over
+the rows $(Z,0,0)$ with $N_{AV}^Z=N_{ZV}^C=1$, keeping the nonzero entries. By~\eqref{eq:gauge-scalar}
+each such entry is multiplied by a monomial in the unknowns, with integer exponent vector $D_e$.
+Reduce each $D_e$ in turn by the pivot rows found so far; if the result is nonzero it must contain a
+coefficient $\pm1$, and its first such variable becomes a new pivot. The gauge is $x_t=1$ for the
+non-pivot variables and, for the pivot variables, the values (solved in reverse order) that make every
+pivot entry equal to $1$.
+\item \emph{Two-dimensional loops} $\Hom(A\otimes V,A)$, for $A=\ob{0011},\ob{0012}$. For one-dimensional
+neighbours $C$ the vectors $(F[A,V,V,C]_{(A,i,0),(V,0,0)})_{i=0,1}$, divided by $g^{VV}_V$, transform by
+the $2\times2$ gauge matrix of the loop; for the first pair of such vectors (in the order of $C$)
+with nonzero determinant, the gauge matrix is the inverse of the matrix with these two columns, so
+that the two vectors become the standard basis vectors.
+\item \emph{Second legs of depth at least $2$}, in order of depth, then of $S$, then of $A\ne\one$,
+then of $C$: let $M$ be the block of columns $(S,0,l)$ of $F[A,P(S),V,C]$, with the gauges fixed so far
+applied and divided by $g^{P(S)V}_S$. Its pivot rows are the lexicographically first maximal set of
+linearly independent rows, and $g^{AS}_C$ is the submatrix of $M$ on these rows; since $g^{AS}_C$
+acts on these columns by its inverse (Section~\ref{sec:conventions}), the normalised block is the
+identity on the pivot rows.
+\end{enumerate}
+Every choice in this rule depends only on the gauge class: on which entries of blocks with
+one-dimensional multiplicity spaces vanish, on linear independence of vectors that are already
+normalised, and on exponents. So $\mathrm{NF}(h\cdot F)=\mathrm{NF}(F)$ for every gauge $h$, and,
+since the rule uses only field operations, $\mathrm{NF}(\sigma\cdot F)=\sigma\cdot\mathrm{NF}(F)$ for
+every field automorphism $\sigma$ (Section~\ref{sec:fields}). The two requirements of the rule (a unit
+coefficient in every nonzero reduced exponent vector; enough independent vectors and rows) are met
+for $\CF$. In step (2) there are $89$ unknowns and $467$ entries, the exponent vectors have rank $74$,
+and all $74$ pivots are units, so no roots are needed. The index choices are computed at a reference
+prime and stored; at every prime and root the rule is recomputed and asserted to give the same
+choices (a prime at which a relevant minor vanishes would give different choices and is not used).
+The choices therefore satisfy the nondegeneracy conditions over the field, and the rule with these
+fixed choices is a function of the gauge class; this is all that is used below. At every prime tested they are also the
+greedy choices.
+
+
+\subsection{The pentagon recursion}\label{sec:recursion}
+All other F-symbols follow from those with third leg $V$ by the pentagon
+equation~\eqref{eq:pentagon-matrix}. The recursion is applied once, to the normal form of the
+F-symbols with third leg $V$ (in the splitting convention, $G=(\mathrm{NF}(F)^{-1})^{\mathsf T}$),
+so that its output is the whole table in the normal-form gauge. The pentagon equation has the same
+shape $M_1M_2=N_1N_2N_3$ for the $G$-blocks. For each simple $S\ne\one$
+let $S'$ be the predecessor of $S$ on its spectral path, so that $S$ is a summand of $S'\otimes V$
+with multiplicity one.
+\begin{enumerate}[label=Step \arabic*.,leftmargin=4.5em]
+\item (Second leg $V$.) For the five-tuple $(X,V,W',V,E)$, solve
+$M_2=M_1^{-1}N_1N_2N_3$. The blocks of $M_2$ are $G[X,V,R,E]$ for all $R$ in $W'\otimes V$, and
+the factors on the right involve only F-symbols with third leg $V$ and $G[X,V,W',\cdot]$, of
+smaller depth of the third leg. By induction on the depth of $W$ this gives all $G[X,V,W,E]$.
+\item (General.) For the five-tuple $(X,Y',V,W,E)$, solve $N_2=N_1^{-1}M_1M_2N_3^{-1}$. The blocks
+of $N_2$ are $G[X,T,W,E]$ for all $T$ in $Y'\otimes V$, and the other factors involve F-symbols
+with third leg $V$, second leg $V$ (Step 1), and second leg $Y'$ of smaller depth. By induction on
+the depth of the second leg this gives everything.
+\end{enumerate}
+Only the rows of the products that are needed are formed. The F-matrices with a unit leg are set
+to identities. Each step produces the blocks for every $R$ (respectively $T$) in $W'\otimes V$
+(respectively $Y'\otimes V$) and every multiplicity copy, so it checks itself: the off-diagonal
+blocks must vanish, the copies must agree, blocks already known (from smaller depth, the unit legs
+or the family with third leg $V$) must be reproduced, and blocks of the same depth reached from
+different predecessors must agree; there were no failures. For $G[X,\cdot,
+\cdot,\cdot]$ Step 2 uses only blocks with the same first leg $X$ besides the families with second or
+third leg $V$, so the table can be computed one first leg at a time; with this, all $58{,}740$
+matrices take about $640$ seconds on one core per prime and root of unity, after about $150$
+seconds for the cells, the family with third leg $V$ and its normal form.
+
+The recursion uses only pentagons, so its output is determined by its input:
+
+\begin{lemma}\label{lem:Hdetermines}
+Let $F_1,F_2$ be two families of invertible F-matrices for the same fusion rules, both
+satisfying the pentagon equation, with identity F-matrices on unit legs, such that every simple
+object is a summand of a tensor power of $V$. If $F_1$ and $F_2$ agree on all blocks
+$[X,Y,V,T]$, they agree everywhere.
+\end{lemma}
+
+\begin{proof}
+By induction on the depth of the third leg $W$, the cases of depth $0$ and $1$ being the
+hypothesis. For $W$ a summand of $W'\otimes V$, the pentagon equation for $(X,Y,W',V,E)$ reads
+$M_1M_2=N_1N_2N_3$, where $M_1$ consists of blocks $[P,W',V,E]$ and $N_1,N_2,N_3$ of blocks with
+third leg $W'$ or $V$. So $M_2=M_1^{-1}N_1N_2N_3$ is determined, and its blocks are the
+$F[X,Y,R,E]$ for all $R$ in $W'\otimes V$.
+\end{proof}
+
+
+\subsection{R-symbols}\label{sec:Rsym}
+In the splitting convention, $c_{X,Y}\circ\psi^{XY}_{Z,i}=\sum_jR^{\mathrm s}[X,Y,Z]_{i,j}\,
+\psi^{YX}_{Z,j}$. At the base $\one$, the vector $(\iota_X\otimes\iota_Y)\circ\psi^{XY}_{Z,i}$ is
+the path $\gamma_X$ followed by the $i$-th basis vector of $P_X(Z,y)$, and $c_{X,Y}$ corresponds
+to the positive braid $c_{V^{\otimes x},V^{\otimes y}}$ on $x+y$ strands. So $R^{\mathrm s}$ is
+obtained by applying a braid word to $N_{XY}^Z$ path vectors and expressing the results in the
+paths $\gamma_Y$ followed by the basis of $P_Y(Z,x)$. This gives the R-symbols in the auxiliary bases;
+the normal-form gauge $g$ of Section~\ref{sec:nfrule} is then applied modulo $p$,
+$R[X,Y,Z]\mapsto g^{YX}_ZR[X,Y,Z](g^{XY}_Z)^{-1}$ in the fusion-map convention. Since $g$ is real, the
+same is done at the conjugate root $q^{-1}$ (cells and R only).
+
+\subsection{Change of convention}\label{sec:convchange}
+The fusion maps of Section~\ref{sec:conventions} are the dual bases of the splitting maps,
+$\phi^{XY\to Z}_i\circ\psi^{XY}_{Z,j}=\delta_{ij}\id_Z$. Then
+\[
+F[X,Y,W,T]=\bigl(G[X,Y,W,T]^{-1}\bigr)^{\mathsf T},\qquad R[X,Y,Z]=R^{\mathrm s}[X,Y,Z]^{\mathsf T}
+\]
+The normal form and all data files and statements in this paper refer to the fusion-map
+convention.
+
+\subsection{Dimensions and twists}
+The trace of $p_X$ at the base $\one$, computed with nested cups and caps, is the quantum
+dimension $d_X$ for every $X$, and the twists recomputed from the R-symbols are
+$q^{(X,X+2\rho)}$, both modulo primes. So the pivotal structure realised by the cup and cap
+of $V$ is the spherical structure with positive dimensions at the unitary root.
+
+\section{Fields}\label{sec:fields}\label{sec:normalform}
+
+\subsection{Galois action}
+Every step of Section~\ref{sec:construction} is a field operation on quantities defined over
+$\Q(q)=\K$, with choices fixed by the conventions (reduced echelon forms, fixed orders, the stored
+choices of the normal form). So for every embedding $\K\to\F_p$, $\zeta\mapsto z$, the computation at
+$q=z$ gives the reduction of the same elements of $\K$, provided no pivot or denominator vanishes
+modulo the prime, which is checked. The $24$ primitive $52$nd roots of unity $z^w$,
+$w\in(\Z/52)^\times$, give the $24$ embeddings, and the output at $q=z^w$ is the image of the exact
+data under $\sigma_w:\zeta\mapsto\zeta^w$, the data of the Galois conjugate category.
+
+\subsection{Normal forms and the field of moduli}
+Write $\sigma\cdot F$ for the Galois conjugate of a family of F-symbols and $h\cdot F$ for its
+gauge transform. A \emph{normal form} is a rule $F\mapsto\mathrm{NF}(F)$ such that
+$\mathrm{NF}(F)$ is gauge equivalent to $F$, $\mathrm{NF}(h\cdot F)=\mathrm{NF}(F)$ for every gauge
+$h$, and $\mathrm{NF}(\sigma\cdot F)=\sigma\cdot\mathrm{NF}(F)$ for every field automorphism
+$\sigma$; the last property holds for any rule built from field operations with index choices
+fixed in advance. If $\sigma\cdot F$ is gauge equivalent to $F$, then
+$\sigma\cdot\mathrm{NF}(F)=\mathrm{NF}(\sigma\cdot F)=\mathrm{NF}(F)$. So the field generated by
+the entries of $\mathrm{NF}(F)$ is contained in the fixed field of every such $\sigma$, that is in
+the \emph{field of moduli}, and conversely $\mathrm{NF}(F)$ is a complete invariant of the gauge
+class. A normal form therefore gives the field of moduli and a gauge realising it at the same time;
+in particular no cohomological obstruction to descent arises.
+
+
+\subsection{The fields of the normal form of $\CF$}
+At every prime used, the residues of the normal form at the roots $z^w$ and $z^{25w}$ agree, for
+every entry of the table (the residues of the F-symbols in the auxiliary bases differ at these roots,
+for example in $192{,}713$ of the entries with third leg $V$ at one prime). So the normal form is fixed by
+$\sigma_{25}$. It is also fixed by complex conjugation $\sigma_{51}$: the F-symbols are real (their
+residues at $z^w$ and $z^{-w}$ agree; checked on all entries at one prime). Hence it is fixed by
+$\sigma_{27}$, and its F-symbols lie
+in $\kk=\Kt^+$, the fixed field of $\{1,25,27,51\}$, of degree $6$, and are reconstructed directly over
+$\kk$ (Section~\ref{sec:reconstruction}). The R-symbols in the same gauge are fixed by $\sigma_{27}$
+and lie in $\Kt=\Q(\zeta^4)$, of degree $12$. The minimal polynomial of $\eta_1=\zeta_{13}+\zeta_{13}^{-1}$
+is $x^6+x^5-5x^4-4x^3+6x^2+3x-1$.
+
+\emph{Minimality, F.} On the reconstructed F-symbols with third leg $V$, the automorphisms $\sigma_a$
+that fix every entry are exactly $a\in\{1,25,27,51\}$ (\file{nf\_galois.py}). Since $\mathrm{NF}$ is a
+complete invariant of the gauge class, if some gauge $h\cdot F$ had all entries in a subfield
+$E\subseteq\kk$, every $\sigma$ fixing $E$ would satisfy $\sigma\cdot F\sim F$, hence would fix
+$\mathrm{NF}(F)$; so $E=\kk$. With the labels of the objects fixed, $\kk$ is the field of moduli and
+the field of definition of the fusion category.
+
+\emph{Minimality, F and R.} The one-dimensional $R[X,X,Z]$ are gauge invariant, and the only
+$a\in(\Z/52)^\times$ with $\sigma_a$ fixing all $100$ of them are $a=1,27$ (\file{autoeq\_checks.py});
+so no gauge has the braided data in a proper subfield of $\Q(\zeta)^{\langle\sigma_{27}\rangle}=\Kt$.
+Every one-dimensional $R[X,X,Z]$ is $q^e$ with $e$ even, and the characteristic polynomials of all
+$88$ matrices $R[X,X,Z]$ of size at least $2$ have coefficients in $\Kt$ (\file{r\_invariants.py}).
+
+\emph{Comparison.} Galindo~\cite[Theorem~3.7]{Galindo} proves that the fusion
+category underlying $\cC(\mathfrak g,k)$ has a split form over $\Q(\zeta+\zeta^{-1})$ with
+$\zeta=e^{\pi i/(r^\vee(k+h^\vee))}$, $r^\vee$ the lacing number; for $\CF$ this is $\Lf=\Q(\zeta_{52})^+$,
+of degree $12$. The normal form gives a split form over the subfield
+$\kk$ of index $2$, and by the argument above no smaller field is possible with the labels fixed. For
+the braided category, Galindo shows that no split real form exists for the standard braiding except
+for $\cC(E_8,1)$ and $\cC(D_{4m},1)$; this agrees with $\Kt$, which is not real, being the smallest
+field for the braided data.
+
+\emph{$q$ and $-q$.} Since $\sigma_{27}$ ($q\mapsto-q$) fixes $\kk$ and $\Kt$, the normal-form data at
+$q$ and at $-q$ are identical: the braided categories at $q$ and $-q$ are equivalent, with the labels of
+the objects fixed.
+
+\section{Exact reconstruction}\label{sec:reconstruction}
+
+\subsection{Primes and roots}
+We use primes $p\equiv1\pmod{52}$ just below $2^{30}$. For each prime, $z=g^{(p-1)/52}$ with $g$ the
+least primitive root modulo $p$, and the run at $(p,w)$ uses $q=z^w$. An element of $\kk$ is
+determined by its values at one root from each of its $6$ embeddings, $w=1,3,5,7,9,11$ (the root
+$z^w$ and its images under $\{1,25,27,51\}$ give the same value), and an element of $\Kt$ by its values
+at the $12$ roots $w=1,3,\dots,11$ and $41,43,\dots,51$, which are distinct modulo $13$. The residues of
+the coefficients in the bases $\eta_1,\dots,\eta_6$ of $\kk$ ($\eta_j=\zeta_{13}^j+\zeta_{13}^{-j}$) and
+$1,\zeta_{13},\dots,\zeta_{13}^{11}$ of $\Kt$ follow by solving Vandermonde-type systems.
+
+\subsection{Reconstruction}
+For each coefficient, the residues at several primes are combined by the Chinese remainder theorem
+and a rational number $a/b$ with $|a|,b\le\sqrt{M/2}$ is recovered by rational
+reconstruction~\cite{WangGuyDavenport,MCA}, $M$ the product of the primes. Further primes are held out
+and the reconstructed values are compared with the residues computed there.
+\begin{itemize}[leftmargin=2em]
+\item \emph{F-symbols}: $9$ primes at the $6$ roots, and $2$ held-out primes at all $12$ real roots
+($78$ runs). Every coefficient reconstructs; every value agrees with the held-out primes, whose
+residues at $z^w$ and $z^{25w}$ also agree in every entry. The table has $328{,}727{,}941$ nonzero
+coefficients in the basis $\eta_1,\dots,\eta_6$, with numerators and denominators of at most $99$ bits.
+A preliminary probe of $200{,}000$ entries at $20$ primes found that $7$ primes suffice for all of them.
+\item \emph{R-symbols and their inverses}: over $\Kt$, at the $12$ roots above, with heights at most
+$47$ and $41$ bits.
+\end{itemize}
+The exact tables in the archive were reconstructed in this way from residues of the normal form
+computed modulo each prime.
+
+The residues from the pipeline of Section~\ref{sec:construction}, run at all $78$ (prime, root) pairs,
+reconstruct to files identical byte for byte to the archived ones (\file{deposit/logs/finish\_all.log}).
+
+
+Rational reconstruction from finitely many primes is a heuristic step: it cannot by itself certify
+that the fractions found are the values defined by the construction. Theorem~\ref{thm:main} is about
+the reconstructed data, and its proof in Section~\ref{sec:verification} uses only the data files.
+
+\section{Verification}\label{sec:verification}
+
+All checks in this section are run on the data files themselves: the F-table over $\kk$ (stored in
+the real basis of $\Lf$, so that the same verifiers read it) and the R-symbols over $\Kt$. The
+verifying programs share no code with the programs that produced the data, apart from the reader of
+the binary format.
+
+\subsection{Height bounds}
+Write $\Z[\zeta]=\Z[x]/(\Phi_{52})$, with
+$\Phi_{52}(x)=\Phi_{13}(-x^2)=\sum_{k=0}^{12}(-1)^kx^{2k}$, and for $\rho\in\Z[\zeta]$ let
+$\norm\rho$ be the largest absolute value of a coefficient of its representative of degree less
+than $24$. For $0\le k\le46$ write $\zeta^k=\sum_{j<24}r_{kj}\zeta^j$ and put
+$c=\max_j\sum_{k=0}^{46}(\min(k,46-k)+1)\,|r_{kj}|$; a direct computation gives $c=46$. Then
+$\norm{\rho\sigma}\le c\norm\rho\norm\sigma$: the product of the representatives has degree at most
+$46$, its coefficient of $x^k$ is a sum of at most $\min(k,46-k)+1$ products, and reducing $x^k$ to
+$\sum_jr_{kj}x^j$ gives the bound. An element
+$a_0+\sum_{k=1}^{11}a_kc_k$ with integer $a_k$ has $\norm\cdot\le2\max|a_k|$ in the power basis.
+
+\begin{lemma}\label{lem:height}
+Let $\rho\in\Z[\zeta]$ and let $\mathcal P$ be a set of primes $p\equiv1\pmod{52}$ such that the
+image of $\rho$ under $\zeta\mapsto z$ vanishes for each of the $24$ roots $z$ of $\Phi_{52}$ in
+$\F_p$, for every $p\in\mathcal P$. If $\norm\rho<\prod_{p\in\mathcal P}p$ then $\rho=0$. If $\rho$
+is real (fixed by $\zeta\mapsto\zeta^{-1}$), it suffices that the images vanish at $12$ roots, one
+from each pair $\{z,z^{-1}\}$.
+\end{lemma}
+
+\begin{proof}
+The reduction of the representative of $\rho$ modulo $p$ has degree less than $24$ and $24$
+distinct roots, so all its coefficients are divisible by $p$, hence by $\prod p$, hence zero. If
+$\rho$ is real, its image at $z^{-1}$ is the image of $\bar\rho=\rho$ at $z$.
+\end{proof}
+
+\begin{lemma}\label{lem:matrix-bound}
+Let $A_1,\dots,A_r$ and $B_1,\dots,B_t$ be matrices over $\K$ such that the products
+$A=A_1\cdots A_r$ and $B=B_1\cdots B_t$ are defined and of the same shape, with inner dimensions
+at most $n$. Let $s_M$ be positive integers with $s_MM$ integral over $\Z[\zeta]$ and
+$\norm{s_MM_{ij}}\le H_M$ for all entries. If for every $p$ in a set $\mathcal P$ of primes, none
+dividing any $s_M$, the reductions satisfy $A=B$ at all $24$ roots, and
+\[
+\prod_{p\in\mathcal P}p>n^{r-1}c^{r-1}\prod_iH_{A_i}\prod_js_{B_j}+n^{t-1}c^{t-1}\prod_jH_{B_j}\prod_is_{A_i},
+\]
+then $A=B$ over $\K$.
+\end{lemma}
+
+\begin{proof}
+Multiply $A-B$ by $\prod s_{A_i}\prod s_{B_j}$; each entry becomes an element of $\Z[\zeta]$
+whose norm is bounded by the right hand side, since an entry of a product of $r$ matrices is a sum of
+at most $n^{r-1}$ products of $r$ entries. Apply Lemma~\ref{lem:height}.
+\end{proof}
+
+In the programs, $s_M$ is the least common multiple of the common denominators of the blocks
+assembled into $M$ (in the pentagon, for the scalar equation in a given row and column, only the
+blocks of $M_1,M_2,N_1,N_3$ that meet that row or column), $H_M$ is computed from the stored
+numerators with the factor $2$ for the change of basis, and the primes are the primes
+$p\equiv1\pmod{52}$ below $2^{31}$, in decreasing order, that divide no denominator; each identity
+is checked modulo the first $k$ of them, with $k$ least such that the product exceeds twice the
+bound. The checks are done with full matrices, independently for each four-tuple or five-tuple.
+The verifying programs read only the exported data files and share no code with the programs
+that produced the data, apart from the reader of the binary format.
+
+\subsection{Hexagons}
+\file{verify\_hex\_bin.py} checks both identities~\eqref{eq:hex-matrix} for all $58{,}740$
+four-tuples at all $24$ roots, and $RR^{-1}=1$ for all R-blocks. The bounds (twice the bound of
+Lemma~\ref{lem:matrix-bound}) reach $1293$ bits, and the number of primes needed per four-tuple
+ranges from $1$ to $42$. There were no failures. Since every F-matrix is invertible (below), this
+proves Theorem~\ref{thm:main}(i). The computation took $8593$ seconds with $2$ workers. We also
+checked $RR^{-1}=1$ directly in exact rational arithmetic (\file{exact\_checks.py}).
+
+\subsection{Invertibility, units and the dimensions}\label{sec:invert}
+All $58{,}740$ F-matrices are invertible modulo $p=1073741189$, hence over $\K$ (the determinant of
+the scaled matrix is an element of $\Z[\zeta]$ with nonzero image). The R-matrices are invertible
+since $RR^{-1}=1$. The following are checked exactly on the data (\file{exact\_checks.py}): the
+$6{,}859$ F-matrices with a unit among their first three legs are identities in the sense of
+Section~\ref{sec:conventions}; $N_{XX}^\one=1$ for all $X$; and
+$F[X,X,X,X]_{(\one,0,0),(\one,0,0)}\cdot d_X=1$ in $\K$ for all $16$ objects, with $d_X$ given
+by~\eqref{eq:qdim}. This proves Theorem~\ref{thm:main}(iii).
+
+\subsection{The pentagon equation}\label{sec:pentagon}
+The pentagon equation~\eqref{eq:pentagon-matrix} for all five-tuples amounts to about
+$4\times10^{11}$ scalar equations, with matrices up to $19{,}900\times19{,}900$. It follows from the
+pentagons with fourth object $V$ and Lemma~\ref{lem:reduction}.
+
+\emph{Fourth object $V$} (\file{pent\_reduced.py}). For all $63{,}841$ five-tuples $(A,B,C,V,E)$ (the
+largest of dimension $n_{ABCVE}=3380$; $\sum n^3\approx1.8\times10^{12}$), the
+identity~\eqref{eq:pentagon-matrix} is checked as full matrices at the $12$ real roots
+(Lemma~\ref{lem:height}; the F-symbols are real) of the first $k$ primes $p\equiv1\pmod{52}$ below
+$2^{31}$, with $k$ the least number for which the product exceeds twice the bound of
+Lemma~\ref{lem:matrix-bound} for that five-tuple. The bounds reach $1176$ bits; between $1$ and $38$
+primes are needed (mean $9.1$). There were no failures, so the pentagon equation holds exactly for all five-tuples with fourth object
+$V$. The run took $39{,}892$ seconds with $2$ workers
+(\file{deposit/\allowbreak logs/\allowbreak pent\_reduced\_descended.log}).
+
+
+\emph{By Lemma~\ref{lem:reduction}.} Since every simple object of $\CF$ is a summand of a positive
+tensor power of $V$, and the F-matrices are invertible, the pentagon equation for the five-tuples with
+fourth object $V$ implies it for all $1{,}030{,}051$ five-tuples. This proves Theorem~\ref{thm:main}(ii).
+
+\emph{Larger exact subsets} (\file{pent\_exact\_subset.py}). Independently of the reduction, the
+pentagon equation is proved, by the same method and at all $24$ roots, for all $339{,}330$
+five-tuples (from all $16$ objects) with $n_{ABCDE}\le50$ (bounds up to $810$ bits, up to $27$ primes,
+$38{,}984{,}496$ five-tuple checks, $21{,}721$ seconds with $2$ workers), for all $13{,}137$ five-tuples
+of objects from $\{\ob{0000},\ob{0001},\ob{0002},\ob{0010},\ob{1000},\ob{0004},\ob{2000}\}$ (dimensions
+up to $395$, bounds up to $391$ bits) and for all $1{,}585$ five-tuples from
+$\{\ob{0000},\ob{0001},\ob{1000},\ob{0004},\ob{2000}\}$. No failures. The recursion of
+Section~\ref{sec:recursion} uses only pentagons with $V$ in the second or third position, so these
+include many pentagons not used to produce the data.
+
+\subsection{Modular data}\label{sec:modular}
+From the exact R-symbols and the quantum dimensions~\eqref{eq:qdim}, we computed in $\K$, with
+rational arithmetic (\file{exact\_checks.py}),
+\[
+\tilde\theta_X=\frac1{d_X}\sum_Zd_Z\Tr R[X,X,Z],\qquad
+\tilde S_{XY}=\sum_Zd_Z\Tr\bigl(R[Y,X,Z]R[X,Y,Z]\bigr),
+\]
+which in a ribbon category with dimensions $d_X$ are the twists and the unnormalised $S$-matrix.
+We found $\tilde\theta_X=q^{(X,X+2\rho)}$ for all $X$, and $\tilde S_{XY}=S_{XY}/S_{\one\one}$ for
+all $256$ pairs, where
+\[
+\frac{S_{XY}}{S_{\one\one}}=\frac{\sum_{w\in W}\varepsilon(w)\,q^{-2(w(X+\rho),Y+\rho)}}
+{\sum_{w\in W}\varepsilon(w)\,q^{-2(w\rho,\rho)}}
+\]
+is the Kac--Peterson formula~\cite{KacPeterson}, $W$ the Weyl group of $F_4$ (of order $1152$).
+We also found $R[Y,X,Z]R[X,Y,Z]=\theta_Z\theta_X^{-1}\theta_Y^{-1}\cdot\id$ for all $2{,}302$
+triples (the balancing identity). This proves Theorem~\ref{thm:main}(iv). During the construction
+the trace of each idempotent $p_X$ was also compared with $d_X$, modulo $p$.
+Finally, $\tilde S\tilde S=\mathcal D^2\cdot\id$ holds exactly, with $\mathcal D^2=\sum_Xd_X^2\ne0$
+(\file{s\_nondegenerate.py}; all objects are self-dual, so the charge conjugation matrix is the
+identity); in particular $\tilde S$ is invertible.
+
+\subsection{Modularity}\label{sec:modularity}
+We use the data over $\C$ through the embedding $\zeta\mapsto e^{2\pi i/52}$. For a fusion category
+over $\C$, the squared norm $|X|^2$ of a simple object and the global dimension
+$\dim\cC=\sum_X|X|^2$ are defined in~\cite{ENO}; $\cC$ is pseudo-unitary if $\dim\cC$ equals its
+Frobenius--Perron dimension.
+
+\begin{lemma}\label{lem:norm}
+Let $X$ be a self-dual simple object with $N_{XX}^\one=1$, in data with identity F-matrices on unit
+legs, and put $f=F[X,X,X,X]_{(\one,0,0),(\one,0,0)}$. Then
+$(F[X,X,X,X]^{-1})_{(\one,0,0),(\one,0,0)}=f$ and $|X|^2=f^{-2}$.
+\end{lemma}
+
+\begin{proof}
+Let $a=\phi^{XX\to\one}_0$ and $c$ the vector of $\Hom(\one,X\otimes X)$ with $a\circ c=1$. As in the
+proof of Proposition~\ref{prop:rigid}, $(a\otimes\id_X)\circ(\id_X\otimes c)=f\cdot\id_X$; expanding
+$\phi^{X\one\to X}_0\circ(\id_X\otimes a)$ in the left-bracketed basis with the inverse F-matrix and
+composing with $c\otimes\id_X$ gives $(\id_X\otimes a)\circ(c\otimes\id_X)=f'\cdot\id_X$ with
+$f'=(F[X,X,X,X]^{-1})_{(\one,0,0),(\one,0,0)}$. With $c'=c/f$ the first composite is $\id_X$, and the
+proof of Proposition~\ref{prop:rigid} shows that the second is then $\id_X$ as well, so $f'=f$. Thus
+$(X,a,c')$ exhibits $X$ as its own dual on both sides. With the identity as isomorphism
+$X\to X^{**}$, the two traces in the definition of $|X|^2$ in~\cite{ENO} are both $a\circ c'=1/f$, so
+$|X|^2=f^{-2}$.
+\end{proof}
+
+\begin{proposition}\label{prop:modular}
+The braided fusion category defined by the data, with its spherical structure of positive dimensions,
+is a modular tensor category with dimensions $d_X$, twists $\theta_X=q^{(X,X+2\rho)}$ and $S$-matrix that
+of Kac and Peterson.
+\end{proposition}
+
+\begin{proof}
+By Theorem~\ref{thm:main}(iii) and Lemma~\ref{lem:norm}, $|X|^2=d_X^2$ for every simple $X$, so
+$\dim\cC=\sum_Xd_X^2$. The numbers $d_X$ are positive at our embedding, and
+$\sum_ZN_{XY}^Zd_Z=d_Xd_Y$ exactly (\file{pseudo\_unitary.py}). So $(d_Z)$ is a positive eigenvector of
+the fusion matrix of $V$, which is irreducible because every simple object is a summand of a power of
+$V$; by the Perron--Frobenius theorem $d_X$ is the Frobenius--Perron dimension of $X$ for every $X$, and
+$\cC$ is pseudo-unitary. By~\cite[Proposition~8.23]{ENO} it has a unique spherical structure with positive
+dimensions, and these are the $d_X$. A spherical braided fusion category is ribbon, with twist $\theta$
+determined by the braiding and the spherical structure~\cite{BakalovKirillov}; its trace satisfies
+$\Tr(\theta_X)=\Tr(c_{X,X})$ and $\Tr(c_{Y,X}c_{X,Y})=\tilde S_{XY}$ for the unnormalised $S$-matrix. For an
+endomorphism $u$ of $X\otimes Y$ with matrix $M_Z$ on each $\Hom(X\otimes Y,Z)$ in the basis of fusion
+maps, $\Tr(u)=\sum_Zd_Z\Tr M_Z$, and by~\eqref{eq:R} the matrices of $c_{X,X}$ and of $c_{Y,X}c_{X,Y}$ on
+$\Hom(X\otimes X,Z)$ and $\Hom(X\otimes Y,Z)$ are $R[X,X,Z]$ and $R[Y,X,Z]R[X,Y,Z]$. So
+$\theta_X=\tilde\theta_X$ and the $S$-matrix is $\tilde S$, which equal $q^{(X,X+2\rho)}$ and the
+Kac--Peterson values, and $\tilde S^2=\mathcal D^2\cdot\id$, exactly (Section~\ref{sec:modular}). So
+$\tilde S$ is invertible and the category is modular.
+\end{proof}
+
+As a check of Lemma~\ref{lem:norm} on the data, the identity
+\[(F[X,X,X,X]^{-1})_{(\one,0,0),(\one,0,0)}=F[X,X,X,X]_{(\one,0,0),(\one,0,0)}\]
+holds for all $16$ objects modulo two primes at all $12$ real roots (\file{pseudo\_unitary.py},
+\file{deposit/logs/pseudo\_unitary.log}).
+
+\subsection{Unitarity}\label{sec:unitarity}
+In the conventions of Rowell's survey, where the form is normalised by short roots of length $2$,
+$q^2$ is a primitive $\ell$-th root of unity and the alcove is $(\lambda+\rho,\theta)<\ell$, the
+category $\cC(\mathfrak g,\ell,q)$ is unitary when the lacing number $m$ divides $\ell$ and
+$q=e^{\pi i/\ell}$, by results of Wenzl~\cite{Wenzl} and Xu~\cite{Xu}, as stated
+in~\cite[Section~4]{Rowell}. For $\CF$ we have $\ell=26$, $m=2$ and $q=e^{\pi i/26}=\zeta$, so $\CF$ is
+unitary at the embedding $\zeta=e^{2\pi i/52}$ used throughout.
+
+\begin{remark}
+A unitary structure on skeletal data is a family of positive definite Hermitian forms $G^{XY}_Z$ on the
+multiplicity spaces for which every F-matrix is an isometry between the Gram matrices of the two
+bases of $\Hom(X\otimes Y\otimes W,T)$ built from them. With the normal form, $G$ can be computed from
+the F-symbols with third leg $V$; reconstructed over $\kk$, its entries have at most $47$ bits. The
+isometry identity was checked on all $58{,}740$ blocks modulo two (prime, root) pairs, and the forms
+are positive definite on all $2{,}271$ multiplicity spaces without a unit leg exactly at the
+embeddings $q=\zeta^{\pm1}$ and $q=\zeta^{\pm5}$ of $\kk$, and indefinite on $520$ to $549$ of them at
+the other four, with eigenvalues computed numerically at $256$-bit precision
+(\file{unitary/f4\_forms\_analyse.py}). In a gauge in which all F-matrices
+are real orthogonal, every entry whose four multiplicity spaces are one dimensional squares to a gauge
+invariant; the square classes of these invariants span a subgroup of $\kk^\times/(\kk^\times)^2$ of rank
+$6$, generated by $2,[3],[5],[11],[13],[2][4]$ (detected by quadratic characters at $300$ primes, which
+proves their independence; \file{unitary/f4\_classes.py}). So any such gauge needs a field of degree at
+least $2^6\cdot6=384$ over $\Q$, which is why the data are given in the normal form.
+\end{remark}
+
+\section{Autoequivalences and braidings}\label{sec:autoeq}
+
+\subsection{What was known}
+Gannon determined the automorphisms of the fusion rings of all affine Lie algebras~\cite{Gannon}.
+For $F_4$ at level $4$ he found an automorphism of order $4$, which he calls $\pi_4$, and showed that
+$\pi_4,\pi_4^2,\pi_4^3$ are the only nontrivial ones~\cite[Section~3.8 and Theorem~3.F4]{Gannon}; in
+our labels
+\[
+\pi_4=(\ob{0001}\ \ob{1000}\ \ob{2000}\ \ob{0004})(\ob{0010}\ \ob{0100}\ \ob{0020}\ \ob{0003})
+(\ob{1001}\ \ob{1002}\ \ob{1010}\ \ob{0012}),
+\]
+fixing $\ob{0000},\ob{0002},\ob{0011},\ob{0101}$. Edie-Michell computed the monoidal and braided
+autoequivalence groups of $\cC(\mathfrak g,k)$ for $\mathfrak g$ of types $A$, $B$, $C$ and
+$G$~\cite{EdieMichell}. For $F_4$ he writes (\cite[Section~1]{EdieMichell}, arXiv v2): ``For the
+categories $\mathcal C(\mathfrak{so}_{2r},2)$ and $\mathcal C(\mathfrak f_4,4)$ there exist exceptional
+auto-equivalences. The author was unable to find ad-hoc methods for constructing these. [\dots] The
+exceptional auto-equivalence of $\mathcal C(\mathfrak f_4,4)$ remains completely mysterious''
+(``exist'' refers to the fusion ring automorphism), and observes in~\cite[Section~7]{EdieMichell} that
+$\CF$ is the only other quantum group modular tensor category that could have a reverse braided
+autoequivalence. Morrison, Snyder and Thurston~\cite[Section~6]{MorrisonSnyderThurston} list
+$(E8,F_4,\zeta_{52}^9)\cong(F4,F_4,\zeta_{52}^7)$ among their conjectural isomorphisms of quantum group
+categories and remark that it is ``a categorical version of the automorphism of the fusion ring of
+$F_4$ level~$4$'' of Gannon, and that composing it with its Galois conjugate gives a braided equivalence
+$((F_4)_4,\zeta_{52})\cong((F_4)_4,\zeta_{52}^{25})\cong((F_4)_4,\zeta_{52}^{-1})$ ``and hence a braided
+reversing auto-equivalence'', adding that one needs ``to assume the quantum sufficiency conjecture in
+order to construct the autoequivalence''. The results below decide these questions for $\CF$
+unconditionally, from the data.
+
+\subsection{Notation}
+For a fusion ring automorphism $\pi$ we write
+\[(\pi\cdot F)[X,Y,W,T]=F[\pi^{-1}X,\pi^{-1}Y,\pi^{-1}W,\pi^{-1}T]\]
+and similarly $\pi\cdot R$, with multiplicity indices unchanged; $\sigma_a\cdot(F,R)$ is the data at
+$q\mapsto q^a$; and $R^{\mathrm{rev}}[X,Y,Z]=R[Y,X,Z]^{-1}$ is the reverse braiding
+$c^{\mathrm{rev}}_{X,Y}=c_{Y,X}^{-1}$. A monoidal equivalence between the categories defined by $F$
+and $F'$ that acts on simple objects by $\pi$ is, up to monoidal isomorphism, a unit-preserving gauge
+$h$ with $h\cdot(\pi\cdot F)=F'$.
+
+\subsection{Braidings}
+\begin{proposition}\label{prop:twobraidings}
+Let $(\cC,c)$ be a braided fusion category over $\C$ whose M\"uger centre is trivial, and suppose that
+$X\otimes Y$ is not simple for any simple $X,Y\ne\one$. Then the underlying fusion category has exactly
+two braidings, $c$ and $c^{\mathrm{rev}}$.
+\end{proposition}
+
+\begin{proof}
+A braiding $c'$ on $\cC$ defines a fully faithful braided tensor functor $s':\cC\to\mathcal Z(\cC)$,
+$X\mapsto(X,c'_{-,X})$, with $s'$ followed by the forgetful functor equal to the identity. Since the
+M\"uger centre of $(\cC,c)$ is trivial, the functor $\cC\boxtimes\cC^{\mathrm{rev}}\to\mathcal Z(\cC)$,
+$X\boxtimes Y\mapsto(X\otimes Y,\ c_{-,X}\text{ and }c^{\mathrm{rev}}_{-,Y})$, is an equivalence
+\cite[Proposition~3.7]{DGNO}. So the simple objects of $\mathcal Z(\cC)$ are the $X\boxtimes Y$, with
+underlying object $X\otimes Y$. For simple $Z$ the object $s'(Z)$ is simple, since $s'$ is fully
+faithful; so $s'(Z)=X\boxtimes Y$ with $X\otimes Y\cong Z$, hence $s'(Z)\in\{Z\boxtimes\one,
+\one\boxtimes Z\}$. If $s'(Z)=Z\boxtimes\one$ and $s'(W)=\one\boxtimes W$ with $Z,W\ne\one$, then
+$s'(Z\otimes W)\cong Z\boxtimes W$ is simple, while $Z\otimes W$ has at least two simple summands,
+each with nonzero image: a contradiction. So either $s'(Z)\cong Z\boxtimes\one=(Z,c_{-,Z})$ for all
+simple $Z$, or $s'(Z)\cong\one\boxtimes Z=(Z,c^{\mathrm{rev}}_{-,Z})$ for all simple $Z$. An isomorphism
+$(Z,c'_{-,Z})\cong(Z,c_{-,Z})$ in $\mathcal Z(\cC)$ is a scalar multiple of $\id_Z$ commuting with the
+half braidings, so $c'_{-,Z}=c_{-,Z}$; by naturality $c'=c$ in the first case, and $c'=c^{\mathrm{rev}}$
+in the second. Finally $c\ne c^{\mathrm{rev}}$, since otherwise every object would be in the M\"uger
+centre.
+\end{proof}
+
+For $\CF$ and all its Galois conjugates both hypotheses hold, exactly from the data: no tensor product
+of two non-unit simple objects is simple, and for every simple $X\ne\one$ some monodromy
+$R[Y,X,Z]R[X,Y,Z]$ is a scalar different from $1$ (Section~\ref{sec:modular};
+\file{autoeq\_checks.py}). Consequently, if $\Phi$ is a monoidal equivalence from $\CF$ to a Galois
+conjugate $\sigma_a\cdot\CF$, acting on objects by $\pi$, then $\Phi$ transports $\sigma_a(c)$ to $c$ or
+to $c^{\mathrm{rev}}$. The two cases are distinguished by the gauge invariant numbers $R[X,X,Z]$ on the
+$100$ one-dimensional spaces, which a braided equivalence preserves.
+
+\subsection{Results}
+\begin{theorem}\label{thm:autoeq}
+Let $\pi=\pi_4$, and let $H=\{1,5,21,25,27,31,47,51\}\subset(\Z/52)^\times$.
+\begin{enumerate}[label=(\roman*)]
+\item The fusion ring of $\CF$ has exactly four automorphisms, the powers of $\pi$.
+\item $\pi^2$ lifts to a monoidal autoequivalence $\Phi$ of $\CF$, and $\Phi$ transports $c$ to
+$c^{\mathrm{rev}}$: it is a braided equivalence $\CF\to\CF^{\mathrm{rev}}$. The automorphisms $\pi$ and
+$\pi^3$ do not lift to monoidal autoequivalences.
+\item Every monoidal autoequivalence of $\CF$ that fixes all simple objects is monoidally isomorphic to
+the identity.
+\item Hence the group of monoidal autoequivalences of $\CF$ up to monoidal isomorphism is $\Z/2$,
+generated by $\Phi$, and the group of braided autoequivalences is trivial. The underlying fusion
+category has exactly two braidings, $c$ and $c^{\mathrm{rev}}$, and they are exchanged by $\Phi$.
+\item $\pi$ lifts to a braided equivalence $\CF\to\sigma_5\cdot\CF$, from the category at $q$ to the
+category at $q^5$. The data $\sigma_a\cdot(F,R)$ are braided equivalent to $(F,R)$ exactly for $a\in H$,
+and for $a\notin H$ the fusion category $\sigma_a\cdot\CF$ is not monoidally equivalent to $\CF$ by any
+equivalence. So the $24$ Galois conjugates of $\CF$ form $3$ braided equivalence classes, and the field
+of moduli up to relabelling of the objects, for the fusion category and for the braided category, is
+the fixed field of $H$, the cubic subfield of $\Q(\zeta_{13})$ (for forms over it see
+Section~\ref{sec:forms}).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) Recomputed from the fusion rules by a search over permutations preserving the multiplicities
+(\file{autoeq\_checks.py}, \file{fusion\_auts.py}); it agrees with~\cite[Theorem~3.F4]{Gannon}.
+
+\emph{Monoidal obstructions.} In the blocks $F[V,V,V,V]$ and $F[V,V,V,\ob{0002}]$ all multiplicity spaces
+are one dimensional, so every gauge acts on them by $F\mapsto D_1FD_2$ with diagonal $D_i$, and the
+numbers $I_{ab}=F_{ab}(F^{-1})_{ba}$ are invariants of the gauge class. Exactly in $\K$, the relation
+$I(\pi^j\cdot F)=\sigma_a(I(F))$ holds for $a\in\{1,25,27,51\}$ when $j=0,2$, and only for
+$a\in\{5,21,31,47\}$ when $j=1,3$ (\file{nf\_witness.py}). So $\pi\cdot F$ and $\pi^3\cdot F$ are not gauge
+equivalent to $F$, which is the second half of (ii), and $\sigma_a\cdot F$ is not gauge equivalent to
+$\pi^j\cdot F$ for any $j$ when $a\notin H$.
+
+\emph{Monoidal lifts.} Since $F$ has entries in $\kk$, $\sigma_a\cdot F=F$ for $a\in\{1,25,27,51\}$.
+Gauges $h$ with $h\cdot(\pi^2\cdot F)=F$ and $h\cdot(\pi^3\cdot F)=\sigma_5\cdot F$ on all blocks with
+third leg $V$ are computed modulo primes from the normal form (with $g$ the normal-form gauge of
+$\pi^j\cdot F$, $h=g^{-1}$, suitably conjugated), reconstructed over $\Lf$, and the identities proved
+exactly on all $3{,}451$ such blocks with a height bound, with every $h^{XY}_Z$ invertible
+(\file{f4\_relabel\_exact.py} on this table, $537$ and $530$ s; \file{deposit/logs/nf\_relabel\_exact.log}).
+Both sides satisfy the pentagon equation, so by Lemma~\ref{lem:Hdetermines} the identities hold on the whole
+table: $\pi^2\cdot F\sim F$ and $\pi^3\cdot F\sim\sigma_5\cdot F$. Applying $\pi$ and then
+$\sigma_{21}=\sigma_5^{-1}$ to the second gives
+$\pi\cdot F\sim\sigma_{21}\cdot F=\sigma_5\cdot(\sigma_{25}\cdot F)=\sigma_5\cdot F$. Together with the
+cases $a\in\{1,25,27,51\}$, this gives a monoidal equivalence $\sigma_a\cdot\CF\simeq\CF$ for every
+$a\in H$.
+
+\emph{Braidings.} For each such equivalence, Proposition~\ref{prop:twobraidings} leaves two possibilities
+for the transported braiding, and the numbers $R[X,X,Z]$ on one-dimensional spaces decide between
+them, exactly (\file{autoeq\_checks.py}): $R[\pi^jX,\pi^jX,\pi^jZ]=\sigma_a(R[X,X,Z])$ for all such
+$X,Z$ holds for $(j,a)$ with $j=0$, $a\in\{1,27\}$; $j=2$, $a\in\{25,51\}$; $j=1$, $a\in\{21,47\}$;
+$j=3$, $a\in\{5,31\}$; and $R[\pi^jX,\pi^jX,\pi^jZ]=\sigma_a(R[X,X,Z])^{-1}$ holds for the complementary
+pairs ($j=0$, $a\in\{25,51\}$; $j=2$, $a\in\{1,27\}$; and so on), and for no other pairs. With $j=2$, $a=1$
+this is the first half of (ii): $\Phi$ transports $c$ to $c^{\mathrm{rev}}$. With $j=1$, $a=21$ it says
+$\sigma_5(R[\pi X,\pi X,\pi Z])=R[X,X,Z]$, so the monoidal equivalence $\CF\to\sigma_5\cdot\CF$ acting by
+$\pi$ preserves the braiding; this is the first statement of (v). For $a\in H$, an equivalence $\sigma_a\cdot\CF\simeq\CF$
+that reverses the braiding can be composed with $\Phi$, so in all cases $\sigma_a\cdot(F,R)$ is braided
+equivalent to $(F,R)$.
+
+(iii) The normal form of Section~\ref{sec:nfrule} fixes a gauge $g_F$ with $g_F\cdot F=\mathrm{NF}(F)$
+(here $g_F=1$, since $F$ is in normal form) by conditions on $g\cdot F$, and the set of gauges satisfying these conditions is the coset $Tg_F$ of the
+torus $T=\{g^{XY}_Z=u_Xu_Y/u_Z\}$: in step (2) the integer system has $89$ variables, rank $74$ and $74$
+unit pivots, so its solutions form a coset of a connected torus of dimension $15$, which is the
+restriction of $T$ ($T$ has dimension $15$ and fixes all F-symbols); steps (3) and (4) determine the gauge
+on every one of the remaining $2{,}182$ multiplicity spaces without a unit leg uniquely from the earlier
+ones (\file{stab\_check.py}). If $h\cdot F=F$ then $g_Fh$ satisfies the conditions, so $g_Fh\in Tg_F$, and
+since $T$ consists of scalars on each multiplicity space it is central in the gauge group, so $h\in T$.
+A gauge in $T$ is the monoidal structure of the identity functor transported by the natural isomorphism
+$(u_X)$, hence monoidally isomorphic to the identity.
+
+(iv) By (iii) the map from monoidal autoequivalences up to isomorphism to fusion ring automorphisms is
+injective; by (ii) its image is $\{1,\pi^2\}$. A braided autoequivalence fixes the numbers
+$R[X,X,Z]$, so it is not $\Phi$; by (iii) it is the identity. The statement about braidings is
+Proposition~\ref{prop:twobraidings}.
+
+(v) The braided equivalence for $\pi$ is shown above. For $a\notin H$, the monoidal obstruction above
+excludes every relabelling, and a monoidal equivalence acts on objects by a fusion ring automorphism.
+The subgroup $H$ has order $8$ and index $3$ in $(\Z/52)^\times$, and its fixed field is the cubic subfield
+of $\Q(\zeta_{13})$.
+\end{proof}
+
+As an independent confirmation of the braided statements, the canonical R-symbols
+$g^{YX}_Z\,R[X,Y,Z]\,(g^{XY}_Z)^{-1}$ of $(\pi^j\cdot F,\pi^j\cdot R)$ and of $(F,R)$ or $(F,R^{\mathrm{rev}})$
+at the conjugate roots were compared directly, modulo three primes at all $24$ roots, with the results
+above (\file{braid\_transport\_f4.py}).
+
+In particular, the equivalences predicted in~\cite[Section~6]{MorrisonSnyderThurston}, assuming the
+quantum sufficiency conjecture, exist for $\CF$: the braided equivalence
+$((F_4)_4,\zeta_{52})\cong((F_4)_4,\zeta_{52}^{5})$ acting by Gannon's $\pi_4$ (Theorem~\ref{thm:autoeq}(v)), and a braid-reversing
+autoequivalence, $\Phi$. By Theorem~\ref{thm:autoeq}(iv), $\Phi$ is, up to monoidal isomorphism, the only
+nontrivial monoidal autoequivalence.
+
+\subsection{Forms over the cubic field}\label{sec:forms}
+Let $E\subset\Kt$ be the cubic subfield, $E=\Q(\vartheta)$ with
+$\vartheta=\zeta_{13}+\zeta_{13}^5+\zeta_{13}^8+\zeta_{13}^{12}$ and
+$\vartheta^3+\vartheta^2-4\vartheta+1=0$, and let $s\in\mathrm{Gal}(\Kt/E)$ be
+$\zeta_{13}\mapsto\zeta_{13}^5$, the restriction of $\sigma_5$. Then $s$ generates
+$\mathrm{Gal}(\Kt/E)\cong\Z/4$, $s^2$ is complex conjugation, and $s|_\kk$ generates
+$\mathrm{Gal}(\kk/E)\cong\Z/2$. Let $\mathcal A$ be the fusion category over $\kk$ defined by $F$, with the
+labels of Table~\ref{tab:objects}, and $\mathcal A_M=\mathcal A\otimes_\kk M$ for fields $M\supseteq\kk$.
+Following Etingof and Gelaki~\cite[Definition~3.1]{EtingofGelakiDescent}, a \emph{form} of $\mathcal A_M$
+over a subfield $M_0\subseteq M$ is a fusion category $\mathcal D$ over $M_0$ with an $M$-linear monoidal
+equivalence $\mathcal D\otimes_{M_0}M\simeq\mathcal A_M$, where $\otimes_{M_0}M$ is extension of scalars
+followed by idempotent completion; it is \emph{split} if every simple object of $\mathcal D$ has
+endomorphism algebra $M_0$. Braided forms are defined in the same way. The fusion category $\mathcal A$ is
+a split form over $\kk$, and by Section~\ref{sec:fields} no smaller field carries a form with the labels
+fixed; $E$ is the field of moduli up to relabelling (Theorem~\ref{thm:autoeq}(v)).
+
+For $\gamma\in\mathrm{Aut}(M)$, a $\gamma$-semilinear monoidal autoequivalence of $\mathcal A_M$ is the same
+as a monoidal equivalence $\gamma\cdot\mathcal A_M\to\mathcal A_M$~\cite[Remark~3.2]{EtingofGelakiDescent}; if
+it acts on simple objects by $p$, it is, in the notation above, a gauge $h$ with
+$h\cdot(p\cdot(\gamma\cdot F))=F$. In this direction the braided equivalence $\CF\to\sigma_5\cdot\CF$ of
+Theorem~\ref{thm:autoeq}(v), which acts by $\pi$, is the inverse of a $\sigma_5$-semilinear braided
+autoequivalence acting by $\pi^{-1}=\pi^3$.
+
+\begin{lemma}\label{lem:twisted}
+Let $M\supseteq\kk$ and $\gamma\in\mathrm{Aut}(M)$ with $\gamma(\kk)=\kk$.
+\begin{enumerate}[label=(\alph*),leftmargin=2em]
+\item A $\gamma$-semilinear monoidal autoequivalence of $\mathcal A_M$ acting on simple objects by $p$
+exists if and only if $\gamma|_\kk=\id$ and $p\in\{1,\pi^2\}$, or $\gamma|_\kk=s|_\kk$ and
+$p\in\{\pi,\pi^3\}$.
+\item Two of them acting by the same $p$ are isomorphic by a unique monoidal isomorphism.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+A semilinear equivalence preserves the dimensions of the spaces $\Hom(X\otimes Y,Z)$, so $p$ is a
+fusion ring automorphism, $p=\pi^j$. (b) If $\Psi,\Psi'$ act by $p$, then $\Psi^{-1}\Psi'$ is $M$-linear
+and fixes the simple objects, so it is a gauge $g$ with $g\cdot F=F$. The proof of
+Theorem~\ref{thm:autoeq}(iii) uses only field operations and applies over $M$: $g$ lies in the torus $T$,
+so $\Psi'\cong\Psi$. A monoidal automorphism of the identity functor is a family of scalars $u_X$ with
+$u_Xu_Y=u_Z$ whenever $N_{XY}^Z\ne0$; since $N_{VV}^V=1$, $u_V=1$, and since every simple object is a
+summand of a tensor power of $V$, $u=1$. So the isomorphism is unique.
+(a) If $\gamma|_\kk=\id$ then $\gamma\cdot F=F$, and the statement is Theorem~\ref{thm:autoeq}(ii). If
+$\gamma|_\kk=s|_\kk$, then $\gamma\cdot F=\sigma_5\cdot F$, and $\sigma_5\cdot F$ is gauge equivalent to
+$\pi\cdot F$ and to $\pi^3\cdot F$ (Theorem~\ref{thm:autoeq}; both gauges are also computed and proved
+exactly on all blocks with third leg $V$ by \file{relabel\_exact\_nf.py}, \file{deposit/logs/forms\_relabel\_pi1.log}
+and \file{deposit/logs/forms\_relabel\_pi3.log}, hence on the whole table by Lemma~\ref{lem:Hdetermines}); so
+$p=\pi^3$ and $p=\pi$ occur. If $p\in\{1,\pi^2\}$ occurred, then $\gamma\cdot F\sim\pi^{-j}\cdot F\sim F$,
+so $\gamma$ would fix $\mathrm{NF}(F)=F$, whose entries generate $\kk$. Every other $\gamma|_\kk$ is the
+restriction of some $\sigma_a$ with $a\notin H$, and $\sigma_a\cdot F$ is not gauge equivalent to any
+$\pi^j\cdot F$ (proof of Theorem~\ref{thm:autoeq}).
+\end{proof}
+
+So for $M/E$ finite Galois with $M\supseteq\kk$, and $\varepsilon\colon\mathrm{Gal}(M/E)\to\mathrm{Gal}(\kk/E)=\Z/2$
+the restriction, the isomorphism classes of semilinear monoidal autoequivalences of $\mathcal A_M$ over $E$
+form the group $G_M=\{(\gamma,j)\in\mathrm{Gal}(M/E)\times\Z/4:j\equiv\varepsilon(\gamma)\bmod2\}$, and the
+monoidal automorphisms of the identity functor are trivial. Let $\Psi_j$ ($j=1,3$) be the $s$-semilinear
+monoidal autoequivalence of $\mathcal A_{\Kt}$ acting by $\pi^j$, with gauge entries in $\kk$. Then
+$\Psi_j^4$ is $\Kt$-linear and fixes the simple objects, so by Lemma~\ref{lem:twisted}(b) there is a unique
+monoidal isomorphism $\Psi_j^4\Rightarrow\id$, given by scalars $u_X=u^{(j)}_X$ with $u_\one=1$. The program
+\file{descent\_u.py} computes the gauges of $\Psi_j$ and $\Psi_j^4$ exactly, checks that the gauge of
+$\Psi_j^4$ is $u_Xu_Y/u_Z$ on all $1{,}394$ one-dimensional multiplicity spaces (and, modulo a prime, on all
+$2{,}302$), and finds $u_{\pi^jX}=s(u_X)$ and $u_X\in E$ for the four $\pi$-fixed $X$. For $j=3$,
+\begin{gather*}
+u_{\ob{0002}}=\tfrac1{169}(244\vartheta^2+583\vartheta-178),\qquad
+u_{\ob{0101}}=\tfrac1{169}(-14876486\vartheta^2-35364425\vartheta+10801957),\\
+u_{\ob{0011}}=\tfrac1{28561}(-88526336\vartheta^2-210445056\vartheta+64279808).
+\end{gather*}
+
+\begin{proposition}\label{prop:forms}
+Let $M/E$ be finite Galois with $M\supseteq\kk$.
+\begin{enumerate}[label=(\alph*),leftmargin=2em]
+\item Forms of $\mathcal A_M$ over $E$, up to equivalence, correspond to homomorphisms
+$\chi\colon\mathrm{Gal}(M/E)\to\Z/4$ with $\chi\equiv\varepsilon\bmod2$; in the form $\mathcal D_\chi$ the
+Galois group permutes the simple objects of $\mathcal A_M$ by $\gamma\mapsto\pi^{\chi(\gamma)}$. In
+particular $\mathcal A$ has no form over $E$, and no form $\mathcal D$ over $E$ of any $\mathcal A_M$ has
+$\mathcal D\otimes_E\kk\simeq\mathcal A$. For $M=\Kt$ there are exactly two forms, $\mathcal D_1$ and
+$\mathcal D_3$ ($\chi_j(s)=j$, descent data $\Psi_j$), and they are not equivalent.
+\item $\mathcal D_1$ and $\mathcal D_3$ have seven simple objects: the unit, with endomorphism algebra $E$;
+one for each $\pi$-orbit of size four, with endomorphism algebra $\Kt$ and base change the sum of the
+orbit; and for each $X\in\{\ob{0002},\ob{0011},\ob{0101}\}$ an object $S_X$ with
+$S_X\otimes_E\Kt\cong X\oplus X$ whose endomorphism algebra is the quaternion division algebra $B_X$ over
+$E$ ramified exactly at the two real places at which $u_X<0$: at $\vartheta\approx-2.651$ and $0.274$ for
+$\ob{0002}$, at $-2.651$ and $1.377$ for $\ob{0011}$, at $0.274$ and $1.377$ for $\ob{0101}$ (for both $j$).
+No form of $\mathcal A_{\Kt}$ over $E$ is split.
+\item Forms of $\mathcal A_M$ over $\kk$ are $\mathcal A$ and, for each quadratic extension
+$L=\kk(\sqrt d)\subseteq M$, one form $\mathcal A^{(L)}$, on which $\mathrm{Gal}(L/\kk)$ acts through $\Phi$. Its
+simple objects are the unit, one object with endomorphism algebra $L$ for each of the six
+$\pi^2$-orbits of size two, and one for each $X\in\{\ob{0002},\ob{0011},\ob{0101}\}$, with endomorphism
+algebra the division algebra in the class of the quaternion algebra $(d,u_X)_\kk$. For $L=\Kt$,
+$\mathcal A^{(\Kt)}=\mathcal D_j\otimes_E\kk$, and these are $B_X\otimes_E\kk$, ramified at four real places.
+\item For a number field $M_0$, $\mathcal A\otimes_\kk\overline\Q$ has a form over $M_0$ if and only if
+$M_0\supseteq E$, and a split form if and only if $M_0\supseteq\kk$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) By~\cite[Sections~3.2--3.5, 3.7, Propositions~3.5 and~3.8]{EtingofGelakiDescent}, forms over $E$
+correspond to splittings $\gamma\mapsto(\gamma,\chi(\gamma))$ of $G_M\to\mathrm{Gal}(M/E)$ together with
+coherence data whose obstruction lies in $H^3$ and whose choices form a torsor under $H^2$ of
+$\mathrm{Gal}(M/E)$ with coefficients in the monoidal automorphisms of the identity functor; both groups
+vanish. Unframed classes are orbits of $\mathrm{Aut}_\otimes(\mathcal A_M)=\{1,\Phi\}$, which is central in
+$G_M$, so they agree with framed classes. A form $\mathcal D$ with $\mathcal D\otimes_E\kk\simeq\mathcal A$ would
+have $\chi=0$ on $\mathrm{Gal}(M/\kk)$; but for $\varepsilon(\gamma)=1$, $\gamma^2\in\mathrm{Gal}(M/\kk)$ and
+$\chi(\gamma^2)=2\chi(\gamma)=2$ (compare~\cite[Example~3.4]{EtingofGelakiDescent}). An equivalence
+$\mathcal D_1\simeq\mathcal D_3$ would give $a\in\{1,\Phi\}$ with $a\Psi_1a^{-1}\cong\Psi_3$, impossible as
+$\Phi$ is central and $\Psi_1,\Psi_3$ act by $\pi,\pi^3$.
+
+(b) The form is the category of objects $Y$ of $\mathcal A_{\Kt}$ with $\alpha\colon\Psi_j(Y)\to Y$ satisfying
+$\alpha\circ\Psi_j(\alpha)\circ\Psi_j^2(\alpha)\circ\Psi_j^3(\alpha)=u$ on $Y$, with the invariant morphisms
+\cite[proof of Proposition~3.5]{EtingofGelakiDescent}. An orbit of size four gives a simple object with
+endomorphism algebra $\Kt$. For fixed $X$, such an $\alpha$ on $X^{\oplus n}$ is $\alpha\in GL_n(\Kt)$, and
+$v\mapsto\alpha\,s(v)$ makes $\Kt^n$ a module over the cyclic algebra $\Lambda_X=(\Kt/E,s,u_X)$ of degree $4$,
+whose module endomorphisms are the morphisms of the form. (With the opposite convention $u_X^{-1}$ replaces
+$u_X$, which gives the same class below.) At a real place of $E$ the extension $\Kt$ is complex, so the
+local invariant is $\tfrac12$ where $u_X<0$ and $0$ where $u_X>0$. The norms of the $u_X$ are divisible only
+by $2$ and $13$; $2$ is inert in $\Kt$, with $u_X$ of valuation $0$, $4$ or $8$ there, so the local
+invariant at $2$ is $0$; by reciprocity it is $0$ at the prime above $13$ as well. So $[\Lambda_X]$ has order
+$2$, hence index $2$ (Albert--Brauer--Hasse--Noether), $\Lambda_X\cong M_2(B_X)$, and the simple object is
+$X^{\oplus2}$ with endomorphism algebra $B_X^{\mathrm{op}}\cong B_X$. For the unit $u_\one=1$ and $\Lambda_\one$ is split.
+
+(c) Over $\kk$ the datum sends $\gamma\in\mathrm{Gal}(M/\kk)$ nontrivial on $L$ to the $\gamma$-semilinear
+autoequivalence acting by $\pi^2$ with the gauge of $\Psi_j^2$ (entries in $\kk$); its square has the same
+scalars $u_X$, and the same argument applies with $(L/\kk,\tau,u_X)=(d,u_X)_\kk$. For $L=\Kt$,
+$\chi_j(s^2)=2$, so $\mathcal A^{(\Kt)}=\mathcal D_j\otimes_E\kk$; $d=(\zeta_{13}-\zeta_{13}^{-1})^2$ is
+totally negative, so $(d,u_X)_\kk$ is ramified at the four real places over those of $B_X$.
+
+(d) If $M_0\not\supseteq E$, some $\gamma$ fixing $M_0$ restricts on $\kk$ to $\sigma_a$, $a\notin H$, and by
+Lemma~\ref{lem:twisted} there is no semilinear autoequivalence over $\gamma$, so no
+form~\cite[Section~3.2]{EtingofGelakiDescent}. If $M_0\supseteq E$, take $\chi_1$ composed with the restriction
+$\mathrm{Gal}(M/M_0)\to\mathrm{Gal}(\Kt/E)$, for $M\supseteq M_0\Kt$ finite Galois over $\Q$. In a split form every simple object of $\mathcal A_M$ is
+fixed, so $\chi=0$ and $\varepsilon=0$ on $\mathrm{Gal}(M/M_0)$, that is $M_0\supseteq\kk$.
+\end{proof}
+
+The signs, Hasse invariants and indices are computed in PARI/GP by \file{brauer.gp} (written by
+\file{brauer.py}); its \texttt{alghassei}, \texttt{alghassef} and \texttt{algindex} agree with the argument
+above, and the signs, norms and the valuations at $2$ were also recomputed independently from the values of
+$u_X$.
+
+\begin{proposition}\label{prop:braidedforms}
+Let $c$ be the braiding of $\mathcal A_{\Kt}$ given by $R$.
+\begin{enumerate}[label=(\alph*),leftmargin=2em]
+\item For $\gamma\in\mathrm{Gal}(\overline\Q/E)$ there is exactly one braided $\gamma$-semilinear
+autoequivalence of $(\mathcal A_{\overline\Q},c)$ up to isomorphism; it acts by $1$, $\pi^3$, $\pi^2$, $\pi$
+according as $\gamma|_{\Kt}=1,s,s^2,s^3$. In particular $\Psi_3$ is braided and $\Psi_1$ transports $c$ to
+$c^{\mathrm{rev}}$.
+\item For a number field $M_0$, $(\mathcal A_{\Kt},c)$ has a braided form over $M_0$ if and only if
+$M_0\supseteq E$, and it is unique up to braided equivalence. Over $E$ it is $\mathcal D_3$ with the
+descended braiding, and $\mathcal D_1$ admits no braiding; over $\kk$ it is $\mathcal A^{(\Kt)}$. A split braided
+form exists over $M_0$ if and only if $M_0\supseteq\Kt$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) A $\gamma$-semilinear monoidal autoequivalence acting by $\pi^j$ transports $c$ to $c$ or to
+$c^{\mathrm{rev}}$ (Proposition~\ref{prop:twobraidings}), and it is braided if and only if
+$R[\pi^jX,\pi^jX,\pi^jZ]=\gamma(R[X,X,Z])$ on the $100$ one-dimensional spaces. With $\gamma|_{\Kt}=\sigma_a|_{\Kt}$
+this is the table in the proof of Theorem~\ref{thm:autoeq}: $(j,a)$ with $a\equiv1,5,12,8\pmod{13}$
+gives $j=0,3,2,1$ (also checked at all $24$ roots modulo a prime by \file{descent\_u.py}). Uniqueness
+follows from Lemma~\ref{lem:twisted}(b). (b) By~\cite[Section~3.9]{EtingofGelakiDescent} braided forms are
+classified in the same way with braided autoequivalences, whose classes over $E$ map isomorphically onto
+the Galois group by (a); so there is exactly one splitting, $\chi(s)=3$. A braiding on a form is a
+braiding of $\mathcal A_{\Kt}$ invariant under the descent datum; $c$ and $c^{\mathrm{rev}}$ are invariant
+under $\Psi_3$ and exchanged by $\Psi_1$. A split braided form fixes the labels, so $\gamma|_{\Kt}=1$ for all
+$\gamma$ fixing $M_0$.
+\end{proof}
+
+So the three braided equivalence classes of Galois conjugates in Theorem~\ref{thm:autoeq}(v) are the base
+changes of the single braided fusion category $\mathcal D_3$ over $E$ along the three embeddings $E\to\C$.
+The field of moduli up to relabelling, $E$, is a field of definition, but only of non-split forms; split
+forms need $\kk$ for the fusion category and $\Kt$ for the braided category.
+
+All forms of the fusion category over $E$ are described as follows. For $e\in E^\times$ let $\psi_e$ be
+the quadratic character of $E(\sqrt e)$, $\chi_e=\chi_1+2\psi_e$, $\mathcal D_e$ the form of
+$\mathcal A_{\overline\Q}$ over $E$ with character $\chi_e$ (Proposition~\ref{prop:forms}(a)), and $M_e$ the
+fixed field of $\ker\chi_e$. Here $u_X=u^{(1)}_X$; the ratios $u^{(1)}_X/u^{(3)}_X$ are squares in $E$
+(\file{endo.gp}), so $u^{(3)}_X$ gives the same quaternion algebras.
+
+\begin{proposition}\label{prop:endo}
+\begin{enumerate}[label=(\alph*),leftmargin=2em]
+\item $e\mapsto\mathcal D_e$ is a bijection from $E^\times/E^{\times2}$ to the forms of $\mathcal A_{\overline\Q}$ over
+$E$, with $\mathcal D_{13}=\mathcal D_3$. $M_e$ is a cyclic quartic extension of $E$ containing $\kk$, and
+$\mathcal D_e\otimes_EF$ is split if and only if $F\supseteq M_e$. $M_e=\Kt$ exactly for $e\in\{1,13\}$, and
+these are the only $e$ for which $M_e$ is unramified outside $13$ and $\infty$; $M_{-1}=\Q(\zeta_{52})^+$.
+\item $\mathcal D_e$ has seven simple objects: the unit, with endomorphism algebra $E$; one object for each
+$\pi$-orbit of size four, with endomorphism algebra $M_e$; and for each
+$X\in\{\ob{0002},\ob{0011},\ob{0101}\}$ an object $S_X$ whose endomorphism algebra is the division algebra
+in the class of the quaternion algebra $(-e,u_X)_E$ (with $S_X\otimes_E\overline\Q$ equal to $X\oplus X$ or
+$X$). The local invariant of $(-e,u_X)_E$ is $\tfrac12$ at a real place $v$ exactly when $e(v)>0$ and
+$u_X(v)<0$; it is $0$ at the prime above $13$; at a prime $\mathfrak q\nmid26$ it is $\tfrac12$ exactly when
+$v_{\mathfrak q}(e)$ is odd and $u_X$ is not a square modulo $\mathfrak q$; at $2$ it is fixed by reciprocity.
+\item $[(-e,u_{\ob{0101}})_E]=[(-e,u_{\ob{0002}})_E]+[(-e,u_{\ob{0011}})_E]$ in $\mathrm{Br}(E)$, so the number of
+$X$ with $\End(S_X)=E$ is $0$, $1$ or $3$, and all three cases occur. It is $3$ if and only if $e$ is totally
+negative and every $u_X$ is a square modulo every $\mathfrak q\nmid26$ at which $v_{\mathfrak q}(e)$ is odd.
+For example $\mathcal D_{-1}$, split by $\Q(\zeta_{52})^+$, has only commutative endomorphism algebras:
+$E$ for four simple objects and $\Q(\zeta_{52})^+$ for three.
+\item $\mathcal D_e$ admits a braiding if and only if $e=13$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) Every lift of $\varepsilon$ is $\chi_1+2\psi$, and Kummer theory identifies the $\psi$ with
+$E^\times/E^{\times2}$; $\chi_3=3\chi_1=\chi_1+2\psi_{13}$, since $\kk=E(\sqrt{13})$. Since $\chi_e$ is odd off
+$\mathrm{Gal}(\overline\Q/\kk)$, it is surjective with kernel inside $\mathrm{Gal}(\overline\Q/\kk)$. Over
+$F\supseteq M_e$ the character vanishes and the form becomes $\mathcal A_F$; conversely the orbit objects
+need $M_e\subseteq F$. At a prime $\mathfrak q\nmid13$, $\chi_1$ is unramified, so $\chi_e$ is ramified exactly
+when $\psi_e$ is. As $E$ has class number one, $\psi_e$ is unramified outside $\{2,13,\infty\}$ exactly for
+$e$ in the group generated by $-1$, the fundamental units, $2$ and a generator of the prime above $13$, and
+among these only $1$ and $13$ give $\psi_e$ unramified at $2$ ($2$ is inert in $E$, so an odd power of $2$
+ramifies; for the others, \file{endo.gp}). At a real place
+$\chi_e(c_v)=2+2\psi_e(c_v)$, which vanishes for $e=-1$, so $M_{-1}$ is the real cyclic quartic extension of $E$
+in $\Kt(i)=\Q(\zeta_{52})$.
+
+(b) For $e\notin\{1,13\}$ take $M=\Kt(\sqrt e)$, with $\mathrm{Gal}(M/E)=\langle\tilde s\rangle\times\langle r\rangle$,
+$\tilde s|_{\Kt}=s$, $\tilde s(\sqrt e)=\sqrt e$, $r$ fixing $\Kt$. The datum $\tilde s\mapsto\Psi_1$,
+$r\mapsto$ the $r$-semilinear autoequivalence acting by $\pi^2$ with the gauge of $\Psi_1^2$ (entries in
+$\kk$) has commuting generators, and both $\Psi_1^4$ and the square of the second act on a fixed $X$ by
+$u_X$. So the algebra of the proof of Proposition~\ref{prop:forms}(b) becomes
+$(\Kt/E,s,u_X)\otimes_E(e,u_X)_E$, of class $[(-1,u_X)_E]+[(e,u_X)_E]=[(-e,u_X)_E]$, because $B_X$ and
+$(-1,u_X)_E$ have the same local invariants. The local rule is that of the Hilbert symbol: $u_X$ is a unit
+away from $2$ and $13$, and a square in the completion at the prime above $13$ (\file{endo.gp}).
+
+(c) $N_{\ob{0002}\,\ob{0011}}^{\ob{0101}}=3$. The $\kk$-linear autoequivalence acting by $\pi^2$ with the gauge
+of $\Psi_1^2$ acts on this space by a matrix $g$ with $g^2=(u_{\ob{0002}}u_{\ob{0011}}/u_{\ob{0101}})\,I_3$, so
+this ratio is a square in $\kk$ (its cube is $\det(g)^2$); it is a square in $E$ (\file{endo.gp}), which gives
+the relation. Every real place has some $u_X<0$, which gives the criterion; the three cases occur for
+$e=1$, $e=-\vartheta^2-\vartheta+3$ (a fundamental unit) and $e=-1$ (\file{endo.gp}).
+
+(d) A braiding on $\mathcal D_e$ is $c$ or $c^{\mathrm{rev}}$ invariant under the descent datum, that is every
+$\gamma$ acts by the braided lift, $\chi_e=\chi_3$ (Proposition~\ref{prop:braidedforms}(a)).
+\end{proof}
+
+So among all forms over $E$ two properties single out $\Kt$ and $\mathcal D_3$: $\Kt$ is the only splitting field
+$M_e$ unramified outside $13$ and $\infty$, and $\mathcal D_3$ is the only form with a braiding; the
+quaternion endomorphism algebras are forced for the braided form, but not for the fusion category. The
+twisted forms over $\kk$ behave in the same way, with $(d,u_X)_\kk$ in place of $(-e,u_X)_E$; an enumeration
+of the totally real quadratic extensions of $\kk$ of small conductor, and the split patterns for all
+$\{2,13,\infty\}$-units $e$, are in \file{f4-forms/} (\file{kforms.gp}, \file{endo.gp}).
+
+\emph{Real forms.} Let $\iota_b$, $1\le b\le6$, be the real place of $\kk$ with
+$\zeta_{13}+\zeta_{13}^{-1}\mapsto2\cos(2\pi b/13)$; it gives the data at $q=\zeta^w$ for $w\equiv\pm b\pmod{13}$.
+Over $\mathbb R$ the category $\mathcal A\otimes_{\iota_b}\C$ has two forms, classified by
+$H^1(\mathrm{Gal}(\C/\mathbb R),\{1,\Phi\})=\Z/2$: the split form $\mathcal A\otimes_{\iota_b}\mathbb R$, and the form
+$\mathcal A^{(\Kt)}\otimes_{\iota_b}\mathbb R$ in which complex conjugation acts by $\Phi$. The latter is braided
+(complex conjugation composed with $\Phi$ is the pair $(j,a)=(2,51)$ in the proof of
+Theorem~\ref{thm:autoeq}); its unit has endomorphism algebra $\mathbb R$, the six objects over the
+$\pi^2$-pairs have $\C$, and a fixed $X$ has $\mathbb H$ if $u_X(\iota_b)<0$ and $\mathbb R$ otherwise:
+\[
+\begin{array}{c|c|ccc}
+b & \text{place of }E & \ob{0002} & \ob{0011} & \ob{0101}\\\hline
+1,5 & \vartheta\approx0.274 & \mathbb H & \mathbb R & \mathbb H\\
+2,3 & \vartheta\approx1.377 & \mathbb R & \mathbb H & \mathbb H\\
+4,6 & \vartheta\approx-2.651 & \mathbb H & \mathbb H & \mathbb R
+\end{array}
+\]
+The places $b=1,5$ are those at which $\CF$ is unitary (Section~\ref{sec:unitarity}); there the antilinear braided
+autoequivalence (complex conjugation)$\circ\Phi$ squares to a negative multiple of the identity on
+$\ob{0002}$ and $\ob{0101}$ and to a positive one on $\ob{0011}$.
+
+\section{Non-integrality at 13}\label{sec:integrality}
+
+In $\K=\Q(i,\zeta_{13})$ the prime $13$ factors as $13=\mathfrak P_1^{12}\mathfrak P_2^{12}$
+($13$ splits in $\Q(i)$ and is totally ramified in $\Q(\zeta_{13})$). Let $v$ denote either of the
+two valuations, normalised by $v(13)=1$, extended to any finite extension of $\K$.
+
+\begin{lemma}\label{lem:qint}
+For $0<n<26$, $v([n])=1/12$ if $n$ is even and $v([n])=0$ if $n$ is odd. Consequently
+\[
+v(d_\lambda)=\tfrac1{12}\Bigl(\#\{\alpha>0:(\lambda+\rho,\alpha)\text{ even}\}-\#\{\alpha>0:(\rho,\alpha)\text{ even}\}\Bigr).
+\]
+\end{lemma}
+
+\begin{proof}
+$q^n-q^{-n}=q^{-n}(\zeta_{26}^n-1)$ with $\zeta_{26}=q^2$. For $0<n<26$ the root of unity
+$\zeta_{26}^n$ has order $13$ if $n$ is even and order $26$ or $2$ if $n$ is odd. Now
+$1-\xi$ has valuation $1/12$ for $\xi$ of order $13$, and is a unit at $13$ for $\xi$ of order $26$
+($1-\xi=1+\xi'$ with $\xi'$ of order $13$, and $\prod(1+\xi')=\Phi_{13}(-1)\cdot(-1)^{12}=1$) or
+$2$. The denominator $q-q^{-1}$ is a unit. For the dimension formula note that all pairings
+$(\lambda+\rho,\alpha)$ for $\lambda$ in the alcove lie in $(0,26)$.
+\end{proof}
+
+For $\lambda=\ob{0011}$ all $24$ pairings $(\lambda+\rho,\alpha)$ are even, while $16$ of the
+$(\rho,\alpha)$ are, so $v(d_{\ob{0011}})=8/12=2/3$; for the other $15$ simple objects $v(d_\lambda)=0$
+(Table~\ref{tab:objects}). Independently, the $13$-adic valuation of $N_{\K/\Q}(d_{\ob{0011}})$ is
+$16=12\cdot(2/3+2/3)$, and that of the other norms is $0$ (\file{exact\_checks.py}). Explicitly,
+in the basis $1,c_1,\dots,c_{11}$ of $\Lf$, $c_k=\zeta^k+\zeta^{-k}$,
+\[
+d_{\ob{0011}}=7+14c_2-4c_4+4c_6+14c_{10},\qquad
+\frac1{d_{\ob{0011}}}=\frac{2c_2+2c_{10}-5}{13}.
+\]
+
+\begin{proposition}\label{prop:integrality}
+Let $\tilde F$ be obtained from the F-symbols of Theorem~\ref{thm:main} by any gauge
+transformation, with the $g^{XY}_Z$ invertible matrices over any finite extension $L$ of $\K$. Then
+for each prime of $L$ above $13$ some F-symbol of $\tilde F$ is not integral at that prime.
+\end{proposition}
+
+\begin{proof}
+Let $X=\ob{0011}$, so $N_{XX}^\one=1$ and $N_{X\one}^X=N_{\one X}^X=1$. Write $a=g^{XX}_\one$,
+$b=g^{\one X}_X$, $c=g^{X\one}_X$, scalars. By~\eqref{eq:gauge-scalar},
+\begin{align*}
+\tilde F[X,X,X,X]_{(\one,0,0),(\one,0,0)}&=\frac{ab}{ac}\,F[X,X,X,X]_{(\one,0,0),(\one,0,0)}
+=\frac bc\cdot\frac1{d_X},\\
+\tilde F[X,\one,X,\one]_{(X,0,0),(X,0,0)}&=\frac{ca}{ba}\,F[X,\one,X,\one]_{(X,0,0),(X,0,0)}=\frac cb,
+\end{align*}
+using $F[X,X,X,X]_{(\one,0,0),(\one,0,0)}=1/d_X$ and $F[X,\one,X,\one]=1$ in our data. The product
+of the two entries is $1/d_X$, of valuation $-2/3$, so they cannot both be integral.
+\end{proof}
+
+The object \ob{0011} is the only one whose dimension is divisible by the primes above $13$.
+
+\section{The data files}\label{sec:data}
+
+\subsection{Text format}
+All text files are line oriented, with header lines starting with \texttt{\#} that state the field,
+the basis and the conventions, list the objects (in the order of Table~\ref{tab:objects}), and give
+the fusion multiplicities as lines \texttt{\# N X Y Z n}. The data lines are
+\begin{verbatim}
+F X Y W T | Z i j | Z' k l | e1 e2 e3 e4 e5 e6
+R X Y Z | j i | b0 b1 ... b23
+Rinv X Y Z | i j | b0 b1 ... b23
+\end{verbatim}
+meaning $F[X,Y,W,T]_{(Z,i,j),(Z',k,l)}=\sum_je_j\eta_j$, with $\eta_j=\zeta_{13}^j+\zeta_{13}^{-j}$ and
+$\zeta_{13}=\zeta^4$, and $R[X,Y,Z]_{j,i}=\sum_kb_k\zeta^k$ (and the same for $R^{-1}$), with indices from
+$0$ and coefficients integers or fractions \texttt{a/b} in lowest terms. The R-symbols lie in $\Kt$, so
+only even powers of $\zeta$ occur; they are written in the basis of $\K$ so that the same verifiers read
+them. Entries equal to zero are omitted, the lines are sorted by key, and the label sets of each matrix
+are determined by the fusion rules. The $\eta_j$ form an integral basis of $\kk$; since
+$1=-(\eta_1+\dots+\eta_6)$, the element $1$ is written \texttt{-1 -1 -1 -1 -1 -1}.
+
+\subsection{Binary format}
+The complete F-table is stored in a binary format (\file{fsym\_bin.py}), in two files of $6.50$ and
+$6.45$ GB: a magic string, the length of a JSON header, the header (objects, conventions, and for each
+block its key, row and column labels, byte offset and limb counts), and for each block the common
+denominator $D$ of its coefficients, the signs, and the magnitudes $|a_kD|$ as little endian $32$-bit
+limbs, row major. The coefficients are those of the basis $1,c_1,\dots,c_{11}$ of $\Lf$,
+$c_k=\zeta^k+\zeta^{-k}$ (every entry lies in $\kk$), so that the verifiers read the table directly. A
+reader returns any block either as exact fractions or reduced modulo a prime at a chosen root, without
+reading the rest of the file, and \file{fsym\_k.py} prints chosen blocks, or the whole table, in the text
+format above:
+\begin{verbatim}
+python3 code/fields/fsym_k.py archive/F4_4_F_part1.bin \
+    archive/F4_4_F_part2.bin 0001,0001,0001,0001
+\end{verbatim}
+
+\subsection{Worked examples}
+
+\begin{example}\label{ex:VVVV}
+Take $X=Y=W=T=V=\ob{0001}$. Since $V\otimes V=\one\oplus V\oplus\ob{0002}\oplus\ob{0010}\oplus
+\ob{1000}$ and each of these has $V$ in its tensor product with $V$ exactly once, the rows and
+the columns of $F[V,V,V,V]$ are labelled by $(Z,0,0)$, $Z\in\{\ob{0000},\ob{0001},\ob{0002},
+\ob{0010},\ob{1000}\}$, and the matrix is $5\times5$. Its first row is
+\begin{verbatim}
+F 0001 0001 0001 0001 | 0000 0 0 | 0000 0 0 | 1/2 0 0 0 1/2 0
+F 0001 0001 0001 0001 | 0000 0 0 | 0001 0 0 | 1/2 0 0 0 1/2 0
+F 0001 0001 0001 0001 | 0000 0 0 | 0002 0 0 | -1 -1 -1 -1 -1 -1
+F 0001 0001 0001 0001 | 0000 0 0 | 0010 0 0 | -1 -1 -1 -1 -1 -1
+F 0001 0001 0001 0001 | 0000 0 0 | 1000 0 0 | -1 -1 -1 -1 -1 -1
+\end{verbatim}
+So $F[V,V,V,V]_{(\one,0,0),(\one,0,0)}=\frac12(\eta_1+\eta_5)$, and the other entries of the first row
+are $\frac12(\eta_1+\eta_5)$, $1$, $1$, $1$. In $\Lf$, $\eta_j=c_{4j}$ and $c_{20}=-c_6$, so
+$\frac12(\eta_1+\eta_5)=\frac12(c_4-c_6)$; since $d_V=2+2c_2+2c_{10}$ and
+$\frac12(c_4-c_6)(2+2c_2+2c_{10})=1$, this entry is $1/d_V$, as in Theorem~\ref{thm:main}(iii). At
+$\zeta_{13}=e^{2\pi i/13}$ the matrix is approximately
+\[
+\begin{pmatrix}
+0.136945 & 0.136945 & 1 & 1 & 1\\
+1 & -0.521601 & 0.785500 & -1.525349 & 4.877810\\
+1 & 0.107570 & 1.365971 & -1.087046 & -2.337893\\
+1 & -0.208889 & -1.087046 & 1.582221 & -0.936273\\
+1 & 0.667993 & -2.337893 & -0.936273 & 2.482147
+\end{pmatrix},
+\]
+with $1/0.136945\approx7.302187=d_V$; the entries outside the first row have integer coefficients.
+
+\end{example}
+
+\begin{example}\label{ex:R}
+The R-file contains, for $X=Y=V$,
+\begin{verbatim}
+R 0001 0001 0000 | 0 0 | 0 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+R 0001 0001 0001 | 0 0 | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 0 0 0 0 0 0 0
+R 0001 0001 0002 | 0 0 | 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+R 0001 0001 0010 | 0 0 | -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+R 0001 0001 1000 | 0 0 | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0
+\end{verbatim}
+that is $R[V,V,Z]=-\zeta^2,-\zeta^{14},\zeta^2,-1,\zeta^{20}$ for $Z=\one,V,\ob{0002},\ob{0010},\ob{1000}$.
+Since $\zeta^{26}=-1$ these are $q^{-24},q^{-12},q^2,-1,-q^{-6}$, the eigenvalues of $c_{V,V}$ of
+Section~\ref{sec:cells}, and one checks $\sum_Zd_ZR[V,V,Z]=q^{24}d_V=\theta_Vd_V$. For a multiplicity
+space of dimension $2$, the block $R[V,\ob{0011},\ob{0011}]$ consists of four lines
+\texttt{R 0001 0011 0011 | j i | ...}, $j,i\in\{0,1\}$; its product with $R[\ob{0011},V,\ob{0011}]$ is
+$q^{-24}$ times the identity, as the balancing identity requires.
+\end{example}
+
+\section{Availability and reproduction}\label{sec:availability}
+
+\subsection{Where things are}
+\begin{itemize}[leftmargin=2em]
+\item \emph{Programs}: the repository \texttt{kim-em/f4\_4}, \textbf{[REPOSITORY URL: to be supplied]}.
+Its directory \file{code/} has seven subdirectories: \file{f4/} (the construction modulo $p$ and the
+verifiers), \file{fields/} (the normal form, the driver of the pipeline and the reconstruction),
+\file{checks/} (the exact checks of this paper), \file{autoeq/} (Section~\ref{sec:autoeq}),
+\file{f4-forms/} (Section~\ref{sec:forms}), \file{unitary/} (Section~\ref{sec:unitarity}) and
+\file{metaplectic/} (the comparison for $\cC(\mathfrak{so}(13),2)$ of Section~\ref{sec:limits}). The
+repository also contains the logs of all runs (\file{logs/}), the deposit (\file{deposit/}), a
+description of the archive with checksums (\file{archive/README.md}) and the source of this paper.
+\item \emph{Deposit} (with this paper, about $10$ MB): the files of Table~\ref{tab:deposit}, the logs of
+the runs reported here, and a \file{README} with SHA-256 checksums.
+\item \emph{Archive}: \textbf{[DATA ARCHIVE DOI: to be supplied]}. The complete F-table in the binary
+format of Section~\ref{sec:data} (two files \file{F4\_4\_F\_part1.bin} and \file{F4\_4\_F\_part2.bin},
+$6.50$ and $6.45$ GB) and the R-file \file{F4\_4\_R\_normalform.txt} (the uncompressed file of the
+deposit).
+\end{itemize}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+file & content & size \\
+\midrule
+\file{F4\_4\_H\_normalform.txt.xz} & F with third leg $V$, over $\kk$; determines the table & 9.0 MB \\
+\file{F4\_4\_R\_normalform.txt.xz} & R and $R^{-1}$, over $\Kt$ & 0.4 MB \\
+\file{F4\_4\_invariants.txt} & $d_X$, $\theta_X$, $\tilde S$ exactly (Section~\ref{sec:modular}) & 0.02 MB \\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{Data files of the deposit (formats in Section~\ref{sec:data}). The F-symbols with third leg
+$V$ determine the whole table (Lemma~\ref{lem:Hdetermines}), which can be regenerated from them by the
+pentagon recursion.}
+\label{tab:deposit}
+\end{table}
+
+\subsection{Programs}
+Table~\ref{tab:scripts} lists the programs. They require Python~3 with numpy; the construction also
+uses scipy (sparse matrices), and \file{exact\_checks.py} uses mpmath. The versions used were
+Python~3.14.8, numpy~2.5.3, scipy~1.18.1, sympy~1.14.0 and mpmath~1.4.1, and PARI/GP~2.17.3 for the
+\file{.gp} scripts. The verifiers
+\file{verify\_hex\_bin.py}, \file{pent\_reduced.py} and \file{pent\_exact\_subset.py} use only numpy and
+the standard library, and share no code with the programs that produced the data apart from the
+reader \file{fsym\_bin.py}.
+
+\begin{table}[ht]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{p{0.40\linewidth}p{0.46\linewidth}l}
+\toprule
+program & role & section \\
+\midrule
+\multicolumn{3}{p{0.9\linewidth}}{\emph{Construction modulo one prime and one root} (\file{code/f4/}, called by \file{code/fields/direct\_f4.py})}\\
+\file{rootsys.py}, \file{basic.py} & root data, Weyl and quantum dimensions, Kac--Walton fusion & \ref{sec:category} \\
+\file{lin.py}, \file{qg.py} & linear algebra mod $p$; $\Uq$-modules, highest weight vectors & \ref{sec:modules} \\
+\file{cells.py}, \file{check\_cells.py} & the cells; their relations at every base & \ref{sec:cells} \\
+\file{pathmodel.py}, \file{objects.py} & path spaces and generators; idempotents $p_S$, auxiliary bases & \ref{sec:paths}--\ref{sec:gaugefix} \\
+\file{hfamily.py}, \file{run\_h.py} & F-symbols with third leg $V$ & \ref{sec:H} \\
+\file{recursion.py}, \file{run\_split.py} & the pentagon recursion & \ref{sec:recursion} \\
+\file{rmatrix.py}, \file{run\_r.py} & R-symbols & \ref{sec:Rsym} \\
+\multicolumn{3}{p{0.9\linewidth}}{\emph{Normal form, pipeline and reconstruction} (\file{code/fields/})}\\
+\file{f4\_canon.py}, \file{torus.py} & the normal form (Section~\ref{sec:nfrule}) modulo $p$ & \ref{sec:nfrule} \\
+\file{direct\_f4.py}, \file{direct\_f4\_all.sh} & the pipeline at one (prime, root); at all of them & \ref{sec:construction} \\
+\file{compare\_direct.py} & one run of the pipeline against the archived table & \ref{sec:construction} \\
+\file{f4\_full\_recon.py}, \file{direct\_R\_recon.py} & reconstruction of F over $\kk$ and of R over $\Kt$ & \ref{sec:reconstruction} \\
+\file{finish\_all.sh} & the long verifications; comparison with the archive & \ref{sec:verification} \\
+\file{fsym\_k.py}, \file{fsym\_bin.py} & readers and text output & \ref{sec:data} \\
+\file{f4\_relabel\_exact.py} & exact relabellings & \ref{sec:autoeq} \\
+\multicolumn{3}{p{0.9\linewidth}}{\emph{Verifiers} (\file{code/f4/})}\\
+\file{verify\_hex\_bin.py} & both hexagons and $RR^{-1}=1$, exactly & \ref{sec:verification} \\
+\file{pent\_reduced.py} & pentagons with fourth object $V$, exactly; invertibility & \ref{sec:pentagon} \\
+\file{pent\_exact\_subset.py} & pentagon on subsets, exactly & \ref{sec:pentagon} \\
+\multicolumn{3}{p{0.9\linewidth}}{\emph{Checks of this paper} (\file{code/checks/})}\\
+\file{exact\_checks.py} & objects, fusion graph, modular data, unit legs, $1/d_X$, exactly & \ref{sec:modular} \\
+\file{s\_nondegenerate.py} & $\tilde S^2=\mathcal D^2\cdot\id$, exactly & \ref{sec:modular} \\
+\file{nf\_galois.py}, \file{r\_invariants.py} & Galois action on F; invariants of R & \ref{sec:fields} \\
+\file{pseudo\_unitary.py} & character of $d_X$; $(F^{-1})_{11}=F_{11}$ modulo $p$ & \ref{sec:modularity} \\
+\file{autoeq\_checks.py}, \file{nf\_witness.py} & automorphisms, M\"uger centre, transport of $R[X,X,Z]$; invariants $F_{ab}(F^{-1})_{ba}$ & \ref{sec:autoeq} \\
+\multicolumn{3}{p{0.9\linewidth}}{\emph{Other} (\file{code/autoeq/}, \file{code/unitary/})}\\
+\file{fusion\_auts.py}, \file{stab\_check.py} & fusion ring automorphisms; stabiliser of the normal form & \ref{sec:autoeq} \\
+\file{braid\_transport\_f4.py} & transported R modulo $p$ & \ref{sec:autoeq} \\
+\file{f4\_forms.py}, \file{f4\_forms\_recon.py} & invariant Hermitian forms modulo $p$; over $\kk$ & \ref{sec:unitarity} \\
+\file{f4\_forms\_analyse.py}, \file{f4\_classes.py} & positivity of the forms; square classes & \ref{sec:unitarity} \\
+\multicolumn{3}{p{0.9\linewidth}}{\emph{Forms over the cubic field} (\file{code/f4-forms/})}\\
+\file{relabel\_exact\_nf.py}, \file{run\_gauges.sh} & exact gauges for $\sigma_5$ with $\pi$, $\pi^3$, saved & \ref{sec:forms} \\
+\file{descent\_u.py} & descent data, scalars $u_X$, braiding test & \ref{sec:forms} \\
+\file{brauer.py}, \file{brauer.gp} & $u_X$ in $E$; signs, Hasse invariants, index (PARI/GP) & \ref{sec:forms} \\
+\file{uvals\_gp.py}, \file{endo.gp}, \file{kforms.gp} & forms $\mathcal D_e$; twisted forms over $\kk$ (PARI/GP) & \ref{sec:forms} \\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{Programs. The comparison for $\cC(\mathfrak{so}(13),2)$ mentioned in
+Section~\ref{sec:limits} is in the directory \file{code/metaplectic/} of the repository.}
+\label{tab:scripts}
+\end{table}
+
+\subsection{Commands}
+Paths are relative to the top directory of the repository, which contains \file{code/} and
+\file{deposit/}; the archive files are read from the directory named by the environment variable
+\texttt{F4\_ARCHIVE} (default \file{archive/}), and scratch files are written to \file{work/}. Times
+and peak memory were measured on a shared $96$-core machine; the times of the long runs are taken from
+their logs.
+
+\emph{(a) Verifying the data.} Without the archive:
+\begin{verbatim}
+python3 code/checks/s_nondegenerate.py deposit/F4_4_invariants.txt
+python3 code/checks/r_invariants.py deposit/F4_4_R_normalform.txt.xz
+python3 code/checks/autoeq_checks.py deposit/F4_4_R_normalform.txt.xz
+python3 code/checks/nf_galois.py deposit/F4_4_H_normalform.txt.xz
+\end{verbatim}
+These prove $\tilde S^2=\mathcal D^2\cdot\id$ ($2$ s, $30$ MB), the statements about the invariants of R
+in Section~\ref{sec:fields} ($12$ s, $61$ MB), the braiding statements of Theorem~\ref{thm:autoeq} that
+use only R ($1$ s, $61$ MB) and the minimality of $\kk$ ($13$ s, $0.3$ GB). With the archive:
+\begin{verbatim}
+A=${F4_ARCHIVE:-archive}; R=$A/F4_4_R_normalform.txt
+B="$A/F4_4_F_part1.bin $A/F4_4_F_part2.bin"
+python3 code/checks/exact_checks.py deposit/F4_4_R_normalform.txt.xz \
+    $B work/inv.txt
+python3 code/checks/nf_witness.py $B
+python3 code/checks/pseudo_unitary.py $R $B
+python3 code/f4/pent_exact_subset.py 0000,0001,1000,0004,2000 $B --jobs 2
+python3 code/f4/verify_hex_bin.py $R $B --jobs 2
+python3 code/f4/pent_reduced.py $B --jobs 2
+\end{verbatim}
+\file{exact\_checks.py} proves Theorem~\ref{thm:main}(iii)
+and the statements of Section~\ref{sec:modular}, and writes the invariants file, identical to the
+deposited one ($50$ s, $0.5$ GB); \file{nf\_witness.py} gives the monoidal obstructions of
+Theorem~\ref{thm:autoeq} ($3$ s, $0.4$ GB); \file{pseudo\_unitary.py} checks the character property of the $d_X$ and the
+identity of Lemma~\ref{lem:norm} ($30$ s, $0.7$ GB); the fourth command proves the pentagon for the $1{,}585$
+five-tuples from the listed objects ($85$ s, $0.9$ GB; with \texttt{maxdim=50} it is the run of
+Section~\ref{sec:pentagon}, $21{,}721$ s with $2$ workers). \file{verify\_hex\_bin.py} proves both
+hexagons and $RR^{-1}=1$ ($8593$ s with $2$ workers) and ends with \texttt{CONCLUSION: both hexagon
+equations hold exactly in K for all 58740 four-tuples \dots}. \file{pent\_reduced.py} proves
+invertibility and the pentagons with fourth object $V$ and ends with \texttt{CONCLUSION: the pentagon
+equation holds exactly in K for all 63841 five-tuples with fourth object 0001}
+($39{,}892$ s with $2$ workers). The last two write a scratch file of $2.6$ GB per prime.
+
+\emph{(b) One run of the pipeline} at $p=1073741189$, $q=z$:
+\begin{verbatim}
+python3 code/fields/direct_f4.py 1073741189 1 work/direct --nproc 4
+python3 code/fields/compare_direct.py work/direct 1073741189 1
+\end{verbatim}
+The first command runs steps (1)--(6) of Section~\ref{sec:construction} and writes the residues of the
+whole F-table and of R and $R^{-1}$ (at $q=z$ and $q=z^{-1}$) in the normal-form gauge, asserting that
+the normal-form rule reproduces the stored choices. Measured: $305$ s with $4$ processes, $1.1$ GB
+(cells $6$ s, the family with third leg $V$ $18$ s, the normal form $1$ s, the recursion $182$ s,
+export $39$ s, R $58$ s). The second command reduces the archived table at the same root: the residues
+agree in all $54{,}881{,}076$ entries ($25$ s, $0.8$ GB).
+
+\emph{(c) Everything.} Both scripts are in \file{code/fields} and take a scratch directory as
+argument. \file{direct\_f4\_all.sh} runs (b) at the $78$ (prime, root) pairs of
+Section~\ref{sec:reconstruction} (about $9$ hours with $2$ runs at a time), and
+\file{f4\_full\_recon.py} and \file{direct\_R\_recon.py} reconstruct the F-table over $\kk$ ($279$ s
+with $16$ processes) and R over $\Kt$ (\file{f4\_full\_recon.py} reads only the block layout of the
+archived table). Then \file{finish\_all.sh} runs the long verifications of (a) and compares the
+reconstructed files with the archived ones: they are identical byte for byte
+(\file{deposit/logs/finish\_all.log}).
+
+\emph{(d) Forms over the cubic field}, in \file{code/f4-forms}:
+\begin{verbatim}
+./run_gauges.sh
+python3 descent_u.py data/h_pi1_a5.pkl data/h_pi3_a5.pkl \
+    ../../deposit/F4_4_R_normalform.txt.xz data
+python3 brauer.py data/u_values.pkl brauer.gp && gp -q brauer.gp
+python3 uvals_gp.py data/u_values.pkl uvals.gp && gp -q endo.gp
+\end{verbatim}
+The first command computes and proves the two
+gauges of Lemma~\ref{lem:twisted} from the F-table ($8.5$ min and $0.65$ GB for each of its two
+processes), the second the scalars $u_X$ and the checks of Section~\ref{sec:forms} ($17$ s), the third
+the Hasse invariants and indices ($21$ s), the fourth the statements of Proposition~\ref{prop:endo} and the
+real forms ($1$ s; \file{kforms.gp} takes $23$ s). The logs are in \file{deposit/logs/forms\_*.log}.
+
+\section{Limitations and an open question}\label{sec:limits}
+
+\subsection{What the results establish}
+The data define a braided fusion category over $\Kt$, with F-symbols over $\kk$ and the fusion rules of
+$\CF$ (Theorem~\ref{thm:main}); with its spherical structure of positive dimensions it is a modular tensor
+category whose dimensions, twists and $S$-matrix are those of $\CF$ (Proposition~\ref{prop:modular}),
+and it has the autoequivalences and braidings of Theorem~\ref{thm:autoeq}.
+
+That this category is $\CF$ rests on the construction from $\Uq$ (in which the braiding on $V\otimes V$ is
+taken from the classical eigenvalue formula), together with the agreement of the fusion rules, the
+dimensions, the twists and the $S$-matrix with those of $\CF$; we know of no theorem that identifies a
+braided fusion category from these invariants. The same programs, applied to
+$\cC(\mathfrak{so}(13),2)$ with the spinor as generator, produce F- and
+R-symbols that agree exactly, up to an explicit gauge transformation, with the closed formulas of
+Ardonne, Finch and Titsworth~\cite{ArdonneFinchTitsworth}\footnote{In arXiv:1608.03762v2 the tables of
+F- and R-symbols are correct as printed. For the comparison the following equations are to be read
+differently: in the fusion rules of Section~4.1, $\phi_i\otimes\psi_\pm=\psi_+\oplus\psi_-$; in~(12) the
+summation index is $g$; the gauge law~(24) for R is $R_{ab}^c\mapsto g_{ba}^cR_{ab}^c/g_{ab}^c$, and the
+second hexagon~(17) is~(16) for $(R_{ba}^c)^{-1}$; in~(18) the last factor is an entry of the inverse
+F-matrix; in~(51) and~(52) the signs of $S_{\psi_\pm\psi_\pm}$ and $S_{\psi_\pm\psi_\mp}$ are reversed.
+The printed R-symbols are the inverses of those in our convention.} and with the solution of SageMath's
+F-matrix solver~\cite{SageFMatrix}.
+
+\subsection{Open question}
+For which primes $\mathfrak p$ of $\K$ is there a gauge in which all F-symbols of $\CF$ are
+$\mathfrak p$-integral? By Proposition~\ref{prop:integrality} the primes above $13$ are not among them.
+
+\section*{Acknowledgements}
+The computations, the verification programs and the text of this paper were produced by AI systems
+(Claude, by Anthropic) directed by Kim Morrison.
+
+\bibliographystyle{amsplain}
+\bibliography{f4-fsymbols}
+
+\end{document}
