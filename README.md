@@ -3,8 +3,8 @@
 This repository contains the paper "An explicit presentation of the modular tensor category
 C(F_4,4)" (`paper/`), the data deposited with it (`deposit/`), the programs that construct and
 verify the data (`code/`) and the logs of the runs reported in the paper (`logs/`). The complete
-F-table (13 GB) is in a separate data archive, **[DATA ARCHIVE DOI: to be supplied]**
-(`archive/README.md`). Public URL: **[REPOSITORY URL: to be supplied]**.
+F-table (13 GB) is in a separate data archive, Zenodo, https://doi.org/10.5281/zenodo.24269179
+(`archive/README.md`). Public URL: https://github.com/kim-em/f4_4.
 
 The data are the F-symbols of C(F4,4) over `k = Q(zeta_13)^+` and its R-symbols over `Q(zeta_13)`,
 in a normal-form gauge. The paper proves from the data files alone that they satisfy the pentagon

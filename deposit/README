@@ -1,8 +1,8 @@
 C(F4,4): data deposit accompanying "An explicit presentation of the modular tensor category C(F_4,4)"
 =====================================================================================================
 
-Programs: repository kim-em/f4_4, [REPOSITORY URL: to be supplied]   (code/f4/, code/fields/, code/checks/, ...)
-Archive with the complete F-table (binary, two files, 6.50 + 6.45 GB): [DATA ARCHIVE DOI: to be supplied]
+Programs: repository kim-em/f4_4, https://github.com/kim-em/f4_4   (code/f4/, code/fields/, code/checks/, ...)
+Archive with the complete F-table (binary, two files, 6.50 + 6.45 GB): Zenodo, https://doi.org/10.5281/zenodo.24269179
 Licence: the data, the logs and this README are released under the Apache License 2.0 (file LICENSE of the repository).
 
 All data are in the normal-form gauge of the paper (Section 4.7).

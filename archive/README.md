@@ -1,6 +1,6 @@
 # Data archive: the complete F-table of C(F4,4)
 
-DOI: **[DATA ARCHIVE DOI: to be supplied]** (Zenodo).
+DOI: https://doi.org/10.5281/zenodo.24269179 (Zenodo).
 
 The archive holds the exact data that are too large for the deposit (`../deposit/`). Download its
 files into this directory (the default), or anywhere and set
