@@ -35,4 +35,4 @@ SHA-256:
     43c11dcc0f752732ac8acf632f3d7519bbe455774cdf1f234437d04c318a7dee  F4_4_F_part2.bin
     cf1ff995d38f1a37d2c5a8332d1a7bb9957b0c70fa61bd0627f7589db8d308c6  F4_4_R_normalform.txt
 
-Check with `sha256sum -c` after saving the four lines above to a file in the directory of the archive.
+Check with `sha256sum -c` after saving the three lines above to a file in the directory of the archive.
