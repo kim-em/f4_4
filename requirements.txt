@@ -1,0 +1,5 @@
+# Python 3.14.8 was used.  PARI/GP 2.17.3 (not a Python package) runs the .gp scripts of code/f4-forms.
+numpy==2.5.3
+scipy==1.18.1
+sympy==1.14.0
+mpmath==1.4.1
