@@ -1,0 +1,5 @@
+pi = id: I(F[pi V,...]) = sigma_a(I(F[V,...])) on both blocks exactly for a in [1, 25, 27, 51]
+pi = (0001 1000 2000 0004): I(F[pi V,...]) = sigma_a(I(F[V,...])) on both blocks exactly for a in [5, 21, 31, 47]
+pi = (0001 0004 2000 1000): I(F[pi V,...]) = sigma_a(I(F[V,...])) on both blocks exactly for a in [5, 21, 31, 47]
+pi = (0001 2000)(1000 0004): I(F[pi V,...]) = sigma_a(I(F[V,...])) on both blocks exactly for a in [1, 25, 27, 51]
+3.06 s, 437508 kB

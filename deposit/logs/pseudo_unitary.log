@@ -1,0 +1,3 @@
+1. sum_Z N_XY^Z d_Z = d_X d_Y exactly for all 256 pairs: True; d_X > 0 at zeta = e^(2 pi i/52): True; sum d_X^2 = 7402.7940133507
+2. (F^-1)[(1,0,0),(1,0,0)] = F[(1,0,0),(1,0,0)] for F = F[X,X,X,X], all 16 X, modulo [1073741189, 1073740201] at all 12 real roots: True
+29.90 s, 676032 kB

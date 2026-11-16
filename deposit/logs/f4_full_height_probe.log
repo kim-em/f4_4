@@ -1,0 +1,7 @@
+20 primes, sample of 200000 entries
+m=2 primes (60 bits): coefficients reconstructed and confirmed by all 18 others: 813724, not: 386276; largest confirmed height 30 bits
+m=3 primes (90 bits): coefficients reconstructed and confirmed by all 17 others: 1095025, not: 104975; largest confirmed height 45 bits
+m=4 primes (120 bits): coefficients reconstructed and confirmed by all 16 others: 1184882, not: 15118; largest confirmed height 60 bits
+m=5 primes (150 bits): coefficients reconstructed and confirmed by all 15 others: 1199372, not: 628; largest confirmed height 75 bits
+m=6 primes (180 bits): coefficients reconstructed and confirmed by all 14 others: 1199994, not: 6; largest confirmed height 89 bits
+m=7 primes (210 bits): coefficients reconstructed and confirmed by all 13 others: 1200000, not: 0; largest confirmed height 98 bits

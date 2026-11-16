@@ -1,0 +1,12 @@
+p=1073741189 w=1: d_X = 1/F[(X,X,X,X)][1,1] equals the quantum Weyl dimension for all X: True
+  theta_X from R equals q^(X,X+2rho): True
+  monodromy R^YX R^XY is the scalar theta_Z/(theta_X theta_Y): True
+  S~ from R equals the Kac-Peterson S / S_00: True
+p=1073740201 w=3: d_X = 1/F[(X,X,X,X)][1,1] equals the quantum Weyl dimension for all X: True
+  theta_X from R equals q^(X,X+2rho): True
+  monodromy R^YX R^XY is the scalar theta_Z/(theta_X theta_Y): True
+  S~ from R equals the Kac-Peterson S / S_00: True
+p=1073726161 w=25: d_X = 1/F[(X,X,X,X)][1,1] equals the quantum Weyl dimension for all X: True
+  theta_X from R equals q^(X,X+2rho): True
+  monodromy R^YX R^XY is the scalar theta_Z/(theta_X theta_Y): True
+  S~ from R equals the Kac-Peterson S / S_00: True

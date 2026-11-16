@@ -1,0 +1,17 @@
+p=1073723561: R_can(F,R) = R_can(F,R^rev) at z^1: False; roots w with R_can(F,R)(z^w) = R_can(F,R)(z^1): [1, 27]; roots w with R_can(F,R^rev)(z^w) = R_can(F,R)(z^1): [25, 51]  (15 s)
+p=1073723561 pi = id:
+   NF(pi.F)(z^1) = NF(F)(z^w) for w in [1, 25, 27, 51]
+   R_can(pi.F, pi.R)(z^1) = R_can(F, R)(z^w) for w in [1, 27]
+   R_can(pi.F, pi.R)(z^1) = R_can(F, R^rev)(z^w) for w in [25, 51]   (16 s)
+p=1073723561 pi = (0001 1000 2000 0004) (0003 0010 0100 0020) (0012 1001 1002 1010):
+   NF(pi.F)(z^1) = NF(F)(z^w) for w in [5, 21, 31, 47]
+   R_can(pi.F, pi.R)(z^1) = R_can(F, R)(z^w) for w in [5, 31]
+   R_can(pi.F, pi.R)(z^1) = R_can(F, R^rev)(z^w) for w in [21, 47]   (17 s)
+p=1073723561 pi = (0001 2000) (0003 0100) (0004 1000) (0010 0020) (0012 1002) (1001 1010):
+   NF(pi.F)(z^1) = NF(F)(z^w) for w in [1, 25, 27, 51]
+   R_can(pi.F, pi.R)(z^1) = R_can(F, R)(z^w) for w in [25, 51]
+   R_can(pi.F, pi.R)(z^1) = R_can(F, R^rev)(z^w) for w in [1, 27]   (18 s)
+p=1073723561 pi = (0001 0004 2000 1000) (0003 0020 0100 0010) (0012 1010 1002 1001):
+   NF(pi.F)(z^1) = NF(F)(z^w) for w in [5, 21, 31, 47]
+   R_can(pi.F, pi.R)(z^1) = R_can(F, R)(z^w) for w in [21, 47]
+   R_can(pi.F, pi.R)(z^1) = R_can(F, R^rev)(z^w) for w in [5, 31]   (19 s)

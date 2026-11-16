@@ -1,0 +1,14 @@
+58740 blocks, 54881076 entries, 182 chunks; primes [1073741189, 1073740201, 1073739577, 1073739473, 1073739421, 1073737549, 1073737393, 1073737081, 1073735573], held out [1073726161, 1073725901]; modulus 270 bits
+  20/182 chunks (106 s)
+  40/182 chunks (215 s)
+  60/182 chunks (316 s)
+  80/182 chunks (408 s)
+  100/182 chunks (498 s)
+  120/182 chunks (587 s)
+  140/182 chunks (686 s)
+  160/182 chunks (779 s)
+  180/182 chunks (875 s)
+reconstruction failures 0; residues of the held-out primes differing between w and 25w: 0; largest numerator/denominator (eta basis) 99 bits; nonzero eta coefficients 328727941 (885 s)
+wrote WORK/bin/F4_4_F_descended_part1.bin: 11799 blocks, 6.50 GB
+wrote WORK/bin/F4_4_F_descended_part2.bin: 46941 blocks, 6.45 GB
+total 897 s

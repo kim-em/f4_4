@@ -1,0 +1,9 @@
+read data/B6_2_FR_exact.txt: 10 objects, 2880 F-matrices, 6388 nonzero F entries, 190 + 190 nonzero R, Rinv entries (1.1 s)
+height data: L 13 bits, H 19 bits, c = 46, n5 = 13, n3 = 7; 2 x bound(pentagon) 77 bits, 2 x bound(hexagon) 76 bits, 2 x bound(inverse) 45 bits
+4 primes p = 1 mod 52 below 2^31 (none divides L), 24 roots each: 96 runs
+results over all primes and roots: {'inverse': True, 'pentagon': True, 'hexagon1': True, 'hexagon2': True, 'F invertible': True}
+product of primes passing at all 24 roots: 124 bits
+CONCLUSION pentagon: holds exactly in K
+CONCLUSION hexagon: holds exactly in K
+CONCLUSION inverse: holds exactly in K
+all F-matrices invertible over K: True

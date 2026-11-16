@@ -1,0 +1,65 @@
+C(F4,4): data deposit accompanying "An explicit presentation of the modular tensor category C(F_4,4)"
+=====================================================================================================
+
+Programs: repository kim-em/f4_4, [REPOSITORY URL: to be supplied]   (code/f4/, code/fields/, code/checks/, ...)
+Archive with the complete F-table (binary, two files, 6.50 + 6.45 GB): [DATA ARCHIVE DOI: to be supplied]
+Licence: the data, the logs and this README are released under the Apache License 2.0 (file LICENSE of the repository).
+
+All data are in the normal-form gauge of the paper (Section 4.7).
+Conventions (Section 3). Fusion maps phi^{XY->Z}_i : X (x) Y -> Z;
+  phi^{ZW->T}_j o (phi^{XY->Z}_i (x) 1) = sum F[X,Y,W,T][(Z,i,j),(Z',k,l)] phi^{XZ'->T}_l o (1 (x) phi^{YW->Z'}_k)
+  phi^{YX->Z}_j o c_{X,Y} = sum_i R[X,Y,Z][j,i] phi^{XY->Z}_i ;  Rinv[X,Y,Z] = R[X,Y,Z]^{-1}
+Objects are Dynkin labels of F4 (Bourbaki), unit 0000, V = 0001. zeta = exp(2 pi i/52), q = zeta.
+Indices start at 0; zero entries are omitted; coefficients are integers or reduced fractions a/b.
+
+Files (text, line oriented, header lines start with #):
+
+  F4_4_H_normalform.txt.xz   F[X,Y,V,T] (third leg V), over k = Q(zeta_13)^+.  These determine the
+                             whole table (paper, Lemma 4.1), which the pentagon recursion regenerates.
+                             Lines "F X Y W T | Z i j | Z' k l | e1 .. e6": sum e_j eta_j,
+                             eta_j = zeta13^j + zeta13^-j, zeta13 = zeta^4 (so 1 = -(eta_1+...+eta_6)).
+                             Extracted from the archived full table.
+  F4_4_R_normalform.txt.xz   R and Rinv, over Q(zeta_13), written in the power basis of zeta:
+                             "R X Y Z | j i | b0 .. b23" and "Rinv X Y Z | i j | b0 .. b23" (sum b_k zeta^k;
+                             only even k occur).  The header lists the fusion rules as "# N X Y Z n".
+  F4_4_invariants.txt        exact d_X, twists and S~ = S/S_00 (written by code/checks/exact_checks.py from the
+                             R-file and the full table; recomputed from a clean copy, identical).
+  logs/                      logs of the runs reported in the paper.
+                             forms_*: Section "Forms over the cubic field" (relabel_exact_nf.py for pi and pi^3,
+                             descent_u.py, brauer.gp, endo.gp, kforms.gp, fusion_facts.py; forms_u_values.txt lists the scalars u_X
+                             in the basis eta_i = zeta13^i + zeta13^-i of k).  Commands: code/README.md.
+
+Requirements: Python 3 (3.14.8 used), numpy (2.5.3), scipy (1.18.1) for the construction, mpmath (1.4.1)
+for exact_checks.py, sympy (1.14.0); PARI/GP (2.17.3) for the .gp scripts.  Paths below: the top directory
+of the repository, with this deposit as deposit/; the archive files in $F4_ARCHIVE (default archive/).
+
+  Without the archive:
+    python3 code/checks/s_nondegenerate.py deposit/F4_4_invariants.txt        # S~^2 = D^2 Id; 2 s
+    python3 code/checks/r_invariants.py deposit/F4_4_R_normalform.txt.xz     # invariants of R; 12 s
+    python3 code/checks/autoeq_checks.py deposit/F4_4_R_normalform.txt.xz    # braidings, Mueger centre; 1 s
+    python3 code/checks/nf_galois.py deposit/F4_4_H_normalform.txt.xz        # Galois stabiliser of F; 13 s
+  With the archive (A = $F4_ARCHIVE; B = "$A/F4_4_F_part1.bin $A/F4_4_F_part2.bin"; R = $A/F4_4_R_normalform.txt,
+  the uncompressed R-file):
+    python3 code/checks/exact_checks.py deposit/F4_4_R_normalform.txt.xz $B work/inv.txt   # 50 s, 0.5 GB
+    python3 code/checks/nf_witness.py $B                                                    # 3 s
+    python3 code/checks/pseudo_unitary.py $R $B                                             # 30 s, 0.7 GB
+    python3 code/f4/pent_exact_subset.py 0000,0001,1000,0004,2000 $B --jobs 2              # 85 s
+    python3 code/f4/verify_hex_bin.py $R $B --jobs 2                                        # 8593 s
+    python3 code/f4/pent_reduced.py $B --jobs 2                                             # 39892 s, 38 primes
+  One run of the pipeline, and its comparison with the archived table:
+    python3 code/fields/direct_f4.py 1073741189 1 work/direct --nproc 4      # 305 s, 1.1 GB
+    python3 code/fields/compare_direct.py work/direct 1073741189 1           # 25 s
+  Each verifier ends with a line starting "CONCLUSION:".
+
+Logs: the paths in a few logs are written with placeholders (ARCHIVE/, WORK/, OUT/) for the directories
+of the machine on which they were run.
+
+SHA-256 checksums of the deposit files:
+986cf338d80bbbf93b94bd3929645c256ceaf7dcd31c588b9345ee79a9862ed8  F4_4_H_normalform.txt.xz
+61a7267a1ffaa0c1321daf00ccea89851d92317cffd52dd4141bc48428897c14  F4_4_R_normalform.txt.xz
+4563f54861768968c0baf336948c8b2591325c921283b749475c274aa4aa3579  F4_4_invariants.txt
+
+SHA-256 checksums of the archive files (see archive/README.md of the repository):
+c4e75b3694bd0543f21e44f4697a6a1fab5634a8740d72ae93cc9d041d298131  F4_4_F_part1.bin
+43c11dcc0f752732ac8acf632f3d7519bbe455774cdf1f234437d04c318a7dee  F4_4_F_part2.bin
+cf1ff995d38f1a37d2c5a8332d1a7bb9957b0c70fa61bd0627f7589db8d308c6  F4_4_R_normalform.txt

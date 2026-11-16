@@ -1,0 +1,3 @@
+subset ['0000', '0001', '0002', '0010', '1000', '0004', '2000']: 13137 five-tuples, largest dimension 395, 2 x bound up to 391 bits, primes needed: max 13, mean 3.2 (3s)
+312 (prime, root) runs, 993600 five-tuple checks, failures 0; 1192s
+CONCLUSION: the pentagon equation holds exactly in K for all 13137 five-tuples from ['0000', '0001', '0002', '0010', '1000', '0004', '2000']

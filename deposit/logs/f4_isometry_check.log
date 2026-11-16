@@ -1,0 +1,2 @@
+p=1073741189 w=1: 58740 blocks checked, F Gram_R F^T = Gram_L fails in 0  (55 s, 3 workers)
+p=1073726317 w=7: 58740 blocks checked, F Gram_R F^T = Gram_L fails in 0  (56 s, 3 workers)

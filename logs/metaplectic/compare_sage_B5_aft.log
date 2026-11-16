@@ -1,0 +1,6 @@
+AFT (p, r, kappa, lam) = (5, 1, -1, -1) in Dynkin labels, against Sage
+Sage generator embedded as exp(2 pi i 43/88)
+Sage: 2017 blocks, 4509 F-symbols (unit-leg ones filled in as 1), 151 R-symbols
+Sage R: gauge with +-1 pivots, 0 equations left over; after the gauge 4509 F and 151 R entries compared exactly, mismatches 0
+Sage R inverted: gauge with +-1 pivots, 0 equations left over; after the gauge 4509 F and 151 R entries compared exactly, mismatches 123
+   (0 F mismatches, 123 R mismatches; first: [('R', ('10000', '10000', '00000')), ('R', ('10000', '10000', '20000')), ('R', ('10000', '10000', '01000')), ('R', ('10000', '01000', '10000'))])

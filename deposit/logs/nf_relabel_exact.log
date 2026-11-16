@@ -1,0 +1,14 @@
+## relabel exact on the normal-form table: pi^2, a = 1
+q=1073727097: identity at 12 real roots; proved 3449/3451 (515 s)
+q=1073726473: identity at 12 real roots; proved 3450/3451 (525 s)
+q=1073726317: identity at 12 real roots; proved 3451/3451 (535 s)
+h invertible mod 1073726161: True
+CONCLUSION: h . F^sigma_1 = pi.F exactly on the H family
+536.62 s, 626856 kB
+## relabel exact on the normal-form table: pi^3, a = 5
+q=1073727409: identity at 12 real roots; proved 3449/3451 (509 s)
+q=1073727097: identity at 12 real roots; proved 3449/3451 (518 s)
+q=1073726473: identity at 12 real roots; proved 3451/3451 (528 s)
+h invertible mod 1073726317: True
+CONCLUSION: h . F^sigma_5 = pi.F exactly on the H family
+529.86 s, 633040 kB

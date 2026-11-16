@@ -1,0 +1,75 @@
+## exact_checks on the normal-form table
+1. objects (Dynkin labels, Bourbaki numbering, alpha1 alpha2 long):
+ X     Weyl dim   d_X              h_X     theta exp  depth  v13(d_X)  v13(Norm d_X)
+ 0000         1   1.0000000000   0          0       0      0         0  (24 v13 = 0)
+ 0001        26   7.3021868179   6/13      24       1      0         0  (24 v13 = 0)
+ 0002       324   18.3587793437   1          0       2      0         0  (24 v13 = 0)
+ 0010       273   19.3587793437   12/13     48       2      0         0  (24 v13 = 0)
+ 1000        52   7.3021868179   9/13      36       2      0         0  (24 v13 = 0)
+ 0003      2652   19.3587793437   21/13     32       3      0         0  (24 v13 = 0)
+ 0011      4096   43.0197455053   3/2       26       3      2/3       16  (24 v13 = 16)
+ 0100      1274   19.3587793437   18/13     20       3      0         0  (24 v13 = 0)
+ 1001      1053   26.6609661616   16/13     12       3      0         0  (24 v13 = 0)
+ 0004     16302   7.3021868179   30/13     16       4      0         0  (24 v13 = 0)
+ 0012     34749   26.6609661616   28/13      8       4      0         0  (24 v13 = 0)
+ 0020     19448   19.3587793437   27/13      4       4      0         0  (24 v13 = 0)
+ 0101     19278   25.6609661616   2          0       4      0         0  (24 v13 = 0)
+ 1002     10829   26.6609661616   24/13     44       4      0         0  (24 v13 = 0)
+ 1010      8424   26.6609661616   23/13     40       4      0         0  (24 v13 = 0)
+ 2000      1053   7.3021868179   20/13     28       4      0         0  (24 v13 = 0)
+
+2. fusion graph of V = 0001:  X (x) V = sum N_{X,V}^Z Z
+ 0000 (x) V = 0001
+ 0001 (x) V = 0000 + 0001 + 0002 + 0010 + 1000
+ 0002 (x) V = 0001 + 0002 + 0010 + 0003 + 0011 + 1001
+ 0010 (x) V = 0001 + 0002 + 0010 + 1000 + 0011 + 0100 + 1001
+ 1000 (x) V = 0001 + 0010 + 1001
+ 0003 (x) V = 0002 + 0003 + 0011 + 0004 + 0012 + 1002
+ 0011 (x) V = 0002 + 0010 + 0003 + 2*0011 + 0100 + 1001 + 0012 + 0020 + 0101 + 1002 + 1010
+ 0100 (x) V = 0010 + 0011 + 1001 + 0101 + 1010
+ 1001 (x) V = 0002 + 0010 + 1000 + 0011 + 0100 + 1001 + 1002 + 1010 + 2000
+ 0004 (x) V = 0003 + 0004 + 0012
+ 0012 (x) V = 0003 + 0011 + 0004 + 2*0012 + 0020 + 0101 + 1002
+ 0020 (x) V = 0011 + 0012 + 0020 + 0101 + 1010
+ 0101 (x) V = 0011 + 0100 + 0012 + 0020 + 0101 + 1002 + 1010
+ 1002 (x) V = 0003 + 0011 + 1001 + 0012 + 0101 + 1002 + 1010
+ 1010 (x) V = 0011 + 0100 + 1001 + 0020 + 0101 + 1002 + 1010 + 2000
+ 2000 (x) V = 1001 + 1010
+ largest fusion multiplicity: 10 [('0011', '0011', '0011')]
+ self-dual (N_{XX}^1 = 1 for all X): True
+
+3. exact checks from the R-symbols
+ R Rinv = 1 exactly for all 2302 blocks: True
+ theta_X d_X = sum_Z d_Z Tr R[(X,X,Z)] with theta_X = q^(X,X+2rho), for all 16 X: True
+ R[(Y,X,Z)] R[(X,Y,Z)] = theta_Z/(theta_X theta_Y) * identity for all 2302 blocks: True
+ S~_{XY} = sum_Z d_Z Tr(R[(Y,X,Z)] R[(X,Y,Z)]) equals the Kac-Peterson ratio S_{XY}/S_{00} for all 256 pairs: True
+
+4. exact checks from the F-table
+ F[(X,1,X,1)] = 1 for all 16 X: True
+ F[(X,X,X,X)][(1,0,0),(1,0,0)] * d_X = 1 exactly for all 16 X: True
+ example: F[(V,V,V,V)][(1,0,0),(1,0,0)] in the basis 1, c_1, ..., c_11: ['0', '0', '0', '0', '1/2', '0', '-1/2', '0', '0', '0', '0', '0']
+ F-matrices with a unit among the first three legs: 6859; each is the identity under the natural identification of labels: True
+
+wrote OUT/F4_4_invariants_nf.txt; 50s
+50.07 s, 533360 kB
+## s_nondegenerate
+16 objects; S~ S~ = (sum_X d_X^2) Id exactly: True; sum_X d_X^2 nonzero: True
+CONCLUSION: the S-matrix computed from the R-symbols is invertible
+## r_invariants
+R entries (nonzero) with an odd power of zeta in the exported gauge: 0 of 7374
+one-dimensional R[(X,X,Z)]: 100; with odd powers of zeta: 0 []
+R[(X,X,Z)] of size >= 2: 88; characteristic polynomial in Q(zeta^2) = Q(zeta_13): 88 of 88
+## autoeq_checks
+1. fusion ring automorphisms: 4, orders [1, 2, 4, 4]
+    id
+    (0001 1000 2000 0004) (0010 0100 0020 0003) (1001 1002 1010 0012)
+    (0001 0004 2000 1000) (0010 0003 0020 0100) (1001 0012 1010 1002)
+    (0001 2000) (0010 0020) (1000 0004) (0003 0100) (1001 1010) (0012 1002)
+2. pairs of non-unit simples with simple tensor product: []
+   one-dimensional R[X,X,Z]: 100, all of the form zeta^e
+3. objects X != 1 with all monodromy scalars theta_Z/(theta_X theta_Y) = 1 (transparent): []
+4. pi, and the a in (Z/52)^* with R[pi X,pi X,pi Z] = sigma_a(R[X,X,Z]) (braided) or its inverse (reversed):
+   id: braided for a in [1, 27]; reversed for a in [25, 51]
+   (0001 1000 2000 0004) (0010 0100 0020 0003) (1001 1002 1010 0012): braided for a in [21, 47]; reversed for a in [5, 31]
+   (0001 0004 2000 1000) (0010 0003 0020 0100) (1001 0012 1010 1002): braided for a in [5, 31]; reversed for a in [21, 47]
+   (0001 2000) (0010 0020) (1000 0004) (0003 0100) (1001 1010) (0012 1002): braided for a in [25, 51]; reversed for a in [1, 27]

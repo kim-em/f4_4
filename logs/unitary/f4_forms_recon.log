@@ -1,0 +1,3 @@
+tau invariance (G at w equals G at 25w): 30/30 checks pass
+G: 8116 entries x 6 eta coefficients; modulus 390 bits (13 primes); failures 0; largest num/den 47 bits; mismatches at 2 held-out primes: 0 (1 s)
+wrote WORK/G_exact.pkl

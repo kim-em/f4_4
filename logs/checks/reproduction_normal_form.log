@@ -1,0 +1,57 @@
+## direct_f4 1073741189 1 (WORK given as an absolute path; a relative path fails because subprocesses run in f4/)
+[plan] step 1: 89 one-dim V-edge variables, 467 entries, rank 74, unit pivots 74, deferred 0, residual torus dim 15
+[plan] loop 0011: candidate neighbours ['0002', '0003', '0010', '0012', '0020', '0100', '0101', '1001', '1002', '1010', 'in:0002', 'in:0003', 'in:0010', 'in:0012', 'in:0020', 'in:0100', 'in:0101', 'in:1001', 'in:1002', 'in:1010', 'BT:0002'], chosen ('0002', '0003')
+[plan] loop 0012: candidate neighbours ['0003', '0004', '0011', '0020', '0101', '1002', 'in:0003', 'in:0004', 'in:0011', 'in:0020', 'in:0101', 'in:1002', 'BT:0003'], chosen ('0003', '0004')
+[direct] p=1073741189 w=1: 58740 blocks, 54881076 entries; plan rule reproduced; cells 6s, H 18s, normal form 1s, g1 6s, recursion x 176s, export 39s, R 26s, R conj 32s
+304.94 s, 1100448 kB
+total 430916
+drwxr-xr-x 2 user group      4096 Nov 15 01:28 .
+drwxr-xr-x 3 user group       153 Nov 15 01:23 ..
+-rw-r--r-- 1 user group 439048736 Nov 15 01:27 F_1073741189_1.npy
+-rw-r--r-- 1 user group   1821315 Nov 15 01:27 F_1073741189_1.npy.keys.pkl
+-rw-r--r-- 1 user group      3293 Nov 15 01:28 F4_1073741189_1.log
+-rw-r--r-- 1 user group     52966 Nov 15 01:28 R_1073741189_1.keys.pkl
+-rw-r--r-- 1 user group    130352 Nov 15 01:28 R_1073741189_1.npz
+-rw-r--r-- 1 user group     52966 Nov 15 01:28 R_1073741189_51.keys.pkl
+-rw-r--r-- 1 user group    130352 Nov 15 01:28 R_1073741189_51.npz
+direct residues at (p=1073741189, w=1) vs the archived normal-form table reduced there: 54881076 entries, 0 differ
+25.08 s, 821984 kB
+## checks/s_nondegenerate.py ../deposit/F4_4_invariants.txt
+16 objects; S~ S~ = (sum_X d_X^2) Id exactly: True; sum_X d_X^2 nonzero: True
+CONCLUSION: the S-matrix computed from the R-symbols is invertible
+1.56 s, 30488 kB
+## checks/r_invariants.py ../deposit/F4_4_R_normalform.txt.xz
+R entries (nonzero) with an odd power of zeta in the exported gauge: 0 of 7374
+one-dimensional R[(X,X,Z)]: 100; with odd powers of zeta: 0 []
+R[(X,X,Z)] of size >= 2: 88; characteristic polynomial in Q(zeta^2) = Q(zeta_13): 88 of 88
+12.16 s, 61208 kB
+## checks/autoeq_checks.py ../deposit/F4_4_R_normalform.txt.xz
+   (0001 1000 2000 0004) (0010 0100 0020 0003) (1001 1002 1010 0012): braided for a in [21, 47]; reversed for a in [5, 31]
+   (0001 0004 2000 1000) (0010 0003 0020 0100) (1001 0012 1010 1002): braided for a in [5, 31]; reversed for a in [21, 47]
+   (0001 2000) (0010 0020) (1000 0004) (0003 0100) (1001 1010) (0012 1002): braided for a in [25, 51]; reversed for a in [1, 27]
+0.77 s, 61204 kB
+## checks/exact_checks.py ../deposit/F4_4_R_normalform.txt.xz ../archive/F4_4_F_part1.bin ../archive/F4_4_F_part2.bin inv_nf.txt
+ F-matrices with a unit among the first three legs: 6859; each is the identity under the natural identification of labels: True
+
+wrote inv_nf.txt; 50s
+50.03 s, 532520 kB
+## checks/nf_witness.py ../archive/F4_4_F_part1.bin ../archive/F4_4_F_part2.bin
+pi = (0001 1000 2000 0004): I(F[pi V,...]) = sigma_a(I(F[V,...])) on both blocks exactly for a in [5, 21, 31, 47]
+pi = (0001 0004 2000 1000): I(F[pi V,...]) = sigma_a(I(F[V,...])) on both blocks exactly for a in [5, 21, 31, 47]
+pi = (0001 2000)(1000 0004): I(F[pi V,...]) = sigma_a(I(F[V,...])) on both blocks exactly for a in [1, 25, 27, 51]
+3.02 s, 437876 kB
+## checks/nf_galois.py ../deposit/F4_4_H_normalform.txt.xz
+sigma_47: moves some entry: True
+sigma_49: moves some entry: True
+sigma_51: moves some entry: False
+13.38 s, 301312 kB
+## f4/pent_exact_subset.py 0000,0001,1000,0004,2000 ../archive/F4_4_F_part1.bin ../archive/F4_4_F_part2.bin --jobs 2
+subset ['0000', '0001', '1000', '0004', '2000']: 1585 five-tuples, largest dimension 15, 2 x bound up to 154 bits, primes needed: max 5, mean 1.7 (1s)
+120 (prime, root) runs, 64488 five-tuple checks, failures 0; 84s
+CONCLUSION: the pentagon equation holds exactly in K for all 1585 five-tuples from ['0000', '0001', '1000', '0004', '2000']
+85.25 s, 855864 kB
+recomputed invariants identical to the deposited file
+## checks/pseudo_unitary.py R B1 B2 (clean copy)
+1. sum_Z N_XY^Z d_Z = d_X d_Y exactly for all 256 pairs: True; d_X > 0 at zeta = e^(2 pi i/52): True; sum d_X^2 = 7402.7940133507
+2. (F^-1)[(1,0,0),(1,0,0)] = F[(1,0,0),(1,0,0)] for F = F[X,X,X,X], all 16 X, modulo [1073741189, 1073740201] at all 12 real roots: True
+28.54 s, 676896 kB

@@ -1,0 +1,3 @@
+(a) step 1: 89 edge variables, rank 74, unit pivots 74, residual 15
+(b) dim of T restricted to the edge variables: 15 (T has dim 15)
+(c) multiplicity spaces without unit leg: 2271; step 1: 89, step 2 (loops): [('0011', '0001', '0011'), ('0012', '0001', '0012')], step 3: 2180; not covered: []

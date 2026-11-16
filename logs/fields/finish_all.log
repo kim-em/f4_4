@@ -1,0 +1,9 @@
+[09:59:22] started
+[12:04:33] hexagons: CONCLUSION: both hexagon equations hold exactly in K for all 58740 four-tuples, and R Rinv = 1 holds modulo 42 primes at all roots 
+[18:28:01] subsets: CONCLUSION: the pentagon equation holds exactly in K for all 1585 five-tuples from ['0000', '0001', '1000', '0004', '2000'] CONCLUSION: the pentagon equation holds exactly in K for all 13137 five-tuples from ['0000', '0001', '0002', '0010', '1000', '0004', '2000'] CONCLUSION: the pentagon equation holds exactly in K for all 339330 five-tuples with dim Hom(E, ABCD) <= 50 
+[05:32:54] pentagons with fourth object V: CONCLUSION: the pentagon equation holds exactly in K for all 63841 five-tuples with fourth object 0001
+[05:47:57] direct F table part 1 vs regauged: identical
+[05:48:00] direct F table part 2 vs regauged: identical
+[05:48:09] direct R, Rinv vs data-large/F4_4_R_descended.txt: identical
+[05:48:14] twists/S: 12 True, 0 False
+[05:48:14] done

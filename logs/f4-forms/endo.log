@@ -1,0 +1,90 @@
+E = Q(t), t^3 + t^2 - 4*t + 1; real places t = [-2.6510934089371753062532403377876154031, 0.27389055496421759453148984462749498952, 1.3772028539729577117217504931601204136]; primes above 2: 1 (f = 3), above 13: 1 (e = 3)
+class number of E: 1, of k: 1; bnfcertify(E): 1, bnfcertify(k): 1
+
+== 1. consistency of the two base points
+0002: u1/u3 a square in E: 1;  (13, u1)_E split: 1
+0011: u1/u3 a square in E: 1;  (13, u1)_E split: 1
+0101: u1/u3 a square in E: 1;  (13, u1)_E split: 1
+
+== 2. B_X = (-1, u_X)_E (same local invariants as the cyclic algebra of brauer.gp)
+0002: signs of u at real places [-1, -1, 1];  invariants of (-1,u)_E [real; P2; P13; others]: [[1, 1, 0], 0, 0, []]
+0011: signs of u at real places [-1, 1, -1];  invariants of (-1,u)_E [real; P2; P13; others]: [[1, 0, 1], 0, 0, []]
+0101: signs of u at real places [1, -1, -1];  invariants of (-1,u)_E [real; P2; P13; others]: [[0, 1, 1], 0, 0, []]
+
+== 3. the pairing (g, u_X)_E for generators g of E^*/E^*2 restricted to {2, 13, infinity}-units
+fundamental units: [Mod(-t^2 - t + 3, t^3 + t^2 - 4*t + 1), Mod(t - 1, t^3 + t^2 - 4*t + 1)];  generator of P13: Mod(t^2 - 3, t^3 + t^2 - 4*t + 1) (norm 13)
+  g = -1 signs [-1, -1, -1]
+    (g, u_0002)_E invariants [real; P2; P13; others]: [[1, 1, 0], 0, 0, []]
+    (g, u_0011)_E invariants [real; P2; P13; others]: [[1, 0, 1], 0, 0, []]
+    (g, u_0101)_E invariants [real; P2; P13; others]: [[0, 1, 1], 0, 0, []]
+  g = eps1 signs [-1, 1, -1]
+    (g, u_0002)_E invariants [real; P2; P13; others]: [[1, 0, 0], 1, 0, []]
+    (g, u_0011)_E invariants [real; P2; P13; others]: [[1, 0, 1], 0, 0, []]
+    (g, u_0101)_E invariants [real; P2; P13; others]: [[0, 0, 1], 1, 0, []]
+  g = eps2 signs [-1, -1, 1]
+    (g, u_0002)_E invariants [real; P2; P13; others]: [[1, 1, 0], 0, 0, []]
+    (g, u_0011)_E invariants [real; P2; P13; others]: [[1, 0, 0], 1, 0, []]
+    (g, u_0101)_E invariants [real; P2; P13; others]: [[0, 1, 0], 1, 0, []]
+  g = 2 signs [1, 1, 1]
+    (g, u_0002)_E invariants [real; P2; P13; others]: [[0, 0, 0], 0, 0, []]
+    (g, u_0011)_E invariants [real; P2; P13; others]: [[0, 0, 0], 0, 0, []]
+    (g, u_0101)_E invariants [real; P2; P13; others]: [[0, 0, 0], 0, 0, []]
+  g = p13 signs [1, -1, -1]
+    (g, u_0002)_E invariants [real; P2; P13; others]: [[0, 1, 0], 1, 0, []]
+    (g, u_0011)_E invariants [real; P2; P13; others]: [[0, 0, 1], 1, 0, []]
+    (g, u_0101)_E invariants [real; P2; P13; others]: [[0, 1, 1], 0, 0, []]
+
+== 4. examples e: End(S_X) in D_(chi_1 + 2 psi_e) is (-e, u_X)_E
+  e = 1 (D_1): ["division, ram [[1, 1, 0], 0, 0, []]", "division, ram [[1, 0, 1], 0, 0, []]", "division, ram [[0, 1, 1], 0, 0, []]"]
+  e = 13 (D_3): ["division, ram [[1, 1, 0], 0, 0, []]", "division, ram [[1, 0, 1], 0, 0, []]", "division, ram [[0, 1, 1], 0, 0, []]"]
+  e = -1: ["split", "split", "split"]
+  e = -13: ["split", "split", "split"]
+  e = 2: ["division, ram [[1, 1, 0], 0, 0, []]", "division, ram [[1, 0, 1], 0, 0, []]", "division, ram [[0, 1, 1], 0, 0, []]"]
+  e = -2: ["split", "split", "split"]
+  e = 26: ["division, ram [[1, 1, 0], 0, 0, []]", "division, ram [[1, 0, 1], 0, 0, []]", "division, ram [[0, 1, 1], 0, 0, []]"]
+  e = -26: ["split", "split", "split"]
+
+== 5. quadratic characters psi_e of E unramified outside 13 and infinity (e in <-1, eps1, eps2, p13>, nonsquare)
+  e = -5*t + 7  [14]  signs [1, 1, 1]; ramified at 13: 1; M_chi totally real (e totally negative): 0; number of X with (-e,u_X) split: 0
+
+== 6. parity check: N_{0002,0011}^{0101} = 3 is odd, so u_0002 u_0011 / u_0101 must be a square in k
+  j = 1: square in k: 1
+  j = 3: square in k: 1
+
+== 7. real places of k: embedding a (zeta13 -> exp(2 pi i a/13)), E-place, signs of u_X
+  a = 1: eta = 1.7709120513064197918007510440301977572, theta = 0.27389055496421759453148984462749498952, E-place 2, signs (u_0002, u_0011, u_0101) = [-1, 1, -1]
+  a = 2: eta = 1.1361294934623116050236151182550332491, theta = 1.3772028539729577117217504931601204136, E-place 3, signs (u_0002, u_0011, u_0101) = [1, -1, -1]
+  a = 3: eta = 0.24107336051064610669813537490508716454, theta = 1.3772028539729577117217504931601204136, E-place 3, signs (u_0002, u_0011, u_0101) = [1, -1, -1]
+  a = 4: eta = -0.70920977408507125193927578520003694863, theta = -2.6510934089371753062532403377876154031, E-place 1, signs (u_0002, u_0011, u_0101) = [-1, -1, 1]
+  a = 5: eta = -1.4970214963422021972692611994027027677, theta = 0.27389055496421759453148984462749498949, E-place 2, signs (u_0002, u_0011, u_0101) = [-1, 1, -1]
+  a = 6: eta = -1.9418836348521040543139645525875784545, theta = -2.6510934089371753062532403377876154031, E-place 1, signs (u_0002, u_0011, u_0101) = [-1, -1, 1]
+
+== 8. the 2-torsion order of E^*/E^*2 at the generators (sanity: GEN independent mod squares)
+  5 (rank over F_2 of signs and valuations)
+
+== 9. all classes e in <-1, eps1, eps2, p13> mod squares (2 pairs trivially with every u_X): split pattern of (-e, u_X)_E, X = 0002, 0011, 0101
+  e = 1  (-1,eps1,eps2,p13 exponents [0, 0, 0, 0]), signs [1, 1, 1]: ["ram [1, 1, 0] P2:0", "ram [1, 0, 1] P2:0", "ram [0, 1, 1] P2:0"]
+  e = -1  (-1,eps1,eps2,p13 exponents [1, 0, 0, 0]), signs [-1, -1, -1]: ["split", "split", "split"]
+  e = -t^2 - t + 3  (-1,eps1,eps2,p13 exponents [0, 1, 0, 0]), signs [-1, 1, -1]: ["ram [0, 1, 0] P2:1", "split", "ram [0, 1, 0] P2:1"]
+  e = t^2 + t - 3  (-1,eps1,eps2,p13 exponents [1, 1, 0, 0]), signs [1, -1, 1]: ["ram [1, 0, 0] P2:1", "ram [1, 0, 1] P2:0", "ram [0, 0, 1] P2:1"]
+  e = t - 1  (-1,eps1,eps2,p13 exponents [0, 0, 1, 0]), signs [-1, -1, 1]: ["split", "ram [0, 0, 1] P2:1", "ram [0, 0, 1] P2:1"]
+  e = -t + 1  (-1,eps1,eps2,p13 exponents [1, 0, 1, 0]), signs [1, 1, -1]: ["ram [1, 1, 0] P2:0", "ram [1, 0, 0] P2:1", "ram [0, 1, 0] P2:1"]
+  e = t^2 - 2  (-1,eps1,eps2,p13 exponents [0, 1, 1, 0]), signs [1, -1, -1]: ["ram [1, 0, 0] P2:1", "ram [1, 0, 0] P2:1", "split"]
+  e = -t^2 + 2  (-1,eps1,eps2,p13 exponents [1, 1, 1, 0]), signs [-1, 1, 1]: ["ram [0, 1, 0] P2:1", "ram [0, 0, 1] P2:1", "ram [0, 1, 1] P2:0"]
+  e = t^2 - 3  (-1,eps1,eps2,p13 exponents [0, 0, 0, 1]), signs [1, -1, -1]: ["ram [1, 0, 0] P2:1", "ram [1, 0, 0] P2:1", "split"]
+  e = -t^2 + 3  (-1,eps1,eps2,p13 exponents [1, 0, 0, 1]), signs [-1, 1, 1]: ["ram [0, 1, 0] P2:1", "ram [0, 0, 1] P2:1", "ram [0, 1, 1] P2:0"]
+  e = 2*t^2 + 4*t - 9  (-1,eps1,eps2,p13 exponents [0, 1, 0, 1]), signs [-1, -1, 1]: ["split", "ram [0, 0, 1] P2:1", "ram [0, 0, 1] P2:1"]
+  e = -2*t^2 - 4*t + 9  (-1,eps1,eps2,p13 exponents [1, 1, 0, 1]), signs [1, 1, -1]: ["ram [1, 1, 0] P2:0", "ram [1, 0, 0] P2:1", "ram [0, 1, 0] P2:1"]
+  e = -2*t^2 + t + 2  (-1,eps1,eps2,p13 exponents [0, 0, 1, 1]), signs [-1, 1, -1]: ["ram [0, 1, 0] P2:1", "split", "ram [0, 1, 0] P2:1"]
+  e = 2*t^2 - t - 2  (-1,eps1,eps2,p13 exponents [1, 0, 1, 1]), signs [1, -1, 1]: ["ram [1, 0, 0] P2:1", "ram [1, 0, 1] P2:0", "ram [0, 0, 1] P2:1"]
+  e = -5*t + 7  (-1,eps1,eps2,p13 exponents [0, 1, 1, 1]), signs [1, 1, 1]: ["ram [1, 1, 0] P2:0", "ram [1, 0, 1] P2:0", "ram [0, 1, 1] P2:0"]
+  e = 5*t - 7  (-1,eps1,eps2,p13 exponents [1, 1, 1, 1]), signs [-1, -1, -1]: ["split", "split", "split"]
+
+== 10. 13 and -5t+7 (the class unramified at 2) agree mod squares: 1
+     u_0002 u_0011 / u_0101 is a square in E: 1, 13 times a square: 0
+     (2, u_X)_E split for all X: [1, 1, 1]
+
+== 11. local squares: u_X in E_P13^*2 (so (x, u_X) is trivial at 13 for every x); also at P2
+  0002: square at P13: 1, square at P2: 0
+  0011: square at P13: 1, square at P2: 0
+  0101: square at P13: 1, square at P2: 0

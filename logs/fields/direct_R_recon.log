@@ -1,0 +1,2 @@
+[R direct] 16232 entries (R and Rinv) x 12 from 9 primes: failures 0, largest 47 bits; mismatches at the roots of the held-out primes [1073726161, 1073725901]: 0 (roots checked: [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 41, 43, 45, 47, 49, 51])
+wrote WORK/bin/F4_4_R_direct.txt

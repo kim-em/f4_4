@@ -1,0 +1,64 @@
+E: minimal polynomial of theta: t^3 + t^2 - 4*t + 1  disc Mat([13, 2])
+Q(zeta13) = E[x]/f, f = x^4 + Mod(-t, t^3 + t^2 - 4*t + 1)*x^3 + Mod(t^2 + t - 1, t^3 + t^2 - 4*t + 1)*x^2 + Mod(-t, t^3 + t^2 - 4*t + 1)*x + 1
+k: v^6 + v^5 - 5*v^4 - 4*v^3 + 6*v^2 + 3*v - 1;  d = eta^2 - 4, totally negative: 1
+
+== j = 1: Psi_1 = (s, pi^1, c_1); braided: False
+u_0002 = -703420592*t^2 + 1161413104*t - 265332256  in E;  (integral multiple by d^4, d = 1)
+  signs at the real places of E: [-1, -1, 1]
+  factorisation of the integral multiple: [[2, 3, 1, 4, 4]]
+  (columns: p, f, e of the prime of E, exponent, local degree of Q(zeta13)/E at the prime (p != 13: unramified, degree = ord_13(p)/f))
+  u is not a norm from Q(zeta13) (rnfisnorm, flag 1: guaranteed for Galois extensions given the bnf)
+  cyclic algebra (Q(zeta13)/E, s, u_0002): Hasse invariants at the real places Vecsmall([2, 2, 0]), at finite places [[[2, [2, 0, 0]~, 1, 3, 1], [13, [-4, 1, 0]~, 3, 1, [6, 11, -2; 4, 3, 3; 1, 4, 4]]], Vecsmall([0, 0])], index 2
+    finite places: [[2, 3, 1], [13, 1, 3]]
+  real embeddings of E agree with the ordering of nfE.roots: [-2.6510934089371753062532403377876154031, 0.27389055496421759453148984462749498952, 1.3772028539729577117217504931601204136] vs [-2.6510934089371753062532403377876154031, 0.27389055496421759453148984462749498952, 1.3772028539729577117217504931601204136]
+  quaternion algebra (eta^2-4, u_0002)_k: Hasse invariants real Vecsmall([1, 1, 1, 0, 0, 1]), finite Vecsmall([0, 0]), split: 0
+u_0011 = -3047/371293*t^2 - 3878/371293*t + 11120/371293  in E;  (integral multiple by d^4, d = 371293)
+  signs at the real places of E: [-1, 1, -1]
+  factorisation of the integral multiple: [[13, 1, 3, 46, "ramified"]]
+  (columns: p, f, e of the prime of E, exponent, local degree of Q(zeta13)/E at the prime (p != 13: unramified, degree = ord_13(p)/f))
+  u is not a norm from Q(zeta13) (rnfisnorm, flag 1: guaranteed for Galois extensions given the bnf)
+  cyclic algebra (Q(zeta13)/E, s, u_0011): Hasse invariants at the real places Vecsmall([2, 0, 2]), at finite places [[[13, [-4, 1, 0]~, 3, 1, [6, 11, -2; 4, 3, 3; 1, 4, 4]]], Vecsmall([0])], index 2
+    finite places: [[13, 1, 3]]
+  real embeddings of E agree with the ordering of nfE.roots: [-2.6510934089371753062532403377876154031, 0.27389055496421759453148984462749498952, 1.3772028539729577117217504931601204136] vs [-2.6510934089371753062532403377876154031, 0.27389055496421759453148984462749498952, 1.3772028539729577117217504931601204136]
+  quaternion algebra (eta^2-4, u_0011)_k: Hasse invariants real Vecsmall([1, 0, 1, 1, 1, 0]), finite Vecsmall([0]), split: 0
+u_0101 = 3104/169*t^2 - 4240/169*t - 48/169  in E;  (integral multiple by d^4, d = 169)
+  signs at the real places of E: [1, -1, -1]
+  factorisation of the integral multiple: [[2, 3, 1, 4, 4], [13, 1, 3, 20, "ramified"]]
+  (columns: p, f, e of the prime of E, exponent, local degree of Q(zeta13)/E at the prime (p != 13: unramified, degree = ord_13(p)/f))
+  u is not a norm from Q(zeta13) (rnfisnorm, flag 1: guaranteed for Galois extensions given the bnf)
+  cyclic algebra (Q(zeta13)/E, s, u_0101): Hasse invariants at the real places Vecsmall([0, 2, 2]), at finite places [[[2, [2, 0, 0]~, 1, 3, 1], [13, [-4, 1, 0]~, 3, 1, [6, 11, -2; 4, 3, 3; 1, 4, 4]]], Vecsmall([0, 0])], index 2
+    finite places: [[2, 3, 1], [13, 1, 3]]
+  real embeddings of E agree with the ordering of nfE.roots: [-2.6510934089371753062532403377876154031, 0.27389055496421759453148984462749498952, 1.3772028539729577117217504931601204136] vs [-2.6510934089371753062532403377876154031, 0.27389055496421759453148984462749498952, 1.3772028539729577117217504931601204136]
+  quaternion algebra (eta^2-4, u_0101)_k: Hasse invariants real Vecsmall([0, 1, 0, 1, 1, 1]), finite Vecsmall([0, 0]), split: 0
+
+== j = 3: Psi_3 = (s, pi^3, c_3); braided: True
+u_0002 = 244/169*t^2 + 583/169*t - 178/169  in E;  (integral multiple by d^4, d = 169)
+  signs at the real places of E: [-1, -1, 1]
+  factorisation of the integral multiple: [[13, 1, 3, 20, "ramified"]]
+  (columns: p, f, e of the prime of E, exponent, local degree of Q(zeta13)/E at the prime (p != 13: unramified, degree = ord_13(p)/f))
+  u is not a norm from Q(zeta13) (rnfisnorm, flag 1: guaranteed for Galois extensions given the bnf)
+  cyclic algebra (Q(zeta13)/E, s, u_0002): Hasse invariants at the real places Vecsmall([2, 2, 0]), at finite places [[[13, [-4, 1, 0]~, 3, 1, [6, 11, -2; 4, 3, 3; 1, 4, 4]]], Vecsmall([0])], index 2
+    finite places: [[13, 1, 3]]
+  real embeddings of E agree with the ordering of nfE.roots: [-2.6510934089371753062532403377876154031, 0.27389055496421759453148984462749498952, 1.3772028539729577117217504931601204136] vs [-2.6510934089371753062532403377876154031, 0.27389055496421759453148984462749498952, 1.3772028539729577117217504931601204136]
+  quaternion algebra (eta^2-4, u_0002)_k: Hasse invariants real Vecsmall([1, 1, 1, 0, 0, 1]), finite Vecsmall([0]), split: 0
+u_0011 = -88526336/28561*t^2 - 210445056/28561*t + 64279808/28561  in E;  (integral multiple by d^4, d = 28561)
+  signs at the real places of E: [-1, 1, -1]
+  factorisation of the integral multiple: [[2, 3, 1, 8, 4], [13, 1, 3, 36, "ramified"]]
+  (columns: p, f, e of the prime of E, exponent, local degree of Q(zeta13)/E at the prime (p != 13: unramified, degree = ord_13(p)/f))
+  u is not a norm from Q(zeta13) (rnfisnorm, flag 1: guaranteed for Galois extensions given the bnf)
+  cyclic algebra (Q(zeta13)/E, s, u_0011): Hasse invariants at the real places Vecsmall([2, 0, 2]), at finite places [[[2, [2, 0, 0]~, 1, 3, 1], [13, [-4, 1, 0]~, 3, 1, [6, 11, -2; 4, 3, 3; 1, 4, 4]]], Vecsmall([0, 0])], index 2
+    finite places: [[2, 3, 1], [13, 1, 3]]
+  real embeddings of E agree with the ordering of nfE.roots: [-2.6510934089371753062532403377876154031, 0.27389055496421759453148984462749498952, 1.3772028539729577117217504931601204136] vs [-2.6510934089371753062532403377876154031, 0.27389055496421759453148984462749498952, 1.3772028539729577117217504931601204136]
+  quaternion algebra (eta^2-4, u_0011)_k: Hasse invariants real Vecsmall([1, 0, 1, 1, 1, 0]), finite Vecsmall([0, 0]), split: 0
+u_0101 = -14876486/169*t^2 - 35364425/169*t + 10801957/169  in E;  (integral multiple by d^4, d = 169)
+  signs at the real places of E: [1, -1, -1]
+  factorisation of the integral multiple: [[13, 1, 3, 20, "ramified"]]
+  (columns: p, f, e of the prime of E, exponent, local degree of Q(zeta13)/E at the prime (p != 13: unramified, degree = ord_13(p)/f))
+  u is not a norm from Q(zeta13) (rnfisnorm, flag 1: guaranteed for Galois extensions given the bnf)
+  cyclic algebra (Q(zeta13)/E, s, u_0101): Hasse invariants at the real places Vecsmall([0, 2, 2]), at finite places [[[13, [-4, 1, 0]~, 3, 1, [6, 11, -2; 4, 3, 3; 1, 4, 4]]], Vecsmall([0])], index 2
+    finite places: [[13, 1, 3]]
+  real embeddings of E agree with the ordering of nfE.roots: [-2.6510934089371753062532403377876154031, 0.27389055496421759453148984462749498952, 1.3772028539729577117217504931601204136] vs [-2.6510934089371753062532403377876154031, 0.27389055496421759453148984462749498952, 1.3772028539729577117217504931601204136]
+  quaternion algebra (eta^2-4, u_0101)_k: Hasse invariants real Vecsmall([0, 1, 0, 1, 1, 1]), finite Vecsmall([0]), split: 0
+u_0002^(1)/u_0002^(3) is a square in k: 1
+u_0011^(1)/u_0011^(3) is a square in k: 1
+u_0101^(1)/u_0101^(3) is a square in k: 1

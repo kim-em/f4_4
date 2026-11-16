@@ -1,0 +1,71 @@
+p=1073741189: h residues at 12 roots (15 s)
+p=1073740201: h residues at 12 roots (29 s)
+p=1073739577: h residues at 12 roots (43 s)
+p=1073739473: h residues at 12 roots (58 s)
+p=1073739421: h residues at 12 roots (71 s)
+p=1073737549: h residues at 12 roots (86 s)
+p=1073737393: h residues at 12 roots (100 s)
+p=1073737081: h residues at 12 roots (114 s)
+p=1073735573: h residues at 12 roots (128 s)
+p=1073735417: h residues at 12 roots (142 s)
+p=1073733233: h residues at 12 roots (156 s)
+p=1073733077: h residues at 12 roots (170 s)
+p=1073732609: h residues at 12 roots (184 s)
+p=1073732557: h residues at 12 roots (199 s)
+h: 8116 entries x 12; failures 0; mismatches at 3 held-out primes 0; largest 67 bits
+height bound: largest 2B 863 bits (204 s)
+q=1073741189: identity at 12 real roots; proved 45/3451 (217 s)
+q=1073740201: identity at 12 real roots; proved 200/3451 (229 s)
+q=1073739577: identity at 12 real roots; proved 641/3451 (241 s)
+q=1073739473: identity at 12 real roots; proved 1430/3451 (252 s)
+q=1073739421: identity at 12 real roots; proved 2034/3451 (264 s)
+q=1073737549: identity at 12 real roots; proved 2393/3451 (275 s)
+q=1073737393: identity at 12 real roots; proved 2643/3451 (285 s)
+q=1073737081: identity at 12 real roots; proved 2844/3451 (296 s)
+q=1073735573: identity at 12 real roots; proved 2958/3451 (307 s)
+q=1073735417: identity at 12 real roots; proved 3068/3451 (317 s)
+q=1073733233: identity at 12 real roots; proved 3146/3451 (327 s)
+q=1073733077: identity at 12 real roots; proved 3216/3451 (338 s)
+q=1073732609: identity at 12 real roots; proved 3265/3451 (348 s)
+q=1073732557: identity at 12 real roots; proved 3314/3451 (358 s)
+q=1073731829: identity at 12 real roots; proved 3349/3451 (368 s)
+q=1073731777: identity at 12 real roots; proved 3369/3451 (378 s)
+q=1073731621: identity at 12 real roots; proved 3383/3451 (388 s)
+q=1073730841: identity at 12 real roots; proved 3393/3451 (398 s)
+q=1073730737: identity at 12 real roots; proved 3414/3451 (409 s)
+q=1073730061: identity at 12 real roots; proved 3428/3451 (419 s)
+q=1073729593: identity at 12 real roots; proved 3436/3451 (429 s)
+q=1073729177: identity at 12 real roots; proved 3442/3451 (439 s)
+q=1073728813: identity at 12 real roots; proved 3444/3451 (449 s)
+q=1073728657: identity at 12 real roots; proved 3446/3451 (459 s)
+q=1073727877: identity at 12 real roots; proved 3446/3451 (469 s)
+q=1073727617: identity at 12 real roots; proved 3449/3451 (479 s)
+q=1073727409: identity at 12 real roots; proved 3449/3451 (488 s)
+q=1073727097: identity at 12 real roots; proved 3449/3451 (499 s)
+q=1073726473: identity at 12 real roots; proved 3451/3451 (509 s)
+h invertible mod 1073726317: True
+CONCLUSION: h . F^sigma_5 = pi.F exactly on the H family
+saved OUT/h_pi1_a5.pkl
+	Command being timed: "python3 relabel_exact_nf.py ../fields/data/F4_4_canon.plan.pkl 5 0001:1000,1000:2000,2000:0004,0004:0001,0010:0100,0100:0020,0020:0003,0003:0010,1001:1002,1002:1010,1010:0012,0012:1001 14 11 OUT/h_pi1_a5.pkl"
+	User time (seconds): 493.12
+	System time (seconds): 14.09
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 8:30.74
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 621772
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 8264
+	Minor (reclaiming a frame) page faults: 437996
+	Voluntary context switches: 3661
+	Involuntary context switches: 271880
+	Swaps: 0
+	File system inputs: 922656
+	File system outputs: 1880
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

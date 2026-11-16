@@ -1,0 +1,8 @@
+(r, kappa, lam) = (1, -1, -1), labels {'000000': '1', '200000': 'eps', '100000': 'phi1', '010000': 'phi2', '001000': 'phi3', '000100': 'phi4', '000010': 'phi5', '000002': 'phi6', '100001': 'psi+', '000001': 'psi-'}
+  gauge solved by +-1 pivots; equations left with only non-unit exponents: 0
+  after the gauge: 6454 F entries (all admissible pairs, zeros included) and 190 R-symbols compared exactly; mismatches: 0  (14 s)
+(r, kappa, lam) = (1, -1, 1), labels {'000000': '1', '200000': 'eps', '100000': 'phi5', '010000': 'phi3', '001000': 'phi2', '000100': 'phi6', '000010': 'phi1', '000002': 'phi4', '100001': 'psi-', '000001': 'psi+'}
+  gauge solved by +-1 pivots; equations left with only non-unit exponents: 0
+  after the gauge: 6454 F entries (all admissible pairs, zeros included) and 190 R-symbols compared exactly; mismatches: 0  (13 s)
+gauge heights: at most 20 bits
+CONCLUSION: agreement (explicit gauge, exact)

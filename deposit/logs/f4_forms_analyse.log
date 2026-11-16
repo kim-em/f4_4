@@ -1,0 +1,20 @@
+2302 spaces (2271 without unit leg); dims [1, 2, 3, 4, 5, 6, 7, 10]
+w= 1: unit-leg spaces identity: True; definite 2271 (positive 2271), indefinite 0; smallest |eigenvalue| ratio 6.89e-10; torus sign pattern solvable: True -> UNITARY (positive after a torus sign change) (1 s)
+      signs s_X = -1 on []
+w= 3: unit-leg spaces identity: True; definite 1751 (positive 981), indefinite 520; smallest |eigenvalue| ratio 6.54e-10; torus sign pattern solvable: False -> not unitary (1 s)
+w= 5: unit-leg spaces identity: True; definite 2271 (positive 2271), indefinite 0; smallest |eigenvalue| ratio 1.52e-9; torus sign pattern solvable: True -> UNITARY (positive after a torus sign change) (1 s)
+      signs s_X = -1 on []
+w= 7: unit-leg spaces identity: True; definite 1722 (positive 806), indefinite 549; smallest |eigenvalue| ratio 4.65e-10; torus sign pattern solvable: False -> not unitary (1 s)
+w= 9: unit-leg spaces identity: True; definite 1722 (positive 971), indefinite 549; smallest |eigenvalue| ratio 1.67e-11; torus sign pattern solvable: False -> not unitary (1 s)
+w=11: unit-leg spaces identity: True; definite 1751 (positive 943), indefinite 520; smallest |eigenvalue| ratio 3.92e-19; torus sign pattern solvable: False -> not unitary (1 s)
+square classes: 240 degree-one primes of k (40 rational primes x 6), 14 s
+  (e) torus-invariant determinant classes (odd-dimensional spaces covariantly, even ones invariantly): 5
+  candidates -1, 2, 3, 13, [n] (n odd), [2][n] (n even), n < 26: span rank 7; (a) inside their span: True; (e) inside their span: True
+  candidates whose class lies in (a): ['2', '[3]', '[2][4]', '[5]', '[11]', '[2][12]', '[13]', '[2][14]', '[15]', '[21]', '[2][22]', '[23]']
+F_2 ranks (characters at 240 primes; a rank close to 240 would mean too few primes):
+  (a) torus-invariant classes from the one-dimensional spaces (1363 spaces): 5
+  (b) torus-invariant classes from the first LDL diagonal of all 2271 spaces: 240
+  (c) (b) plus all ratios D_i/D_1 within spaces (upper bound for LDL+sqrt gauges, best torus): 240
+      ratios D_i/D_1 alone: 240
+  (d) (a) plus det classes of even-dimensional spaces (lower bound for the field of an orthogonal gauge): 5
+  all LDL diagonals, no torus optimisation: 240

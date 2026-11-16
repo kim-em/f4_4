@@ -1,0 +1,7 @@
+H family: 20277 nonzero entries with four one-dimensional spaces
+300 degree-one primes of k (p = +-1 mod 13), 10 s
+(1) entry invariants I_ab: F_2 rank 6 (torus-invariant classes of all one-dimensional norms: 6)
+(2) torus-invariant determinant classes: rank 6; together with (1): 6
+(3) LDL^T diagonals with the best torus: rank 300 of at most 300 detectable (2322 diagonal entries in the 908 spaces of dimension > 1)
+(1): basis among -1, 2, 3, 13, [n], [2][n]: ['2', '[3]', '[5]', '[11]', '[13]', '[2][4]']; spans: True
+(2): basis among -1, 2, 3, 13, [n], [2][n]: ['2', '[3]', '[5]', '[11]', '[13]', '[2][4]']; spans: True

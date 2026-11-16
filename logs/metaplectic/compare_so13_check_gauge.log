@@ -1,0 +1,2 @@
+gauge from data/gauge_so13_ours_to_AFT.txt applied to ours: 6454 F entries and 190 R-symbols compared exactly with AFT (1, -1, -1); mismatches 0
+CONCLUSION: agreement

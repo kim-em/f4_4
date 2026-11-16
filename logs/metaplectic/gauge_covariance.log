@@ -1,0 +1,4 @@
+p = 2, random gauge applied to F by (fgauge); pentagon failures: 0
+  R by (rgauge) as printed, g_ab R / g_ba: failures (R1) 20, corrected (R2) 20, printed (R2) 0
+  R by inverse ratio,       g_ba R / g_ab: failures (R1) 0, corrected (R2) 0, printed (R2) 20
+quantum group data so(13)_2 (../f4/data/B6_2_FR_exact.txt): failures (R1) 0, corrected (R2) 0, printed (R2) 20

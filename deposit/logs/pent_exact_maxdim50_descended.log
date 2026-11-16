@@ -1,0 +1,3 @@
+subset all objects, dimension <= 50: 339330 five-tuples, largest dimension 50, 2 x bound up to 810 bits, primes needed: max 27, mean 4.8 (86s)
+648 (prime, root) runs, 38984496 five-tuple checks, failures 0; 21721s
+CONCLUSION: the pentagon equation holds exactly in K for all 339330 five-tuples with dim Hom(E, ABCD) <= 50
